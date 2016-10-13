@@ -1,0 +1,4 @@
+//Crono: Weather file! Pop in whatever map you want to have whatever weather.
+//mapflags: || fog || leaves || rain (bugged) || sakura || snow ||
+
+amatsu	mapflag	sakura

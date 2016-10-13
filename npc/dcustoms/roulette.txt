@@ -1,0 +1,290 @@
+//===== eAthena Script =======================================
+//= PVP Russian Roulette
+//===== By: ==================================================
+//= acky (god@acky.com)
+//===== Current Version: =====================================
+//= 1.2
+//===== Compatible With: =====================================
+//= eAthena SVN
+//===== Description: =========================================
+//= Player vs Player russian roulette. Works on
+//= a challenge system.
+//===== Additional Comments: =================================
+//= - Note: Player 2 always shoots first
+//= + Announces if a player 'chickens out'
+//= + Kills player if challenges self
+//= * Minor bug fixes
+//============================================================ 
+
+morocc,193,101,5	script	Pistol Man	810,{
+if ($@pistol1$ == "" && $@pistolstage == 0) goto L_New; // No current challenges
+if (strcharinfo(0) == $@pistol1$ && $@pistolstage == 1) goto L_Waiting; // Player 1 waiting for Player 2 to accept
+if (strcharinfo(0) == $@pistol2$ && $@pistolstage == 1) goto L_Accept; // Player 2 accept menu
+if (strcharinfo(0) == $@pistol1$ && $@pistolstage > 1) goto L_Check1; // Player 1 shoots
+if (strcharinfo(0) == $@pistol2$ && $@pistolstage > 1) goto L_Check2; // Player 2 shoots
+
+// Is not player's turn or is not a participant
+L_NotTurn:
+	mes "[Pistol Man]";
+	if (strcharinfo(0) == $@pistol1$) mes "It is ^FF0000"+$@pistol2$+"'s^000000 turn to pull.";
+	if (strcharinfo(0) == $@pistol2$) mes "It is ^FF0000"+$@pistol1$+"'s^000000 turn to pull.";
+	if (strcharinfo(0) != $@pistol1$ && strcharinfo(0) != $@pistol2$) mes "This is between ^FF0000"+$@pistol1$+" ^000000and^FF0000 "+$@pistol2$+", ^000000please stay out of it. If they're not here, use the Resetter NPC above.";
+	if (getgmlevel() > 90) menu "Cancel Current Game",GM_Cancel,"Cancel",L_Exit;
+	close;
+	
+	GM_Cancel:
+		mes "[Pistol Man]";
+		mes "As you wish.";
+		Announce "Russian Roulette reset by GM",2;
+		goto L_ResetVars;
+
+L_Check1:
+if ($@pistolstage == 3 || $@pistolstage == 5 || $@pistolstage == 7) goto L_Shot1;
+goto L_NotTurn;
+
+L_Check2:
+if ($@pistolstage == 2 || $@pistolstage == 4 || $@pistolstage == 6) goto L_Shot2;
+goto L_NotTurn;
+
+// Player 1 Shoots
+L_Shot1:
+	mes "[Pistol Man]";
+	mes $@pull$[rand (8)];
+	mes $@odds$[$@chamber];
+	next;
+	mes "^777777You pull the trigger...^000000";
+	Announce $@pistol1$+" pulls the trigger...",2;
+
+	next;
+	set @shot,rand (1,$@chamber);
+	if (@shot == 1) goto L_Die1;
+	
+	mes "^777777... Click ...^000000";
+	Announce "... Click ...",2;
+
+	atcommand strcharinfo(0) + "@sound gunclick.wav"; 
+	next;
+	mes "[Pistol Man]";
+	mes $@safe$[rand(8)];
+	Announce $@pistol1$+" survives! "+$@pistol2$+", please speak to me",2;
+	mes "Please ask ^FF0000"+$@pistol2$+"^000000 to speak with me.";
+	set $@pistolstage,$@pistolstage+1;
+	set $@chamber,$@chamber-1;
+	close;
+
+// Player 2 Shoots
+L_Shot2:
+	mes "[Pistol Man]";
+	mes $@pull$[rand (8)];
+	mes $@odds$[$@chamber];
+	next;
+	mes "^777777You pull the trigger...^000000";
+	Announce $@pistol2$+" pulls the trigger...",18;
+
+	next;
+	set @shot,rand (1,$@chamber);
+	if (@shot == 1) goto L_Die2;
+	
+	mes "^777777... Click ...^000000";
+	Announce "... Click ...",18;
+	atcommand strcharinfo(0) + "@sound gunclick.wav"; 
+//	soundeffect "gunclick.wav",0;
+	next;
+	mes "[Pistol Man]";
+	mes $@safe$[rand(8)];
+	Announce $@pistol2$+" survives! "+$@pistol1$+", please speak to me",18;
+	mes "Please ask ^FF0000"+$@pistol1$+"^000000 to speak with me.";
+	set $@pistolstage,$@pistolstage+1;
+	set $@chamber,$@chamber-1;
+	close;
+
+	// Player 1 Dies
+	L_Die1:
+		specialeffect2 183;
+		specialeffect2 267;
+		Announce "BANG",2;
+		Announce strcharinfo(0)+" has been shot! "+$@pistol2$+" is the winner!",2;
+		percentheal -100,0;
+		goto L_ResetVars;
+	
+	// Player 2 Dies
+	L_Die2:
+		specialeffect2 183;
+		specialeffect2 267;
+		Announce "BANG",18;
+		Announce strcharinfo(0)+" has been shot! "+$@pistol1$+" is the winner!",18;
+		percentheal -100,0;
+		goto L_ResetVars;
+
+
+
+
+// Player 2 accepts Player 1's challenge
+L_Accept:
+	mes "[Pistol Man]";
+	mes "Hello " + strcharinfo(0);
+	mes "^FF0000"+$@pistol1$ + "^000000 has challenged you to ^FF0000Russian Roulette^000000";
+	next;
+	mes "[Pistol Man]";
+	mes "Are you going to accept?";
+	next;
+	menu "Yes",-,"No",L_Deny;
+	Announce strcharinfo(0)+" has accepted "+$@pistol1$+"'s challenge!",17;
+	mes "[Pistol Man]";
+	if (readparam(21) == 0) mes "Brave lady!";
+	if (readparam(21) == 1) mes "Good man!";
+	mes "Since you were challenged, you have the courtesy of pulling first.";
+	set $@pistolstage,2;
+	next;
+	goto L_Shot2;
+	close;
+
+// Player 2 denies Player 1's challenge
+L_Deny:
+	if ($@pistolstage == 1) Announce strcharinfo(0)+" has denied "+$@pistol1$+"'s challenge, the pansy.",17;
+	mes "[Pistol Man]";
+	if (readparam(21) == 0) mes "Don't be such a pansy!";
+	if (readparam(21) == 1) mes "Be a man. Do the right thing.";
+	goto L_ResetVars;
+
+// Player 1 initiates dialog with NPC after challenge but before it is accepted
+L_Waiting:
+	mes "[Pistol Man]";
+	mes "Please get " + $@pistol2$ + " to talk to me,";
+	mes "Unless you want to cancel your challenge.";
+	next;
+	menu "I'll wait",-,"Cancel my challenge",L_Cancel;
+	close;
+
+	// Player 1 may cancel the challenge
+	L_Cancel:
+		Announce strcharinfo(0)+" has cancelled the challenge",2;
+		mes "[Pistol Man]";
+		mes "Don't waste my time";
+		mes "You pansy.";
+		goto L_ResetVars;
+
+// Player 1 may challenge a player
+L_New:
+	mes "[Pistol Man]";
+	mes "Do you wish you challenge somebody to ^FF0000Russian Roulette^000000?";
+	next;
+	menu "Yes",-,"No",L_Exit;
+	
+	mes "[Pistol Man]";
+	mes "Enter their name exactly as it is.";
+	next;
+
+	input $@pistol2$;
+
+	if ($@pistolstage != 0) goto L_New_Cancel; // Re-checks to see if 2 players challenged at the same time
+	set $@pistol2backup$,$@pistol2$; // Backs up the var in case somebody has already challenged
+	
+	set $@pistol1$,strcharinfo(0);
+
+	if ($@pistol1$ == $@pistol2$) goto L_Suicide; // Player challenges self
+	
+	set $@pistolstage,1;
+	Announce strcharinfo(0)+" has challenged "+$@pistol2$+" to Russian Roulette",1;
+	mes "[Pistol Man]";
+	mes "Wait for ^FF0000"+$@pistol2$+"^000000 to talk to me.";
+	close;
+
+		// Another player challenged before
+		L_New_Cancel:
+		set $@pistol2$,$@pistol2backup$;
+		mes "[Pistol Man]";
+		mes "I'm sorry but another player has challenged before you.";
+		close;
+		
+		// Player challenges self
+		L_Suicide:
+		mes "[Pistol Man]";
+		mes "You sure are keen to die!";
+		mes "Tell you what, I'll do it for you!";
+		next;
+		specialeffect2 183;
+		specialeffect2 267;
+		Announce "BANG",2;
+		Announce strcharinfo(0)+" has been shot for being a dumbass",2;
+		percentheal -100,0;
+		goto L_ResetVars;
+		
+
+// Cancel the challenge
+L_Exit:
+	mes "[Pistol Man]";
+	mes "Farewell then, adventurer.";
+	close;
+
+// Reset Variables
+OnInit:
+set $@odds$[6],"Your odds: ^0000FF1^000000 of ^0000FF6^000000";
+set $@odds$[5],"Your odds: ^0000FF1^000000 of ^0000FF5^000000";
+set $@odds$[4],"Your odds: ^0000FF1^000000 of ^0000FF4^000000";
+set $@odds$[3],"Your odds: ^0000FF1^000000 of ^0000FF3^000000";
+set $@odds$[2],"Your odds: ^0000FF1^000000 of ^0000FF2^000000";
+set $@odds$[1],"Your odds: ^FF0000Certain death^000000, sorry kiddo.";
+
+set $@pull$[0],"It's your turn to pull.";
+set $@pull$[1],"Go on, pull.";
+set $@pull$[2],"Don't chicken out now. It's your turn.";
+set $@pull$[3],"Pull the trigger, kiddo!";
+set $@pull$[4],"You won't die, trust me.";
+set $@pull$[5],"You can do it!";
+set $@pull$[6],"Your opponent has no chance!";
+set $@pull$[7],"Can you hurry it up? I don't have all day.";
+set $@pull$[8],"Good luck...";
+
+set $@safe$[0],"Nice!";
+set $@safe$[1],"You survived, good work!";
+set $@safe$[2],"You're so lucky!";
+set $@safe$[3],"You got some courage, kid.";
+set $@safe$[4],"You're a total gangster!";
+set $@safe$[5],"Phew, I really thought you were done for!";
+set $@safe$[6],"Good stuff, champ!";
+set $@safe$[7],"Go son!";
+set $@safe$[8],"Oh thank god you're alive!";
+end;
+
+L_ResetVars:
+set $@pistol1$,"";
+set $@pistol2$,"";
+set $@pistolstage,0;
+set $@chamber,6;
+close;
+}
+
+
+
+
+
+morocc,189,107,5	script	Roulette Resetter	808,{
+
+	mes "[Pistol Resetter]";
+	mes "That damn Pistol Man's gone senile with age. If he's locked up on a challenge, I can smack some sense into him.";
+	next;
+	mes "Let a GM handle the resetting during a tournament. Cancel if this is the situation or risk a ban.";
+	menu "Reset him - no tournament here",RESETTHEBASTARD,"Nevermind - tournament",CANCELZOR;
+	close;
+
+
+RESETTHEBASTARD:
+set $@pistol1$,"";
+set $@pistol2$,"";
+set $@pistolstage,0;
+set $@chamber,6;
+
+CANCELZOR:
+close;
+
+
+}
+
+
+
+
+
+morocc,204,111,4	script	Save Point	802,{ 
+savepoint "morocc",204,108; close; 
+}

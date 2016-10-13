@@ -1,0 +1,178 @@
+morocc_in,166,62,4	script	Slayer	733,{
+if(cov != 1) goto leave;
+if(slayergear1 == 1) goto done;
+if(potato == 1) goto donequest;
+if(letter == 1) goto alreadyletter;
+
+
+mes "[Slayer]";
+mes "I am a master Slayer";
+mes "To earn your qualification you will need to have a Majestic Goat, and complete a quest for me.";
+if(countitem(2256)<1) goto mgoat;
+next;
+mes "[Slayer]";
+mes "So you have your Slayer gear, that is good.";
+mes "However, I must first test your worth.";
+next;
+mes "[Slayer]";
+mes "Journey to the Dark Sanctum of the Underworld, Nifelheim.";
+next;
+mes "[Slayer]";
+mes "In one of its fields you will find my brother, Darktule. He needs this letter from our mother taken to him. It contains her dying wishes. It is of great importance that he gets this.";
+next;
+mes "[Slayer]";
+mes "Do you accept this Quest?";
+menu "Yes",yes1,"No",no1;
+
+yes1:
+mes "[Slayer]";
+mes "Excellent, take this and go. Return to me when you have completed your business with him.";
+set letter,1;
+getitem 7148,1; //Mothers Letter
+close;
+
+donequest:
+mes "[Slayer]";
+mes "Ah, you have completed the task. Thank you... I hope my brother took it well. Now I shall unlock the first level of your Slayer gear.";
+next;
+mes "[Slayer]";
+mes "aaaaAAAAAAAAAAH BESTIAL ENCHANTMENT!!!";
+set potato,0;
+set letter,0;
+set slayergear1,1;
+next;
+mes "[Slayer]";
+mes "It is done.";
+close;
+
+
+alreadyletter:
+mes "[Slayer]";
+mes "I already gave you the letter, now go give it to my brother.";
+close;
+
+no1:
+mes "[Slayer]";
+mes "I understand, you are not ready yet. Return when you are.";
+close;
+
+
+
+mgoat:
+mes "[Slayer]";
+mes "You do not have your Slayer Gear, go find it.";
+close;
+
+
+leave:
+	if (cov == 3) goto ItsaArt;
+	if (cov == 2) goto ItsaCraft;
+	if (cov == 4) goto ItsaWeaving;
+	if (cov == 5) goto ItsaProphecy;
+
+	mes "[Slayer]";
+	mes "I have nothing to teach someone with no coven. Begone.";
+	close;
+
+ItsaArt:
+	mes "[Slayer]";
+	mes "I have nothing to teach you, Artist.";
+	close;
+
+ItsaCraft:
+	mes "[Slayer]";
+	mes "I have nothing to teach you, Crafter.";
+	close;
+
+ItsaWeaving:
+	mes "[Slayer]";
+	mes "I have nothing to teach you, Weaver.";
+	close;
+
+ItsaProphecy:
+	mes "[Slayer]";
+	mes "I have nothing to teach you, Prophet.";
+	close;
+
+done:
+mes "[Slayer]";
+mes "Go find the others...";
+close;
+
+}
+
+//Letter Quest
+
+nif_fild01,229,270,4	script	Darktule	734,{
+if(cov != 1) goto leave;
+if(slayergear1 == 1) goto congrats;
+if(potato == 1) goto alldone;
+if(epotion == 1) goto epotionquest;
+
+mes "[Darktule]";
+mes "G'day Mate, welcome to the land down under! What was it you wanted mate?";
+menu "I have a letter",letter,"Nothing",nothing;
+
+letter:
+if(countitem(7148)<1) goto nothing;
+delitem 7148,1;
+mes "[Darktule]";
+mes "Krikey, this here letter is from me ma";
+mes "It says I need to make and pour an essence potion over her grave, but I don't have the ingredients.";
+next;
+mes "[Darktule]";
+mes "This is a little predicament I am in.";
+mes "Hey, wait a minute... you're on the road to becoming a true slayer. You can help me out, think of this as a quest.";
+next;
+mes "[Darktule]";
+mes "Go get me these ingredients: 10 Awakening Potions, 5 Berserk Potions, 10 Holy Water, 50 Broken Liquor Jars and 100 Harpy Feathers.";
+set epotion,1;
+mes "Good luck.";
+close;
+
+epotionquest:
+mes "[Darktule]";
+mes "Let's see if you got all the stuff I need";
+if((countitem(656)<10) || (countitem(657)<5) || (countitem(523)<10) || (countitem(7158)<50) || (countitem(7115)<100)) goto noitems;
+mes "[Darktule]";
+mes "Ah, it apears you have all the items";
+delitem 656,10;
+delitem 657,5;
+delitem 523,10;
+delitem 7158,50;
+delitem 7115,100;
+set epotion,0;
+set potato,1;
+next;
+mes "[Darktule]";
+mes "You have done well, go return to my brother now and he will unlock your power.";
+close;
+
+noitems:
+mes "[Darktule]";
+mes "Go get me these ingredients: 10 Awakening Potions, 5 Berserk Potions, 10 Holy Water, 50 Broken Liquor Jars and 100 Harpy Feathers.";
+next;
+mes "[Darktule]";
+mes "You do not have the items yet. Hurry!";
+close;
+
+nothing:
+mes "[Darktule]";
+mes "Well mate, if you don't have anything for me you should really leave, this place is dangerous.";
+close;
+
+leave:
+mes "[Darktule]";
+mes "... You are no Slayer ...";
+close;
+
+alldone:
+mes "[Darktule]";
+mes "Go see my brother.";
+close;
+
+congrats:
+mes "[Darktule]";
+mes "Congratulations on your success.";
+close;
+}

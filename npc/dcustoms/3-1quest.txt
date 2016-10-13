@@ -1,0 +1,347 @@
+yuno,158,316,4	script	Verthandi	811,{
+
+	if (getgmlevel() == 1) goto L_PremSelectVerthandi;
+L_OMGBBQ:
+	if(TotallyDoneWithAdvanceQuest==1) goto WarpToValkyrieNow;
+	if(countitem(32152)>=1) goto GotTheWrath;
+	if(Upper==1) goto AdvancedClass;
+	if(Upper==2) goto YouBaby;
+	if(BaseLevel<25) goto LevelTooLowFirst;
+	if(#ItemPartOfQuest==1) goto GotTheItems2;
+	if(HeardTheQuest==1) goto AlreadyHeardIt;
+
+	mes "[^0000FFVerthandi^000000]";
+	cutin "valk_cut",2;
+	mes "Do you wish to be reborn, young ^0000FF"+strcharinfo(0)+"^000000? It will require a test of your strength.";
+	next;
+	mes "[^0000FFVerthandi^000000]";
+	mes "Note that Super Novices, Baby Classes, TaeKwon Classes, Ninjas and Gunslingers don't have any advanced jobs and cannot be reborn, though you may do the first portion of your test on these characters.";
+	next;
+	menu "I wish to take on the quest",AcceptQuest,"Nope",naw;
+
+AcceptQuest:
+	mes "[^0000FFVerthandi^000000]";
+	mes "Excellent. Firstly, you must scour Rune-Midgard and defeat Loki's minions. I will require a great many items as proof of your accomplishments around the world.";
+	next;
+	mes "[^0000FFVerthandi^000000]";
+	mes "Bring them all to me and I will tell you more. It should also be noted that achieving Level 100 or higher is an alternative to the item collection!";
+	set HeardTheQuest,1;
+	next;
+	mes "^0000FF[This list is available in far more detail in the Guides section of the forums! If for some reason you can't access the forums, speak to me again for the list.]^000000";
+	next;
+	cutin "valk_cut",255;
+	close;
+
+AlreadyHeardIt:
+if ((countitem(901)>=25) && (countitem(1094)>=25) && (countitem(618)>=25) && (countitem(1049)>=25) && (countitem(7006)>=25) && (countitem(7035)>=5) && (countitem(539)>=5) && (countitem(1098)>=25) && (countitem(529)>=25) && (countitem(954)>=25) && (countitem(732)>=1) && (countitem(930)>=25) && (countitem(2618)>=1) && (countitem(934)>=25) && (countitem(1045)>=25) && (countitem(7110)>=25) && (countitem(994)>=5) && (countitem(1054)>=25) && (countitem(1051)>=25) && (countitem(7013)>=25) && (countitem(995)>=5) && (countitem(1059)>=25) && (countitem(714)>=1) && (countitem(7063)>=1) && (countitem(1032)>=25) && (countitem(7172)>=25) && (countitem(7168)>=25) && (countitem(7167)>=25) && (countitem(997)>=5) && (countitem(943)>=25) && (countitem(7196)>=25) && (countitem(7189)>=25) && (countitem(7197)>=25) && (countitem(7100)>=25) && (countitem(7195)>=25) && (countitem(7112)>=25) && (countitem(7155)>=25) && (countitem(7153)>=25) && (countitem(7322)>=25) && (countitem(7323)>=25) && (countitem(7326)>=5) && (countitem(7327)>=25) && (countitem(7318)>=25) && (countitem(7268)>=25) && (countitem(7266)>=25) && (countitem(7265)>=25) && (countitem(1041)>=25) && (countitem(922)>=25) && (countitem(526)>=5) && (countitem(1040)>=25) && (countitem(7187)>=25) && (countitem(7192)>=25) && (countitem(7171)>=25) && (countitem(1095)>=25) && (countitem(1039)>=25) && (countitem(7122)>=25) && (countitem(7097)>=25) && (countitem(7098)>=25) && (countitem(1055)>=25) && (countitem(7064)>=25) && (countitem(967)>=25) && (countitem(7066)>=25) && (countitem(7070)>=25) && (countitem(1009)>=5) && (countitem(734)>=25) && (countitem(536)>=5) && (countitem(1097)>=25) && (countitem(1099)>=25) && (countitem(7004)>=25) && (countitem(7220)>=25) && (countitem(7212)>=25) && (countitem(7215)>=25)) goto GotTheItems;
+if (BaseLevel>=100) goto GotTheItems;
+	mes "[^0000FFVerthandi^000000]";
+	cutin "valk_cut",2;
+	mes "Remember, you need to bring me all of the following:";
+	next;
+	mes "25 danggie";
+	mes "25 short danggie";
+	mes "25 worn out scroll";
+	mes "25 skirt of virgin";
+	mes "25 wing of red bat";
+	mes "5  matchstick";
+	mes "5  piece of cake";
+	mes "25 manacle";
+	next;
+	mes "25 candy";
+	mes "25 shining scale";
+	mes "1  3 carat diamond";
+	mes "25 rotten bandage";
+	mes "1  Matyr's leash";
+	mes "25 memento";
+	mes "25 cultish masque";
+	mes "25 broken sword";
+	mes "5  flame heart";
+	mes "25 ancient lips";
+	next;
+	mes "25 detonator";
+	mes "25 coral reef";
+	mes "5  mystic frozen";
+	mes "25 fabric";
+	mes "1  emperium";
+	mes "1  soft feather";
+	mes "25 maneater blossom";
+	next;
+	mes "25 leopard claw";
+	mes "25 giant butterfly wing";
+	mes "25 strange steel piece";
+	mes "5  great nature";
+	mes "25 solid shell";
+	mes "25 shoulder protector";
+	mes "25 wooden heart";
+	mes "25 tough vines";
+	mes "25 sharp leaf";
+	mes "25 slingshot";
+	next;
+	mes "25 sharp paper";
+	mes "25 poisonous toad skin";
+	mes "25 worn-out kimono";
+	mes "25 toxic gas";
+	mes "25 battered kettle";
+	mes "5 fluorescent liquid";
+	next;
+	mes "25 flashlight";
+	mes "25 old pick";
+	mes "25 little ghost doll";
+	mes "25 denture from dragon mask";
+	mes "25 dragon horn";
+	mes "25 lantern";
+	mes "25 orc's fang";
+	mes "5  royal jelly";
+	mes "25 elder pixie's moustache";
+	next;
+	mes "25 festival mask";
+	mes "25 vane";
+	mes "25 leopard skin";
+	mes "25 clock hand";
+	mes "25 little evil wing";
+	mes "25 burning hair";
+	mes "25 burning heart";
+	mes "25 live coal";
+	mes "25 earthworm peeling";
+	next;
+	mes "25 wing of dragonfly";
+	mes "25 turtle shell";
+	mes "25 ice cubic";
+	mes "25 broken shell";
+	mes "5  hand of god";
+	mes "25 red frame";
+	mes "5  ice cream";
+	mes "25 worn out page";
+	mes "25 worn out prison uniform";
+	mes "25 mud lump";
+	next;
+	mes "25 ectoplasm";
+	mes "25 hung doll";
+	mes "25 broken needles";
+	next;
+	mes "That's all of it. Easy, right?";
+	next;
+	cutin "valk_cut",255;
+	close;
+
+GotTheItems:
+	cutin "valk_cut",2;
+	delitem 901,25;
+	delitem 1094,25;
+	delitem 618,25;
+	delitem 1049,25;
+	delitem 7006,25;
+	delitem 7035,5;
+	delitem 539,5;
+	delitem 1098,25;
+	delitem 529,25;
+	delitem 954,25;
+	delitem 732,1;
+	delitem 930,25;
+	delitem 2618,1;
+	delitem 934,25;
+	delitem 1045,25;
+	delitem 7110,25;
+	delitem 994,5;
+	delitem 1054,25;
+	delitem 1051,25;
+	delitem 7013,25;
+	delitem 995,5;
+	delitem 1059,25;
+	delitem 714,1;
+	delitem 7063,1;
+	delitem 1032,25;
+	delitem 7172,25;
+	delitem 7168,25;
+	delitem 7167,25;
+	delitem 997,5;
+	delitem 943,25;
+	delitem 7196,25;
+	delitem 7189,25;
+	delitem 7197,25;
+	delitem 7100,25;
+	delitem 7195,25;
+	delitem 7112,25;
+	delitem 7155,25;
+	delitem 7153,25;
+	delitem 7322,25;
+	delitem 7323,25;
+	delitem 7326,5;
+	delitem 7327,25;
+	delitem 7318,25;
+	delitem 7268,25;
+	delitem 7266,25;
+	delitem 7265,25;
+	delitem 1041,25;
+	delitem 922,25;
+	delitem 526,5;
+	delitem 1040,25;
+	delitem 7187,25;
+	delitem 7192,25;
+	delitem 7171,25;
+	delitem 1095,25;
+	delitem 1039,25;
+	delitem 7122,25;
+	delitem 7097,25;
+	delitem 7098,25;
+	delitem 1055,25;
+	delitem 7064,25;
+	delitem 967,25;
+	delitem 7066,25;
+	delitem 7070,25;
+	delitem 1009,5;
+	delitem 734,25;
+	delitem 536,5;
+	delitem 1097,25;
+	delitem 1099,25;
+	delitem 7004,25;
+	delitem 7220,25;
+	delitem 7212,25;
+	delitem 7215,25;
+	set #ItemPartOfQuest,1;
+	mes "[^0000FFVerthandi^000000]";
+	mes "Your dedication has been proven.";
+	next;
+	goto GotTheItems2;
+
+GotTheItems2:
+	if(BaseLevel<99) goto LevelTooLow;
+	cutin "valk_cut",2;
+	mes "[^0000FFVerthandi^000000]";
+	mes "You're quite strong. I deem you ready to fight Fenrir, son of Loki. Defeat the beast and retrieve an item, the physical manifestation of Fenrir's Wrath. Return it to me, and I will take you to Valhalla.";
+	next;
+	mes "Keep in mind, however, that Fenrir will not give it up without a fight. He will release the Wrath 100% of the time, but it will DROP to the ground if your weight is 50% or higher. You may very well need the aid of others to defeat him, but it would be a great victory.";
+	next;
+	mes "Do you wish to be warped to Fenrir's Domain?";
+	next;
+	menu "I'm ready.",WarpToFen,"Not yet.",naw;
+
+WarpToFen:
+	mes "[^0000FFVerthandi^000000]";
+	mes "May Odin watch over you.";
+	next;
+	cutin "valk_cut",255;
+	warp "fenrir",72,17;
+	close;
+
+GotTheWrath:
+	cutin "valk_cut",2;
+	mes "[^0000FFVerthandi^000000]";
+	delitem 32152,100;
+	set TotallyDoneWithAdvanceQuest,1;
+	mes "Amazing! There may yet be hope for humanity. I shall grant you passage to Valhalla whenever you request it.";
+	next;
+	cutin "valk_cut",255;
+	close;
+
+WarpToValkyrieNow:
+	cutin "valk_cut",2;
+	mes "[^0000FFVerthandi^000000]";
+	mes "Hello, ^0000FF"+strcharinfo(0)+"^000000, would you like to visit Valhalla now?";
+	menu "Yes.",ValkWarp,"Not now.",NotValkWarp;
+
+ValkWarp:
+	cutin "valk_cut",255;
+	warp "valkyrie",48,8;
+	close;
+
+NotValkWarp:
+cutin "valk_cut",2;
+	mes "[^0000FFVerthandi^000000]";
+	mes "Alright, return to me whenever you'd like.";
+	next;
+	cutin "valk_cut",255;
+	close;	
+
+AdvancedClass:
+cutin "valk_cut",2;
+	mes "[^0000FFVerthandi^000000]";
+	mes "It would appear that you have already been reborn...";
+	next;
+	cutin "valk_cut",255;
+	close;
+
+LevelTooLowFirst:
+cutin "valk_cut",2;
+	mes "[^0000FFVerthandi^000000]";
+	mes "You are not yet ready, ^0000FF"+strcharinfo(0)+"^000000.";
+	mes "Speak to me when you have reached level 25.";
+	next;
+	cutin "valk_cut",255;
+	close;
+
+LevelTooLow:
+cutin "valk_cut",2;
+	mes "[^0000FFVerthandi^000000]";
+	mes "You are not yet strong enough to take on the burden of the final part of this quest, ^0000FF"+strcharinfo(0)+"^000000.";
+	next;
+	mes "Speak to me when you have reached your full potential.";
+	cutin "valk_cut",255;
+	close;
+
+naw:
+	next;
+	cutin "valk_cut",2;
+	mes "[^0000FFVerthandi^000000]";
+	mes "You should not be so afraid.";
+	next;
+	cutin "valk_cut",255;
+	close;
+
+YouBaby:
+cutin "valk_cut",2;
+	mes "[^0000FFVerthandi^000000]";
+	mes "You are a baby class, incapable of rebirth.";
+	next;
+	cutin "valk_cut",255;
+	close;
+
+L_PremSelectVerthandi:
+	mes "[^0000FFVerthandi^000000]";
+	mes "Premium Members should speak with the Valkyrie on the east docks of Prem City for their quest.";
+	next;
+	menu "Take her advice",L_cancelmeeee,"Continue speaking anyway",L_OMGBBQ;
+
+L_cancelmeeee:
+	close;
+
+}
+
+
+
+
+fenrir,72,23,4	script	Vortex	723,{
+
+mes "Would you like to return to Yuno?";
+menu "Yes",gotoyuno,"No",stay;
+
+gotoyuno:
+	warp "yuno",158,315;
+	close;
+
+stay:
+	close;
+
+}
+
+
+
+yuno,162,317,4	script	Save Point#fensave	802,{ 
+savepoint "yuno",158,315; close; 
+}
+
+
+// Mapflags
+fenrir	mapflag	nomemo
+fenrir	mapflag	nobranch
+fenrir	mapflag	nowarp
+fenrir	mapflag	nowarpto
+
+// Mobs
+fenrir,0,0,0,0	monster	Fenrir	1022,1,180000,180000,0
+fenrir,0,0,0,0	monster	Fenrir's Minion	1382,1,0,0,0
+fenrir,0,0,0,0	monster	Fenrir's Minion	1072,5,0,0,0
+fenrir,0,0,0,0	monster	Fenrir's Minion	1146,6,0,0,0
+fenrir,0,0,0,0	monster	Fenrir's Minion	1109,2,0,0,0
+fenrir,0,0,0,0	monster	Fenrir's Minion	1276,4,0,0,0

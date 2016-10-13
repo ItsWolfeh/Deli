@@ -1,0 +1,64 @@
+valkyrie.gat,53,50,6	script	Creator	122,{
+
+if(Class == Job_Novice_High) goto L_MerchantHighChange;
+if(Class == Job_Merchant_High) goto L_CreatorChange;
+
+	mes "[ ^0065DFCreator^000000 ]";
+	mes "You're not a Novice High or Merchant High. I can train only these two classes.";
+	close;
+
+L_MerchantHighChange:
+	mes "[ ^0065DFCreator^000000 ]";
+	mes "I see you've been reborn...do you wish to become a Merchant High?";
+	next;
+	menu "Cancel",L_Cancel,"Yes, train me to be a Merchant High",-;
+	
+	if(checkfalcon() || checkcart() || checkriding()) goto L_remove;
+	if(JobLevel <10) goto Ljobten;
+	if(SkillPoint != 0) goto L_skillUsed;
+	next;
+	mes "[ ^0065DFCreator^000000 ]";
+	mes "Alright..Merchant High, now you can go overcharge for junk in Prontera!";
+	jobchange Job_Merchant_High;
+	close;
+
+Ljobten:
+	mes "[ ^0065DFCreator^000000 ]";
+	mes "You need to be at least Job Level 10 before changing into a Merchant High... go kill some porings or something.";
+	close;
+
+L_CreatorChange:
+	mes "[ ^0065DFCreator^000000 ]";
+	mes "I see you're a Merchant High...do you wish to train as a Creator?";
+	next;
+	menu "Cancel",L_Cancel,"Yes, train me to be a Creator",-;
+
+	if(checkfalcon() || checkcart() || checkriding()) goto L_remove;
+	if(JobLevel <40) goto Ljobforty;
+	if(SkillPoint != 0) goto L_skillUsed;
+	next;
+	mes "[ ^0065DFCreator^000000 ]";
+	mes "Go create some potions! And ugly Homunculi!";
+	jobchange Job_Creator;
+	close;
+
+Ljobforty:
+	mes "[ ^0065DFCreator^000000 ]";
+	mes "You must be at least Job Level 40 before even thinking about changing into a Creator.";
+	close;
+
+L_Cancel:
+	mes "[ ^0065DFCreator^000000 ]";
+	mes "So be it.";
+	close;
+
+L_skillUsed:
+	mes "[ ^0065DFCreator^000000 ]";
+	mes "Please use up all your skill points before changing jobs.";
+	close;
+
+L_remove:
+	mes "[ ^0065DFCreator^000000 ]";
+	mes "Remove your Cart, Falcon or Peco first.";
+	close;
+}

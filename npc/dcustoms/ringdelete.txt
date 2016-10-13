@@ -1,0 +1,19 @@
+prt_church,95,93,5	script	Ring Deleter	60,{
+
+	mes "[Ring Deleter]";
+	mes "I can delete wedding rings that didn't disappear after divorces. Use me only to remove leftover problem rings.";
+	next;
+	mes "[Ring Deleter]";
+	mes "I will remove any Groom and Bride rings from your character, nothing more, nothing less.";
+	menu "Nevermind",CANCELZOR,"Delete my rings",L_RingDelete;
+	close;
+
+L_RingDelete:
+	delitem 2634,1;
+	delitem 2635,1;
+	close;
+
+CANCELZOR:
+	close;
+
+}

@@ -1,0 +1,149 @@
+//===== eAthena Script =======================================
+//= Clock Tower Monster Spawn Script
+//===== By: ==================================================
+//= Athena (1.0)
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= Any Athena Version
+//===== Additional Comments: =================================
+//= 1.0 Split from combined Alde and CT spawn file. [L0ne_W0lf]
+//============================================================
+
+//==================================================
+// c_tower1 - Clock Tower F1
+//==================================================
+c_tower1,0,0,0,0	monster	Punk	1199,70,0,0,0
+//c_tower1,0,0,0,0	monster	Rideword	1195,70,0,0,0
+c_tower1,0,0,0,0	monster	Clock Tower Manager	1270,1,0,0,0
+c_tower1,0,0,0,0	monster	Bathory	1102,1,0,0,0
+
+
+//DELIMOD
+//1 entrance
+c_tower1,200,169,3,18	monster	Bathory	1102,1,60000,30000,0
+
+//2 center middle
+c_tower1,199,200,7,7	monster	Bathory	1102,1,60000,30000,0
+c_tower1,199,200,7,7	monster	Punk	1199,1,300000,150000,0
+
+//3 center upper
+c_tower1,204,211,10,3	monster	Bathory	1102,1,60000,30000,0
+c_tower1,204,211,10,3	monster	Mimic	1191,1,300000,150000,0
+
+//4 center lower
+c_tower1,202,188,9,3	monster	Bathory	1102,1,60000,30000,0
+
+//5 right wing mid
+c_tower1,228,197,17,3	monster	Bathory	1102,1,60000,30000,0
+c_tower1,228,197,17,3	monster	Mimic	1191,1,300000,150000,0
+
+//6 right wing upper
+c_tower1,236,215,15,4	monster	Bathory	1102,1,60000,30000,0
+
+//7 left wing to center - deemed excessive
+//c_tower1,179,198,9,3	monster	Bathory	1102,1,60000,30000,0
+
+//8 left wing lower
+c_tower1,172,189,4,3	monster	Bathory	1102,1,60000,30000,0
+c_tower1,172,189,4,3	monster	Rideword	1195,1,300000,150000,0
+
+//9 left wing mid - deemed excessive
+//c_tower1,173,209,3,8	monster	Bathory	1102,1,60000,30000,0
+
+//10 left wing upper 1
+c_tower1,173,209,3,15	monster	Bathory	1102,1,60000,30000,0
+
+//11 left wing upper 2
+c_tower1,182,245,3,15	monster	Bathory	1102,1,60000,30000,0
+c_tower1,182,245,3,15	monster	Punk	1199,1,300000,150000,0
+c_tower1,182,245,3,15	monster	Rideword	1195,1,300000,150000,0
+
+//12 left wing top 1
+c_tower1,194,256,5,4	monster	Bathory	1102,1,60000,30000,0
+
+//13 left wing top 2
+c_tower1,212,261,4,10	monster	Bathory	1102,1,60000,30000,0
+
+
+//==================================================
+// c_tower2 - Clock Tower F2
+//==================================================
+c_tower2,0,0,0,0	monster	Punk	1199,40,0,0,0
+c_tower2,0,0,0,0	monster	Clock	1269,40,0,0,0
+c_tower2,0,0,0,0	monster	Rideword	1195,7,0,0,0
+c_tower2,128,100,10,10	monster	Rideword	1195,1,60000,30000,0
+c_tower2,149,199,10,10	monster	Rideword	1195,1,120000,60000,0
+c_tower2,149,199,10,10	monster	Rideword	1195,1,300000,120000,0
+c_tower2,273,286,20,20	monster	Rideword	1195,1,120000,60000,0
+c_tower2,273,286,20,20	monster	Rideword	1195,1,300000,120000,0
+c_tower2,0,0,0,0	monster	Mimic	1191,3,0,0,0
+c_tower2,0,0,0,0	monster	Clock Tower Manager	1270,1,0,0,0
+c_tower2,0,0,0,0	monster	Elder	1377,1,3600000,1800000,0
+c_tower2,0,0,0,0	monster	Elder	1377,1,3600000,1800000,0
+
+//==================================================
+// c_tower3 - Clock Tower F3
+//==================================================
+c_tower3,0,0,0,0	monster	Alarm	1193,80,0,0,0
+c_tower3,0,0,0,0	monster	Rideword	1195,5,0,0,0
+c_tower3,153,220,10,10	monster	Rideword	1195,1,126000,100000,0
+c_tower3,0,0,0,0	monster	Mimic	1191,7,0,0,0
+c_tower3,0,0,0,0	monster	Clock Tower Manager	1270,3,0,0,0
+
+//==================================================
+// c_tower4 - Clock Tower F4
+//==================================================
+c_tower4,0,0,0,0	monster	Clock Tower Manager	1270,2,1800000,0,0
+c_tower4,0,0,0,0	monster	Clock Tower Manager	1270,1,3600000,0,0
+c_tower4,0,0,0,0	monster	Whisper	1179,5,0,0,0
+c_tower4,0,0,0,0	monster	Elder	1377,1,3600000,1800000,0
+c_tower4,0,0,0,0	monster	Elder	1377,1,1800000,600000,0
+c_tower4,108,198,100,10	monster	Alarm	1193,6,0,0,0
+c_tower4,108,178,100,10	monster	Alarm	1193,6,0,0,0
+c_tower4,108,158,100,10	monster	Alarm	1193,6,0,0,0
+c_tower4,108,138,100,10	monster	Alarm	1193,6,0,0,0
+c_tower4,108,118,100,10	monster	Alarm	1193,6,0,0,0
+c_tower4,108,98,100,10	monster	Clock	1269,7,0,0,0
+c_tower4,108,78,100,10	monster	Clock	1269,7,0,0,0
+c_tower4,108,58,100,10	monster	Clock	1269,7,0,0,0
+c_tower4,108,38,100,10	monster	Clock	1269,7,0,0,0
+c_tower4,108,18,100,10	monster	Clock	1269,7,0,0,0
+c_tower4,108,198,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4,108,178,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4,108,158,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4,108,138,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4,108,118,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4,108,98,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4,108,78,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4,108,58,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4,108,38,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4,108,18,100,10	monster	Owl Duke	1320,3,0,0,0
+c_tower4,98,180,0,0	monster	Rideword	1195,1,300000,150000,1
+c_tower4,97,180,0,0	monster	Rideword	1195,1,240000,150000,1
+c_tower4,96,180,0,0	monster	Rideword	1195,1,350000,150000,1
+c_tower4,95,180,0,0	monster	Rideword	1195,1,410000,150000,1
+c_tower4,94,180,0,0	monster	Rideword	1195,1,320000,150000,1
+c_tower4,93,180,0,0	monster	Rideword	1195,1,260000,150000,1
+c_tower4,92,180,0,0	monster	Rideword	1195,1,280000,150000,1
+c_tower4,91,180,0,0	monster	Rideword	1195,1,330000,150000,1
+c_tower4,87,180,0,0	monster	Rideword	1195,1,400000,150000,1
+c_tower4,86,180,0,0	monster	Rideword	1195,1,380000,150000,1
+c_tower4,80,179,0,0	monster	Rideword	1195,1,360000,150000,1
+c_tower4,80,180,0,0	monster	Rideword	1195,1,350000,150000,1
+c_tower4,80,181,0,0	monster	Rideword	1195,1,290000,150000,1
+c_tower4,80,182,0,0	monster	Rideword	1195,1,300000,150000,1
+c_tower4,80,183,0,0	monster	Rideword	1195,1,340000,150000,1
+c_tower4,128,194,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4,38,193,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4,37,159,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4,31,139,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4,104,14,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4,104,27,0,0	monster	Mimic	1191,1,900000,400000,1
+c_tower4,105,24,0,0	monster	Mimic	1191,1,900000,400000,1
+c_tower4,205,105,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4,0,0,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4,148,85,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4,189,51,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4,170,34,0,0	monster	Mimic	1191,1,1800000,900000,1
+c_tower4,42,41,0,0	monster	Executioner	1205,1,7200000,3600000,1

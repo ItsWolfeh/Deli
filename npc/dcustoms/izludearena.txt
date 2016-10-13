@@ -1,0 +1,287 @@
+// Arena Bulletin Board NPC
+izlude,125,219,5	script	Arena Bulletin Board	111,{
+	mes "[Arena Bulletin Board]";
+	mes "Welcome to...";
+	mes " ";
+	mes "DELIVERANCE ARENA!!!";
+	close;
+}
+
+
+// Arena GVG PVP Warpers
+
+arenalounge,71,88,5	script	GVG Warper	733,{
+mes "[GVG Warper]";
+mes "Hello!";
+mes "Would you like to go to the GVG Arena?";
+next;
+menu "For sure!",AnYes,"Nah.",AnNo;
+
+AnYes:
+warp "arenagvg",49,14;
+close;
+
+AnNo:
+mes "[GVG Warper]";
+mes "Very well then.";
+mes "Good day.";
+close;
+}
+
+arenalounge,104,88,5	script	Duel Warper	753,{
+mes "[Duel Warper]";
+mes "Would you like to go to the Dueling Arena? Please note that random PlayerKilling is outlawed here. This Arena is for friendly fights by challenge only. If you wish to PK, go to PVP Izlude.";
+next;
+if(#DuelingArenaClearance==0) goto L_DuelingNoobProof;
+menu "I wanna go!",AnYes,"Nah.",AnNo;
+
+AnYes:
+	mes "[Duel Warper]";
+	mes "Please choose an entrance.";
+	menu "North",L_SUB_1,"East",L_SUB_2,"West",L_SUB_3,"South",L_SUB_4,"Cancel",AnNo;
+		L_SUB_1: warp "arenaduel",99,121;	close;
+		L_SUB_2: warp "arenaduel",128,99;	close;
+		L_SUB_3: warp "arenaduel",70,99;	close;
+		L_SUB_4: warp "arenaduel",99,70;	close;
+
+AnNo:
+	close;
+
+L_DuelingNoobProof:
+	mes "[Duel Warper]";
+	mes "I need to make sure you understand the premise of this arena. You will only have to pass this test once for your account.";
+	next;
+	mes "[Duel Warper]";
+	mes "What do you intend on doing in this Arena?";
+	next;
+	menu "I want to KILL randomly.",killergetouttahere,"I want to have friendly duels",friendlyduels;
+
+friendlyduels:
+	mes "[Duel Warper]";
+	mes "So, do you understand that you can NOT randomly player-kill in this arena? You understand that this place is for agreed-upon duels?";
+	next;
+	menu "No, I do not understand",AnNo,"Yes, I'm going to kill randomly",killergetouttahere,"Yes, I understand.",youpassthetest;
+
+youpassthetest:
+	set #DuelingArenaClearance,1;
+	mes "[Duel Warper]";
+	mes "You pass the test. You may speak with me again at any time to enter the dueling arena without having to go through all this again.";
+	next;
+	mes "[Duel Warper]";
+	mes "In case you lied your way through this test, keep in mind that most PKs here get reported and result in a month-long ban.";
+	close;
+
+killergetouttahere:
+	mes "[Duel Warper]";
+	mes "Wrong! This arena is not for PKing. To PK you should visit PVP Izlude. You can get there by talking to the PVP Switcher in Prontera or in the Arena Waiting room then going to Izlude.";
+	next;
+	mes "[Duel Warper]";
+	mes "This arena is for friendly duels only. You are not allowed to just kill, you need to challenge and have a clean fight.";
+	next;
+	mes "[Duel Warper]";
+	mes "Would you like to go to PVP Izlude instead?";
+	next;
+	menu	"Yes",boothisasstoizlude,"No",AnNo;
+
+boothisasstoizlude:
+		warp "pvpizlude",128,93;
+		close;
+
+}
+
+
+
+
+
+prontera,149,205,4	script	PVP Mode Switcher::pvpswitcher	734,{
+
+if(izludepvp==0) goto MaybeTurnOn;
+
+	mes "[PVP Mode Switcher]";
+	mes "I see that you have Izlude PVP Mode enabled. Would you like to turn that off so you can visit normal Izlude?";
+	next;
+	menu "Yes",yaturnoff,"No",leaveitalone;
+
+yaturnoff:
+	mes "[PVP Mode Switcher]";
+	mes "PVP mode switched off.";
+	set izludepvp,0;
+	close;
+
+leaveitalone:
+	mes "[PVP Mode Switcher]";
+	mes "So be it.";
+	close;
+
+MaybeTurnOn:
+	mes "[PVP Mode Switcher]";
+	mes "I can turn on Izlude PVP Mode for you. Essentially, this means that whenever you visit Izlude, the city will be in PVP/fight mode. You may at any time turn this off by speaking with me again.";
+	next;
+	menu "I want to fight.",yaturnON,"No, I like being alive.",leaveitalone;
+
+yaturnON:
+	mes "[PVP Mode Switcher]";
+	mes "PVP mode switched ON.";
+	set izludepvp,1;
+	close;
+}
+
+arenalounge,90,53,4	duplicate(pvpswitcher)	PVP Mode Switcher#aren	734
+alberta,97,204,5	duplicate(pvpswitcher)	PVP Mode Switcher#alb	734
+
+
+
+arenalounge,94,79,3	script	Repairman#Arena 	63,{
+	set @name$,"Godulous Jimshinkidy";
+	callfunc "repairmain";
+	end;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+arenagvg	mapflag	gvg
+arenagvg	mapflag	nobranch
+arenagvg	mapflag	noicewall
+arenagvg	mapflag	nomemo
+arenagvg	mapflag	nopenalty
+arenagvg	mapflag	noreturn
+arenagvg	mapflag	noteleport
+arenagvg	mapflag	nozenypenalty
+arenagvg	mapflag	pvp_noparty
+arenagvg	mapflag	nosave	SavePoint
+
+arenaduel	mapflag	nobranch
+arenaduel	mapflag	nomemo
+arenaduel	mapflag	nopenalty
+arenaduel	mapflag	pvp
+arenaduel	mapflag	nozenypenalty
+arenaduel	mapflag	nowarp
+arenaduel	mapflag	pvp_noguild
+
+arenalounge	mapflag	nobranch
+arenalounge	mapflag	noexp
+arenalounge	mapflag	noicewall
+arenalounge	mapflag	pvp	off
+//arenalounge	mapflag	nosave	SavePoint
+arenalounge	mapflag	nozenypenalty
+arenalounge	mapflag	noloot
+arenalounge	mapflag	nomemo
+arenalounge	mapflag	nopenalty
+arenalounge	mapflag	noreturn
+arenalounge	mapflag	noteleport
+
+pvpizlude	mapflag	nightenabled
+pvpizlude	mapflag	nobranch
+pvpizlude	mapflag	noloot
+pvpizlude	mapflag	noteleport
+pvpizlude	mapflag	nozenypenalty
+pvpizlude	mapflag	pvp_noguild
+pvpizlude	mapflag	nomemo
+pvpizlude	mapflag	nopenalty
+pvpizlude	mapflag	noreturn
+pvpizlude	mapflag	nowarp
+pvpizlude	mapflag	pvp
+
+dbroom01	mapflag	indoors
+dbroom01	mapflag	nomemo
+dbroom01	mapflag	nosave	SavePoint
+dbroom02	mapflag	indoors
+dbroom02	mapflag	nomemo
+dbroom02	mapflag	nosave	SavePoint
+dbroom03	mapflag	indoors
+dbroom03	mapflag	nomemo
+dbroom03	mapflag	nosave	SavePoint
+dbroom04	mapflag	indoors
+dbroom04	mapflag	nomemo
+dbroom04	mapflag	nosave	SavePoint
+dbroom05	mapflag	indoors
+dbroom05	mapflag	nomemo
+dbroom05	mapflag	nosave	SavePoint
+dbroom06	mapflag	indoors
+dbroom06	mapflag	nomemo
+dbroom06	mapflag	nosave	SavePoint
+dbroom07	mapflag	indoors
+dbroom07	mapflag	nomemo
+dbroom07	mapflag	nosave	SavePoint
+dbroom08	mapflag	indoors
+dbroom08	mapflag	nomemo
+dbroom08	mapflag	nosave	SavePoint
+dbroom09	mapflag	indoors
+dbroom09	mapflag	nomemo
+dbroom09	mapflag	nosave	SavePoint
+dbroom10	mapflag	indoors
+dbroom10	mapflag	nomemo
+dbroom10	mapflag	nosave	SavePoint
+dbroom11	mapflag	indoors
+dbroom11	mapflag	nomemo
+dbroom11	mapflag	nosave	SavePoint
+dbroom12	mapflag	indoors
+dbroom12	mapflag	nomemo
+dbroom12	mapflag	nosave	SavePoint
+dbroom13	mapflag	indoors
+dbroom13	mapflag	nomemo
+dbroom13	mapflag	nosave	SavePoint
+dbroom14	mapflag	indoors
+dbroom14	mapflag	nomemo
+dbroom14	mapflag	nosave	SavePoint
+dbroom15	mapflag	indoors
+dbroom15	mapflag	nomemo
+dbroom15	mapflag	nosave	SavePoint
+dbroom16	mapflag	indoors
+dbroom16	mapflag	nomemo
+dbroom16	mapflag	nosave	SavePoint
+dbroom17	mapflag	indoors
+dbroom17	mapflag	nomemo
+dbroom17	mapflag	nosave	SavePoint
+dbroom18	mapflag	indoors
+dbroom18	mapflag	nomemo
+dbroom18	mapflag	nosave	SavePoint
+dbroom19	mapflag	indoors
+dbroom19	mapflag	nomemo
+dbroom19	mapflag	nosave	SavePoint
+dbroom20	mapflag	indoors
+dbroom20	mapflag	nomemo
+dbroom20	mapflag	nosave	SavePoint
+dbroom21	mapflag	indoors
+dbroom21	mapflag	nomemo
+dbroom21	mapflag	nosave	SavePoint
+dbroom22	mapflag	indoors
+dbroom22	mapflag	nomemo
+dbroom22	mapflag	nosave	SavePoint
+dbroom23	mapflag	indoors
+dbroom23	mapflag	nomemo
+dbroom23	mapflag	nosave	SavePoint
+dbroom24	mapflag	indoors
+dbroom24	mapflag	nomemo
+dbroom24	mapflag	nosave	SavePoint
+dbroom25	mapflag	indoors
+dbroom25	mapflag	nomemo
+dbroom25	mapflag	nosave	SavePoint
+dbroom26	mapflag	indoors
+dbroom26	mapflag	nomemo
+dbroom26	mapflag	nosave	SavePoint
+dbroom27	mapflag	indoors
+dbroom27	mapflag	nomemo
+dbroom27	mapflag	nosave	SavePoint
+dbroom28	mapflag	indoors
+dbroom28	mapflag	nomemo
+dbroom28	mapflag	nosave	SavePoint
+dbroom29	mapflag	indoors
+dbroom29	mapflag	nomemo
+dbroom29	mapflag	nosave	SavePoint
+dbroom30	mapflag	indoors
+dbroom30	mapflag	nomemo
+dbroom30	mapflag	nosave	SavePoint

@@ -1,0 +1,402 @@
+//===== eAthena Script =======================================
+//= Other Warp Script
+//===== By: ==================================================
+//= Athena (1.0)
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= Any Athena Version;
+//===== Description: =========================================
+//= Warp Points for Other Maps
+//===== Additional Comments: =================================
+//= Split off npc_warp.txt
+//============================================================
+
+//guild_room,0,0,0	warp	warp4	0,0,hoge,0,0
+//guild_vs1,0,0,0	warp	warp4	0,0,hoge,0,0
+//guild_vs1,0,0,0	warp	warp4	0,0,hoge,0,0
+//guild_vs1,0,0,0	warp	warp4	0,0,hoge,0,0
+//guild_vs1,0,0,0	warp	warp4	0,0,hoge,0,0
+//guild_vs2,50,88,0	warp	warp4	0,0,hoge,0,0
+//guild_vs2,0,0,0	warp	warp4	0,0,hoge,0,0
+//guild_vs2,0,0,0	warp	warp4	0,0,hoge,0,0
+//guild_vs2,0,0,0	warp	warp4	0,0,hoge,0,0
+//guild_vs3,0,0,0	warp	warp4	0,0,hoge,0,0
+//guild_vs3,0,0,0	warp	warp4	0,0,hoge,0,0
+//guild_vs3,0,0,0	warp	warp4	0,0,hoge,0,0
+//guild_vs3,0,0,0	warp	warp4	0,0,hoge,0,0
+//guild_vs4,7,50,0	warp	warp4	0,0,hoge,0,0
+//guild_vs4,50,7,0	warp	warp4	0,0,hoge,0,0
+//guild_vs4,92,50,0	warp	warp4	0,0,hoge,0,0
+//guild_vs4,50,92,0	warp	warp4	0,0,hoge,0,0
+//guild_vs5,0,0,0	warp	warp4	0,0,hoge,0,0
+//guild_vs5,0,0,0	warp	warp4	0,0,hoge,0,0
+//guild_vs5,0,0,0	warp	warp4	0,0,hoge,0,0
+//guild_vs5,0,0,0	warp	warp4	0,0,hoge,0,0
+
+
+
+
+
+//PUT ALL OUR CUSTOM DELIVERANCE WARPS THAT DON'T BELONG ELSEWHERE HERE
+
+//=================================================
+//Added simple warps for my hideout (diving board)=
+//=================================================
+sec_in02,161,162,0	warp	hideout1	1,1,sec_in02,159,163
+sec_in02,161,159,0	warp	hideout2	1,1,sec_in02,163,162
+
+//=====================================
+//Warp tile from Valkyrie to Prontera =
+//=====================================
+valkyrie,48,66,0	warp	noquest1	1,1,prontera,156,191
+
+//============================
+//DELIVERANCE IZLUDE ARENA=
+//============================
+
+// Exits for GVG and Dueling Arenas
+arenaduel,99,65,0	warp	arena16	1,1,arenalounge,104,85 
+arenagvg,49,6,0	warp	arena17	1,1,arenalounge,71,84 
+
+
+// Going out to Izlude from inside
+// The way in from izlude is in cities/izlude.txt
+arenalounge,88,47,4	script	arena19	45,1,1,{
+	if(izludepvp==0) {
+				warp "izlude",128,221;
+				end;
+				}
+				warp "pvpizlude",128,221;
+				end;
+}
+
+
+
+
+
+
+//=============
+//Alpha Warps =
+//=============
+
+//Prontera Main
+prt_vilg00.gat,100,176,5	warp	alphawarp9001		1,1,prt_vilg02.gat,100,28
+prt_vilg02.gat,100,23,0		warp	alphawarp9002		1,1,prt_vilg00.gat,100,170
+prt_vilg02.gat,100,176,0	warp	alphawarp9003		1,1,pro_fild01.gat,113,35
+pro_fild01.gat,113,28,0		warp	alphawarp9004		1,1,prt_vilg02.gat,100,170
+prt_vilg00.gat,176,100,0	warp	alphawarp9005		1,1,pro_fild04.gat,27,156
+pro_fild04.gat,23,156,0		warp	alphawarp9006		1,1,prt_vilg00.gat,171,100
+prt_vilg00.gat,24,99,0		warp	alphawarp9007		1,1,pro_fild05.gat,177,54
+pro_fild05.gat,183,54,0		warp	alphawarp9008		1,1,prt_vilg00.gat,28,99
+prt_vilg00.gat,99,122,0		warp	alphawarp9009		1,1,prt_vilg00.gat,100,135
+prt_vilg00.gat,100,130,0	warp	alphawarp9010		1,1,prt_vilg00.gat,99,117
+pro_fild00.gat,100,179,0	warp	alphawarp9011		1,1,prt_vilg01.gat,100,33
+prt_vilg01.gat,100,22,0		warp	alphawarp9012		1,1,pro_fild00.gat,100,176
+prt_vilg00.gat,100,26,0		warp	alphawarp9013		1,1,prt_vilg01.gat,100,170
+prt_vilg01.gat,100,175,0	warp	alphawarp9014		1,1,prt_vilg00.gat,100,28
+
+//Prontera 1
+prt_vilg01.gat,152,90,0		warp	alphawarp9101		1,1,prt_intr01.gat,40,14
+prt_intr01.gat,40,11,0		warp	alphawarp9102		1,1,prt_vilg01.gat,152,88
+prt_intr01.gat,20,25,0		warp	alphawarp9103		1,1,prt_intr01.gat,161,59
+prt_intr01.gat,161,57,0		warp	alphawarp9104		1,1,prt_intr01.gat,20,23
+
+prt_vilg01.gat,72,79,0		warp	alphawarp9111		1,1,prt_intr01.gat,184,22
+prt_intr01.gat,188,22,0		warp	alphawarp9112		1,1,prt_vilg01.gat,76,83
+prt_intr01.gat,160,28,0		warp	alphawarp9113		1,1,prt_intr01.gat,145,181
+prt_intr01.gat,148,181,0	warp	alphawarp9114		1,1,prt_intr01.gat,162,28
+
+prt_vilg01.gat,122,124,0	warp	alphawarp9121		1,1,prt_intr01.gat,60,91
+prt_intr01.gat,57,91,0		warp	alphawarp9122		1,1,prt_vilg01.gat,119,121
+
+prt_vilg01.gat,133,115,0	warp	alphawarp9131		1,1,prt_intr01.gat,116,101
+prt_intr01.gat,113,101,0	warp	alphawarp9132		1,1,prt_vilg01.gat,130,112
+
+prt_vilg01.gat,165,99,0		warp	alphawarp9141		1,1,prt_intr01.gat,114,63
+prt_intr01.gat,111,63,0		warp	alphawarp9142		1,1,prt_vilg01.gat,160,99
+
+prt_vilg01.gat,108,137,0	warp	alphawarp9151		1,1,prt_intr01.gat,180,162
+prt_intr01.gat,180,159,0	warp	alphawarp9152		1,1,prt_vilg01.gat,108,135
+
+prt_vilg01.gat,127,80,0		warp	alphawarp9153		1,1,prt_intr01.gat,66,149
+prt_intr01.gat,66,152,0		warp	alphawarp9154		1,1,prt_vilg01.gat,124,83
+
+prt_vilg01.gat,86,64,0		warp	alphawarp9155		1,1,prt_intr01.gat,123,139
+prt_intr01.gat,126,139,0	warp	alphawarp9156		1,1,prt_vilg01.gat,89,66
+
+prt_vilg01.gat,172,122,0	warp	alphawarp9161		1,1,prt_intr01.gat,80,175
+prt_intr01.gat,77,175,0		warp	alphawarp9162		1,1,prt_vilg01.gat,172,119
+
+prt_vilg01.gat,153,68,0		warp	alphawarp9163		1,1,prt_intr01.gat,158,149
+prt_intr01.gat,158,152,0	warp	alphawarp9164		1,1,prt_vilg01.gat,151,70
+
+prt_vilg01.gat,53,153,0		warp	alphawarp9165		1,1,prt_intr01.gat,14,151
+prt_intr01.gat,11,151,0		warp	alphawarp9166		1,1,prt_vilg01.gat,51,150
+
+prt_vilg01.gat,57,55,0		warp	alphawarp9167		1,1,prt_intr01.gat,14,111
+prt_intr01.gat,11,111,0		warp	alphawarp9168		1,1,prt_vilg01.gat,55,52
+
+prt_vilg01.gat,107,159,0	warp	alphawarp9171		1,1,prt_intr01.gat,16,183
+prt_intr01.gat,13,183,0		warp	alphawarp9172		1,1,prt_vilg01.gat,104,159
+
+prt_vilg01.gat,90,159,0		warp	alphawarp9173		1,1,prt_intr01.gat,57,179
+prt_intr01.gat,60,179,0		warp	alphawarp9174		1,1,prt_vilg01.gat,94,159
+
+prt_vilg01.gat,39,112,0		warp	alphawarp9180		1,1,prt_intr01.gat,139,21
+prt_intr01.gat,142,21,0		warp	alphawarp9181		1,1,prt_vilg01.gat,42,112
+prt_intr01.gat,114,11,0		warp	alphawarp9182		1,1,prt_intr01.gat,22,79
+prt_intr01.gat,22,82,0		warp	alphawarp9183		1,1,prt_intr01.gat,114,14
+
+prt_vilg01.gat,30,100,0		warp	alphawarp9184		1,1,prt_intr01.gat,33,67
+prt_intr01.gat,36,67,0		warp	alphawarp9185		1,1,prt_vilg01.gat,34,100
+prt_intr01.gat,64,56,0		warp	alphawarp9186		1,1,prt_intr01.gat,22,56
+prt_intr01.gat,22,53,0		warp	alphawarp9187		1,1,prt_intr01.gat,64,53
+
+prt_vilg01.gat,39,88,0		warp	alphawarp9188		1,1,prt_intr01.gat,89,46
+prt_intr01.gat,92,46,0		warp	alphawarp9189		1,1,prt_vilg01.gat,42,88
+
+prt_vilg02.gat,33,69,0		warp	alphawarp9191		1,1,prt_dugn00.gat,178,108
+prt_dugn00.gat,181,108,0	warp	alphawarp9192		1,1,prt_vilg02.gat,36,69
+
+//Prontera 2
+prt_vilg02.gat,72,76,0		warp	alphawarp9201		1,1,prt_intr02.gat,14,125
+prt_intr02.gat,11,125,0		warp	alphawarp9202		1,1,prt_vilg02.gat,75,80
+//prt_intr02.gat,27,117,0	warp	alphawarp9203		1,1,prt_intr02.gat,xx,yy
+//prt_intr02.gat,xx,yy,0	warp	alphawarp9204		1,1,prt_intr02.gat,27,120
+//prt_intr02.gat,27,134,0	warp	alphawarp9207		1,1,prt_intr02.gat,xx,yy
+//prt_intr02.gat,xx,yy,0	warp	alphawarp9208		1,1,prt_intr02.gat,27,131
+prt_intr02.gat,37,117,0		warp	alphawarp9211		1,1,prt_intr02.gat,103,185
+prt_intr02.gat,103,188,0	warp	alphawarp9212		1,1,prt_intr02.gat,37,120
+prt_intr02.gat,107,176,0	warp	alphawarp9213		1,1,prt_intr02.gat,176,174
+prt_intr02.gat,171,174,0	warp	alphawarp9214		1,1,prt_intr02.gat,102,176
+prt_intr02.gat,37,134,0		warp	alphawarp9215		1,1,prt_intr02.gat,71,176
+prt_intr02.gat,71,173,0		warp	alphawarp9216		1,1,prt_intr02.gat,37,131
+prt_intr02.gat,75,185,0		warp	alphawarp9217		1,1,prt_intr02.gat,138,183
+prt_intr02.gat,134,183,0	warp	alphawarp9218		1,1,prt_intr02.gat,70,185
+prt_intr02.gat,43,125,0		warp	alphawarp9219		1,1,prt_intr02.gat,13,171
+prt_intr02.gat,11,171,0		warp	alphawarp9220		1,1,prt_intr02.gat,38,125
+
+prt_vilg02.gat,153,50,0		warp	alphawarp9230		1,1,prt_intr02.gat,79,149
+prt_intr02.gat,79,152,0		warp	alphawarp9231		1,1,prt_vilg02.gat,148,55
+prt_intr02.gat,79,127,0		warp	alphawarp9232		1,1,prt_intr02.gat,21,95
+prt_intr02.gat,21,98,0		warp	alphawarp9233		1,1,prt_intr02.gat,79,130
+prt_intr02.gat,92,139,0		warp	alphawarp9234		1,1,prt_intr02.gat,152,141
+prt_intr02.gat,149,141,0	warp	alphawarp9235		1,1,prt_intr02.gat,89,139
+prt_intr02.gat,155,125,0	warp	alphawarp9236		1,1,prt_intr02.gat,92,97
+prt_intr02.gat,87,97,0		warp	alphawarp9237		1,1,prt_intr02.gat,155,130
+prt_intr02.gat,67,139,0		warp	alphawarp9238		1,1,prt_intr02.gat,121,142
+prt_intr02.gat,124,142,0	warp	alphawarp9239		1,1,prt_intr02.gat,70,139
+prt_intr02.gat,119,126,0	warp	alphawarp9240		1,1,prt_intr02.gat,57,97
+prt_intr02.gat,62,97,0		warp	alphawarp9241		1,1,prt_intr02.gat,119,131
+
+prt_vilg02.gat,126,118,0	warp	alphawarp9250		1,1,prt_intr02.gat,50,71
+prt_intr02.gat,47,71,0		warp	alphawarp9251		1,1,prt_vilg02.gat,124,116
+prt_intr02.gat,63,65,0		warp	alphawarp9252		1,1,prt_vilg02.gat,139,73
+prt_intr02.gat,139,75,0		warp	alphawarp9253		1,1,prt_vilg02.gat,63,68
+prt_intr02.gat,63,78,0		warp	alphawarp9254		1,1,prt_vilg02.gat,99,72
+prt_intr02.gat,99,69,0		warp	alphawarp9255		1,1,prt_vilg02.gat,63,75
+
+prt_vilg02.gat,161,100,0	warp	alphawarp9261		1,1,prt_intr02.gat,166,19
+prt_intr02.gat,163,19,0		warp	alphawarp9262		1,1,prt_vilg02.gat,157,100
+
+prt_vilg02.gat,134,87,0		warp	alphawarp9271		1,1,prt_intr02.gat,177,109
+prt_intr02.gat,177,112,0	warp	alphawarp9272		1,1,prt_vilg02.gat,129,92
+
+prt_vilg02.gat,110,63,0		warp	alphawarp9273		1,1,prt_intr02.gat,118,97
+prt_intr02.gat,115,97,0		warp	alphawarp9274		1,1,prt_vilg02.gat,106,63
+
+prt_vilg02.gat,69,115,0		warp	alphawarp9280		1,1,prt_intr02.gat,27,52
+prt_intr02.gat,27,49,0		warp	alphawarp9281		1,1,prt_vilg02.gat,71,113
+
+prt_vilg02.gat,148,140,0	warp	alphawarp9282		1,1,prt_intr02.gat,104,19
+prt_intr02.gat,101,19,0		warp	alphawarp9283		1,1,prt_vilg02.gat,146,138
+
+prt_vilg02.gat,86,142,0		warp	alphawarp9284		1,1,prt_intr02.gat,95,45
+prt_intr02.gat,98,45,0		warp	alphawarp9285		1,1,prt_vilg02.gat,88,144
+
+prt_vilg02.gat,49,99,0		warp	alphawarp9286		1,1,prt_intr02.gat,61,29
+prt_intr02.gat,64,29,0		warp	alphawarp9287		1,1,prt_vilg02.gat,52,102
+
+prt_vilg02.gat,143,151,0	warp	alphawarp9291		1,1,prt_intr02.gat,14,19
+prt_intr02.gat,11,19,0		warp	alphawarp9292		1,1,prt_vilg02.gat,141,149
+
+//Prontera Dungeon 
+pro_fild05.gat,30,161,0		warp	alphawarp9301		1,1,prt_dugn01.gat,187,13
+prt_dugn01.gat,190,10,0		warp	alphawarp9302		1,1,pro_fild05.gat,32,159
+prt_dugn01.gat,166,185,0	warp	alphawarp9303		1,1,prt_dugn02.gat,178,187
+prt_dugn02.gat,178,190,0	warp	alphawarp9304		1,1,prt_dugn01.gat,166,182
+prt_dugn02.gat,97,116,0		warp	alphawarp9305		1,1,prt_dugn03.gat,102,89
+prt_dugn03.gat,102,91,0		warp	alphawarp9306		1,1,prt_dugn02.gat,97,118
+
+//Prontera -> Morocc 
+pro_fild00.gat,79,19,0		warp	alphawarp9401		1,1,mrc_fild04.gat,160,190
+mrc_fild04.gat,161,193,0	warp	alphawarp9402		1,1,pro_fild00.gat,79,22
+mrc_fild04.gat,13,63,0		warp	alphawarp9403		1,1,mrc_fild01.gat,184,111
+mrc_fild01.gat,187,111,0	warp	alphawarp9404		1,1,mrc_fild04.gat,16,63
+
+//Morocc Main
+mrc_fild01.gat,103,166,0	warp	alphawarp9501		1,1,moc_vilg00.gat,100,29
+moc_vilg00.gat,100,22,0		warp	alphawarp9502		1,1,mrc_fild01.gat,103,163
+moc_vilg00.gat,100,131,0	warp	alphawarp9503		1,1,moc_vilg01.gat,100,25
+moc_vilg01.gat,100,22,0		warp	alphawarp9504		1,1,moc_vilg00.gat,100,127
+moc_vilg01.gat,120,174,0	warp	alphawarp9505		1,1,mrc_fild02.gat,104,20
+mrc_fild02.gat,104,17,0		warp	alphawarp9505		1,1,moc_vilg01.gat,120,171
+moc_vilg01.gat,178,117,0	warp	alphawarp9506		1,1,mrc_fild03.gat,21,41
+mrc_fild03.gat,18,41,0		warp	alphawarp9507		1,1,moc_vilg01.gat,173,117
+
+//Morocc 1 
+moc_vilg00.gat,99,92,0		warp	alphawarp9511		1,1,moc_intr00.gat,44,133
+moc_intr00.gat,44,136,0		warp	alphawarp9512		1,1,moc_vilg00.gat,99,95
+moc_intr00.gat,17,101,0		warp	alphawarp9513		1,1,moc_intr00.gat,103,94
+moc_intr00.gat,106,94,0		warp	alphawarp9514		1,1,moc_intr00.gat,20,101
+moc_intr00.gat,70,101,0		warp	alphawarp9515		1,1,moc_intr00.gat,88,125
+moc_intr00.gat,85,125,0		warp	alphawarp9516		1,1,moc_intr00.gat,66,101
+moc_intr00.gat,44,110,0		warp	alphawarp9517		1,1,moc_intr00.gat,18,63
+moc_intr00.gat,18,66,0		warp	alphawarp9518		1,1,moc_intr00.gat,44,114
+
+moc_intr00.gat,18,52,0		warp	alphawarp9521		1,1,moc_intr00.gat,58,57
+moc_intr00.gat,58,60,0		warp	alphawarp9522		1,1,moc_intr00.gat,18,54
+moc_intr00.gat,48,49,0		warp	alphawarp9523		1,1,moc_intr00.gat,22,29
+moc_intr00.gat,22,32,0		warp	alphawarp9524		1,1,moc_intr00.gat,48,52
+moc_intr00.gat,68,49,0		warp	alphawarp9525		1,1,moc_intr00.gat,50,29
+moc_intr00.gat,50,32,0		warp	alphawarp9526		1,1,moc_intr00.gat,68,52
+moc_intr00.gat,58,45,0		warp	alphawarp9527		1,1,moc_intr00.gat,126,90
+moc_intr00.gat,126,93,0		warp	alphawarp9528		1,1,moc_intr00.gat,58,48
+
+moc_intr00.gat,22,62,0		warp	alphawarp9531		1,1,moc_intr00.gat,182,23
+moc_intr00.gat,182,20,0		warp	alphawarp9532		1,1,moc_intr00.gat,22,59
+moc_intr00.gat,182,45,0		warp	alphawarp9533		1,1,moc_intr00.gat,168,79
+moc_intr00.gat,168,76,0		warp	alphawarp9534		1,1,moc_intr00.gat,182,42
+
+moc_intr00.gat,97,127,0		warp	alphawarp9541		1,1,moc_intr00.gat,133,121
+moc_intr00.gat,130,121,0	warp	alphawarp9542		1,1,moc_intr00.gat,94,127
+moc_intr00.gat,97,123,0		warp	alphawarp9543		1,1,moc_intr00.gat,105,19
+moc_intr00.gat,101,19,0		warp	alphawarp9544		1,1,moc_intr00.gat,94,123
+moc_intr00.gat,86,36,0		warp	alphawarp9545		1,1,moc_intr00.gat,102,52
+moc_intr00.gat,102,49,0		warp	alphawarp9546		1,1,moc_intr00.gat,86,33
+
+moc_intr00.gat,94,95,0		warp	alphawarp9551		1,1,moc_intr00.gat,172,133
+moc_intr00.gat,175,133,0	warp	alphawarp9552		1,1,moc_intr00.gat,97,95
+moc_intr00.gat,94,91,0		warp	alphawarp9553		1,1,moc_intr00.gat,159,25
+moc_intr00.gat,162,25,0		warp	alphawarp9554		1,1,moc_intr00.gat,97,91
+moc_intr00.gat,142,25,0		warp	alphawarp9555		1,1,moc_intr00.gat,182,161
+moc_intr00.gat,182,164,0	warp	alphawarp9556		1,1,moc_intr00.gat,142,22
+moc_intr00.gat,157,179,0	warp	alphawarp9557		1,1,moc_intr00.gat,121,179
+moc_intr00.gat,124,179,0	warp	alphawarp9558		1,1,moc_intr00.gat,160,179
+
+moc_vilg00.gat,60,114,0		warp	alphawarp9561		1,1,moc_intr00.gat,24,154
+moc_intr00.gat,24,151,0		warp	alphawarp9562		1,1,moc_vilg00.gat,62,112
+
+moc_vilg00.gat,152,124,0	warp	alphawarp9563		1,1,moc_intr00.gat,58,154
+moc_intr00.gat,58,151,0		warp	alphawarp9564		1,1,moc_vilg00.gat,152,121
+
+moc_vilg00.gat,152,55,0		warp	alphawarp9565		1,1,moc_intr00.gat,92,177
+moc_intr00.gat,92,180,0		warp	alphawarp9566		1,1,moc_vilg00.gat,152,57
+
+//Morocc 2 
+moc_vilg01.gat,60,97,0		warp	alphawarp9601		1,1,moc_intr01.gat,114,164
+moc_intr01.gat,114,161,0	warp	alphawarp9602		1,1,moc_vilg01.gat,62,95
+moc_intr01.gat,97,173,0		warp	alphawarp9603		1,1,moc_intr01.gat,165,175
+moc_intr01.gat,168,175,0	warp	alphawarp9604		1,1,moc_intr01.gat,100,173
+
+moc_vilg01.gat,81,128,0		warp	alphawarp9610		1,1,moc_intr01.gat,72,132
+moc_intr01.gat,72,129,0		warp	alphawarp9611		1,1,moc_vilg01.gat,83,126
+moc_intr01.gat,55,139,0		warp	alphawarp9612		1,1,moc_intr01.gat,29,135
+moc_intr01.gat,32,135,0		warp	alphawarp9613		1,1,moc_intr01.gat,58,139
+moc_intr01.gat,88,139,0		warp	alphawarp9614		1,1,moc_intr01.gat,110,135
+moc_intr01.gat,107,135,0	warp	alphawarp9615		1,1,moc_intr01.gat,85,139
+moc_intr01.gat,22,140,0		warp	alphawarp9616		1,1,moc_intr01.gat,18,101
+moc_intr01.gat,15,101,0		warp	alphawarp9617		1,1,moc_intr01.gat,19,140
+moc_intr01.gat,117,140,0	warp	alphawarp9618		1,1,moc_intr01.gat,58,101
+moc_intr01.gat,62,101,0		warp	alphawarp9619		1,1,moc_intr01.gat,120,140
+
+moc_intr01.gat,26,106,0		warp	alphawarp9621		1,1,moc_intr01.gat,86,103
+moc_intr01.gat,86,101,0		warp	alphawarp9622		1,1,moc_intr01.gat,26,103
+moc_intr01.gat,26,97,0		warp	alphawarp9623		1,1,moc_intr01.gat,150,115
+moc_intr01.gat,150,118,0	warp	alphawarp9624		1,1,moc_intr01.gat,26,100
+moc_intr01.gat,50,106,0		warp	alphawarp9625		1,1,moc_intr01.gat,118,100
+moc_intr01.gat,118,97,0		warp	alphawarp9626		1,1,moc_intr01.gat,50,103
+moc_intr01.gat,50,97,0		warp	alphawarp9627		1,1,moc_intr01.gat,176,99
+moc_intr01.gat,176,102,0	warp	alphawarp9628		1,1,moc_intr01.gat,50,100
+
+moc_vilg01.gat,157,79,0		warp	alphawarp9631		1,1,moc_intr01.gat,146,143
+moc_intr01.gat,143,143,0	warp	alphawarp9632		1,1,moc_vilg01.gat,155,79
+
+moc_vilg01.gat,78,47,0		warp	alphawarp9641		1,1,moc_intr01.gat,75,175
+moc_intr01.gat,78,175,0		warp	alphawarp9642		1,1,moc_vilg01.gat,81,47
+moc_intr01.gat,57,175,0		warp	alphawarp9643		1,1,moc_intr01.gat,35,173
+moc_intr01.gat,38,173,0		warp	alphawarp9644		1,1,moc_intr01.gat,60,175
+moc_vilg01.gat,64,47,0		warp	alphawarp9645		1,1,moc_intr01.gat,18,173
+moc_intr01.gat,15,173,0		warp	alphawarp9646		1,1,moc_vilg01.gat,60,47
+
+moc_vilg01.gat,68,72,0		warp	alphawarp9650		1,1,moc_intr01.gat,72,85
+moc_intr01.gat,72,88,0		warp	alphawarp9651		1,1,moc_vilg01.gat,68,75
+moc_vilg01.gat,53,38,0		warp	alphawarp9652		1,1,moc_intr01.gat,30,75
+moc_intr01.gat,30,78,0		warp	alphawarp9653		1,1,moc_vilg01.gat,53,41
+moc_vilg01.gat,63,58,0		warp	alphawarp9654		1,1,moc_intr01.gat,106,72
+moc_intr01.gat,106,69,0		warp	alphawarp9655		1,1,moc_vilg01.gat,63,55
+moc_vilg01.gat,100,143,0	warp	alphawarp9656		1,1,moc_intr01.gat,60,42
+moc_intr01.gat,60,39,0		warp	alphawarp9657		1,1,moc_vilg01.gat,100,140
+moc_vilg01.gat,129,159,0	warp	alphawarp9658		1,1,moc_intr01.gat,106,23
+moc_intr01.gat,103,23,0		warp	alphawarp9659		1,1,moc_vilg01.gat,127,159
+
+moc_vilg01.gat,161,129,0	warp	alphawarp9660		1,1,moc_intr01.gat,134,45
+moc_intr01.gat,131,45,0		warp	alphawarp9661		1,1,moc_vilg01.gat,159,129
+moc_vilg01.gat,146,155,0	warp	alphawarp9662		1,1,moc_intr01.gat,181,25
+moc_intr01.gat,184,25,0		warp	alphawarp9663		1,1,moc_vilg01.gat,148,155
+//moc_vilg01.gat,129,88,0	warp	alphawarp9664		1,1,moc_intr01.gat,xx,yy
+//moc_intr01.gat,xx,yy,0	warp	alphawarp9665		1,1,moc_vilg01.gat,129,91
+//moc_vilg01.gat,117,84,0	warp	alphawarp9666		1,1,moc_intr01.gat,xx,yy
+//moc_intr01.gat,xx,yy,0	warp	alphawarp9667		1,1,moc_vilg01.gat,117,87
+moc_vilg01.gat,83,105,0		warp	alphawarp9668		1,1,moc_intr01.gat,24,43
+moc_intr01.gat,24,46,0		warp	alphawarp9669		1,1,moc_vilg01.gat,83,108
+
+moc_vilg01.gat,50,163,0		warp	alphawarp9671		1,1,moc_dugn01.gat,188,13
+moc_dugn01.gat,188,10,0		warp	alphawarp9672		1,1,moc_vilg01.gat,55,163
+moc_dugn01.gat,32,24,0		warp	alphawarp9673		1,1,moc_dugn02.gat,34,27
+moc_dugn02.gat,30,27,0		warp	alphawarp9674		1,1,moc_dugn01.gat,28,23
+moc_dugn01.gat,44,185,0		warp	alphawarp9675		1,1,moc_dugn02.gat,71,182
+moc_dugn02.gat,76,181,0		warp	alphawarp9676		1,1,moc_dugn01.gat,49,185
+moc_dugn01.gat,182,128,0	warp	alphawarp9677		1,1,moc_dugn02.gat,182,122
+moc_dugn02.gat,182,117,0	warp	alphawarp9678		1,1,moc_dugn01.gat,182,124
+
+//moc_dugn01.gat,118,116,0	warp	alphawarp9810		1,1,moc_intr04.gat,26,158
+//moc_intr04.gat,26,155,0	warp	alphawarp9811		1,1,moc_dugn01.gat,118,113
+
+//Morocc 3 
+mrc_fild03.gat,174,179,0	warp	alphawarp9801		1,1,moc_vilg02.gat,39,39
+moc_vilg02.gat,37,37,0		warp	alphawarp9802		1,1,mrc_fild03.gat,171,176
+moc_vilg02.gat,154,70,0		warp	alphawarp9803		1,1,dungeon000.gat,26,23
+
+moc_vilg02.gat,118,116,0	warp	alphawarp9810		1,1,moc_intr02.gat,26,158
+moc_intr02.gat,26,155,0		warp	alphawarp9811		1,1,moc_vilg02.gat,118,113
+moc_intr02.gat,34,173,0		warp	alphawarp9812		1,1,moc_intr02.gat,88,173
+moc_intr02.gat,85,173,0		warp	alphawarp9813		1,1,moc_intr02.gat,31,173
+moc_intr02.gat,17,173,0		warp	alphawarp9814		1,1,moc_intr02.gat,63,173
+moc_intr02.gat,66,173,0		warp	alphawarp9815		1,1,moc_intr02.gat,20,173
+moc_intr02.gat,30,182,0		warp	alphawarp9816		1,1,moc_intr02.gat,128,174
+moc_intr02.gat,128,171,0	warp	alphawarp9817		1,1,moc_intr02.gat,30,178
+moc_intr02.gat,124,182,0	warp	alphawarp9818		1,1,moc_intr02.gat,156,168
+moc_intr02.gat,156,165,0	warp	alphawarp9819		1,1,moc_intr02.gat,124,179
+
+moc_vilg02.gat,44,62,0		warp	alphawarp9821		1,1,moc_intr02.gat,28,82
+moc_intr02.gat,28,79,0		warp	alphawarp9822		1,1,moc_vilg02.gat,47,60
+moc_intr02.gat,28,98,0		warp	alphawarp9823		1,1,moc_intr02.gat,104,87
+moc_intr02.gat,102,87,0		warp	alphawarp9824		1,1,moc_intr02.gat,25,98
+//moc_intr02.gat,42,89,0	warp	alphawarp9825		1,1,moc_intr02.gat,xx,yy
+//moc_intr02.gat,xx,yy,0	warp	alphawarp9826		1,1,moc_intr02.gat,37,89
+
+moc_vilg02.gat,59,81,0		warp	alphawarp9831		1,1,moc_intr02.gat,28,122
+moc_intr02.gat,28,119,0		warp	alphawarp9832		1,1,moc_vilg02.gat,59,78
+moc_intr02.gat,17,129,0		warp	alphawarp9833		1,1,moc_intr02.gat,75,129
+moc_intr02.gat,78,129,0		warp	alphawarp9834		1,1,moc_intr02.gat,20,129
+
+moc_vilg02.gat,96,51,0		warp	alphawarp9841		1,1,moc_intr02.gat,100,125
+moc_intr02.gat,97,125,0		warp	alphawarp9842		1,1,moc_vilg02.gat,94,49
+moc_intr02.gat,108,136,0	warp	alphawarp9843		1,1,moc_intr02.gat,140,134
+moc_intr02.gat,140,131,0	warp	alphawarp9844		1,1,moc_intr02.gat,108,133
+
+dungeon000.gat,23,21,0		warp	alphawarp9851		1,1,moc_vilg02.gat,152,68
+dungeon000.gat,133,125,0	warp	alphawarp9852		1,1,dungeon001.gat,173,121
+dungeon001.gat,176,21,0		warp	alphawarp9853		1,1,dungeon000.gat,130,128

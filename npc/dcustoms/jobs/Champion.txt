@@ -1,0 +1,64 @@
+valkyrie.gat,53,42,4	script	Champion	52,{
+
+if(Class == Job_Novice_High) goto L_AcoHighChange;
+if(Class == Job_Acolyte_High) goto L_ChampChange;
+
+	mes "[ ^0065DFChampion^000000 ]";
+	mes "You're not a Novice High or Acolyte High. I can train only these two classes.";
+	close;
+
+L_AcoHighChange:
+	mes "[ ^0065DFChampion^000000 ]";
+	mes "I see you've been reborn...do you wish to become an Acolyte High?";
+	next;
+	menu "Cancel",L_Cancel,"Yes, train me to be an Acolyte High",-;
+	
+	if(checkfalcon() || checkcart() || checkriding()) goto L_remove;
+	if(JobLevel <10) goto Ljobten;
+	if(SkillPoint != 0) goto L_skillUsed;
+	next;
+	mes "[ ^0065DFChampion^000000 ]";
+	mes "Congratulations..You're an Acolyte High now! Come back to me later if you want to have a Holy Fist like mine...";
+	jobchange Job_Acolyte_High;
+	close;
+
+Ljobten:
+	mes "[ ^0065DFChampion^000000 ]";
+	mes "You need to be at least Job Level 10 before changing into an Acolyte High... go kill some porings or something.";
+	close;
+
+L_ChampChange:
+	mes "[ ^0065DFChampion^000000 ]";
+	mes "I see you're an Acolyte High...do you wish to train as a Champion?";
+	next;
+	menu "Cancel",L_Cancel,"Yes, train me to be a Champion",-;
+
+	if(checkfalcon() || checkcart() || checkriding()) goto L_remove;
+	if(JobLevel <40) goto Ljobforty;
+	if(SkillPoint != 0) goto L_skillUsed;
+	next;
+	mes "[ ^0065DFChampion^000000 ]";
+	mes "Your fists are now as strong as mine. You are ready to be a Champion!";
+	jobchange Job_Champion;
+	close;
+
+Ljobforty:
+	mes "[ ^0065DFChampion^000000 ]";
+	mes "You must be at least Job Level 40 before even thinking about changing into a Champion.";
+	close;
+
+L_Cancel:
+	mes "[ ^0065DFChampion^000000 ]";
+	mes "So be it.";
+	close;
+
+L_skillUsed:
+	mes "[ ^0065DFChampion^000000 ]";
+	mes "Please use up all your skill points before changing jobs.";
+	close;
+
+L_remove:
+	mes "[ ^0065DFChampion^000000 ]";
+	mes "Remove your Cart, Falcon or Peco first.";
+	close;
+}

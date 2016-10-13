@@ -1,0 +1,321 @@
+//===== eAthena Script =======================================
+//= Poll Booth Script
+//===== By: ==================================================
+//= acky (god@acky.com)
+//===== Current Version: =====================================
+//= 1.1
+//===== Compatible With: =====================================
+//= Any eAthena Version
+//===== Description: =========================================
+//= Allows the GM to set a poll question and up to 9 poll options.
+//= Players can then vote on their prefered option.
+//= GMs have a menu where the poll can be set, edited or re-votes
+//= allowed.
+//===== Additional Comments: =================================
+//= Perhaps this script could be changed to use primarily
+//= loops to allow more possible poll options.
+//= **************
+//= 1.1 - Added ability to add poll options
+//= **************
+//= 1.1.1 - Changed colours for better visiblity
+//= **************
+//= 1.2 - Added ability to modify poll scores        L_SetQuestion:
+//============================================================ 
+
+prontera,139,224,5	script	Polltaker	722,{
+if ($poll_question$ == "") goto L_NoQuestion;
+
+L_Begin:
+	if (getgmlevel() > 90) goto FirstGMMenuMarcFix;
+GoBackToStartMarcFix:
+	mes "[Poll]";
+	mes "^FF0000" + $poll_question$ + "^000000";
+	
+	if (#pollid != $pollid) goto L_NotVoted;
+	
+	// Sets bar length
+	set @PB$[0], "                    ";
+	set @PB$[1], "^0077BF|                   ^000000";
+	set @PB$[2], "^0081CF|^0077BF|                  ^000000";
+	set @PB$[3], "^008BDF|^0081CF|^0077BF|                 ^000000";
+	set @PB$[4], "^0094EF|^008BDF|^0081CF|^0077BF|                ^000000";
+	set @PB$[5], "^009EFF|^0094EF|^008BDF|^0081CF|^0077BF|               ^000000";
+	set @PB$[6], "^0FA4FF|^009EFF|^0094EF|^008BDF|^0081CF|^0077BF|              ^000000";
+	set @PB$[7], "^1FAAFF|^0FA4FF|^009EFF|^0094EF|^008BDF|^0081CF|^0077BF|             ^000000";
+	set @PB$[8], "^2FB0FF|^1FAAFF|^0FA4FF|^009EFF|^0094EF|^008BDF|^0081CF|^0077BF|            ^000000";
+	set @PB$[9], "^3FB6FF|^2FB0FF|^1FAAFF|^0FA4FF|^009EFF|^0094EF|^008BDF|^0081CF|^0077BF|           ^000000";
+	set @PB$[10], "^4FBCFF|^3FB6FF|^2FB0FF|^1FAAFF|^0FA4FF|^009EFF|^0094EF|^008BDF|^0081CF|^0077BF|          ^000000";
+	set @PB$[11], "^5FC2FF|^4FBCFF|^3FB6FF|^2FB0FF|^1FAAFF|^0FA4FF|^009EFF|^0094EF|^008BDF|^0081CF|^0077BF|         ^000000";
+	set @PB$[12], "^6FC8FF|^5FC2FF|^4FBCFF|^3FB6FF|^2FB0FF|^1FAAFF|^0FA4FF|^009EFF|^0094EF|^008BDF|^0081CF|^0077BF|        ^000000";
+	set @PB$[13], "^7FCCFF|^6FC8FF|^5FC2FF|^4FBCFF|^3FB6FF|^2FB0FF|^1FAAFF|^0FA4FF|^009EFF|^0094EF|^008BDF|^0081CF|^0077BF|       ^000000";
+	set @PB$[14], "^8FD2FF|^7FCCFF|^6FC8FF|^5FC2FF|^4FBCFF|^3FB6FF|^2FB0FF|^1FAAFF|^0FA4FF|^009EFF|^0094EF|^008BDF|^0081CF|^0077BF|      ^000000";
+	set @PB$[15], "^9FD8FF|^8FD2FF|^7FCCFF|^6FC8FF|^5FC2FF|^4FBCFF|^3FB6FF|^2FB0FF|^1FAAFF|^0FA4FF|^009EFF|^0094EF|^008BDF|^0081CF|^0077BF|     ^000000";
+	set @PB$[16], "^AFDFFF|^9FD8FF|^8FD2FF|^7FCCFF|^6FC8FF|^5FC2FF|^4FBCFF|^3FB6FF|^2FB0FF|^1FAAFF|^0FA4FF|^009EFF|^0094EF|^008BDF|^0081CF|^0077BF|    ^000000";
+	set @PB$[17], "^BFE5FF|^AFDFFF|^9FD8FF|^8FD2FF|^7FCCFF|^6FC8FF|^5FC2FF|^4FBCFF|^3FB6FF|^2FB0FF|^1FAAFF|^0FA4FF|^009EFF|^0094EF|^008BDF|^0081CF|^0077BF|   ^000000";
+	set @PB$[18], "^CFEBFF|^BFE5FF|^AFDFFF|^9FD8FF|^8FD2FF|^7FCCFF|^6FC8FF|^5FC2FF|^4FBCFF|^3FB6FF|^2FB0FF|^1FAAFF|^0FA4FF|^009EFF|^0094EF|^008BDF|^0081CF|^0077BF|  ^000000";
+	set @PB$[19], "^DFF1FF|^CFEBFF|^BFE5FF|^AFDFFF|^9FD8FF|^8FD2FF|^7FCCFF|^6FC8FF|^5FC2FF|^4FBCFF|^3FB6FF|^2FB0FF|^1FAAFF|^0FA4FF|^009EFF|^0094EF|^008BDF|^0081CF|^0077BF| ^000000";
+	set @PB$[20], "^EFF8FF|^DFF1FF|^CFEBFF|^BFE5FF|^AFDFFF|^9FD8FF|^8FD2FF|^7FCCFF|^6FC8FF|^5FC2FF|^4FBCFF|^3FB6FF|^2FB0FF|^1FAAFF|^0FA4FF|^009EFF|^0094EF|^008BDF|^0081CF|^0077BF|^000000";
+	
+	// Calculates percentage
+	set @total,$PA[1]+$PA[2]+$PA[3]+$PA[4]+$PA[5]+$PA[6]+$PA[7]+$PA[8]+$PA[9];
+	set @PC[1],$PA[1]*100/@total;
+	set @PC[2],$PA[2]*100/@total;
+	set @PC[3],$PA[3]*100/@total;
+	set @PC[4],$PA[4]*100/@total;
+	set @PC[5],$PA[5]*100/@total;
+	set @PC[6],$PA[6]*100/@total;
+	set @PC[7],$PA[7]*100/@total;
+	set @PC[8],$PA[8]*100/@total;
+	set @PC[9],$PA[9]*100/@total;
+	
+	// Displays results
+	if ($PQ$[1] != "") mes $PQ$[1];
+	if ($PQ$[1] != "") mes "["+@PB$[@PC[1]/5]+"] " + $PA[1] + " ("+@PC[1]+"%)";
+	if ($PQ$[2] != "") mes $PQ$[2];
+	if ($PQ$[2] != "") mes "["+@PB$[@PC[2]/5]+"] " + $PA[2] + " ("+@PC[2]+"%)";
+	if ($PQ$[3] != "") mes $PQ$[3];
+	if ($PQ$[3] != "") mes "["+@PB$[@PC[3]/5]+"] " + $PA[3] + " ("+@PC[3]+"%)";
+	if ($PQ$[4] != "") mes $PQ$[4];
+	if ($PQ$[4] != "") mes "["+@PB$[@PC[4]/5]+"] " + $PA[4] + " ("+@PC[4]+"%)";
+	if ($PQ$[5] != "") mes $PQ$[5];
+	if ($PQ$[5] != "") mes "["+@PB$[@PC[5]/5]+"] " + $PA[5] + " ("+@PC[5]+"%)";
+	if ($PQ$[6] != "") mes $PQ$[6];
+	if ($PQ$[6] != "") mes "["+@PB$[@PC[6]/5]+"] " + $PA[6] + " ("+@PC[6]+"%)";
+	if ($PQ$[7] != "") mes $PQ$[7];
+	if ($PQ$[7] != "") mes "["+@PB$[@PC[7]/5]+"] " + $PA[7] + " ("+@PC[7]+"%)";
+	if ($PQ$[8] != "") mes $PQ$[8];
+	if ($PQ$[8] != "") mes "["+@PB$[@PC[8]/5]+"] " + $PA[8] + " ("+@PC[8]+"%)";
+	if ($PQ$[9] != "") mes $PQ$[9];
+	if ($PQ$[9] != "") mes "["+@PB$[@PC[9]/5]+"] " + $PA[9] + " ("+@PC[9]+"%)";
+	mes "Total Votes: " + @total;
+	if (getgmlevel() > 90) menu "Continue",-,"Edit poll option",L_Edit,"Edit poll score",L_EditCount,"Add poll option",L_Add,"Set new poll",L_SetQuestion,"Allow re-vote",L_ReVote;
+	close;
+
+
+FirstGMMenuMarcFix:
+mes "This is a GM menu";
+menu "View NPC like normal player",GoBackToStartMarcFix,"Hax GM Menu",L_MarcSetQuestion;
+
+// Vote menu
+L_NotVoted:
+	menu	$PQ$[1],P1,
+			$PQ$[2],P2,
+			$PQ$[3],P3,
+			$PQ$[4],P4,
+			$PQ$[5],P5,
+			$PQ$[6],P6,
+			$PQ$[7],P7,
+			$PQ$[8],P8,
+			$PQ$[9],P9,
+			"Cancel",L_Cancel;
+			
+P1:	set @vote,1; goto P_Vote;
+P2:	set @vote,2; goto P_Vote;
+P3:	set @vote,3; goto P_Vote;
+P4:	set @vote,4; goto P_Vote;
+P5:	set @vote,5; goto P_Vote;
+P6:	set @vote,6; goto P_Vote;
+P7:	set @vote,7; goto P_Vote;
+P8:	set @vote,8; goto P_Vote;
+P9:	set @vote,9; goto P_Vote;
+
+P_Vote:
+	if ($PQ$[@vote] == "") goto L_Begin;
+	
+	set $PA[@vote],$PA[@vote]+1;
+	set #pollid,$pollid;
+	next;
+	mes "[Poll]";
+	mes "Thank you for voting!";
+	next;
+	goto L_Begin;
+
+// No question is set
+L_NoQuestion:
+	mes "[Poll]";
+	mes "No question set.";
+	if (getgmlevel() > 90) goto L_SetQuestion;
+	close;
+
+// Set question
+L_SetQuestion:
+	set $PQ$[1],"";
+	set $PQ$[2],"";
+	set $PQ$[3],"";
+	set $PQ$[4],"";
+	set $PQ$[5],"";
+	set $PQ$[6],"";
+	set $PQ$[7],"";
+	set $PQ$[8],"";
+	set $PQ$[9],"";
+	set $PA[1],"";
+	set $PA[2],"";
+	set $PA[3],"";
+	set $PA[4],"";
+	set $PA[5],"";
+	set $PA[6],"";
+	set $PA[7],"";
+	set $PA[8],"";
+	set $PA[9],"";
+
+	next;
+L_MarcSetQuestion:
+	mes "[Poll]";
+	mes "This menu was made to unlock the NPC if it's locked and unresponsive to question edits. Set question?";
+	next;
+	menu "Yes",-,"No",L_Cancel;
+	
+	input $poll_question$;
+	set $pollid,rand (100000,999999);
+	mes "Question set to: " + $poll_question$;
+	next;
+	mes "[Poll]";
+	mes "Input choices";
+	mes "type 'end' to stop";
+	next;
+	
+	P_Set:
+		input $PQ$[1];
+		if ($PQ$[1] == "end") goto P_Set;	// Disallows no option poll
+	P_Set2:
+		input $PQ$[2];
+		if ($PQ$[2] == "end") goto P_Set2; // Disallows 1 option poll
+		input $PQ$[3];
+		set @last,3;
+		if ($PQ$[3] == "end") goto L_SetEnd;
+		input $PQ$[4];
+		set @last,4;
+		if ($PQ$[4] == "end") goto L_SetEnd;
+		input $PQ$[5];
+		set @last,5;
+		if ($PQ$[5] == "end") goto L_SetEnd;
+		input $PQ$[6];
+		set @last,6;
+		if ($PQ$[6] == "end") goto L_SetEnd;
+		input $PQ$[7];
+		set @last,7;
+		if ($PQ$[7] == "end") goto L_SetEnd;
+		input $PQ$[8];
+		set @last,8;
+		if ($PQ$[8] == "end") goto L_SetEnd;
+		input $PQ$[9];
+		set @last,9;
+		if ($PQ$[9] == "end") goto L_SetEnd;
+
+// Add poll field
+L_Add:
+	next;
+	mes "[Poll]";
+
+	if ($PQ$[3] == "") goto PA3;
+	if ($PQ$[4] == "") goto PA4;
+	if ($PQ$[5] == "") goto PA5;
+	if ($PQ$[6] == "") goto PA6;
+	if ($PQ$[7] == "") goto PA7;
+	if ($PQ$[8] == "") goto PA8;
+	if ($PQ$[9] == "") goto PA9;
+	
+	mes "Sorry, the options are full.";
+	close;
+
+	PA3:	set @add,3; goto L_Add2;
+	PA4:	set @add,4; goto L_Add2;
+	PA5:	set @add,5; goto L_Add2;
+	PA6:	set @add,6; goto L_Add2;
+	PA7:	set @add,7; goto L_Add2;
+	PA8:	set @add,8; goto L_Add2;
+	PA9:	set @add,9; goto L_Add2;
+	
+	L_Add2:
+	mes "Enter the name of the poll you wish you add.";
+	input $PQ$[@add];
+	next;
+	mes "[Poll]";
+	mes "Option added";
+	close;
+	
+// Edit poll count
+L_EditCount:
+	next;
+	mes "[Poll]";
+	mes "Which option would you like to change the score of?";
+	next;
+	menu	$PQ$[1],PEC1,
+			$PQ$[2],PEC2,
+			$PQ$[3],PEC3,
+			$PQ$[4],PEC4,
+			$PQ$[5],PEC5,
+			$PQ$[6],PEC6,
+			$PQ$[7],PEC7,
+			$PQ$[8],PEC8,
+			$PQ$[9],PEC9,
+			"Cancel",L_Cancel;
+	
+	PEC1:	input $PA[1]; goto L_EditCountSet;
+	PEC2:	input $PA[2]; goto L_EditCountSet;
+	PEC3:	input $PA[3]; goto L_EditCountSet;
+	PEC4:	input $PA[4]; goto L_EditCountSet;
+	PEC5:	input $PA[5]; goto L_EditCountSet;
+	PEC6:	input $PA[6]; goto L_EditCountSet;
+	PEC7:	input $PA[7]; goto L_EditCountSet;
+	PEC8:	input $PA[8]; goto L_EditCountSet;
+	PEC9:	input $PA[9]; goto L_EditCountSet;
+	
+	L_EditCountSet:
+		mes "[Poll]";
+		mes "Option changed";
+		close;
+	
+// Edit poll field
+L_Edit:
+	next;
+	mes "[Poll]";
+	mes "Which option would you like to edit?";
+	next;
+	menu	$PQ$[1],PE1,
+			$PQ$[2],PE2,
+			$PQ$[3],PE3,
+			$PQ$[4],PE4,
+			$PQ$[5],PE5,
+			$PQ$[6],PE6,
+			$PQ$[7],PE7,
+			$PQ$[8],PE8,
+			$PQ$[9],PE9,
+			"Cancel",L_Cancel;
+		
+		PE1:	input $PQ$[1]; goto L_EditSet;
+		PE2:	input $PQ$[2]; goto L_EditSet;
+		PE3:	input $PQ$[3]; goto L_EditSet;
+		PE4:	input $PQ$[4]; goto L_EditSet;
+		PE5:	input $PQ$[5]; goto L_EditSet;
+		PE6:	input $PQ$[6]; goto L_EditSet;
+		PE7:	input $PQ$[7]; goto L_EditSet;
+		PE8:	input $PQ$[8]; goto L_EditSet;
+		PE9:	input $PQ$[9]; goto L_EditSet;
+
+L_EditSet:
+	mes "[Poll]";
+	mes "Option changed";
+	close;
+
+L_SetEnd:
+	Announce "A new poll has been set!",8;
+	Announce $poll_question$,8;
+	set $PQ$[@last],"";
+	mes "[Poll]";
+	mes "Poll set";
+	close;
+
+// Allow players to re-cast their vote
+L_ReVote:
+	next;
+	set $pollid,rand (100000,999999);
+	mes "[Poll]";
+	mes "Re-vote allowed";
+	close;
+	
+L_Cancel:
+	mes "[Poll]";
+	mes "Goodbye";
+	close;
+}

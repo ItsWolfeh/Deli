@@ -1,0 +1,903 @@
+//================
+// The variables =
+//================
+// @youhaveroom == ##, where ## is the number of the room the player owns
+// .dbroom## == 0 or 1, where ## is the number of the room and 0 or 1 determine whether the room is passworded
+// .temppassword##$ == some value, where ## is the number of the room and the value is the password being entered
+// .password##$ == some value, where ## is the number of the room and the value is the set password for the room
+// .pass##$ == some value, where ## is the number of the room and the value is what anyone trying to guess the pass to the room is entering
+// .room##owner$ == some value, where ## is the number of the room and the value is the name of the char who owns the room
+// dbroom## is the map name
+
+
+
+//=====================
+// Room exit function =
+//=====================
+function	script	F_DBroomExit	{
+
+OnTouch:
+	warp "arenalounge",88,78;
+	message ""+strcharinfo(0)+"","You have exited DB Room "+getarg(1)+".";
+	mapannounce ""+getarg(0)+"",""+strcharinfo(0)+" has left the room.",bc_blue|bc_all;
+	end;
+}
+
+
+
+//=========================================================================
+// Timer function that goes off after 15 minutes when room ownership ends =
+//=========================================================================
+function	script	F_DBroomTimerForEnd	{
+// Announces to player above their head and in the chat window no matter what map they're on
+	message ""+strcharinfo(0)+"","Your password protection for DB Room "+getarg(0)+" has ended.";
+	mapannounce ""+getarg(6)+"",""+strcharinfo(0)+", your password protection for DB Room "+getarg(0)+" has ended. If you wish to renew it, please speak to the DB Warper outside.",bc_blue|bc_all;
+	set getarg(1),0;
+	set getarg(5),0;
+	if(@youhaveroom == getarg(0)) { 
+	set @youhaveroom,0;
+	end;
+	} else { end; }
+}
+
+
+
+//====================================================================================
+// Timer function that goes off after 14 minutes to warn about room ownership ending =
+//====================================================================================
+function	script	F_DBroomTimerForWarn	{
+	message ""+strcharinfo(0)+"","Your password protection for DB Room "+getarg(0)+" will end in one minute.";
+	mapannounce ""+getarg(6)+"",""+strcharinfo(0)+", your password protection for DB Room "+getarg(0)+" is ending in one minute.",bc_blue|bc_all;
+	end;
+}
+
+
+
+//==================
+// Logout function =
+//==================
+function	script	F_DBroomLogout	{
+	if(@youhaveroom == getarg(0)) { 
+	set getarg(1),0;
+	set getarg(5),0;
+	deltimer "DB Room Warper::OnWarper1TimeOver";
+	deltimer "DB Room Warper::OnWarper1Warning";
+	end;
+	}
+}
+
+
+
+//==========================
+// DB room warper function =
+//==========================
+function	script	F_DBroomWarper	{
+
+if (@youhaveroom == 0 && getarg(1) == 0) goto L_DbNPCStart1; 			// Player does not own a room, and this room is not taken
+if (@youhaveroom == 0 && getarg(1) == 1) goto passpls1;				// Player does not own a room, and this room is taken
+if (@youhaveroom == getarg(0)) goto manageroom1;					// Player owns this room
+if (@youhaveroom < getarg(0) || @youhaveroom > getarg(0)) goto anotherroom1;	// Player owns another room
+if (getarg(1) == 1) goto passpls1;								// Player magically slipped through the checks?
+
+
+L_DbNPCStart1:
+	mes "Enter ^9900FFDB Room "+getarg(0)+"^000000?";
+	mes " ";
+	menu "Enter without password",publicwarptoroom1,"Set a password",setpw1,"Do not enter",-;
+	close;
+
+
+setpw1:
+	if (getmapusers(""+getarg(6)+"") > 0) {
+	mes "^ff0000This room is occupied. You may not set a password for a room that is occupied.^000000";
+	close;
+	}
+	mes "Please input what you'd like to use as your password to ^9900FFDB Room "+getarg(0)+"^000000.";
+	next;
+	input getarg(2);
+// Redundant check for another player entering password at same time
+	if (getarg(1) == 1) {
+	mes "^ff0000Someone set a password for this room while you were typing yours. Try another room instead.^000000";
+	close;
+	}
+// Redundant check for another player entering room without pass at same time
+	if (getmapusers(""+getarg(6)+"") > 0) {
+	mes "^ff0000Someone entered the room while you typed your password. You may not set a password for a room that is occupied.^000000";
+	close;
+	}
+	set getarg(3),getarg(2);
+	set getarg(5),strcharinfo(0);
+	mes "Your password for ^9900FFDB Room "+getarg(0)+"^000000 is set to ^3333FF"+getarg(3)+"^000000. Your time with this room shall start now.";
+	mes " ";
+	mes "You have ^ff0000fifteen minutes^000000. If you log off, the room will become public again immediately.";
+	addtimer 900000,"DB Room Warper::OnWarper1TimeOver";
+	addtimer 840000,"DB Room Warper::OnWarper1Warning";
+	set @youhaveroom,getarg(0);
+	set getarg(1),1;
+	close2;
+	goto manageroom1;
+	end;
+
+
+passpls1:
+	if (getgmlevel() > 1){
+	mes "^ff0000GM MENU: This room is set to be in use. Select Normal Entry to continue with NPC, or Reset Room if NPC is locked. Reset Room will kick room owner if they are currently online.^ff0000";
+	next;
+	switch(select("Normal entry","Reset room")) {
+
+case 1:
+	mes "This room is currently owned by ^3333FF"+getarg(5)+"^000000. If you want to enter you'll need to input the password.";
+	menu "Enter room",-,"Nevermind",DBroomCancel;
+	next;
+	mes "What is the password?";
+	input getarg(4);
+// Redundant check to see if room owner freed the room while player typed pass
+	if (getarg(1) == 0) {
+	mes "^ff0000The room became public while you typed the password.^000000";
+	close;
+	}
+	if(getarg(4)==getarg(3)) goto passwordedwarptoroom1;
+	mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+	close;
+case 2:
+	close2;
+	set getarg(1),0;
+	deltimer "DB Room Warper::OnWarper1TimeOver";
+	deltimer "DB Room Warper::OnWarper1Warning";
+	atcommand "@kick "+getarg(5);
+	set getarg(5),0;
+	end;
+	}
+
+	} else {
+	mes "This room is currently owned by ^3333FF"+getarg(5)+"^000000. If you want to enter you'll need to input the password.";
+	menu "Enter room",-,"Nevermind",DBroomCancel;
+	next;
+	mes "What is the password?";
+	input getarg(4);
+// Redundant check to see if room owner freed the room while player typed owner's old pass
+	if (getarg(1) == 0) {
+	mes "^ff0000The room became public while you typed the password.^000000";
+	close;
+	}
+	if(getarg(4)==getarg(3)) goto passwordedwarptoroom1;
+	mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+	close;
+	}
+
+
+manageroom1:
+	mes "You are currently in charge of ^9900FFDB Room "+getarg(0)+"^000000 and your set password is ^3333FF"+getarg(3)+"^000000.";
+	mes " ";
+	menu "Enter DB room",warptoroom1,"Make room public",makepublic1,"Change Password",changepw1,"Do not enter",DBroomCancel;
+	close;
+
+
+makepublic1:
+// Redundant check to see if timer ended while room owner was in manageroom1 menu
+	if (@youhaveroom == 0) {
+	mes "^ff0000Your time with this room has ended.^000000";
+	close;
+	}
+	close2;
+	set @youhaveroom,0;
+	set getarg(1),0;
+	set getarg(5),0;
+	deltimer "DB Room Warper::OnWarper1TimeOver";
+	deltimer "DB Room Warper::OnWarper1Warning";
+	end;
+
+
+changepw1:
+// Redundant check to see if timer ended while room owner was in manageroom1 menu
+	if (@youhaveroom == 0) {
+	mes "^ff0000Your time with this room has ended.^000000";
+	close;
+	}
+	mes "Please input what you want to use as your new password to ^9900FFDB Room "+getarg(0)+"^000000.";
+	input getarg(2);
+	set getarg(3),getarg(2);
+	next;
+	mes "Your new password to ^9900FFDB Room "+getarg(0)+"^000000 is ^3333FF"+getarg(3)+"^000000.";
+	close;
+
+
+anotherroom1:
+	mes "You have another room set to password protection. Please finish your time with ^9900FFDB Room "+@youhaveroom+"^000000 or set it back to public to enter another room.";
+	close;
+
+
+DBroomCancel:
+	close;
+
+
+// Only the room owner can get sent here
+warptoroom1:
+// Redundant check to see if timer ended while room owner was in manageroom1 menu
+	if (@youhaveroom == 0) {
+	mes "^ff0000Your time with this room has already ended.^000000";
+	close;
+	}
+publicwarptoroom1:
+// Redundant check to see if a someone became room owner while player clicked and had plain "public room" menu open, and only entered after room was owned
+	if (getarg(1) == 1 && @youhaveroom == 0) {
+	mes "^ff0000The room became private before you chose to enter it.^000000";
+	close;
+	}
+// Player who is not room owner and who entered the password while it still existed
+passwordedwarptoroom1:
+	warp ""+getarg(6)+"",99,68;
+	close;
+}
+
+
+
+//=================================================
+// End of the functions themselves                =
+// Now we just list for as many rooms as we want  =
+//=================================================
+
+
+
+//=============
+// Exit Warps =
+//=============
+dbroom01,99,65,0	script	DBRoom1Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom01",1;
+}
+
+dbroom02,99,65,0	script	DBRoom2Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom02",2;
+}
+
+dbroom03,99,65,0	script	DBRoom3Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom03",3;
+}
+
+dbroom04,99,65,0	script	DBRoom4Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom04",4;
+}
+
+dbroom05,99,65,0	script	DBRoom5Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom05",5;
+}
+
+dbroom06,99,65,0	script	DBRoom6Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom06",6;
+}
+
+dbroom07,99,65,0	script	DBRoom7Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom07",7;
+}
+
+dbroom08,99,65,0	script	DBRoom8Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom08",8;
+}
+
+dbroom09,99,65,0	script	DBRoom9Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom09",9;
+}
+
+dbroom10,99,65,0	script	DBRoom10Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom10",10;
+}
+
+dbroom11,99,65,0	script	DBRoom11Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom11",11;
+}
+
+dbroom12,99,65,0	script	DBRoom12Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom12",12;
+}
+
+dbroom13,99,65,0	script	DBRoom13Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom13",13;
+}
+
+dbroom14,99,65,0	script	DBRoom14Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom14",14;
+}
+
+dbroom15,99,65,0	script	DBRoom15Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom15",15;
+}
+
+dbroom16,99,65,0	script	DBRoom16Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom16",16;
+}
+
+dbroom17,99,65,0	script	DBRoom17Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom17",17;
+}
+
+dbroom18,99,65,0	script	DBRoom18Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom18",18;
+}
+
+dbroom19,99,65,0	script	DBRoom19Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom19",19;
+}
+
+dbroom20,99,65,0	script	DBRoom20Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom20",20;
+}
+
+dbroom21,99,65,0	script	DBRoom21Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom21",21;
+}
+
+dbroom22,99,65,0	script	DBRoom22Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom22",22;
+}
+
+dbroom23,99,65,0	script	DBRoom23Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom23",23;
+}
+
+dbroom24,99,65,0	script	DBRoom24Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom24",24;
+}
+
+dbroom25,99,65,0	script	DBRoom25Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom25",25;
+}
+
+dbroom26,99,65,0	script	DBRoom26Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom26",26;
+}
+
+dbroom27,99,65,0	script	DBRoom27Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom27",27;
+}
+
+dbroom28,99,65,0	script	DBRoom28Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom28",28;
+}
+
+dbroom29,99,65,0	script	DBRoom29Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom29",29;
+}
+
+dbroom30,99,65,0	script	DBRoom30Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom30",30;
+}
+
+
+
+
+
+
+//===============
+// Room Warpers =
+//===============
+arenalounge,87,94,1	script	DB Room Warper	723,{
+
+L_DBRoom_Fulltop:
+menu "Go to my DB Room",L_MyDBRoom,"DB Rooms 1-10",L_dbrm1to10,"DB Rooms 11-20",L_dbrm11to20,"DB Rooms 21-30",L_dbrm21to30,"Cancel",-;
+close;
+
+L_dbrm1to10:
+	menu "DB Room 1",L_wrpr_dbrm01,"DB Room 2",L_wrpr_dbrm02,"DB Room 3",L_wrpr_dbrm03,"DB Room 4",L_wrpr_dbrm04,"DB Room 5",L_wrpr_dbrm05,"DB Room 6",L_wrpr_dbrm06,"DB Room 7",L_wrpr_dbrm07,"DB Room 8",L_wrpr_dbrm08,"DB Room 9",L_wrpr_dbrm09,"DB Room 10",L_wrpr_dbrm10,"Cancel",-;
+	close;
+
+L_dbrm11to20:
+	menu "DB Room 11",L_wrpr_dbrm11,"DB Room 12",L_wrpr_dbrm12,"DB Room 13",L_wrpr_dbrm13,"DB Room 14",L_wrpr_dbrm14,"DB Room 15",L_wrpr_dbrm15,"DB Room 16",L_wrpr_dbrm16,"DB Room 17",L_wrpr_dbrm17,"DB Room 18",L_wrpr_dbrm18,"DB Room 19",L_wrpr_dbrm19,"DB Room 20",L_wrpr_dbrm20,"Cancel",-;
+	close;
+
+L_dbrm21to30:
+	menu "DB Room 21",L_wrpr_dbrm21,"DB Room 22",L_wrpr_dbrm22,"DB Room 23",L_wrpr_dbrm23,"DB Room 24",L_wrpr_dbrm24,"DB Room 25",L_wrpr_dbrm25,"DB Room 26",L_wrpr_dbrm26,"DB Room 27",L_wrpr_dbrm27,"DB Room 28",L_wrpr_dbrm28,"DB Room 29",L_wrpr_dbrm29,"DB Room 30",L_wrpr_dbrm30,"Cancel",-;
+	close;
+
+L_MyDBRoom:
+if (@youhaveroom == 1) goto L_wrpr_dbrm01;
+if (@youhaveroom == 2) goto L_wrpr_dbrm02;
+if (@youhaveroom == 3) goto L_wrpr_dbrm03;
+if (@youhaveroom == 4) goto L_wrpr_dbrm04;
+if (@youhaveroom == 5) goto L_wrpr_dbrm05;
+if (@youhaveroom == 6) goto L_wrpr_dbrm06;
+if (@youhaveroom == 7) goto L_wrpr_dbrm07;
+if (@youhaveroom == 8) goto L_wrpr_dbrm08;
+if (@youhaveroom == 9) goto L_wrpr_dbrm09;
+if (@youhaveroom == 10) goto L_wrpr_dbrm10;
+if (@youhaveroom == 11) goto L_wrpr_dbrm11;
+if (@youhaveroom == 12) goto L_wrpr_dbrm12;
+if (@youhaveroom == 13) goto L_wrpr_dbrm13;
+if (@youhaveroom == 14) goto L_wrpr_dbrm14;
+if (@youhaveroom == 15) goto L_wrpr_dbrm15;
+if (@youhaveroom == 16) goto L_wrpr_dbrm16;
+if (@youhaveroom == 17) goto L_wrpr_dbrm17;
+if (@youhaveroom == 18) goto L_wrpr_dbrm18;
+if (@youhaveroom == 19) goto L_wrpr_dbrm19;
+if (@youhaveroom == 20) goto L_wrpr_dbrm20;
+if (@youhaveroom == 21) goto L_wrpr_dbrm21;
+if (@youhaveroom == 22) goto L_wrpr_dbrm22;
+if (@youhaveroom == 23) goto L_wrpr_dbrm23;
+if (@youhaveroom == 24) goto L_wrpr_dbrm24;
+if (@youhaveroom == 25) goto L_wrpr_dbrm25;
+if (@youhaveroom == 26) goto L_wrpr_dbrm26;
+if (@youhaveroom == 27) goto L_wrpr_dbrm27;
+if (@youhaveroom == 28) goto L_wrpr_dbrm28;
+if (@youhaveroom == 29) goto L_wrpr_dbrm29;
+if (@youhaveroom == 30) goto L_wrpr_dbrm30;
+dispbottom "You do not own any DB Rooms";
+goto L_DBRoom_Fulltop;
+
+L_wrpr_dbrm01:
+callfunc "F_DBroomWarper",1,.dbroom1,.temppassword1$,.password1$,.pass1$,.room1owner$,"dbroom01";
+
+L_wrpr_dbrm02:
+callfunc "F_DBroomWarper",2,.dbroom2,.temppassword2$,.password2$,.pass2$,.room2owner$,"dbroom02";
+
+L_wrpr_dbrm03:
+callfunc "F_DBroomWarper",3,.dbroom3,.temppassword3$,.password3$,.pass3$,.room3owner$,"dbroom03";
+
+L_wrpr_dbrm04:
+callfunc "F_DBroomWarper",4,.dbroom4,.temppassword4$,.password4$,.pass4$,.room4owner$,"dbroom04";
+
+L_wrpr_dbrm05:
+callfunc "F_DBroomWarper",5,.dbroom5,.temppassword5$,.password5$,.pass5$,.room5owner$,"dbroom05";
+
+L_wrpr_dbrm06:
+callfunc "F_DBroomWarper",6,.dbroom6,.temppassword6$,.password6$,.pass6$,.room6owner$,"dbroom06";
+
+L_wrpr_dbrm07:
+callfunc "F_DBroomWarper",7,.dbroom7,.temppassword7$,.password7$,.pass7$,.room7owner$,"dbroom07";
+
+L_wrpr_dbrm08:
+callfunc "F_DBroomWarper",8,.dbroom8,.temppassword8$,.password8$,.pass8$,.room8owner$,"dbroom08";
+
+L_wrpr_dbrm09:
+callfunc "F_DBroomWarper",9,.dbroom9,.temppassword9$,.password9$,.pass9$,.room9owner$,"dbroom09";
+
+L_wrpr_dbrm10:
+callfunc "F_DBroomWarper",10,.dbroom10,.temppassword10$,.password10$,.pass10$,.room10owner$,"dbroom10";
+
+L_wrpr_dbrm11:
+callfunc "F_DBroomWarper",11,.dbroom11,.temppassword11$,.password11$,.pass11$,.room11owner$,"dbroom11";
+
+L_wrpr_dbrm12:
+callfunc "F_DBroomWarper",12,.dbroom12,.temppassword12$,.password12$,.pass12$,.room12owner$,"dbroom12";
+
+L_wrpr_dbrm13:
+callfunc "F_DBroomWarper",13,.dbroom13,.temppassword13$,.password13$,.pass13$,.room13owner$,"dbroom13";
+
+L_wrpr_dbrm14:
+callfunc "F_DBroomWarper",14,.dbroom14,.temppassword14$,.password14$,.pass14$,.room14owner$,"dbroom14";
+
+L_wrpr_dbrm15:
+callfunc "F_DBroomWarper",15,.dbroom15,.temppassword15$,.password15$,.pass15$,.room15owner$,"dbroom15";
+
+L_wrpr_dbrm16:
+callfunc "F_DBroomWarper",16,.dbroom16,.temppassword16$,.password16$,.pass16$,.room16owner$,"dbroom16";
+
+L_wrpr_dbrm17:
+callfunc "F_DBroomWarper",17,.dbroom17,.temppassword17$,.password17$,.pass17$,.room17owner$,"dbroom17";
+
+L_wrpr_dbrm18:
+callfunc "F_DBroomWarper",18,.dbroom18,.temppassword18$,.password18$,.pass18$,.room18owner$,"dbroom18";
+
+L_wrpr_dbrm19:
+callfunc "F_DBroomWarper",19,.dbroom19,.temppassword19$,.password19$,.pass19$,.room19owner$,"dbroom19";
+
+L_wrpr_dbrm20:
+callfunc "F_DBroomWarper",20,.dbroom20,.temppassword20$,.password20$,.pass20$,.room20owner$,"dbroom20";
+
+L_wrpr_dbrm21:
+callfunc "F_DBroomWarper",21,.dbroom21,.temppassword21$,.password21$,.pass21$,.room21owner$,"dbroom21";
+
+L_wrpr_dbrm22:
+callfunc "F_DBroomWarper",22,.dbroom22,.temppassword22$,.password22$,.pass22$,.room22owner$,"dbroom22";
+
+L_wrpr_dbrm23:
+callfunc "F_DBroomWarper",23,.dbroom23,.temppassword23$,.password23$,.pass23$,.room23owner$,"dbroom23";
+
+L_wrpr_dbrm24:
+callfunc "F_DBroomWarper",24,.dbroom24,.temppassword24$,.password24$,.pass24$,.room24owner$,"dbroom24";
+
+L_wrpr_dbrm25:
+callfunc "F_DBroomWarper",25,.dbroom25,.temppassword25$,.password25$,.pass25$,.room25owner$,"dbroom25";
+
+L_wrpr_dbrm26:
+callfunc "F_DBroomWarper",26,.dbroom26,.temppassword26$,.password26$,.pass26$,.room26owner$,"dbroom26";
+
+L_wrpr_dbrm27:
+callfunc "F_DBroomWarper",27,.dbroom27,.temppassword27$,.password27$,.pass27$,.room27owner$,"dbroom27";
+
+L_wrpr_dbrm28:
+callfunc "F_DBroomWarper",28,.dbroom28,.temppassword28$,.password28$,.pass28$,.room28owner$,"dbroom28";
+
+L_wrpr_dbrm29:
+callfunc "F_DBroomWarper",29,.dbroom29,.temppassword29$,.password29$,.pass29$,.room29owner$,"dbroom29";
+
+L_wrpr_dbrm30:
+callfunc "F_DBroomWarper",30,.dbroom30,.temppassword30$,.password30$,.pass30$,.room30owner$,"dbroom30";
+
+
+
+
+
+
+//*** Call the Logout function ***
+OnPCLogoutEvent:
+if (@youhaveroom == 1){
+	callfunc "F_DBroomLogout",1,.dbroom1,.temppassword1$,.password1$,.pass1$,.room1owner$,"dbroom01";
+	end;
+	}
+if (@youhaveroom == 2){
+	callfunc "F_DBroomLogout",2,.dbroom2,.temppassword2$,.password2$,.pass2$,.room2owner$,"dbroom02";
+	end;
+	}
+if (@youhaveroom == 3){
+	callfunc "F_DBroomLogout",3,.dbroom3,.temppassword3$,.password3$,.pass3$,.room3owner$,"dbroom03";
+	end;
+	}
+if (@youhaveroom == 4){
+	callfunc "F_DBroomLogout",4,.dbroom4,.temppassword4$,.password4$,.pass4$,.room4owner$,"dbroom04";
+	end;
+	}
+if (@youhaveroom == 5){
+	callfunc "F_DBroomLogout",5,.dbroom5,.temppassword5$,.password5$,.pass5$,.room5owner$,"dbroom05";
+	end;
+	}
+if (@youhaveroom == 6){
+	callfunc "F_DBroomLogout",6,.dbroom6,.temppassword6$,.password6$,.pass6$,.room6owner$,"dbroom06";
+	end;
+	}
+if (@youhaveroom == 7){
+	callfunc "F_DBroomLogout",7,.dbroom7,.temppassword7$,.password7$,.pass7$,.room7owner$,"dbroom07";
+	end;
+	}
+if (@youhaveroom == 8){
+	callfunc "F_DBroomLogout",8,.dbroom8,.temppassword8$,.password8$,.pass8$,.room8owner$,"dbroom08";
+	end;
+	}
+if (@youhaveroom == 9){
+	callfunc "F_DBroomLogout",9,.dbroom9,.temppassword9$,.password9$,.pass9$,.room9owner$,"dbroom09";
+	end;
+	}
+if (@youhaveroom == 10){
+	callfunc "F_DBroomLogout",10,.dbroom10,.temppassword10$,.password10$,.pass10$,.room10owner$,"dbroom10";
+	end;
+	}
+if (@youhaveroom == 11){
+	callfunc "F_DBroomLogout",11,.dbroom11,.temppassword11$,.password11$,.pass11$,.room11owner$,"dbroom11";
+	end;
+	}
+if (@youhaveroom == 12){
+	callfunc "F_DBroomLogout",12,.dbroom12,.temppassword12$,.password12$,.pass12$,.room12owner$,"dbroom12";
+	end;
+	}
+if (@youhaveroom == 13){
+	callfunc "F_DBroomLogout",13,.dbroom13,.temppassword13$,.password13$,.pass13$,.room13owner$,"dbroom13";
+	end;
+	}
+if (@youhaveroom == 14){
+	callfunc "F_DBroomLogout",14,.dbroom14,.temppassword14$,.password14$,.pass14$,.room14owner$,"dbroom14";
+	end;
+	}
+if (@youhaveroom == 15){
+	callfunc "F_DBroomLogout",15,.dbroom15,.temppassword15$,.password15$,.pass15$,.room15owner$,"dbroom15";
+	end;
+	}
+if (@youhaveroom == 16){
+	callfunc "F_DBroomLogout",16,.dbroom16,.temppassword16$,.password16$,.pass16$,.room16owner$,"dbroom16";
+	end;
+	}
+if (@youhaveroom == 17){
+	callfunc "F_DBroomLogout",17,.dbroom17,.temppassword17$,.password17$,.pass17$,.room17owner$,"dbroom17";
+	end;
+	}
+if (@youhaveroom == 18){
+	callfunc "F_DBroomLogout",18,.dbroom18,.temppassword18$,.password18$,.pass18$,.room18owner$,"dbroom18";
+	end;
+	}
+if (@youhaveroom == 19){
+	callfunc "F_DBroomLogout",19,.dbroom19,.temppassword19$,.password19$,.pass19$,.room19owner$,"dbroom19";
+	end;
+	}
+if (@youhaveroom == 20){
+	callfunc "F_DBroomLogout",20,.dbroom20,.temppassword20$,.password20$,.pass20$,.room20owner$,"dbroom20";
+	end;
+	}
+if (@youhaveroom == 21){
+	callfunc "F_DBroomLogout",21,.dbroom21,.temppassword21$,.password21$,.pass21$,.room21owner$,"dbroom21";
+	end;
+	}
+if (@youhaveroom == 22){
+	callfunc "F_DBroomLogout",22,.dbroom22,.temppassword22$,.password22$,.pass22$,.room22owner$,"dbroom22";
+	end;
+	}
+if (@youhaveroom == 23){
+	callfunc "F_DBroomLogout",23,.dbroom23,.temppassword23$,.password23$,.pass23$,.room23owner$,"dbroom23";
+	end;
+	}
+if (@youhaveroom == 24){
+	callfunc "F_DBroomLogout",24,.dbroom24,.temppassword24$,.password24$,.pass24$,.room24owner$,"dbroom24";
+	end;
+	}
+if (@youhaveroom == 25){
+	callfunc "F_DBroomLogout",25,.dbroom25,.temppassword25$,.password25$,.pass25$,.room25owner$,"dbroom25";
+	end;
+	}
+if (@youhaveroom == 26){
+	callfunc "F_DBroomLogout",26,.dbroom26,.temppassword26$,.password26$,.pass26$,.room26owner$,"dbroom26";
+	end;
+	}
+if (@youhaveroom == 27){
+	callfunc "F_DBroomLogout",27,.dbroom27,.temppassword27$,.password27$,.pass27$,.room27owner$,"dbroom27";
+	end;
+	}
+if (@youhaveroom == 28){
+	callfunc "F_DBroomLogout",28,.dbroom28,.temppassword28$,.password28$,.pass28$,.room28owner$,"dbroom28";
+	end;
+	}
+if (@youhaveroom == 29){
+	callfunc "F_DBroomLogout",29,.dbroom29,.temppassword29$,.password29$,.pass29$,.room29owner$,"dbroom29";
+	end;
+	}
+if (@youhaveroom == 30){
+	callfunc "F_DBroomLogout",30,.dbroom30,.temppassword30$,.password30$,.pass30$,.room30owner$,"dbroom30";
+	end;
+	}
+
+
+
+
+//*** Call the Time Over function ***
+OnWarper1TimeOver:
+if (@youhaveroom == 1){
+	callfunc "F_DBroomTimerForEnd",1,.dbroom1,.temppassword1$,.password1$,.pass1$,.room1owner$,"dbroom01";
+	end;
+	}
+if (@youhaveroom == 2){
+	callfunc "F_DBroomTimerForEnd",2,.dbroom2,.temppassword2$,.password2$,.pass2$,.room2owner$,"dbroom02";
+	end;
+	}
+if (@youhaveroom == 3){
+	callfunc "F_DBroomTimerForEnd",3,.dbroom3,.temppassword3$,.password3$,.pass3$,.room3owner$,"dbroom03";
+	end;
+	}
+if (@youhaveroom == 4){
+	callfunc "F_DBroomTimerForEnd",4,.dbroom4,.temppassword4$,.password4$,.pass4$,.room4owner$,"dbroom04";
+	end;
+	}
+if (@youhaveroom == 5){
+	callfunc "F_DBroomTimerForEnd",5,.dbroom5,.temppassword5$,.password5$,.pass5$,.room5owner$,"dbroom05";
+	end;
+	}
+if (@youhaveroom == 6){
+	callfunc "F_DBroomTimerForEnd",6,.dbroom6,.temppassword6$,.password6$,.pass6$,.room6owner$,"dbroom06";
+	end;
+	}
+if (@youhaveroom == 7){
+	callfunc "F_DBroomTimerForEnd",7,.dbroom7,.temppassword7$,.password7$,.pass7$,.room7owner$,"dbroom07";
+	end;
+	}
+if (@youhaveroom == 8){
+	callfunc "F_DBroomTimerForEnd",8,.dbroom8,.temppassword8$,.password8$,.pass8$,.room8owner$,"dbroom08";
+	end;
+	}
+if (@youhaveroom == 9){
+	callfunc "F_DBroomTimerForEnd",9,.dbroom9,.temppassword9$,.password9$,.pass9$,.room9owner$,"dbroom09";
+	end;
+	}
+if (@youhaveroom == 10){
+	callfunc "F_DBroomTimerForEnd",10,.dbroom10,.temppassword10$,.password10$,.pass10$,.room10owner$,"dbroom10";
+	end;
+	}
+if (@youhaveroom == 11){
+	callfunc "F_DBroomTimerForEnd",11,.dbroom11,.temppassword11$,.password11$,.pass11$,.room11owner$,"dbroom11";
+	end;
+	}
+if (@youhaveroom == 12){
+	callfunc "F_DBroomTimerForEnd",12,.dbroom12,.temppassword12$,.password12$,.pass12$,.room12owner$,"dbroom12";
+	end;
+	}
+if (@youhaveroom == 13){
+	callfunc "F_DBroomTimerForEnd",13,.dbroom13,.temppassword13$,.password13$,.pass13$,.room13owner$,"dbroom13";
+	end;
+	}
+if (@youhaveroom == 14){
+	callfunc "F_DBroomTimerForEnd",14,.dbroom14,.temppassword14$,.password14$,.pass14$,.room14owner$,"dbroom14";
+	end;
+	}
+if (@youhaveroom == 15){
+	callfunc "F_DBroomTimerForEnd",15,.dbroom15,.temppassword15$,.password15$,.pass15$,.room15owner$,"dbroom15";
+	end;
+	}
+if (@youhaveroom == 16){
+	callfunc "F_DBroomTimerForEnd",16,.dbroom16,.temppassword16$,.password16$,.pass16$,.room16owner$,"dbroom16";
+	end;
+	}
+if (@youhaveroom == 17){
+	callfunc "F_DBroomTimerForEnd",17,.dbroom17,.temppassword17$,.password17$,.pass17$,.room17owner$,"dbroom17";
+	end;
+	}
+if (@youhaveroom == 18){
+	callfunc "F_DBroomTimerForEnd",18,.dbroom18,.temppassword18$,.password18$,.pass18$,.room18owner$,"dbroom18";
+	end;
+	}
+if (@youhaveroom == 19){
+	callfunc "F_DBroomTimerForEnd",19,.dbroom19,.temppassword19$,.password19$,.pass19$,.room19owner$,"dbroom19";
+	end;
+	}
+if (@youhaveroom == 20){
+	callfunc "F_DBroomTimerForEnd",20,.dbroom20,.temppassword20$,.password20$,.pass20$,.room20owner$,"dbroom20";
+	end;
+	}
+if (@youhaveroom == 21){
+	callfunc "F_DBroomTimerForEnd",21,.dbroom21,.temppassword21$,.password21$,.pass21$,.room21owner$,"dbroom21";
+	end;
+	}
+if (@youhaveroom == 22){
+	callfunc "F_DBroomTimerForEnd",22,.dbroom22,.temppassword22$,.password22$,.pass22$,.room22owner$,"dbroom22";
+	end;
+	}
+if (@youhaveroom == 23){
+	callfunc "F_DBroomTimerForEnd",23,.dbroom23,.temppassword23$,.password23$,.pass23$,.room23owner$,"dbroom23";
+	end;
+	}
+if (@youhaveroom == 24){
+	callfunc "F_DBroomTimerForEnd",24,.dbroom24,.temppassword24$,.password24$,.pass24$,.room24owner$,"dbroom24";
+	end;
+	}
+if (@youhaveroom == 25){
+	callfunc "F_DBroomTimerForEnd",25,.dbroom25,.temppassword25$,.password25$,.pass25$,.room25owner$,"dbroom25";
+	end;
+	}
+if (@youhaveroom == 26){
+	callfunc "F_DBroomTimerForEnd",26,.dbroom26,.temppassword26$,.password26$,.pass26$,.room26owner$,"dbroom26";
+	end;
+	}
+if (@youhaveroom == 27){
+	callfunc "F_DBroomTimerForEnd",27,.dbroom27,.temppassword27$,.password27$,.pass27$,.room27owner$,"dbroom27";
+	end;
+	}
+if (@youhaveroom == 28){
+	callfunc "F_DBroomTimerForEnd",28,.dbroom28,.temppassword28$,.password28$,.pass28$,.room28owner$,"dbroom28";
+	end;
+	}
+if (@youhaveroom == 29){
+	callfunc "F_DBroomTimerForEnd",29,.dbroom29,.temppassword29$,.password29$,.pass29$,.room29owner$,"dbroom29";
+	end;
+	}
+if (@youhaveroom == 30){
+	callfunc "F_DBroomTimerForEnd",30,.dbroom30,.temppassword30$,.password30$,.pass30$,.room30owner$,"dbroom30";
+	end;
+	}
+
+
+
+
+// ***Call the Timer Warning function***
+OnWarper1Warning:
+if (@youhaveroom == 1){
+	callfunc "F_DBroomTimerForWarn",1,.dbroom1,.temppassword1$,.password1$,.pass1$,.room1owner$,"dbroom01";
+	end;
+	}
+if (@youhaveroom == 2){
+	callfunc "F_DBroomTimerForWarn",2,.dbroom2,.temppassword2$,.password2$,.pass2$,.room2owner$,"dbroom02";
+	end;
+	}
+if (@youhaveroom == 3){
+	callfunc "F_DBroomTimerForWarn",3,.dbroom3,.temppassword3$,.password3$,.pass3$,.room3owner$,"dbroom03";
+	end;
+	}
+if (@youhaveroom == 4){
+	callfunc "F_DBroomTimerForWarn",4,.dbroom4,.temppassword4$,.password4$,.pass4$,.room4owner$,"dbroom04";
+	end;
+	}
+if (@youhaveroom == 5){
+	callfunc "F_DBroomTimerForWarn",5,.dbroom5,.temppassword5$,.password5$,.pass5$,.room5owner$,"dbroom05";
+	end;
+	}
+if (@youhaveroom == 6){
+	callfunc "F_DBroomTimerForWarn",6,.dbroom6,.temppassword6$,.password6$,.pass6$,.room6owner$,"dbroom06";
+	end;
+	}
+if (@youhaveroom == 7){
+	callfunc "F_DBroomTimerForWarn",7,.dbroom7,.temppassword7$,.password7$,.pass7$,.room7owner$,"dbroom07";
+	end;
+	}
+if (@youhaveroom == 8){
+	callfunc "F_DBroomTimerForWarn",8,.dbroom8,.temppassword8$,.password8$,.pass8$,.room8owner$,"dbroom08";
+	end;
+	}
+if (@youhaveroom == 9){
+	callfunc "F_DBroomTimerForWarn",9,.dbroom9,.temppassword9$,.password9$,.pass9$,.room9owner$,"dbroom09";
+	end;
+	}
+if (@youhaveroom == 10){
+	callfunc "F_DBroomTimerForWarn",10,.dbroom10,.temppassword10$,.password10$,.pass10$,.room10owner$,"dbroom10";
+	end;
+	}
+if (@youhaveroom == 11){
+	callfunc "F_DBroomTimerForWarn",11,.dbroom11,.temppassword11$,.password11$,.pass11$,.room11owner$,"dbroom11";
+	end;
+	}
+if (@youhaveroom == 12){
+	callfunc "F_DBroomTimerForWarn",12,.dbroom12,.temppassword12$,.password12$,.pass12$,.room12owner$,"dbroom12";
+	end;
+	}
+if (@youhaveroom == 13){
+	callfunc "F_DBroomTimerForWarn",13,.dbroom13,.temppassword13$,.password13$,.pass13$,.room13owner$,"dbroom13";
+	end;
+	}
+if (@youhaveroom == 14){
+	callfunc "F_DBroomTimerForWarn",14,.dbroom14,.temppassword14$,.password14$,.pass14$,.room14owner$,"dbroom14";
+	end;
+	}
+if (@youhaveroom == 15){
+	callfunc "F_DBroomTimerForWarn",15,.dbroom15,.temppassword15$,.password15$,.pass15$,.room15owner$,"dbroom15";
+	end;
+	}
+if (@youhaveroom == 16){
+	callfunc "F_DBroomTimerForWarn",16,.dbroom16,.temppassword16$,.password16$,.pass16$,.room16owner$,"dbroom16";
+	end;
+	}
+if (@youhaveroom == 17){
+	callfunc "F_DBroomTimerForWarn",17,.dbroom17,.temppassword17$,.password17$,.pass17$,.room17owner$,"dbroom17";
+	end;
+	}
+if (@youhaveroom == 18){
+	callfunc "F_DBroomTimerForWarn",18,.dbroom18,.temppassword18$,.password18$,.pass18$,.room18owner$,"dbroom18";
+	end;
+	}
+if (@youhaveroom == 19){
+	callfunc "F_DBroomTimerForWarn",19,.dbroom19,.temppassword19$,.password19$,.pass19$,.room19owner$,"dbroom19";
+	end;
+	}
+if (@youhaveroom == 20){
+	callfunc "F_DBroomTimerForWarn",20,.dbroom20,.temppassword20$,.password20$,.pass20$,.room20owner$,"dbroom20";
+	end;
+	}
+if (@youhaveroom == 21){
+	callfunc "F_DBroomTimerForWarn",21,.dbroom21,.temppassword21$,.password21$,.pass21$,.room21owner$,"dbroom21";
+	end;
+	}
+if (@youhaveroom == 22){
+	callfunc "F_DBroomTimerForWarn",22,.dbroom22,.temppassword22$,.password22$,.pass22$,.room22owner$,"dbroom22";
+	end;
+	}
+if (@youhaveroom == 23){
+	callfunc "F_DBroomTimerForWarn",23,.dbroom23,.temppassword23$,.password23$,.pass23$,.room23owner$,"dbroom23";
+	end;
+	}
+if (@youhaveroom == 24){
+	callfunc "F_DBroomTimerForWarn",24,.dbroom24,.temppassword24$,.password24$,.pass24$,.room24owner$,"dbroom24";
+	end;
+	}
+if (@youhaveroom == 25){
+	callfunc "F_DBroomTimerForWarn",25,.dbroom25,.temppassword25$,.password25$,.pass25$,.room25owner$,"dbroom25";
+	end;
+	}
+if (@youhaveroom == 26){
+	callfunc "F_DBroomTimerForWarn",26,.dbroom26,.temppassword26$,.password26$,.pass26$,.room26owner$,"dbroom26";
+	end;
+	}
+if (@youhaveroom == 27){
+	callfunc "F_DBroomTimerForWarn",27,.dbroom27,.temppassword27$,.password27$,.pass27$,.room27owner$,"dbroom27";
+	end;
+	}
+if (@youhaveroom == 28){
+	callfunc "F_DBroomTimerForWarn",28,.dbroom28,.temppassword28$,.password28$,.pass28$,.room28owner$,"dbroom28";
+	end;
+	}
+if (@youhaveroom == 29){
+	callfunc "F_DBroomTimerForWarn",29,.dbroom29,.temppassword29$,.password29$,.pass29$,.room29owner$,"dbroom29";
+	end;
+	}
+if (@youhaveroom == 30){
+	callfunc "F_DBroomTimerForWarn",30,.dbroom30,.temppassword30$,.password30$,.pass30$,.room30owner$,"dbroom30";
+	end;
+	}
+}
+
+
+arenalounge,64,80,1	duplicate(DB Room Warper)	DB Room Warper#a2	723
+arenalounge,64,67,1	duplicate(DB Room Warper)	DB Room Warper#a3	723
+arenalounge,74,54,1	duplicate(DB Room Warper)	DB Room Warper#a4	723
+arenalounge,111,80,1	duplicate(DB Room Warper)	DB Room Warper#a5	723
+arenalounge,111,67,1	duplicate(DB Room Warper)	DB Room Warper#a6	723
+arenalounge,101,54,1	duplicate(DB Room Warper)	DB Room Warper#a7	723
+premcity,148,172,1	duplicate(DB Room Warper)	DB Room Warper#p1	723

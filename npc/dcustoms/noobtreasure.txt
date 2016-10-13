@@ -1,0 +1,78 @@
+//new_zone01,64,111,2	script	Mario the Third	105,10,10,{
+//
+//	if(noobchestopened == 1) end;
+//	mes "[Mario the Third]";
+//	mes "Pick a box. Its contents will help you on your way.";
+//	close;
+//}
+
+
+//new_zone01,62,111,4	script	???::DeliNoobTreasure	1324,{
+//	if(noobchestopened == 1) goto GreedyBastard;
+//	set @mario3box, rand(9);
+//	if(@mario3box == 0) getitem 1102,1; //Sword[1]
+//	if(@mario3box == 1) getitem 1302,1; //Axe[1]
+//	if(@mario3box == 2) getitem 1502,1; //Club[1]
+//	if(@mario3box == 3) getitem 2101,1; //Guard
+//	if(@mario3box == 4) getitem 2262,1; //Pierrot Nose
+//	if(@mario3box == 5) getitem 2278,1; //Mr. Smile
+//	if(@mario3box == 6) getitem 2303,1; //Leather Jacket
+//	if(@mario3box == 7) getitem 2401,1; //Sandals
+//	if(@mario3box == 8) getitem 2501,1; //Hood
+//	set noobchestopened,1;
+//	close;
+//
+//GreedyBastard:
+//	mes "[Mario the Third]";
+//	mes "I said pick ONE box. Leave some for the other adventurers.";
+//	emotion 23;
+//	close;
+//}
+
+//new_zone01,62,114,4	duplicate(DeliNoobTreasure)	???#2	1324
+//new_zone01,62,108,4	duplicate(DeliNoobTreasure)	???#3	1324
+
+
+
+//?
+
+new_zone02,102,30,4	script	Welcome Flag	722,{ 	
+
+cutin "welcome",4;
+mes "Do you wish to skip the Training Grounds and go directly to the city of Prontera?";
+mes " ";
+mes "Training is recommended if you are new to Ragnarok.";
+menu "Warp to Prontera.",yes,"I want to train.",no;
+
+yes:
+set NEW_MES_FLAG0,0;
+//set noobchestopened,0;
+savepoint "prontera",170,179;
+warp "prontera",156,191;
+cutin "welcome",255;
+close;
+
+no:
+next;
+mes "Talk to the Receptionist NPC to enter the Training Grounds.";
+cutin "welcome",255;
+close;
+}
+
+
+
+new_zone01	mapflag	nowarp
+new_zone01	mapflag	nowarpto
+new_zone01	mapflag	nozenypenalty
+
+new_zone02	mapflag	nowarp
+new_zone02	mapflag	nowarpto
+new_zone02	mapflag	nozenypenalty
+
+new_zone03	mapflag	nowarp
+new_zone03	mapflag	nowarpto
+new_zone03	mapflag	nozenypenalty
+
+new_zone04	mapflag	nowarp
+new_zone04	mapflag	nowarpto
+new_zone04	mapflag	nozenypenalty

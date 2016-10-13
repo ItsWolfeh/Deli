@@ -1,0 +1,642 @@
+
+doubledom	mapflag	nomemo
+doubledom	mapflag	pvp
+doubledom	mapflag	noreturn
+doubledom	mapflag	loadevent
+doubledom	mapflag	nobranch
+doubledom	mapflag	nopenalty
+doubledom	mapflag	noteleport
+doubledom	mapflag	pvp_noguild
+doubledom	mapflag	nozenypenalty
+doubledom	mapflag	restricted	6
+doubledom	mapflag	nosave	SavePoint
+
+
+
+doubledom,0,0,0	script	ddomination_sys	-1,{
+	end;
+
+function check_status {
+	if(.current_side != $@ddomination_sid){
+		set .@i, gettimetick(2) - .timer;
+		if(.@i > 9)
+			soundeffectall "LastSecondSaved.wav",0,"doubledom";
+		else if(.@i > 5)
+			soundeffectall "NarrowlyAvirted.wav",0,"doubledom";
+		else
+			soundeffectall "Avirted.wav",0,"doubledom";
+		stopnpctimer;
+		set .timer, 0;
+		end;
+	}
+	return;
+}
+
+OnStart:
+	if($@ddevent_start >= $@ddomination_rnd && .team[2] != .team[1]) goto L_Stop;
+	set $@ddevent_start, $@ddevent_start + 1;
+	set $@ddomination_z1, 0;
+	set $@ddomination_z2, 0;
+	set $@ddomination_fb, 0;
+	set .@total, getarraysize($@ddomination_db_1);
+	for(set .@i, 0; .@i < .@total; set .@i, .@i + 1){
+		attachrid getelementofarray($@ddomination_db_1, .@i);
+		pcblockmove 0,1;
+//Custom color line
+		setlook 7,42;
+		dispbottom "Double Domination is commencing soon. You are part of Red Team.";
+		savepoint "doubledom",49,91;
+		warp "doubledom",49,91;
+		detachrid;
+	}
+	set .@total, getarraysize($@ddomination_db_2);
+	for(set .@i, 0; .@i < .@total; set .@i, .@i + 1){
+		attachrid getelementofarray($@ddomination_db_2, .@i);
+		pcblockmove 0,1;
+//Custom color line
+		setlook 7,43;
+		dispbottom "Double Domination is commencing soon. You are part of Blue Team.";
+		savepoint "doubledom",50,7;
+		warp "doubledom",50,7;
+		detachrid;
+	}
+	sleep 5000;
+	soundeffectall "NewRound.wav",0,"doubledom";
+	mapannounce "doubledom", "[Round " + $@ddevent_start + "] Starting in ...", 16;
+	set .action, 1;
+	initnpctimer;
+	end;
+OnTimer1000:
+	if(.action == 2){
+		check_status;
+		mapannounce "doubledom", "10!",16;
+		soundeffectall "10.wav",0,"doubledom";
+	}
+	end;
+OnTimer2000:
+	if(.action == 2){
+		check_status;
+		mapannounce "doubledom", "9!",16;
+		soundeffectall "9.wav",0,"doubledom";
+	}
+	end;
+OnTimer3000:
+	if(.action == 2){
+		check_status;
+		mapannounce "doubledom", "8!",16;
+		soundeffectall "8.wav",0,"doubledom";
+	}
+	end;
+OnTimer4000:
+	if(.action == 1){
+		mapannounce "doubledom", "5!",16;
+		soundeffectall "5.wav",0,"doubledom";
+	} else {
+		check_status;
+		mapannounce "doubledom", "7!",16;
+		soundeffectall "7.wav",0,"doubledom";
+	}
+	end;
+OnTimer5000:
+	if(.action == 1){
+		mapannounce "doubledom", "4!",16;
+		soundeffectall "4.wav",0,"doubledom";
+	} else {
+		check_status;
+		mapannounce "doubledom", "6!",16;
+		soundeffectall "6.wav",0,"doubledom";
+	}
+	end;
+OnTimer6000:
+	if(.action == 1){
+		mapannounce "doubledom", "3!",16;
+		soundeffectall "3.wav",0,"doubledom";
+	} else {
+		check_status;
+		mapannounce "doubledom", "5!",16;
+		soundeffectall "5.wav",0,"doubledom";
+	}
+	end;
+OnTimer7000:
+	if(.action == 1){
+		mapannounce "doubledom", "2!",16;
+		soundeffectall "2.wav",0,"doubledom";
+	} else {
+		check_status;
+		mapannounce "doubledom", "4!",16;
+		soundeffectall "4.wav",0,"doubledom";
+	}
+	end;
+OnTimer8000:
+	if(.action == 1){
+		mapannounce "doubledom", "1!",16;
+		soundeffectall "1.wav",0,"doubledom";
+	} else {
+		check_status;
+		mapannounce "doubledom", "3!",16;
+		soundeffectall "3.wav",0,"doubledom";
+	}
+	end;
+OnTimer9000:
+	if(.action == 1){
+		set .@total, getarraysize($@ddomination_db_1);
+		for(set .@i, 0; .@i < .@total; set .@i, .@i + 1){
+			pcblockmove getelementofarray($@ddomination_db_1, .@i),0;
+		}
+		set .@total, getarraysize($@ddomination_db_2);
+		for(set .@i, 0; .@i < .@total; set .@i, .@i + 1){
+			pcblockmove getelementofarray($@ddomination_db_2, .@i),0;
+		}
+		soundeffectall "Play.wav",0,"doubledom";
+		set .action, 0;
+	} else {
+		check_status;
+		mapannounce "doubledom", "2!",16;
+		soundeffectall "2.wav",0,"doubledom";
+	}
+	end;
+OnTimer10000:
+	if(.action == 2){
+		check_status;
+		mapannounce "doubledom", "1!",16;
+		soundeffectall "1.wav",0,"doubledom";
+	}
+	end;
+OnTimer11000:
+	if(.action == 2){
+		soundeffectall "DominationWin.wav",0,"doubledom";
+		if(.current_side == 1){
+			mapannounce "doubledom", "Red Team Scores!",bc_map,0xFF0000;
+			if(.team[1] == .team[2])
+				soundeffectall "RedTeamTakesTheLead.wav",0,"doubledom";
+			else if(.team[1] > .team[2])
+				soundeffectall "RedTeamIncreases.wav",0,"doubledom";
+			else
+				soundeffectall "RedTeamScores.wav",0,"doubledom";
+			set .team[1], .team[1] + 1;
+		} else {
+			mapannounce "doubledom", "Blue Team Scores!",bc_map,0x0000FF;
+			if(.team[2] == .team[1])
+				soundeffectall "BlueTakesTheLead.wav",0,"doubledom";
+			else if(.team[2] > .team[1])
+				soundeffectall "BlueTeamIncreases.wav",0,"doubledom";
+			else
+				soundeffectall "BlueTeamScores.wav",0,"doubledom";
+			set .team[2], .team[2] + 1;
+		}
+		goto OnStart;
+	}
+	end;
+
+L_Stop:
+	if(.team[1] > .team[2]){
+		mapannounce "doubledom", "Game Point! Red Team has won the match!", bc_map,0xFF0000;
+		set .@total, getarraysize($@ddomination_db_1);
+		for(set .@i, 0; .@i < .@total; set .@i, .@i + 1){
+			attachrid getelementofarray($@ddomination_db_1, .@i);
+			soundeffect "YouHaveWonTheMatch.wav", 0;
+			set Zeny, Zeny + $@ddomination_rew;
+			set @ddomination, 0;
+			set @ddomination_com, 0;
+			set @ddomination_kill, 0;
+			set @ddomination_time, 0;
+			savepoint "arenalounge",88,78;
+			detachrid;
+		}
+		set .@total, getarraysize($@ddomination_db_2);
+		for(set .@i, 0; .@i < .@total; set .@i, .@i + 1){
+			attachrid getelementofarray($@ddomination_db_2, .@i);
+			soundeffect "YouHaveLostTheMatch.wav", 0;
+			set @ddomination, 0;
+			set @ddomination_com, 0;
+			set @ddomination_kill, 0;
+			set @ddomination_time, 0;
+			savepoint "arenalounge",88,78;
+			detachrid;
+		}
+	}else{
+		mapannounce "doubledom", "Game Point! Blue Team has won the match!",bc_map,0x0000FF;
+		set .@total, getarraysize($@ddomination_db_1);
+		for(set .@i, 0; .@i < .@total; set .@i, .@i + 1){
+			attachrid getelementofarray($@ddomination_db_1, .@i);
+			set @ddomination, 0;
+			set @ddomination_com, 0;
+			set @ddomination_kill, 0;
+			soundeffect "YouHaveLostTheMatch.wav", 0;
+			set @ddomination_time, 0;
+			savepoint "arenalounge",88,78;
+			detachrid;
+		}
+		set .@total, getarraysize($@ddomination_db_2);
+		for(set .@i, 0; .@i < .@total; set .@i, .@i + 1){
+			attachrid getelementofarray($@ddomination_db_2, .@i);
+			set @ddomination, 0;
+			set @ddomination_com, 0;
+			set @ddomination_kill, 0;
+			soundeffect "YouHaveWonTheMatch.wav", 0;
+			set Zeny, Zeny + $@ddomination_rew;
+			set @ddomination_time, 0;
+			savepoint "arenalounge",88,78;
+			detachrid;
+		}
+	}
+L_Clean:
+	set $@ddevent_start, 0;
+	deletearray $@ddomination_db_1, getarraysize($@ddomination_db_1);
+	deletearray $@ddomination_db_2, getarraysize($@ddomination_db_2);
+	deletearray .team, getarraysize(.team);
+	set $@ddomination_sid, 0;
+	set $@ddomination_fb, 0;
+	sleep 5000;
+	mapwarp "doubledom", "arenalounge", 88, 78;
+	end;
+
+OnCount:
+	set .current_side, $@ddomination_sid;
+	if(.current_side == 1){
+		mapannounce "doubledom", "Red Team Dominating!",bc_map,0xFF0000;
+		soundeffectall "RedTeamDominating.wav",0,"doubledom";
+	}else{
+		mapannounce "doubledom", "Blue Team Dominating!",bc_map,0x0000FF;
+		soundeffectall "BlueTeamDominating.wav",0,"doubledom";
+	}
+	set .action, 2;
+	set .timer, gettimetick(2);
+	initnpctimer;
+	end;
+
+OnInit:
+	set $@ddomination_max, 5;
+	set $@ddomination_rnd, 3;
+	set $@ddomination_rew, 10000;
+	end;
+
+OnPCKillEvent:
+	if(@ddomination && $@ddevent_start){
+		if($@ddomination_fb == 0){
+			set $@ddomination_fb, 1;
+			mapannounce "doubledom", strcharinfo(0) + " drew FIRST BLOOD!", 16;
+			soundeffectall "FirstBlood.wav",0,"doubledom";
+		}
+		set @ddomination_kill, @ddomination_kill + 1;
+		if(gettimetick(2) - @ddomination_time < 10){
+			set @ddomination_time, gettimetick(2);
+			set @ddomination_com, @ddomination_com + 1;
+			switch(@ddomination_com){
+				case 1: // 2 kills
+					announce "Double Kill!", bc_self;
+					soundeffect "DoubleKill.wav",  0;
+					break;
+				case 2:
+					announce "Triple Kill!", bc_self;
+					soundeffect "TripleKill.wav", 0;
+					break;
+				case 3:
+					announce "Multi Kill!", bc_self;
+					soundeffect "MultiKill.wav", 0;
+					break;
+				case 4:
+					announce "Ultra Kill!", bc_self;
+					soundeffect "UltraKill.wav", 0;
+					break;
+				case 5:
+					announce "Mega Kill!", bc_self;
+					soundeffect "MegaKill.wav", 0;
+					break;
+				case 6:
+					announce "MOOOOOOOONSTER Kill!", bc_self;
+					soundeffect "MonsterKill.wav", 0;
+					break;
+				case 7:
+					announce "LLLLLLLLUUUUDDDRRICCOOOOUSS Kill!", bc_self;
+					soundeffect "LudricousKill.wav", 0;
+					break;
+				default: // Holy shit!
+					announce "HOLY SHIT!", bc_self;
+					soundeffect "HolyShit.wav", 0;
+					break;
+			}
+			sleep2 3000;
+		} else {
+			set @ddomination_time, gettimetick(2);
+			set @ddomination_com, 0;
+		}
+	}
+	end;
+
+OnPCDieEvent:
+	if(@ddomination && $@ddevent_start){
+		set @ddomination_com, 0;
+		set @ddomination_time, 0;
+		set @ddomination_kill,0;
+	}
+	end;
+
+
+OnPCLogoutEvent:
+	if(@ddomination){
+		set ddomination_li, 1;
+		savepoint "arenalounge",88,78;
+		callfunc "ddomination_rem", getd("$@ddomination_db_" + @ddomination), playerattached();
+		if(getarraysize($@ddomination_db_1) == 0 && getarraysize($@ddomination_db_2) == 0) goto L_Clean;
+	}
+	end;
+
+OnPCLoadMapEvent:
+	if(ddomination_li){
+		set ddomination_li, 0;
+		warp "arenalounge",88,78;
+	}
+	end;
+
+}
+
+doubledom,7,49,4	script	Zone 1	45,2,2,{
+end;
+OnTouch:
+	if(@ddomination && $@ddevent_start){
+		if($@ddomination_z1 == @ddomination) end;
+		if(@ddomination == 1)
+			mapannounce "doubledom", "Red Team Dominated Zone 1!",bc_map,0xFF0000;
+		else
+			mapannounce "doubledom", "Blue Team Dominated Zone 1!",bc_map,0x0000FF;
+		set $@ddomination_z1, @ddomination;
+		if($@ddomination_z1 == $@ddomination_z2){
+			set $@ddomination_sid, @ddomination;
+			donpcevent "ddomination_sys::OnCount";
+		} else {
+			set $@ddomination_sid, 0;
+		}
+	}
+	end;
+}
+
+doubledom,91,49,4	script	Zone 2	45,2,2,{
+end;
+OnTouch:
+	if(@ddomination && $@ddevent_start){
+		if($@ddomination_z2 == @ddomination) end;
+		if(@ddomination == 1)
+			mapannounce "doubledom", "Red Team Dominated Zone 2!",bc_map,0xFF0000;
+		else
+			mapannounce "doubledom", "Blue Team Dominated Zone 2!",bc_map,0x0000FF;
+		set $@ddomination_z2, @ddomination;
+		if($@ddomination_z1 == $@ddomination_z2){
+			set $@ddomination_sid, @ddomination;
+			donpcevent "ddomination_sys::OnCount";
+		} else {
+			set $@ddomination_sid, 0;
+		}
+	}
+	end;
+}
+
+function	script	ddomination_reg	{
+if(getgmlevel() == 2){
+	switch(select("SubGM Script Reset","Continue to normal NPC")){
+		case 1:
+		mes "Are you sure?";
+		menu "No, my mistake",L_noplz,"Yes, reset plx",-;
+		close2;
+		set $@ddevent_start, 0;
+		deletearray $@ddomination_db_1, getarraysize($@ddomination_db_1);
+		deletearray $@ddomination_db_2, getarraysize($@ddomination_db_2);
+		deletearray .team, getarraysize(.team);
+		set $@ddomination_sid, 0;
+		set $@ddomination_fb, 0;
+		sleep 5000;
+		mapwarp "doubledom", "arenalounge", 88, 78;
+			next;
+
+		default:
+			break;
+
+L_noplz:
+		close;
+	}
+}
+
+if(getgmlevel() == 99){
+	switch(select("GM Script Configure and Reset","Continue to normal NPC")){
+		case 1:
+			mes "Number of players on each team. Default 5.";
+			mes "$@ddomination_max";
+			input $@ddomination_max;
+			next;
+			mes "Number of rounds. Default 3.";
+			mes "$@ddomination_rnd";
+			input $@ddomination_rnd;
+			next;
+			mes "Zeny reward - Costs half the amount to register. Default 10000.";
+			mes "$@ddomination_rew";
+			input $@ddomination_rew;
+			close2;
+		set $@ddevent_start, 0;
+		deletearray $@ddomination_db_1, getarraysize($@ddomination_db_1);
+		deletearray $@ddomination_db_2, getarraysize($@ddomination_db_2);
+		deletearray .team, getarraysize(.team);
+		set $@ddomination_sid, 0;
+		set $@ddomination_fb, 0;
+		sleep 5000;
+		mapwarp "doubledom", "arenalounge", 88, 78;
+			next;
+
+		default:
+			break;
+	}
+}
+L_menu:
+	mes "[Double Domination]";
+	mes "^FF0000Red Team^000000 - " + getarraysize($@ddomination_db_1) + " / " + $@ddomination_max;
+	mes "^0000FFBlue Team^000000 - " + getarraysize($@ddomination_db_2) + " / " + $@ddomination_max;
+	mes " ";
+	mes "Check who your teammates are and make sure to party up before the last person registers.";
+	switch(select("Register","View Team Members","How to play?","Cancel")){
+		case 1:
+			next;
+			if(Zeny < ($@ddomination_rew/2)){
+				mes "[Double Domination]";
+				mes "Sorry, you have insufficient funds.";
+				close;
+			}
+			if(@ddomination || @ctf){
+				mes "[Double Domination]";
+				mes "Sorry, you cannot join twice.";
+				close;
+			}
+			set .@size1, getarraysize($@ddomination_db_1);
+			set .@size2, getarraysize($@ddomination_db_2);
+			if($@ddomination_max > .@size1){
+				if(.@size1 < .@size2){
+					callfunc "ddomination_sign", 1, playerattached();
+				} else {
+					callfunc "ddomination_sign", 2, playerattached();
+				}
+			} else {
+				if($@ddomination_max > .@size2){
+					callfunc "ddomination_sign", 2, playerattached();
+				} else {
+					mes "[Double Domination]";
+					mes "Sorry, registration is full at the moment.";
+					close;
+				}
+			}
+			break;
+		case 2:
+			select "^FF0000Red Team^000000","^0000FFBlue Team^000000";
+			next;
+            		set .@total, getarraysize(getd("$@ddomination_db_" + @menu));
+			for(set .@i, 0; .@i < .@total; set .@i, .@i + 1){
+				mes rid2name(getelementofarray(getd("$@ddomination_db_" + @menu), .@i));
+			}
+			next;
+			goto L_menu;
+		case 3:
+			next;
+			mes "In Double Domination, two teams fight for control of two Zones located at the East and West ends of the map. Walk over a Zone and your team gains control of it.";
+			next;
+			mes "When one team controls both Zones, a countdown begins. That team must control both Zones for 10 seconds to score a point. Opposing team will try to take over the Zones and prevent them from scoring.";
+			next;
+			mes "Essentially, the teams are fighting for domination over both Zones.";
+			mes " ";
+			mes "Default settings: 5k Zeny fee, 5 players per team and it takes 3 points to win. Winning team members win double the registration fee.";
+			next;
+			goto L_menu;
+
+		case 4:
+			close;
+	}
+	close;
+}
+
+function	script	ddomination_sign	{
+	set Zeny, Zeny - ($@ddomination_rew/2);
+	set getd("$@ddomination_db_" + getarg(0) + "[" + getarraysize(getd("$@ddomination_db_" + getarg(0))) + "]"), getarg(1);
+	set @ddomination, getarg(0);
+	mes "[Double Domination]";
+	if(@ddomination == 1)
+		mes "You now joined the ^FF0000Red Team^000000.";
+	else
+		mes "You now joined the ^0000FFBlue Team^000000.";
+	close2;
+	debugmes getarraysize($@ddomination_db_1) + " " + getarraysize($@ddomination_db_2);
+	set .@size, getarraysize($@ddomination_db_1);
+	if(.@size == getarraysize($@ddomination_db_2) && .@size == $@ddomination_max && $@ddevent_start == 0)
+		donpcevent "ddomination_sys::OnStart";
+	end;
+}
+
+function	script	ddomination_rem	{
+	set .@total, getarraysize(getarg(0));
+	for(set .@i, 0; .@i < .@total; set .@i, .@i + 1){
+		if(getelementofarray(getarg(0), .@i) == getarg(1))
+			break;
+	}
+	if(.@i < .@total)
+		deletearray getelementofarray(getarg(0), .@i), 1;
+	return;
+}
+
+arenalounge,92,67,4	script	Double Domination	106,{
+	callfunc "ddomination_reg";
+	end;
+}
+
+
+
+doubledom,49,91,4	script	InvisibleDHealerSpot1	139,3,3,{
+end;
+OnTouch:
+if(DDOMOutofSpawn == 0) set DDOMOutofSpawn,1;
+if(DDOMHealed == 1) end;
+percentheal 75,75;
+set DDOMHealed,1;
+end;
+}
+
+doubledom,50,7,4	script	InvisibleDHealerSpot2	139,3,3,{
+end;
+OnTouch:
+if(DDOMOutofSpawn == 0) set DDOMOutofSpawn,1;
+if(DDOMHealed == 1) end;
+percentheal 75,75;
+set DDOMHealed,1;
+end;
+}
+
+
+
+doubledom,53,4,0	script	Blue Storage	802,{
+openstorage;
+end;
+}
+
+doubledom,46,4,0	script	Blue Repairman	802,{
+	set @name$,"Blue Repairman";
+	callfunc "repairmain";
+	end;
+}
+
+
+doubledom,46,95,0	script	Red Storage	802,{
+openstorage;
+end;
+}
+
+doubledom,53,95,0	script	Red Repairman	802,{
+	set @name$,"Red Repairman";
+	callfunc "repairmain";
+	end;
+}
+
+
+
+doubledom,49,84,4	script	RedAntiSpawnCamp	139,2,10,{
+end;
+OnTouch:
+if(DDOMOutofSpawn == 0) end;
+warp "doubledom",49,72;
+end;
+}
+
+
+doubledom,50,15,4	script	BlueAntiSpawnCamp	139,2,10,{
+end;
+OnTouch:
+if(DDOMOutofSpawn == 0) end;
+warp "doubledom",50,27;
+end;
+}
+
+
+
+
+
+arenalounge,94,68,4	script	Dye Restorer	802,{
+
+	mes "[Dye Restorer]";
+	mes "I can save your dye color before a set of Double Domination games and restore it later. Current dye is number ^9900FF"+getlook(7)+"^000000.";
+	mes "You've saved dye number ^3333FF"+DDOMRememberDye+"^000000 with me.";
+	next;
+	menu "Save current dye",L_DDSaveDye,"Load a saved dye",L_DDLoadDye,"Cancel",L_DDCancelDye;
+
+
+L_DDSaveDye:
+	mes "[Dye Restorer]";
+	mes "Your current dye has been saved. Talk to me later to restore it.";
+	set DDOMRememberDye,getlook(7);
+	close;
+
+L_DDLoadDye:
+	setlook 7,DDOMRememberDye;
+	set DDOMHealed,0;
+	mes "[Dye Restorer]";
+	mes "Your saved dye has been restored to you. Do you wish for me to clear the saved dye or remember it for future use?";
+	next;
+	menu "Remember my saved dye",L_DDCancelDye,"Clear it.",-;
+	set DDOMRememberDye,0;
+	close;
+
+L_DDCancelDye:
+	close;
+}

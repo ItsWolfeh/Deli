@@ -1,0 +1,2633 @@
+//====================================================================================
+//Berzebub Quest by Henhouse for Deliverance Online. Help from Zarcon and Deli team. =
+//====================================================================================
+
+yuno_in03,58,178,4	script	Yuno Scholar	60,{
+
+if (BERZEWARP == 1) goto L_Deliver;
+if (BERZEWARP == 2 && !countitem(681)) goto L_Delivered;
+if (BERZEWARP == 2 && countitem(681)) goto L_Delivered2;
+if (BERZEWARP > 2) goto L_Teaching;
+
+mes "[Yuno Scholar]";
+mes "Sigh... My wife, she's been away from home for two weeks now.";
+next;
+mes "[Yuno Scholar]";
+mes "She's an archaeologist, you see. She's always running around trying to find the 'next big discovery.' Says it'll make her name go down in history.";
+next;
+mes "[Yuno Scholar]";
+mes "I just want her to come back once in a while, you know?. I'd go to find her myself if I wasn't so busy with teaching classes here in Yuno."; 
+next;
+mes "[Yuno Scholar]";
+mes "It's been bothering me so much I even wrote a detailed letter to her, but I'm just so tied up I can't find someone to send it to her.";
+next;
+mes "[Yuno Scholar]";
+mes "Hey, could you possibly deliver this letter to her from me?";
+next;
+menu "I guess I'll do it.",-,"No, you should do it yourself.",L_Nodeliver;
+getitem 7278,1;
+set BERZEWARP,1;
+mes "[Yuno Scholar]";
+mes "Oh, thank you so much! I really appreciate it.";
+next;
+L_Deliver:
+mes "[Yuno Scholar]";
+mes "You can find her on the field east of Geffen, probably somewhere near the water. It's her favorite working spot.";
+close;
+
+L_Delivered:
+mes "[Yuno Scholar]";
+mes "I really appreciate you delivering the letter in my stead.";
+close;
+
+L_Delivered2:
+mes "[Yuno Scholar]";
+mes "I really appreciate you delivering the letter in my stead.";
+next;
+mes "[Yuno Scholar]";
+mes "That book...";
+next;
+mes "[Yuno Scholar]";
+mes "Did she give you that? To give me?";
+next;
+mes "[Yuno Scholar]";
+mes "...";
+next;
+mes "[Yuno Scholar]";
+mes "This really changes everything. Seeing all these old pictures from when we were young and madly in love...";
+next;
+mes "[Yuno Scholar]";
+mes "I just know our relationship will work out. There will be hard times, but there will also be good times, I know it.";
+next;
+mes "[Yuno Scholar]";
+mes "Thank you so much, you've given me hope again. Looks like it's time for me to teach class now.";
+next;
+mes "[Yuno Scholar]";
+mes "Please, if it's not too much trouble, go back to her and tell her... that I accept how much she loves her job. And please, tell her that I love her.";
+set BERZEWARP,3;
+delitem 681,1;
+close;
+
+L_Nodeliver:
+mes "[Yuno Scholar]";
+mes "Sigh... I was really hoping you'd deliver the letter for me.";
+close;
+
+L_Teaching:
+mes "[Yuno Scholar]";
+mes "Thank you so much, you've given me hope again. I know our marriage will work out...";
+next;
+mes "[Yuno Scholar]";
+mes "I just need to keep the faith.";
+close;
+}
+
+//===================================================================
+gef_fild00,100,144,4	script	Archaeologist Jill	702,{
+
+if (BERZEWARP == 1 && countitem(7278)) goto L_GotLetter;
+if (BERZEWARP == 2) goto L_Waiting;
+if (BERZEWARP == 3) goto L_Recommend;
+
+mes "[Archaeologist Jill]";
+mes "Hmmm.";
+next;
+mes "[Archaeologist Jill]";
+mes "These rock formations....."; 
+next;
+mes "[Archaeologist Jill]";
+mes "Could it be?";
+close;
+
+L_GotLetter:
+mes "[Archaeologist Jill]";
+mes "Oh my, do you need something?";
+next;
+menu "I have a letter for you...",L_Letter,"I was just passing by",-;
+
+mes "[Archaeologist Jill]";
+mes "Oh really? I see, I thought you were an applicant for the position my boss is offering to brave adventurers.";
+close; 
+
+L_Letter:
+mes "[Archaeologist Jill]";
+mes "A letter...?";
+next;
+mes "[Archaeologist Jill]";
+mes "I have no time for letters, I'm on a hunt for next the biggest discovery since sliced bread!";
+next;
+mes "[Archaeologist Jill]";
+mes "...";
+next;
+mes "[Archaeologist Jill]";
+mes "...it's from my husband?";
+next;
+mes "[Archaeologist Jill]";
+mes "What in Midgard could he want? Let me see that...";
+next;
+mes "[Archaeologist Jill]";
+mes "...";
+next;
+mes "[Archaeologist Jill]";
+mes "...Ah.";
+next;
+mes "[Archaeologist Jill]";
+mes "I'm such a terrible person... How could I forget the one person that matters to me most?";
+next;
+mes "[Archaeologist Jill]";
+mes "The feeling you get when you find something makes all the long hours of study and research worth it.";
+next;
+mes "[Archaeologist Jill]";
+mes "But even the success isn't as important as my duty to my loved one... I feel so terrible.";
+next;
+mes "[Archaeologist Jill]";
+mes "Please, would you bring this to him? I haven't forgotten when we were young, how in love we were.";
+next;
+mes "[Archaeologist Jill]";
+mes "Thank you!";
+delitem 7278,1;
+getitem 681,1;
+set BERZEWARP,2;
+close;
+
+L_Waiting:
+mes "[Archaeologist Jill]";
+mes "When you deliver it... Be sure to tell him... I love him.";
+close;
+
+L_Recommend:
+mes "[Archaeologist Jill]";
+mes "Thank you, my husband must be feeling better by now.";
+next;
+mes "[Archaeologist Jill]";
+mes "I wonder, would you be interested in a career in Archaeology?";
+next;
+mes "[Archaeologist Jill]";
+mes "My boss, a man named Metz is searching for talented and experienced adventurers who have dreams of achieving true greatness.";
+next;
+mes "[Archaeologist Jill]";
+mes "It's a once in a lifetime opportunity. I'd take the chance if I didn't need to be with my husband more often.";
+next;
+mes "[Archaeologist Jill]";
+mes "His mansion is located just south of the Prontera Church.";
+close;
+}
+
+//===========================================================================
+
+prt_in,228,26,4	script	Steward#berz	109,{
+
+mes "[Vendez]";
+mes "Welcome to the Brayde Estate. How may I be of service?";
+next;
+menu "Nothing",-,"I'm here to see Metz about a job.",s_Metz,"Gimme your cash!",s_Cash;
+
+mes "[Vendez]";
+mes "If you do not have any business to conduct with Master Metz, I shall show you to the door.";
+close;
+
+s_Metz:
+mes "[Vendez]";
+mes "Very good, sir. Master Metz is in his study. I shall anounce to him that you are here at once.";
+close;
+
+s_Cash:
+mes "[Vendez]";
+mes "My apologies, but I insist that you leave the premises ^FF0000immediately^000000.";
+close2;
+warp "prontera",150,150;
+end;
+
+}
+//========================================================================
+
+prt_in,227,45,4	script	Metz Brayde	804,{
+if (BERZEWARP < 3) goto L_NoQuest;
+if (BERZEWARP == 4 || BERZEWARP == 5) goto L_SeeArian;
+if (BERZEWARP == 7 || BERZEWARP == 8 || BERZEWARP == 9 || BERZEWARP == 10) goto L_SeeMahha;
+if (BERZEWARP == 6) goto L_Next;
+if (BERZEWARP == 11) goto L_Next2;
+if (BERZEWARP == 12) goto L_JewelMade;
+if (BERZEWARP >= 13) goto L_NoQuest;
+if (BERZEWARP == 3) goto L_InitQuest;
+
+L_InitQuest:
+mes "[Metz]";
+mes "Hm...?";
+mes "Can I help you?";
+next;
+menu "I'm looking to apply for your job...",L_Job1,"I was just passing by.",-;
+
+mes "[Metz]";
+mes "Oh really? I see, I though you were an applicant for the position I'm offering to brave adventurers.";
+close;
+
+L_Job1:
+mes "[Metz]";
+mes "Great...! Welcome to my humble lodgings. Hmm, let me see...";
+next;
+if(BaseLevel < 90)
+{
+mes "[Metz]";
+mes "Uh, it pains me to say this, but I don't think you qualify to help me out."; 
+next;
+mes "[Metz]";
+mes "Once you gain enough experience though, I'll be happy to have you on board~";
+close;
+	}
+mes "[Metz]";
+mes "Hey, I think you might be well suited for the job!";
+next;
+mes "[Metz]";
+mes "Oh right, would you tell me your name? " + strcharinfo(0) + "? Okay then, I'll remember that.";
+next;
+
+mes "[Metz]";
+mes "The job I'm offering is pretty risky and not just anybody can handle it. Allow me to fill you in on a little story.";
+next;
+mes "[Metz]";
+mes "Old Gefenia was a city of ancient times, a city of ancient magic.";
+next;
+mes "[Metz]";
+mes "Many years ago Gefenia was overwhelmed by a mysterious catastrophy that resulted in most of the city being reduced to ashes.";
+next;
+mes "[Metz]";
+mes "Several ancient texts claim the destruction was caused by a great horned demon shrouded in darkness.";
+next;
+mes "[Metz]";
+mes "The demon was confronted by the guardians of the town, magic users of great power, but not before the city was utterly ruined.";
+next;
+mes "[Metz]";
+mes "What we do know for sure is that those that survived the incident built a new city over Gefenia's ashes.";
+next;
+mes "[Metz]";
+mes "How do we know this for sure? Why, the new city they built was the town of Geffen, the city of magic!";
+next;
+mes "[Metz]";
+mes "The beast was subdued but not defeated, and crept into the darkness of Gefenia's ruins below Geffen.";
+next;
+mes "[Metz]";
+mes "The guardians knew the demon would one day resurface, so they left behind a ^3366FFjewel of great spiritual power^000000 to repel evil for future generations.";
+next;
+mes "[Metz]";
+mes "For many years, the jewel lay atop the Geffen Fountain for all to see, but one day mysteriously vanished.";
+next;
+mes "[Metz]";
+mes "During one of my past expeditions I came upon a wretched merchant who claimed to be selling rare artifacts.";
+next;
+mes "[Metz]";
+mes "These 'rare' artifacts were none other than cons, fakes, poorly made replicas of their real counterparts. I held no interest in what he offered me...";
+next;
+mes "[Metz]";
+mes "...until he drew a curious ^3366FFfragment^000000 from his dirty pocket. My lust for beautiful artifacts got the better of me, and I made the fragment mine.";
+next;
+mes "[Metz]";
+mes "After weeks of poring over it, I had no doubt this was none other than a fragment of the great jewel written about in the ancient historical texts.";
+next;
+mes "[Metz]";
+mes "I could only conclude then that the jewel was broken into three fragments after being stolen judging from the size of the fragment I had obtained,";
+next;
+mes "[Metz]";
+mes "yet I hadn't the slightest idea where the final two fragments lay hidden.";
+next;
+mes "[Metz]";
+mes "After a decade of searching, I have recently come upon the owner of one of the remaining two fragments.";
+next;
+mes "[Metz]";
+mes "The owner of that particular fragment is a rude man by the name of ^FF0000Arian^000000, leader of the Rogue Guild.";
+next;
+mes "[Metz]";
+mes "He's dead set against giving me the fragment he possesses, but hopefully if I send you to negotiate, he might lighten up and strike a deal!";
+next;
+mes "[Metz]";
+mes "The secret hideout for the Rogue Guild is located in the Morroc desert, two maps south then two maps west of the city of Morroc.";
+next;
+mes "[Metz]";
+mes "Ah, almost forgot. Rogues in the Rogue Guild won't talk to anybody unless they wear a Blue Hairband. I've heard it's a symbol of their ruggedness.";
+next;
+mes "[Metz]";
+mes "I strongly suggest you wear one when you enter the hideout to gain their trust.";
+set BERZEWARP,4;
+close;
+
+L_SeeArian:
+mes "[Metz]";
+mes "Hm...?";
+mes "Shouldn't you leave for the Rogue Guild to see Arian? You better hurry in case somebody else applies for this little job.";
+next;
+mes "[Metz]";
+mes "The secret hideout for the Rogue Guild is located in the Morroc desert, two maps south then two maps west of the city of Morroc.";
+next;
+mes "[Metz]";
+mes "Ah, almost forgot. Rogues in the Rogue Guild won't talk to anybody unless they wear a Blue Hairband. I've heard it's a symbol of their ruggedness.";
+next;
+mes "[Metz]";
+mes "I strongly suggest you wear one when you enter the hideout to gain their trust.";
+close;
+
+L_Next:
+if(countitem(7306)){
+mes "[Metz]";
+mes "Ah, " + strcharinfo(0) + ", you're back.";
+next;
+mes "[Metz]";
+mes "...What is that in your hands? Why, it's Arian's fragment isn't it!";
+next;
+mes "[Metz]";
+mes "How did you..! No, no I never doubted your abilities for even a moment!";
+next;
+mes "[Metz]";
+mes "You seem to be the perfect person to carry out this special assignment of mine. Well done indeed.";
+next;
+mes "[Metz]";
+mes "Sadly, the next fragment is a bit of a puzzle it seems. I haven't the foggiest where it might be!";
+next;
+mes "[Metz]";
+mes "However, I do know one individual who knows more about the ancient history of Gefenia than even myself.";
+next;
+mes "[Metz]";
+mes "Her name is Mahha and she can be found in the Geffen Tower. Please go talk to her for me.";
+next;
+mes "[Metz]";
+mes "In the mean time, I'll take that fragment, thank you!";
+delitem 7306,1;
+set BERZEWARP,7;
+close;
+}
+mes "[Metz]";
+mes "Did you find Arian? What about his fragment? I must have it to complete the artifact, you know.";
+close;
+
+L_Next2:
+if (countitem(7306)){
+mes "[Metz]";
+mes "" + strcharinfo(0) + ", did you talk to Ms. Mahha?";
+next;
+mes "[Metz]";
+mes "...";
+next;
+mes "[Metz]";
+mes "I don't believe my old eyes! The third shard! Please, let me see it!";
+sleep2 2000;
+delitem 7306,1;
+goto L_JewelCreate;
+
+L_JewelCreate:
+next;
+mes "^3355FFUpon obtaining the last piece of the spirit, all three fragments emit a strange light, rise to the air and combine into a single jewel.^000000";
+next;
+mes "^3355FFThe jewel floats down to your waiting hands, and you hear a voice speak directly into the depths of your heart...^000000";
+next;
+mes "[Spiritual Whispers]";
+mes "^3355FFWe...^000000";
+mes "^3355FFWe shall guide you to the King of the Dead...^000000";
+next;
+mes "[Metz]";
+mes "Fascinating...";
+next;
+mes "[Metz]";
+mes "The jewel seems to be made with a material outside of Rune-Midgard! It must have an incredible power source!";
+next;
+mes "[Metz]";
+mes "I've read that this jewel controls some kind of seal placed on the Geffen Fountain.";
+next;
+mes "[Metz]";
+mes "There may be other applications using the power of this item that I'm not thinking of...";
+next;
+mes "^3355FFYou promised Lady Mahha you would show her the Whispers, you'd better get out of here with it while you still can.^000000";
+getitem 29025,1;
+set BERZEWARP,12;
+close;
+}
+mes "[Metz]";
+mes "Did you find Lady Mahha? Does she know anything about the final fragment? I must have it to complete the artifact, you know.";
+close;
+
+
+L_JewelMade:
+mes "[Metz]";
+mes "Fascinating...";
+next;
+mes "[Metz]";
+mes "The jewel seems to be made with a material outside of Rune-Midgard! It must have an incredible power source!";
+next;
+mes "[Metz]";
+mes "I've read that this jewel controls some kind of seal placed on the Geffen Fountain.";
+next;
+mes "[Metz]";
+mes "There may be other applications using the power of this item that I'm not thinking of...";
+next;
+mes "^3355FFYou promised Lady Mahha you would show her the Whispers, you'd better get out of here with it while you still can.^000000";
+close;
+
+L_SeeMahha:
+mes "[Metz]";
+mes "I do know one individual who knows more about the ancient history of Gefenia than even myself.";
+next;
+mes "[Metz]";
+mes "Her name is Mahha and she can be found in the Geffen Tower. Please go talk to her for me.";
+close;
+
+L_NoQuest:
+mes "[Metz]";
+mes "Although you need everlasting";
+mes "patience in an archaeological";
+mes "excavation, the feeling you get";
+mes "when you find something makes";
+mes "all those long hours of study and";
+mes "research worth it.";
+close;
+}
+
+//============================================================================
+in_rogue,366,25,0	script	#HatChecker	139,3,3,{
+OnTouch:
+if(BERZEWARP < 4)	end;
+if(BERZEWARP == 4 && !countitem(5052))
+{
+mes "[Rogue]";
+mes "...";
+next;
+mes "[Rogue]";
+mes "Git outta here, non-Rogue!";
+close2;
+warp "cmd_fild07",0,0;
+end;
+}
+end;
+}
+
+//============================================================================
+
+in_rogue,353,112,5	script	Arian	779,{
+	
+if (BERZEWARP >= 6) goto L_ArianDone;
+if (arianstest == 8) goto L_DoTest;
+if(BERZEWARP < 4)
+{
+emotion e_dots;
+end;
+}
+else if(BERZEWARP == 4 && countitem(5052))
+{
+
+mes "[Arian]";
+mes "...";
+next;
+mes "[Arian]";
+mes "Who the hell are you, jerkface?";
+next;
+menu "Metz sent me here to bargain.",L_Metz,"^0000FF" + strcharinfo(0) + "^000000",L_Name,"Who are you then?",-;
+
+mes "[Arian]";
+mes "...";
+mes "......";
+next;
+percentheal -50,0;
+mes "[Arian]";
+mes "Your mom!";
+next;
+mes "[Arian]";
+mes "Now get the hell outta my hideout!";
+close2;
+warp "cmd_fild07",0,0;
+end;
+
+L_Metz:
+mes "[Arian]";
+mes "Oh yeah...? Well, I'm sending you back! No way I'm dealing with that chump!";
+next;
+mes "[Arian]";
+mes "Tell Metz to go screw himself, that fat bastard!";
+close2;
+warp "cmd_fild07",0,0;
+end;
+
+L_Name:
+
+mes "[Arian]";
+mes "Wha...?";
+next;
+mes "[Arian]";
+mes "^0000FF" + strcharinfo(0) + "^000000?";
+next;
+mes "[Arian]";
+mes "Okay, yeah... You do look like Rogue material. You're here for the test, right? The Rogue test?";
+next;
+mes "[Arian]";
+mes "Alright, this test is simple.";
+next;
+mes "[Arian]";
+mes "I know you jerkward adventurers are always talking and you share the answers for any quiz some dude is givin' out.";
+next;
+mes "[Arian]";
+mes "'Course, it didn't help that I used the same quiz every frickin' time... That's why the test has changed.";
+next;
+mes "[Arian]";
+mes "I tell you to bring me a bunch of items and you go get the items.";
+next;
+mes "[Arian]";
+mes "Now, you gotta bring and only";
+mes "have the item I ask you for when";
+mes "you come to me. If you know that";
+mes "I'll be asking for something later";
+mes "and you happen to have it, I'll";
+mes "straight up ^FF0000jack it^000000!";
+next;
+mes "[Arian]";
+mes "The first item?";
+mes "Gimme ^FF0000100 Fluff^000000.";
+mes "Bring that and I'll";
+mes "tell you what to";
+mes "bring next.";
+set BERZEWARP,5;
+set arianstest,1;
+close;
+}
+else if(BERZEWARP == 5)
+{
+if(arianstest == 1)
+{
+if(countitem(914) < 100) goto L_Bringfluff;
+delitem 914,100;
+mes "[Arian]";
+mes "What the hell took you so";
+mes "long? Now bring me ^FF000050 Poison Spores^000000";
+mes "or I'll kick your ass.";
+set arianstest,2;
+close2;
+goto Verifyitems;
+
+L_Bringfluff:
+mes "[Arian]";
+mes "...";
+mes "Hey. What the hell's wrong";
+mes "with you? Hurry and get me";
+mes "^FF0000100 Fluff^000000, you damn slacker.";
+close;	
+}
+else if(arianstest == 2)
+{
+if(countitem(7033) < 50)goto L_Bringspore;
+delitem 7033,50;
+mes "[Arian]";
+mes "...";
+mes "It's about time you";
+mes "got here with those";
+mes "Poison Spores. Now, go";
+mes "and get ^FF000030 Scorpion Tails";
+set arianstest,3;
+close2;
+goto Verifyitems;
+
+L_Bringspore:
+mes "[Arian]";
+mes "...";
+mes "Hey, what part of 'Get me";
+mes "^FF000050 Poison Spores^000000 or I'll";
+mes "kick your ass' don't";
+mes "you understand!?";
+close;		
+}
+else if(arianstest == 3)
+{
+if(countitem(904) < 30)goto L_Bringtails;
+delitem 904,30;
+mes "[Arian]";
+mes "...";
+mes "Damn, you sure took your";
+mes "sweet time bringing over this";
+mes "crap. Okay, now bring";
+mes "^FF000020 Rotten Bandages^000000.";
+set arianstest,4;
+close2;
+goto Verifyitems;
+
+L_Bringtails:
+mes "[Arian]";
+mes "...";
+mes "What, your mom drop you on the";
+mes "head right after you were born?";
+mes "Stop bein' stupid and get me";
+mes "^FF000030 Scorpion Tails^000000, dumbass.";
+close;		
+}
+else if(arianstest == 4)
+{
+if(countitem(930) < 20)goto L_Bringbandages;
+delitem 930,20;
+mes "[Arian]";
+mes "...";
+mes "You brought the bandages.";
+mes "Okay short stuff, go and get";
+mes "me ^FF000015 Little Evil Horn^000000. What";
+mes "are you waiting for, a memo?";
+mes "Get outta here~!";
+set arianstest,5;
+close2;
+goto Verifyitems;
+
+L_Bringbandages:
+mes "[Arian]";
+mes "...";
+mes "Is it really that hard to get";
+mes "^FF000020 Rotten Bandages^000000? Cuz if it";
+mes "is, then you must really blow.";
+mes "Now hustle it up, punk!";
+close;		
+}
+else if(arianstest == 5)
+{
+if(countitem(1038) < 15)goto L_Bringhorns;
+delitem 1038,15;
+mes "[Arian]";
+mes "...";
+mes "My grandma coulda grown";
+mes "out her beard in the time";
+mes "it took you to come back.";
+mes "Now hurry it up and get";
+mes "me ^FF000010 Coral Reefs^000000.";
+set arianstest,6;
+close2;	
+goto Verifyitems;
+
+L_Bringhorns:
+mes "[Arian]";
+mes "...";
+mes "You think I'm stupid?";
+mes "You don't have the";
+mes "^FF000015 Little Evil Horn";
+mes "I told you to get.";
+next;
+mes "[Arian]";
+mes "I see, so it's my";
+mes "fault for not telling you";
+mes "not to bring your crap face";
+mes "back without 'em. ^222222*A-hem*";
+mes "Don't bring your crap face here";
+mes "without 15 Little Evil Horns!!";
+close;	
+}
+else if(arianstest == 6)
+{
+if(countitem(7013) < 10)goto L_Bringcorals;
+delitem 7013,10;
+mes "[Arian]";
+mes "Finally.";
+mes "Gimme a sec to count";
+mes "all this stuff.";
+mes "Gods help you if you";
+mes "try to pull a fast one on me.";
+set arianstest,7;
+close;
+
+L_Bringcorals:
+mes "[Arian]";
+mes "I don't care how pretty";
+mes "they are or if you're ruining";
+mes "the ecosystem! When I say";
+mes "'bring ^FF000010 Coral Reefs^000000', you";
+mes "better have them! All the";
+mes "fish can die for all I care.";
+close;	
+}
+else if(arianstest == 7)
+{
+mes "[Arian]";
+mes "...";
+mes "Alright, you passed the item quest, so you're not a total dumbass.";
+next; 
+mes "[Arian]";
+mes "However, because you did the item quest quicker than most Rogues do, I'm going to give you the quiz portion as well!";
+next;
+mes "[Arian]";
+mes "What, you wanna go cry to yer mommy wittle baby? Deal with it you sack of crap.";
+next;
+mes "[Arian]";
+mes "If you don't answer enough right I'll punch you so bad your babies will be born bruised!!";
+next;
+mes "[Arian]";
+mes "So choose your answers carefully, goon. Here we go...:";
+next;
+set arianstest,8;
+set gaananpoint,0;
+goto L_DoTest;
+}
+
+L_DoTest:
+mes "[Arian]";
+mes "Now, the first question.";
+mes "Let's say that you just";
+mes "found yourself on a deserted";
+mes "island. What is the very first";
+mes "thing that you should do?";
+next;
+menu "Look for fresh water",-,"Just wait for rescue.",s_1W,"Forage for food.",s_1W,"Explore the island.",s_1W;
+set gaananpoint,1;
+s_1W:
+mes "[Arian]";
+mes "The second question is...";
+mes "You happen to be stuck in";
+mes "a narrow place inside some collapsed building. What";
+mes "do you plan to do first?";
+next;
+menu "Find a way out",-,"Scream for help",s_2W,"Stay quiet.",s_2W,"Wait for death to come.",s_2W;
+set gaananpoint,gaananpoint + 1;
+s_2W:
+mes "[Arian]";
+mes "Now, the third question.";
+mes "You're on some dungeon";
+mes "expedition with your friends,";
+mes "but you got lost somehow.";
+mes "How do you handle it?";
+next;
+menu "Try to find my friends.",s_3W,"Find a way out.",s_3W,"Stay put.",-,"Continue exploring the dungeon.",s_3W;
+set gaananpoint,gaananpoint + 1;
+s_3W:
+mes "[Arian]";
+mes "Here's the fourth question.";
+mes "You're with your friends inside";
+mes "a mansion with no exit. What do";
+mes "you do first when a murder happens";
+mes "inside the mansion?";
+next;
+menu "Try to find my friends first.",s_4W,"Find a way out.",s_4W,"Solve the murder case on my own.",s_4W,"Wait for the case to get solved.",-,"Kill the others before they kill me.",s_4W;
+set gaananpoint,gaananpoint + 1;
+s_4W:
+mes "[Arian]";
+mes "The fifth question is";
+mes "You hear that the end of";
+mes "the world is in one week.";
+mes "So what do you do during";
+mes "this final week?";
+next;
+menu "Plant an apple tree.",s_5W,"Look to move to a different world.",s_5W,"What else? Go on a crime spree.",s_5W,"Wait to see the end.",s_5W,"What else? Save the world.",-;
+set gaananpoint,gaananpoint + 1;
+s_5W:
+mes "[Arian]";
+mes "Alright, we're done with stupid questions. Lets see your score...";
+next;
+if(gaananpoint < 4) goto s_Suck;
+mes "[Arian]";
+mes "...";
+next;
+mes "[Arian]";
+mes ".......";
+next;
+mes "[Arian]";
+mes "No way, you answered the questions all right... So much quicker than I did when I did the test...";
+next;
+mes "[Arian]";
+mes "You're really something, you know kid? How would you like to be the new leader of the Rogue Guild?";
+next;
+mes "[Arian]";
+mes "No, it's not cuz you're better than me or anything, you smartass! I just need to take a break...";
+next;
+mes "[Arian]";
+mes "What I really need to do it start training again, I've grown too weak living off of being the leader here.";
+next;
+mes "[Arian]";
+mes "I haven't done a good raid in months.";
+next;
+mes "[Arian]";
+mes "You'll hold the title of Rogue Guild leader until I'm done training. No, I'm not asking you, I'm telling you to be leader!";
+next;
+mes "[Arian]";
+mes "Just don't be hard on the other members while I'm gone, you hear me? That's my job!";
+next;
+mes "[Arian]";
+mes "Oh, almost forgot to give you this ^3366FFblue thingie^000000... It's the symbol of the guild's leadership.";
+next;
+mes "[Arian]";
+mes "You lose it, I'll pulverize you. Get it? Good. Now see ya around, kid.";
+getitem 7306,1;
+set gaananpoint,0;
+set arianstest,0;
+set BERZEWARP,6;
+close;
+
+s_Suck:
+mes "[Arian]";
+mes "Let's see...";
+mes "I'm looking at your";
+mes "answers and they totally";
+mes "suck. Do the test again";
+mes "and do it right this time!";
+set gaananpoint,0;
+percentheal -40,0;
+close;
+}
+
+L_ArianDone:
+mes "[Arian]";
+mes "You wanna leave me";
+mes "alone now and gimme";
+mes "a little personal space?!";
+mes "I need a break from looking";
+mes "at your ugly mug, you know?";
+close;
+
+Verifyitems:
+if(arianstest == 2 && countitem(7033) > 49)
+{
+delitem 7033,countitem(7033);
+mes "[Arian]";
+mes "Hey! What did I tell you";
+mes "about bringing stuff before";
+mes "I asked you about it?";
+next;
+mes "[Arian]";
+mes "I'll confiscate those Poison Spores.";
+close2;	
+}
+else if(arianstest == 3 && countitem(904) > 29)
+{
+delitem 904,countitem(904);
+mes "[Arian]";
+mes "Hey! What did I tell you";
+mes "about bringing stuff before";
+mes "I asked you about it?";
+next;
+mes "[Arian]";
+mes "I'll take those Scorpion Tails.";
+close2;	
+}
+else if(arianstest == 4 && countitem(930) > 19)
+{
+delitem 930,countitem(930);
+mes "[Arian]";
+mes "Hey! What did I tell you";
+mes "about bringing stuff before";
+mes "I asked you about it?";
+next;
+mes "[Arian]";
+mes "I'll take those Rotten Bandages.";
+close2;	
+}
+else if(arianstest == 5 && countitem(1038) > 14)
+{
+delitem 1038,countitem(1038);
+mes "[Arian]";
+mes "Hey! What did I tell you";
+mes "about bringing stuff before";
+mes "I asked you about it?";
+next;
+mes "[Arian]";
+mes "I'll confiscate those Little Evil Horns.";
+close2;	
+}
+else if(arianstest == 6 && countitem(7013) > 9)
+{
+delitem 7013,countitem(7013);
+mes "[Arian]";
+mes "Hey! What did I tell you";
+mes "about bringing stuff before";
+mes "I asked you about it?";
+next;
+mes "[Arian]";
+mes "I'll confiscate those Coral Reefs.";
+close2;	
+}
+	end;
+}
+
+//===============================================================
+//===============================================================
+gef_tower,113,160,5	script	Lady Mahha	758,{
+
+if (BERZEWARP == 8) goto L_FeedOrphan;
+if (BERZEWARP == 9) goto L_OrphanFed;
+if (BERZEWARP == 10 || BERZEWARP == 11) goto L_Bringwhisp;
+if (BERZEWARP == 12) goto L_Attacked;
+if (BERZEWARP == 13) goto L_Tofountain;
+if (BERZEWARP == 14) goto L_Obtainkey;
+if (BERZEWARP == 15) goto L_Obtainkey3;
+if (BERZEWARP == 16) goto L_Berzefinished;
+
+mes "[Lady Mahha]";
+mes "The poor child...";
+next;
+mes "[Lady Mahha]";
+mes "There is an orphan named Lucifer who lost his mother to a fever last winter.";
+next;
+mes "[Lady Mahha]";
+mes "His father died in battle before he was born, so you see he has no one left to take care of him...";
+next;
+mes "[Lady Mahha]";
+mes "I managed to find a place for him to stay at the Inn here, but the food there is terrible...";
+next;
+mes "[Lady Mahha]"; 
+mes "Sometimes he comes to see me here for company, but it's just not the same as having a parent, you know?"; 
+next;
+mes "[Lady Mahha]";
+mes "If I wasn't so preoccupied with my work, I'd try to spend as much time with him as possible to keep him from being too lonely.";
+next;
+mes "[Lady Mahha]"; 
+mes "Oh, I especially wanted to treat him to dinner today, but I simply don't have the money to spend...";
+next;
+if(BERZEWARP == 7)
+{
+mes "[Lady Mahha]";
+mes "I made him a package of goodies, but I can't get away from my job. Please, could you deliver it to him for me?";
+next;
+menu "Of course.",L_MahhaFood,"Sorry, I'm busy...",-;
+
+mes "[Lady Mahha]";
+mes "I understand... Thank you for listening to me. Poor Lucifer...";
+close;
+
+} else {
+mes "[Lady Mahha]";
+mes "I made him a package of goodies, but I can't get away from my job...";
+close;
+}
+
+L_MahhaFood:
+mes "[Lady Mahha]";
+mes "Oh!! Thank you!!";
+next;
+mes "[Lady Mahha]";
+mes "Just please make sure you give it to Lucifer. As I said before, he's at the Inn.";
+next;
+mes "[Lady Mahha]";
+mes "Don't open it yourself, okay?";
+set BERZEWARP,8;
+getitem  12111,1;
+close;
+
+L_FeedOrphan:
+mes "[Lady Mahha]";
+mes "You didn't open the package yourself, did you?";
+next;
+mes "[Lady Mahha]";
+mes "Just please make sure you give it to Lucifer. As I said before, he's at the Inn.";
+next;
+mes "[Lady Mahha]";
+mes "(I'll never forgive you if you opened it yourself...)";
+close;
+
+L_OrphanFed:
+mes "[Lady Mahha]"; 
+mes "You gave Lucifer the package, I know you did. I have a second sense about these kind of things.";
+next;
+mes "[Lady Mahha]";
+mes "I don't have the proper words to express how grateful I am to you for what you did.";
+next;
+mes "[Lady Mahha]";
+mes "It brings tears to my eyes to know there are people out there like you...";
+next;
+mes "[Lady Mahha]";
+mes "I'm sorry, I'm getting choked up... Is there something I can do for you?";
+next;
+menu "Stay beautiful.",-,"Metz told me to ask you...",L_MahhaMetz,"Gimme your cash!",L_MahhaCash;
+
+mes "[Lady Mahha]";
+mes "Aw, thank you!";
+close;
+
+L_MahhaMetz:
+mes "[Lady Mahha]";
+mes "Ah, I see now. You were sent by Metz? Figures that the one person I think is genuinely kind is one of his cronies.";
+next;
+mes "[Lady Mahha]";
+mes "That man is poking his fat nose in affairs that should not be poked.";
+next;
+mes "[Lady Mahha]";
+mes "He thinks he can get rich and famous from it, but the truth is far more dangerous than he knows.";
+next;
+menu "He is fat, isn't he?",-,"Dangerous?",L_MahhaDanger,"Gimme your cash!",L_MahhaCash;
+
+mes "[Lady Mahha]";
+mes "Yeah, he really needs to lay off the beef and beans!";
+close;
+
+L_MahhaDanger:
+mes "[Lady Mahha]";
+mes "Yes, dangerous.";
+next;
+mes "[Lady Mahha]";
+mes "Deadly, even."; 
+next;
+mes "[Lady Mahha]";
+mes "I know what he's after and he's not getting it from me.";
+next;
+mes "[Lady Mahha]";
+mes "Do you know the story?";
+next;
+menu "Nope, enlighten me.",-,"Yeah, I know.",L_MahhaDone;
+
+mes "[Lady Mahha]";
+mes "Pull up a chair, this is a long one.";
+next;
+mes "[Lady Mahha]";
+mes "In the beginning the gods created the nine worlds that exist today, including the one we reside on now, Midgard the mortal plane.";
+next;
+mes "[Lady Mahha]";
+mes "For a while, the gods rejoiced over their creations, including the newly born humans.";
+next;
+mes "[Lady Mahha]";
+mes "But one god was not happy with these creations. He wasn't happy at all.";
+next;
+mes "[Lady Mahha]";
+mes "He saw them as flawed creatures unworthy of coexisting with the gods, and wanted to smash them all into dust.";
+next;
+mes "[Lady Mahha]";
+mes "While his fellow gods were hunting, he invaded the plane of the mortals and caused mass chaos and destruction as never seen before.";
+next;
+mes "[Lady Mahha]";
+mes "He set fire to great forests, overturned oceans, and stomped upon the tallest mountains until there was little left to behold but ruin.";
+next;
+mes "[Lady Mahha]";
+mes "When the gods returned, they witnessed what had happened and pleaded for an explanation with what mortals had survived the catastrophy.";
+next;
+mes "[Lady Mahha]";
+mes "Thus was the causer of the destruction found out, the other gods took him and cast him to the pits of the Midgard forever.";
+next;
+mes "[Lady Mahha]";
+mes "The name of this god was utterly banished from the tongues of men and after many ages, completely forgotten.";
+next;
+mes "[Lady Mahha]";
+mes "In darkness the god resided and became hateful of all things mortal. Out of the shadows he crafted creatures of terrifying forms and designs.";
+next;
+mes "[Lady Mahha]";
+mes "He abandoned his old identity and placed upon himself the mantle of ^3333FFBerzebub^000000, the Prince of Darkness, the King of the Dead.";
+next;
+mes "[Lady Mahha]";
+mes "For himself he continued to forge armies of creatures as wicked as he, and plotted to assault the world above.";
+next;
+mes "[Lady Mahha]";
+mes "Ages later, a city called Gefenia was the prosperous center of intelligence for all of Midgard.";
+next;
+mes "[Lady Mahha]";
+mes "The mortals had become strong, well-versed in the ways of magic and weaponry, matching even the gods.";
+next;
+mes "[Lady Mahha]";
+mes "Especially so was this for the guardians of Midgard, mortals of exemplary might that kept the peace for centuries.";
+next;
+mes "[Lady Mahha]";
+mes "Berzebub emerged from his prison, intent upon the complete obliteration of all mortal creatures.";
+next;
+mes "[Lady Mahha]";
+mes "He, assisted by his armies of demons attempted to conquer Rune-Midgard, starting with Gefenia.";
+next;
+mes "[Lady Mahha]";
+mes "The guardians of Midgard would not stand for this, and engaged Berzebub and his demons in an intense battle that raged for many days and nights.";
+next;
+mes "[Lady Mahha]";
+mes "Because of his rank as one of the ancient gods, he was immortal and the efforts by the guardians to defeat him were utterly proving pointless.";
+next;
+mes "[Lady Mahha]";
+mes "The old gods, still set against Berzebub, secretly made the guardians aware of an ancient magic to strip Berzebub of his immortality.";
+next;
+mes "[Lady Mahha]";
+mes "When the chance came they used this magic upon Berzebub, and his immortality was sealed inside an ^ff0000amulet^000000.";
+next;
+mes "[Lady Mahha]";
+mes "Berzebub, though mortal, still proved to be a formitable opponent, all the more terrifying, mad with the fear of death.";
+next;
+mes "[Lady Mahha]";
+mes "Their combined might brought Berzebub to his knees, and before the guardians were to deliver the final blow, he escaped into the shadows without a trace."; 
+next;
+mes "[Lady Mahha]";
+mes "Though the battle was finally over, Gefenia was reduced to ashes. Atop its ruins the guardians built Geffen, a city";
+next;
+mes "[Lady Mahha]";
+mes "where the ancient ways of magic would be taught to those promising and willing souls, preserving the knowledge that defeated darkness for generations.";
+next;
+mes "[Lady Mahha]";
+mes "The guardians, in all their wisdom and might, forsaw they would not live long enough to see the absolute end of Berzebub,";
+next;
+mes "[Lady Mahha]";
+mes "therefore, they left behind in Geffen a relic crafted by their great spiritual power, the ^3366FFSpiritual Whispers^000000,"; 
+next;
+mes "[Lady Mahha]";
+mes "to be used against his dark power should he rise to torment humanity again.";
+next;
+
+L_MahhaDone:
+mes "[Lady Mahha]";
+mes "I have a feeling Metz is interested in finding the amulet that is said to contain the immortality of Berzebub.";
+next;
+mes "[Lady Mahha]";
+mes "Imagine... If he brought it to Berzebub, I'm sure Berzebub would do ^ff0000anything^000000 to have it back...";
+next;
+mes "[Lady Mahha]";
+mes "The ultimate barter. The powers of the King of the Dead at his fingertips. But I'll never give it up to anyone.";
+next;
+mes "[Lady Mahha]";
+mes "You see, it's my sacred duty to protect it, as all my ancestors have protected it before me.";
+next;
+mes "[Lady Mahha]";
+mes "I am a direct descendant from one of the guardians that defeated Berzebub. It's my burden.";
+next;
+mes "[Lady Mahha]";
+mes "And should Berzebub get the amulet back...";
+next;
+mes "[Lady Mahha]";
+mes "No, no... I don't want to think about that. So long as I have it, it's safe. I've already said too much...";
+next;
+mes "[Lady Mahha]";
+mes "Please, promise me you'll keep this all secret? Even from Metz?";
+next;
+mes "[Lady Mahha]";
+mes "...";
+next;
+mes "[Lady Mahha]";
+mes "Metz isn't after the amulet? What is he after?";
+next;
+mes "[Lady Mahha]";
+mes "The pieces of the ^3366FFSpiritual Whispers^000000? Well, that changes things a bit...";
+next;
+mes "[Lady Mahha]";
+mes "I came upon a fragment not too long ago, but I put it in the Geffen Fountain to try to keep the waters purified, but it's still not enough.";
+next;
+mes "[Lady Mahha]";
+mes "The complete form of the ^3366FFSpiritual Whispers^000000 is our best weapon against Berzebub should he reappear, if you make it whole, please don't let Metz keep it for himself.";
+next;
+mes "[Lady Mahha]";
+mes "Bring it to me, I know what to do. When the waters of the fountain are pure again, the Whispers will show us the way...";
+set BERZEWARP,10;
+close;
+
+L_Attacked:
+mes "^3355FFIt's Lady Mahha! ...but it looks like she's slowly recovering from being hurt pretty badly.^000000";
+next;
+mes "[Lady Mahha]";
+mes "I don't believe it, but...";
+next;
+mes "[Lady Mahha]";
+mes "Lucifer... he attacked me...";
+next;
+mes "[Lady Mahha]";
+mes "He asked me for the amulet... The amulet of immortality, I was so surprised that he knew about it...";
+next;
+mes "[Lady Mahha]";
+mes "He asked again and I told him no... and he... attacked me...";
+next;
+mes "[Lady Mahha]";
+mes "There was so much determination in his eyes... Why would he...?";
+next;
+mes "[Lady Mahha]";
+mes "He must have overheard you and me talking... He heard about how I have possession of the amulet...";
+next;
+mes "[Lady Mahha]";
+mes "How Berzebub would give anything... for it...";
+next;
+mes "[Lady Mahha]";
+mes "Oh, I'm so stupid! I get it now, don't you see? Lucifer plans to try to strike a deal with Berzebub! He's going to him as we speak!";
+next;
+mes "[Lady Mahha]";
+mes "In exchange for the amulet, he thinks Berzebub will be able to bring his dead mother back to life.";
+next;
+mes "[Lady Mahha]";
+mes "Foolish!! He doesn't know the extent of the peril he's in! He doesn't understand the depth of Berzebub's treachery!";
+next;
+mes "[Lady Mahha]";
+mes "If you have the complete ^3366FFSpiritual Whispers^000000, enter the fountain with it.";
+next;
+mes "[Lady Mahha]";
+mes "Whatever you do after you enter the fountain, do NOT put it away or dispose of it. Keep it on you at all times.";
+next;
+mes "[Lady Mahha]";
+mes "Its divine light will protect you from the darkness throughout his lair.";
+next;
+mes "[Lady Mahha]";
+mes "Oh, Lucifer... He's in so much danger down there...";
+next;
+mes "[Lady Mahha]";
+mes "You have to hurry now, there's no time. Don't worry about me, just go!"; 
+set BERZEWARP,13;
+close;
+
+L_Bringwhisp:
+mes "[Lady Mahha]";
+mes "The complete form of the ^3366FFSpiritual Whispers^000000 is our best weapon against Berzebub should he reappear, if you make it whole, please don't let Metz keep it for himself.";
+next;
+mes "[Lady Mahha]";
+mes "Bring it to me, I know what to do. When the waters of the fountain are pure again, the Whispers will show us the way...";
+close;
+
+L_Tofountain:
+if(countitem(7025))
+{
+mes "[Lady Mahha]";
+mes "That item... you defeated Berzebub, didn't you? Oh, bless you.";
+next;
+mes "[Lady Mahha]";
+mes "We found Lucifer lying unconscious in the fountain.";
+next;
+mes "[Lady Mahha]";
+mes "He's alright now, he seems to have no recollection as to what happened...";
+next;
+mes "[Lady Mahha]";
+mes "Lucifer, I couldn't be a mother to you... But it's alright now, he's back at the inn.";
+next;
+mes "[Lady Mahha]";
+mes "I promise from now on I'll make as frequent visits as possible to see him. He's been through so much, I'm just glad everything worked out.";
+next;
+mes "[Lady Mahha]";
+mes "I wish I could relax, but the amulet is still missing. Lucifer seems to have lost his memory since before he took it from me, so he doesn't know.";
+next;
+mes "[Lady Mahha]";
+mes "Would you visit him for me? Maybe seeing you will return some of his memory.";
+next;
+mes "[Lady Mahha]";
+mes "The amulet shouldn't fall into the wrong hands. I beg of you, go see Lucifer for me.";
+set BERZEWARP,14;
+delitem 7025,1;
+close;
+
+} else {
+mes "[Lady Mahha]";
+mes "Oh Lucifer, I hope you're alright...";
+close;
+}
+
+L_Obtainkey:
+mes "[Lady Mahha]";
+mes "I wish I could relax, but the amulet is still missing. Lucifer seems to have lost his memory since before he took it from me, so he doesn't know.";
+next;
+mes "[Lady Mahha]";
+mes "Would you visit him for me? Maybe seeing you will return some of his memory.";
+next;
+mes "[Lady Mahha]";
+mes "The amulet shouldn't fall into the wrong hands. I beg of you, go see Lucifer for me. He's back at the inn now.";
+close;
+
+L_Obtainkey3:
+if(countitem(7341))
+{
+mes "[Lady Mahha]";
+mes "That's it! That's the amulet! I can't believe it, I'm so relieved...";
+next;
+mes "[Lady Mahha]";
+mes "Oh "+strcharinfo(0)+", "+strcharinfo(0)+"! You're an amazing person. I can't believe..."; 
+next;
+mes "[Lady Mahha]";
+mes "Well, now that the amulet is safe I'll definitely lock it away. It was really foolish of me to keep it around like that... Thank you for giving me another chance.";
+next;
+mes "[Lady Mahha]";
+mes "And please, let me repay you for all you've done."; 
+next;
+mes "[Lady Mahha]";
+mes "While you did succeed in taking down Berzebub, I'm positive he's not finished for good. Please, if you return down there, be careful. You have my eternal blessings."; 
+getitem 616,1;
+delitem 7341,countitem(7341);
+set BaseExp,BaseExp +300000;
+dispbottom "You received 15 million experience points!";
+set BERZEWARP,16;
+close;
+}
+else
+{
+mes "[Lady Mahha]";
+mes "I wish I could relax, but the amulet is still missing. Lucifer seems to have lost his memory since before he took it from me, so he doesn't know.";
+next;
+mes "[Lady Mahha]";
+mes "Would you visit him for me? Maybe seeing you will return some of his memory.";
+next;
+mes "[Lady Mahha]";
+mes "The amulet shouldn't fall into the wrong hands. I beg of you, go see Lucifer for me. He's back at the inn now.";
+close;
+}
+
+L_Berzefinished:
+mes "[Lady Mahha]";
+mes "Oh "+strcharinfo(0)+"! You're an amazing person."; 
+next;
+mes "[Lady Mahha]";
+mes "Well, now that the amulet is safe I'll definitely lock it away. It was really foolish of me to keep it around like that... Thank you for giving me another chance.";
+next;
+mes "[Lady Mahha]";
+mes "Now, while you did succeed in taking down Berzebub, I'm positive he's not finished for good. Please, if you return down there to face him, be careful. You have my eternal blessings."; 
+close;
+
+L_MahhaCant:
+mes "[Lady Mahha]";
+mes "If you know where the other fragments are, go get my fragment from out of the Geffen Fountain.";
+close;
+mes "[Lady Mahha]";
+mes "All of what I told you must remain a secret! I trust you... If you helped Lucifer you must be a good person.";
+close;
+
+L_MahhaCash: 
+mes "[Lady Mahha]";
+mes "I'm a college student... I'm poor as dirt!";
+close;
+
+}
+//===============================================================
+//Prevents people who have already visited Lucifer from going to see him again after they've found out he attacked Mahha, until after you defeat Berze.
+
+geffen_in,26,66,0	script	#LucChecker	139,3,3,{
+OnTouch:
+if(BERZEWARP == 13)
+{
+mes "The door is locked. Looks like the room is unoccupied.";
+close2;
+warp "geffen_in",30,68;
+end;
+}
+end;
+}
+
+geffen_in,26,34,0	script	#LucChecker2	139,3,3,{
+OnTouch:
+if(BERZEWARP == 13)
+{
+warp "geffen_in",30,68;
+end;
+}
+end;
+}
+
+//===============================================================
+geffen_in,36,30,3	script	Orphan Lucifer	82,{
+
+if (BERZEWARP == 9) goto L_LuciferEat;
+if (BERZEWARP == 14) goto L_Obtainkey1;
+if (BERZEWARP >= 15) goto L_Obtainkey2;
+
+if(BERZEWARP == 8 && countitem(12111))
+{
+mes "[Lucifer]";
+mes "I'm so hungry, so cold...";
+next;
+mes "[Lucifer]";
+mes "Mom, why... Why did you have to leave me...?";
+next;
+menu "I brought food for you.",L_Food,"I'm so sorry.",-;
+
+mes "[Lucifer]";
+mes "Sigh...";
+close2;
+emotion e_sob;
+end;
+
+L_Food:
+mes "[Lucifer]";
+mes "......";
+next;
+mes "[Lucifer]";
+mes "For me?";
+next;
+mes "[Lucifer]";
+mes "...";
+next;
+mes "[Lucifer]";
+mes "Thank you so much...";
+set BERZEWARP,9;
+delitem 12111,1;
+close;
+}
+else
+{
+mes "[Lucifer]";
+mes "I'm so hungry... So cold...";
+next;
+mes "[Lucifer]";
+mes "Mom, why... Why did you have to leave me...?";
+close2;
+emotion e_sob;
+end;
+}
+
+L_LuciferEat:
+mes "[Lucifer]";
+mes "Munch munch~~";
+close2;
+emotion e_rice;
+end;
+
+L_Obtainkey1:
+if(countitem(7505))
+{
+mes "[Lucifer]";
+mes "That's my key!!!";
+next;
+mes "[Lucifer]";
+mes "Oh, give it back! It opens my toy box, and I've been looking for it for a while.";
+next;
+mes "^3355FFThe boy takes the key and opens his toy box.^000000";
+next;
+mes "[Lucifer]";
+mes "What's this old thing doing in here?";
+next;
+mes "^3355FFHe takes something out of the box.^000000";
+next;
+mes "[Lucifer]";
+mes "This wasn't in here before... Here, you can have it. It smells kinda funny anyway.";
+next;
+mes "^3355FFYou have obtained a very old, strange-looking pendant. Just looking at it gives you the chills.^000000";
+set BERZEWARP,15;
+delitem 7505,1;
+getitem 7341,1;
+close;
+}
+else
+{
+mes "[Lucifer]";
+mes "Hi.";
+next;
+mes "[Lucifer]";
+mes "Who are you?";
+next;
+mes "[Lucifer]";
+mes "..."+strcharinfo(0)+"?";
+next;
+mes "[Lucifer]";
+mes "I dunno you, sorry. You have neat shoes, though!";
+next;
+mes "[Lucifer]";
+mes "Just wish I could find the key to my toy box... Where'd it go?";
+next;
+if(countitem(29025))
+{
+mes "^3355FFThe Whispers are saying something to you:^000000";
+next;
+mes "[Spiritual Whispers]";
+mes "^3366FFWhat you seek is the key...^000000";
+next;
+mes "[Spiritual Whispers]";
+mes "^3355FFIn the ruins of Gefenia it lies, explore the ruins... Return it to the boy...^000000";
+close;
+}
+else 
+{
+mes "[Lucifer]";
+mes "Sigh...";
+close;
+}
+}
+
+L_Obtainkey2:
+mes "[Lucifer]";
+mes "Hi "+strcharinfo(0)+"!";
+next;
+mes "[Lucifer]";
+mes "Nice lady Mahha is taking me on a trip this afternoon. I'm so excited!";
+close;
+}
+
+//===============================================================
+//final part of the quest for the EXP and prize
+
+gefenia01,276,188,5	script	Luciferarea	139,6,6,{
+OnTouch:
+if(BERZEWARP == 14)
+{
+mes "^3355FFYou see something shiny on the ground and pick it up.^000000";
+next;
+mes "^3355FFYou have obtained a Toy Key. It looks like it goes in a child's toy box.^000000";
+getitem 7505,1; 
+close;
+}
+end;
+}
+
+gefenia02,116,116,0	duplicate(Luciferarea)	Luciferarea2	139,6,6
+gefenia03,135,266,0	duplicate(Luciferarea)	Luciferarea3	139,6,6
+gefenia04,13,257,0	duplicate(Luciferarea)	Luciferarea4	139,6,6
+
+//===============================================================
+
+geffen,119,49,1	script	Fountain#BerzeFountain	111,{
+
+if (BERZEWARP == 10) goto L_Obtainfrag;
+if (BERZEWARP >= 13) goto L_Spirit1;
+mes "^3355FFThis is the famous Geffen Fountain.^000000";
+close;
+
+L_Spirit1:
+if(countitem(29025)){
+specialeffect2 200;
+mes "^3355FFAs you approach the fountain, a strange light begins to emit from the Spiritual Whispers and from something deep within the fountain's water.^000000";
+next;
+menu "Jump into the fountain.",L_Step1,"Ignore the light.",-;
+mes "...";
+close;
+
+L_Step1:
+misceffect 247;
+mes "^3355FFOnce you splash into the water, you descend much deeper than you thought the fountain went...^000000";
+close2;
+warp "berz_intr",35,28; 
+end;
+}
+mes "^3355FFThis is the famous Geffen Fountain.^000000";
+next;
+mes "^3355FFThe Spiritual Whispers needs to be in your possession to descend into the darkness unharmed.^000000";
+close;
+
+L_Obtainfrag:
+mes "^3355FFThe waters of the fountain seem clean, but not completely clean.^000000";
+next;
+mes "...";
+next;
+mes "^3355FFYou reach into the water and grab something sitting on the bottom of the fountain.^000000";
+getitem 7306,1;
+set BERZEWARP,11;
+close;
+
+}
+//===============================================================
+//==============================================================
+//berz_01
+
+berz_01,100,53,5	script	Skeggiold	1755,{
+
+if (BERZEQ < 1) goto L_SkegInit1;
+if (BERZEQ == 6) goto L_SkegInit2;
+if (BERZEQ == 7) goto L_SkegInit2;
+if (BERZEQ == 8) goto L_SkegInit2;
+if (BERZEQ == 9) goto L_SkegInit3;
+
+mes "[Skeggiold]";
+mes "We have some tasks you must complete before you may proceed.";
+next;
+mes "[Skeggiold]";
+mes "First, you must satiate the four fallen ones located on this floor. Fear not, they won't attack you. They only ask for a small number of items.";  
+next;
+mes "[Skeggiold]";
+mes "Start from the first room on the left and work your way around in a clockwise rotation until all four are satisfied, then see me to move on.";
+next;
+mes "[Skeggiold]";
+mes "I'll be waiting...";
+close;
+
+L_SkegInit1:
+mes "[Skeggiold]";
+mes "Another human! Welcome, welcome all to our dark abode!";
+next;
+mes "[Skeggiold]";
+mes "One human boy has already been through here.";
+next;
+mes "[Skeggiold]";
+mes "Very soon he will hold audience with our master, ^336666Berzebub^000000. He's also been expecting your arrival... It would certainly be rude to keep him waiting.";
+next;
+mes "[Skeggiold]";
+mes "But first, our master would like to see you satiate the four fallen ones located on this floor. Fear not, they won't attack you. They only ask for a small number of items.";  
+next;
+mes "[Skeggiold]";
+mes "Start from the first room on the left and work your way around in a clockwise rotation until all four are satisfied, then see me to move on.";
+next;
+mes "[Skeggiold]";
+mes "I'll be waiting... Heh heh.";
+set BERZEQ,1;
+close;
+
+L_SkegInit2:
+mes "[Skeggiold]";
+mes "You've satisfied the four fallen ones.";
+mes "Not bad, human.";
+next; 
+mes "[Skeggiold]";
+mes "Now you must move on to proceed!";
+warp "berz_01",100,85;
+close;
+
+L_SkegInit3:
+mes "[Skeggiold]";
+mes "Is that the extent of your power?";
+next;
+mes "[Skeggiold]";
+mes "Disappointing, but we'll give you ^3333FFfive^000000 chances to prove yourself to us."; 
+next;
+mes "[Skeggiold]";
+mes "You've used up ^3333FF"+BerzeTimesIn+"^000000 of those chances so far...";
+next;
+mes "[Skeggiold]";
+mes "Want to warp directly to Berzebub?";
+next;
+menu "Yes.",-,"No.",L_DontDo3;
+set BerzeTimesIn,BerzeTimesIn+1;
+if(BerzeTimesIn==5) set BERZEQ,0;
+if(BerzeTimesIn==5) set Plantvar,0;
+if(BerzeTimesIn==5) set BerzeTimesIn,0;
+warp "berz_end",100,18;
+close;
+
+L_DontDo3:
+mes "[Skeggiold]";
+mes "You should leave the castle immediately...";
+set Hp,1;
+close;
+}
+//==================================================
+//Lower left - Observation
+berz_01,25,26,5	script	Azazel 	1700,{
+
+if (BERZEQ == 1) goto L_InitAza;
+if (BERZEQ >= 3) goto L_Complete1;
+
+L_InitAza:
+mes "[Azazel]";
+mes "^006600I desire... things found in the darkness...^000000";
+next;
+mes "[Azazel]";
+mes "25 Memento";
+mes "15 Tongue";
+mes "1 Izidor";
+mes "1 Executioner's Mitten";
+next;
+mes "[Azazel]";
+mes "^006600Do you have them?^000000";
+next;
+menu "Yes.",-,"No.",L_Dont1;
+if ((countitem(934)<25) || (countitem(1015)<15) || (countitem(709)<1) || (countitem(7017)<1)) {
+mes "[Azazel]";
+mes "^006600You do not have what I requested...^000000";
+percentheal -10,0;
+close;
+}
+
+delitem 934,25;
+delitem 1015,15;
+delitem 709,1;
+delitem 7017,1;
+set BERZEQ,3;
+goto L_Complete1;
+
+L_Complete1:
+specialeffect 61;
+mes "[Azazel]";
+mes "^006600Can I... ask a question?^000000"; 
+next;
+mes "[Azazel]";
+mes "^006600Your friends...^000000"; 
+mes "^006600What kind of people are they^000000?"; 
+next;
+mes "[Azazel]";
+mes "^006600Do they... make you stronger?^000000";
+next;
+mes "[Azazel]";
+mes "^006600I wonder...^000000";
+mes "^006600What is it that makes friendships last?^000000";
+sleep2 2000;
+warp "berz_01",25,69;
+close;
+
+mes "[Azazel]";
+mes "^006600Tell me... What is friendship?^000000";
+percentheal -10,0;
+close;
+
+L_Dont1:
+close;
+
+}
+
+//==============================================
+//Upper left - Solace
+berz_01,25,174,5	script	Abaddon	1703,{
+
+if (BERZEQ == 3) goto L_InitAba;
+if (BERZEQ >= 4) goto L_Complete2;
+
+mes "[Abaddon]";
+mes "Tell me... What is happiness?";
+percentheal -30,0;
+close;
+
+L_InitAba:
+mes "[Abaddon]";
+mes "^339999I desire... things found in the world of the dead...^000000";
+next;
+mes "[Abaddon]";
+mes "16 Piece of Black Cloth";
+mes "34 Decomposed Rope";
+mes "5 Striped Sock";
+mes "1 Halo";
+next;
+mes "[Abaddon]";
+mes "^339999Do you have them?^000000";
+next;
+menu "Yes.",-,"No.",L_Dont2;
+if ((countitem(7205)<16) || (countitem(7218)<34) || (countitem(7219)<5) || (countitem(2282)<1)) {
+mes "[Abaddon]";
+mes "^339999You do not have what I requested...^000000";
+percentheal -30,0;
+close;
+}
+
+delitem 7205,16;
+delitem 7218,34;
+delitem 7219,5;
+delitem 2282,1;
+set BERZEQ,4;
+goto L_Complete2;
+
+L_Complete2:
+specialeffect 61;
+mes "[Abaddon]";
+mes "^339999Can I ask... a question?^000000";
+next;
+mes "[Abaddon]"; 
+mes "^339999What makes you happy?^000000"; 
+next;
+mes "[Abaddon]";
+mes "^339999I wonder that which makes you happy...^000000"; 
+mes "^339999If it makes others happy as well...^000000";
+next;
+mes "[Abaddon]";
+mes "^339999Tell me... Happiness...^000000"; 
+mes "^339999What is it like?^000000";
+sleep2 2000;
+warp "berz_01",68,174;
+close;
+
+L_Dont2:
+close;
+
+}
+
+//============================================
+//Upper right - Retribution
+berz_01,174,174,5	script	Iblis	1702,{
+
+if (BERZEQ <= 3) goto L_Early3;
+if (BERZEQ == 4) goto L_InitIbl;
+if (BERZEQ >= 5) goto L_Complete3;
+
+L_InitIbl:
+mes "[Iblis]";
+mes "^990000I desire... relics from the tower of time...^000000";
+next;
+mes "[Iblis]";
+mes "38 Clock Hand";
+mes "22 Tattered Clothes";
+mes "1 Old Blue Box";
+mes "1 Key of the Underground";
+next;
+mes "[Iblis]";
+mes "^990000Do you have them...?^000000";
+next;
+menu "Yes.",-,"No.",L_Dont3;
+if ((countitem(1095)<38) || (countitem(7071)<22) || (countitem(603)<1) || (countitem(7027)<1)) {
+mes "[Iblis]";
+mes "^990000You do not have what I requested...^000000";
+percentheal -70,0;
+close;
+}
+
+delitem 1095,38;
+delitem 7071,22;
+delitem 603,1;
+delitem 7027,1;
+set BERZEQ,5;
+goto L_Complete3;
+
+L_Complete3:
+specialeffect 61;
+mes "[Iblis]";
+mes "^990000The right thing... What is it?^000000";
+next;
+mes "[Iblis]";
+mes "^990000I wonder... The right thing...^000000";
+next;
+mes "[Iblis]";
+mes "^990000If you do it...^000000";
+mes "^990000What does it feel like?^000000";
+next;
+mes "[Iblis]";
+mes "^990000Is it... Any worse than doing the wrong thing?^000000";
+sleep2 2000;
+warp "berz_01",174,130;
+close;
+
+L_Early3:
+mes "[Iblis]";
+mes "^990000Tell me... What is the right thing?^000000";
+percentheal -70,0;
+close;
+
+L_Dont3:
+close;
+
+}
+//============================================= 
+// Lower right - Shelter
+berz_01,174,26,5	script	Lilith	1701,{
+
+if (BERZEQ <= 4) goto L_Early4;
+if (BERZEQ == 5) goto L_InitLil;
+if (BERZEQ >= 6) goto L_Complete4;
+
+L_InitLil:
+mes "[Lilith]";
+mes "^333399I desire... objects from the temple of sand...^000000";
+next;
+mes "[Lilith]";
+mes "^ff000038 Honey Pot^000000";
+mes "^ff000024 Rotten Bandage^000000";
+mes "^ff000042 Round Shell^000000.";
+mes "^ff00001 Emperium^000000.";
+next;
+mes "[Lilith]";
+mes "^333399Do you have them...?^000000";
+next;
+menu "Yes.",-,"No.",L_Dont4;
+if ((countitem(7121)<38) || (countitem(930)<24) || (countitem(1096)<42) || (countitem(714)<1)) {
+mes "[Lilith]";
+mes "^333399You do not have what I requested...^000000";
+percentheal -90,0;
+close;
+}
+
+delitem 7121,38;
+delitem 930,24;
+delitem 1096,42;
+delitem 714,1;
+set BERZEQ,6;
+goto L_Complete4;
+
+L_Complete4:
+specialeffect 61;
+mes "[Lilith]";
+mes "^333399The truth... What is it?^000000";
+next;
+mes "[Lilith]";
+mes "^333399What is it... To you?^000000";
+next;
+mes "[Lilith]";
+mes "^333399Telling the truth...^000000"; 
+next;
+mes "[Lilith]";
+mes "^333399Is it better... than telling lies?^000000";
+sleep2 2000;
+warp "berz_01",132,27;
+close;
+
+L_Early4:
+mes "[Lilith]";
+mes "^333399Tell me... What is the truth?^000000";
+percentheal -90,0;
+close;
+
+L_Dont4:
+close;
+
+}
+//==============================================================
+
+//berz_02
+
+berz_02,100,35,5	script	Mini Demon	1292,{
+
+mes "[Mini Demon]";
+mes "This room is the monster challenge room.";
+next;
+mes "[Mini Demon]";
+mes "Monsters of all sizes and numbers exist beyond this point to rip you and your kind to shreds.";
+next;
+mes "[Mini Demon]";
+mes "Surprisingly, one human child has already gotten through unharmed.";
+next;
+mes "[Mini Demon]";
+mes "Try to find which rooms lead to the exit and you'll get out of this place alive as well...";
+next;
+mes "[Mini Demon]";
+mes "For now...";
+emotion e_gg;
+set BERZEQ,7;
+close;
+
+}
+
+berz_02,22,181,5	script	Magical Plant	1083,{
+
+if (Plantvar == 1) goto L_PlantDone;
+
+mes "It's a beautiful, glowing plant.";
+next;
+mes "Surprisingly, it has the power to fully heal you, save your location, let you use your storage or warp you back to the beginning of the castle.";
+next;
+mes "But only once during your stay in this castle, so choose wisely.";
+next;
+mes "Which do you want?";
+next;
+menu "Heal please.",-,"Use storage.",L_PlantStorage,"Save.",L_PlantSave,"Warp back.",L_WarpBack,"Nothing.",L_PlantNothing;
+heal 30000,30000;
+set Plantvar,1;
+close;
+
+L_PlantSave:
+savepoint "berz_02",22,178;
+set Plantvar,1;
+close;
+
+L_PlantStorage:
+openstorage;
+set Plantvar,1;
+close;
+
+L_WarpBack:
+mes "Are you sure you want to warp back to the beginning?";
+next;
+menu "Yes.",-,"No.",L_PlantDont;
+set Plantvar,1;
+warp "berz_intr",35,27;
+close;
+
+L_PlantNothing:
+mes "You leave the plant alone.";
+close;
+
+L_PlantDone:
+mes "It's a beautiful plant just growing out of the ground.";
+next;
+mes "The glow it once possessed has faded.";
+close;
+}
+
+berz_02,108,140,5	script	Sign#b02	858,{
+
+mes "^ff0000Dead End. Turn back now.^000000";
+close;
+}
+
+//=================================================
+//berz_03 
+
+berz_03,100,21,5	script	Diabolic	1382,{
+
+if (BERZEQ < 7) goto L_DiobEarly;
+if (BERZEQ > 7) goto L_DiobDone;
+
+mes "[Diabolic]";
+mes "You've reached the Labyrinth Room, human.";
+next;
+mes "[Diabolic]";
+mes "My master finds the greatest joy in crafting devices of torture specifically made for brave young fools such as yourselves...";
+next;
+mes "[Diabolic]";
+mes "It's simple: every warp will lead you to a room. However, every room you reach will have multiple warps."; 
+next;
+mes "[Diabolic]";
+mes "Those warps will lead you to other places as well. Only one warp will lead to the exit, but that's up to you to find.";
+next;
+mes "[Diabolic]";
+mes "Maybe you'll be as lucky as that kid that came through here a little while ago...";
+next;
+mes "[Diabolic]";
+mes "This will test your patience and your ability to work on your own.";
+next;
+mes "[Diabolic]";
+mes "But don't think you'll leave me empty-handed! I have something for you in case you want to end your suffering while wandering alone in the dark...";
+mes "Good luck, heh...";
+set BERZEQ,8;
+getitem 17025,1;
+emotion e_gg;
+close;
+
+L_DiobDone:
+mes "[Diabolic]";
+mes "Heh, confused yet human?";
+next;
+mes "[Diabolic]";
+mes "It's simple: every warp will lead you to a room. However, every room you reach will have multiple warps."; 
+next;
+mes "[Diabolic]";
+mes "Those warps will lead you to other places as well. Only one warp will lead to the exit, but that's up to you to find.";
+next;
+mes "[Diabolic]";
+mes "You and your team mates will no doubt be separated from one another... This will test your patience and your ability to work alone as well as in a team.";
+close;
+
+L_DiobEarly:
+mes "[Diabolic]";
+mes "Filthy humans..?!";
+mes "In our castle?!!";
+next;
+mes "[Diabolic]";
+mes "Out with you!";
+percentheal -90,0;
+warp "gef_dun02",0,0;
+close;
+}
+
+//===========================================
+//berz_04
+
+berz_04,45,20,0	script	BerzeSaveReset	139,3,2,{
+OnTouch:
+savepoint "berz_intr",35,27;
+end;
+}
+
+berz_04,45,227,4	script	Portal	723,{
+if (BERZEQ == 9) goto L_Spokenalready;
+mes "Do you want to enter the portal?";
+next;
+menu "Yes.",-,"No.",L_WarpDont;
+warp "berz_04",196,185;
+close;
+
+L_Spokenalready:
+mes "Do you want to enter the portal?";
+next;
+menu "Yes.",-,"No.",L_WarpDont;
+warp "berz_end",100,18;
+close;
+
+L_WarpDont:
+close;
+}
+
+berz_04,196,195,5	script	Lucifer	795,{
+
+if(!countitem(29025))
+{
+mes "[Voice of Berzebub]";
+mes "^000099You who approaches me without the light that protects, I will crush your spirit without remorse.^000000";
+close2;
+percentheal -100,0;
+warp "gef_dun02",0,0;
+end;
+}
+else
+{
+mes "[Voice of Lucifer]";
+mes "Where... am I...";
+next;
+mes "[Voice of Lucifer]";
+mes "Mom.... I'm so scared... Help... me...";
+next;
+mes "[Voice of Lucifer]";
+mes "Please... ";
+next;
+mes "[Voice of Lucifer]";
+mes "Mother...";
+next;
+mes "^999999...^000000";
+next;
+specialeffect 651;
+specialeffect 522;
+mes "[Voice of Berzebub]";
+mes "^000099Heh!^000000";
+next;
+mes "[Voice of Berzebub]";
+mes "^000099Your mother can't save you, child. You're a part of me now, no one's going to save you...^000000";
+next;
+mes "[Voice of Berzebub]";
+mes "^000099I'm terribly sorry about that, allow me to introduce myself properly.^000000";
+next;
+mes "[Voice of Berzebub]";
+mes "^000099I am the lord of this castle. My name is older than the oldest creatures of the world, forgotten by the tongues of men...^000000"; 
+next;
+mes "[Voice of Berzebub]";
+mes "^000099You may know me as Berzebub, King of the Dead, Prince of Darkness. I've been waiting for you to find me, "+strcharinfo(0)+".^000000";
+next;
+mes "[Voice of Berzebub]";
+mes "^000099You humans have amused me for a long time...^000000";
+next;
+mes "[Voice of Berzebub]";
+mes "^000099Spending your lives scraping an existance off this world with such petty strength and weak magic. I see that you are all nothing more than leaves caught in the winds of the world.^000000";
+next;
+mes "[Voice of Berzebub]";
+mes "^000099How very pathetic you have become in my absense.^000000";
+next;
+mes "[Voice of Berzebub]";
+mes "^000099Long ago I attacked the world of light, unprepared for what I would encounter. Oh yes, I caused destruction and chaos that day, slaughtered to my delight...^000000";
+next;
+mes "[Voice of Berzebub]";
+mes "^000099The guardians of that time however, countered me with a deep magic that I had forgotten humans possessed. My immortality stripped of me and I laid before them a creature of hatred.^000000"; 
+next;
+mes "[Voice of Berzebub]";
+mes "^000099I escaped, taking refuge in what remained of Gefenia, and on top of those ruins humanity rebuilt their sad ways of living once again, unaware of my presense.^000000"; 
+next;
+mes "[Voice of Berzebub]";
+mes "^000099As weak as you are, your kind has served me very well these many years, "+strcharinfo(0)+". Your collective anguish and hatred has been my sustenance these long years.^000000";
+next;
+mes "[Voice of Berzebub]";
+mes "^000099The pain of this boy alone has been nourishment enough.^000000";
+next;
+mes "[Voice of Berzebub]";
+mes "^000099I could feel his pain and anguish leech into the darkness I had taken refuge in; through it I drew power and became strong again, stronger than ever before...^000000";
+next;
+mes "[Voice of Berzebub]";
+mes "^000099This boy tells me he hid the amulet before coming here... Soon I shall break open his mind and find where it is.";
+next;
+mes "[Voice of Berzebub]";
+mes "^000099Then all I need is the blood of a descendant of the guardians that keeps this ancient curse upon my power intact...";
+next;
+mes "[Voice of Berzebub]";
+mes "^000099Lady Mahha, I think you know her as, her blood will do. Yes... all of her blood... Every last drop.^000000"; 
+next;
+mes "[Voice of Berzebub]";
+mes "^000099Heh... You look alarmed. Don't fret, once I take care of you I'll send my minions to bring her to me.^000000"; 
+next;
+mes "[Voice of Berzebub]";
+mes "^000099"+strcharinfo(0)+", do you understand? Your people lack the true power that I possess, and that, my little friend, is why you must all DIE!^000000";
+next;
+mes "[Voice of Berzebub]";
+mes "^000099This time, when I attack the world of light... none shall stand in my way, you shall die, every last one of you... in darkness and despair FOREVER!^000000";
+next;
+specialeffect 563;
+mes "[Voice of Berzebub]";
+mes "^000099Come now, allow me to test my renewed strength upon you! SHOW ME THE TRUE MIGHT OF THE HUMAN RACE!!!^000000";
+sleep2 3000;
+close2;
+warp "berz_end",100,18;
+set BERZEQ,9;
+end;
+}
+}
+
+//==================================================
+// Map info
+//==================================================
+
+//Upper right
+berz_01,174,174,15,15	monster	Owl Baron	1295,1,600000,300000,0
+berz_01,174,174,15,15	monster	Owl Duke	1320,2,600000,300000,0
+berz_01,174,174,15,15	monster	Alarm	1193,5,600000,300000,0
+berz_01,174,174,15,15	monster	Elder	1377,3,600000,300000,0
+
+//Upper left
+berz_01,25,174,15,15	monster	Dullahan	1504,2,600000,300000,0
+berz_01,25,174,15,15	monster	Loli Ruri	1505,3,600000,300000,0
+berz_01,25,174,15,15	monster	Bloody Murderer	1507,2,600000,300000,0
+berz_01,25,174,15,15	monster	Heirozoist	1510,2,600000,300000,0
+berz_01,25,174,15,15	monster	Gibbet	1503,3,600000,300000,0
+
+//Lower right
+berz_01,174,26,15,15	monster	Pasana	1154,5,600000,300000,0
+berz_01,174,26,15,15	monster	Ancient Mummy	1297,3,600000,300000,0
+berz_01,174,26,15,15	monster	Marduk	1140,5,600000,300000,0
+berz_01,174,26,15,15	monster	Arclouze	1194,2,600000,300000,0
+berz_01,174,26,15,15	monster	Mimic	1191,2,600000,300000,0
+
+//Lower left 
+berz_01,25,26,15,15	monster	Dark Frame	1260,2,600000,300000,0
+berz_01,25,26,15,15	monster	Injustice	1257,5,600000,300000,0
+berz_01,25,26,15,15	monster	Zealotus	1200,1,600000,300000,0
+berz_01,25,26,15,15	monster	Rybio	1201,2,600000,300000,0
+berz_01,25,26,15,15	monster	Phendark	1202,2,600000,300000,0
+
+//center
+berz_01,99,99,10,10	monster	Death Word	1698,5,600000,300000,0
+berz_01,99,99,10,10	monster	Ancient Mimic	1699,5,600000,300000,0
+
+//=============================================================
+
+//mid right
+berz_02,173,78,15,15	monster	Maya	1147,1,600000,300000,1
+berz_02,173,78,15,15	monster	Tri Joint	1279,5,150000,30000,0
+berz_02,173,78,15,15	monster	Anopheles	1627,15,25000,5000,0
+berz_02,173,78,15,15	monster	Arclouse	1194,5,150000,30000,0
+
+//mid left
+berz_02,25,78,15,15	monster	Pharaoh	1157,1,600000,300000,1
+berz_02,25,78,15,15	monster	Marduk	1140,5,150000,30000,0
+berz_02,25,78,15,15	monster	Pasana	1154,5,150000,30000,0
+berz_02,25,78,15,15	monster	Mimic	1191,10,25000,15000,0
+
+//low right
+//ESL room (1529)
+berz_02,174,26,15,15	monster	Evil Snake Lord	1418,1,600000,300000,1
+berz_02,174,26,15,15	monster	Taoist Hermit	1412,5,150000,30000,0
+berz_02,174,26,15,15	monster	Enchanted Peach Tree	1410,5,150000,30000,0
+berz_02,174,26,15,15	monster	Evil Nymph	1416,3,150000,30000,0
+berz_02,174,26,15,15	monster	Baby Leopard	1415,5,25000,15000,0
+
+//low left
+//Incant Samurai room
+berz_02,25,25,15,15	monster	Incantation Samurai	1492,1,600000,300000,1
+berz_02,25,25,15,15	monster	Shinobi	1560,5,150000,30000,0
+berz_02,25,25,15,15	monster	Tengu	1405,5,150000,30000,0
+berz_02,25,25,15,15	monster	The Paper	1375,3,150000,30000,0
+berz_02,25,25,15,15	monster	Antique Firelock	1403,5,150000,30000,0
+
+//upper right
+berz_02,173,151,10,30	monster	Dark Lord	1272,1,600000,300000,1
+berz_02,173,151,10,30	monster	Abysmal Knight	1219,1,600000,300000,1
+berz_02,173,151,10,30	monster	Bloody Knight	1268,1,600000,300000,0
+berz_02,173,151,10,30	monster	Evil Druid	1117,5,150000,30000,0
+berz_02,173,151,10,30	monster	Wraith	1192,5,150000,30000,0
+berz_02,173,151,10,30	monster	Khalitzburg	1132,5,150000,30000,0
+berz_02,173,151,10,30	monster	Raydric	1163,3,150000,30000,0
+berz_02,173,151,10,30	monster	Raydric Archer	1276,3,150000,30000,0
+berz_02,173,151,10,30	monster	Rideword	1195,3,25000,15000,0
+berz_02,173,151,10,30	monster	Ghoul	1036,3,25000,15000,0
+
+//upper-mid left
+//Tao Room
+berz_02,25,129,10,10	monster	Tao Gunka	1583,1,600000,300000,1
+berz_02,25,129,10,10	monster	Penomena	1216,10,150000,30000,0
+berz_02,25,129,10,10	monster	Medusa	1148,5,150000,30000,0
+berz_02,25,129,10,10	monster	Pest	1256,5,150000,30000,0
+berz_02,25,129,10,10	monster	Nereid	1255,5,150000,30000,0
+
+//upper mid
+//Dracula room (1530)
+berz_02,107,122,5,5	monster	Dracula	1389,1,600000,300000,1
+berz_02,107,136,5,5	monster	Familiar	1005,5,10000,5000,0
+berz_02,92,121,5,5	monster	Drainliar	1111,15,10000,5000,0
+berz_02,107,122,5,5	monster	Ghoul	1423,5,25000,15000,0
+
+//lower mid
+berz_02,100,77,15,15	monster	Moonlight Flower	1150,1,600000,300000,1
+berz_02,100,77,15,15	monster	Nine Tail	1180,7,150000,30000,0
+berz_02,100,77,15,15	monster	Horong	1129,10,25000,15000,0
+berz_02,100,77,15,15	monster	Greatest General	1277,5,25000,15000,0
+
+//upper left
+berz_02,22,177,10,10	monster	Blue Plant	1079,3,150000,30000,0
+berz_02,22,177,10,10	monster	Red Plant	1078,3,150000,30000,0
+berz_02,22,177,10,10	monster	Yellow Plant	1081,3,150000,30000,0
+berz_02,22,177,10,10	monster	Green Plant	1080,3,150000,30000,0
+berz_02,22,177,10,10	monster	Geographer	1368,1,600000,300000,0
+berz_02,22,177,10,10	monster	Muscipular	1780,1,600000,300000,0
+
+
+//===============================================================
+//berz_03
+
+berz_03,0,0,0,0	monster	Majoruros	1310,3,150000,60000,0
+berz_03,0,0,0,0	monster	Ancient Mimic	1699,5,150000,30000,0
+berz_03,0,0,0,0	monster	Deathword	1698,5,150000,30000,0
+berz_03,0,0,0,0	monster	Rideword	1195,10,150000,30000,0
+berz_03,0,0,0,0	monster	Mimic	1191,15,150000,30000,0
+berz_03,0,0,0,0	monster	Constant	1738,20,50000,10000,0
+berz_03,0,0,0,0	monster	Aliza	1737,5,600000,300000,0
+
+//===============================================================
+
+berz_intr,35,124,3,50	monster	Ghoul	1036,5,60000,30000,0
+berz_intr,35,124,3,50	monster	Wraith	1192,1,60000,30000,0
+berz_intr,35,124,3,50	monster	Wind Ghost	1263,2,60000,30000,0
+
+//===============================================================
+
+//quested map
+berz_end,0,0,0,0	monster	Ghoul	1036,20,60000,60000,0
+berz_end,0,0,0,0	monster	Deviruchi	1109,10,60000,60000,0
+berz_end,0,0,0,0	monster	Wraith	1475,5,60000,60000,0
+berz_end,0,0,0,0	monster	Wraith Dead	1566,5,600000,300000,0
+berz_end,0,0,0,0	monster	Skogul	1752,5,600000,300000,0
+berz_end,0,0,0,0	monster	Frus	1753,5,600000,300000,0
+berz_end,0,0,0,0	monster	Berzebub	1396,1,86000000,80000000,Berzebub#NPC::OnBerzeDead
+
+//===============================================================
+
+berz_end,1,1,0	script	Berzebub#NPC	-1,{
+
+OnBerzeDead:
+disablenpc "berzewarp13-1";
+killmonsterall "berz_end";
+specialeffect2 537;
+specialeffect2 348;
+specialeffect2 513;
+mapannounce "berz_end", "Gaaaahhhhh!",bc_blue|bc_map;
+initnpctimer;
+end;
+
+OnTimer4000:
+mapannounce "berz_end", "Heh... Not bad...!",bc_blue|bc_map;
+end;
+
+OnTimer7000:
+mapannounce "berz_end", "But your power is nothing compared to that of the ancient guardians.",bc_blue|bc_map;
+end;
+
+OnTimer10000:
+mapannounce "berz_end", "I have no choice but to retreat for now and spare the boy...",bc_blue|bc_map;
+end;
+
+OnTimer14000:
+mapannounce "berz_end", "But I will return!",bc_blue|bc_map;
+end;
+
+OnTimer16000:
+mapannounce "berz_end", "Farewell...",bc_blue|bc_map;
+areawarp "berz_end",1,1,300,300,"berz_04",121,143;
+end;
+
+OnTimer86400000:
+enablenpc "berzewarp13-1";
+stopnpctimer;
+end;
+}
+
+berz_04,113,133,0	script	berzewarp40	45,1,1,{
+OnTouch:
+set BERZEQ,6;
+set Plantvar,0;
+set BerzeTimesIn,0;
+warp "geffen",119,59; 
+end;
+}
+
+//===============================================================
+
+berz_04,46,133,5,100	monster	Frus	1753,3,600000,300000,0
+berz_04,46,133,5,100	monster	Skogul	1752,3,600000,300000,0
+berz_04,46,133,5,100	monster	Executioner	1205,3,600000,300000,0
+berz_04,46,133,5,100	monster	Ogretooth	1204,3,600000,300000,0
+berz_04,46,133,5,100	monster	Mysteltainn	1203,3,600000,300000,0
+berz_04,46,133,5,100	monster	Bloody Knight	1268,3,600000,300000,0
+berz_04,46,133,5,100	monster	Deviruchi	1109,15,60000,30000,0
+
+//==================================================
+// Warps
+//==================================================
+
+berz_intr,35,24,0	warp	berzewarp1	1,1,geffen,120,39
+berz_intr,35,182,0	warp	berzewarp2	1,1,berz_01,99,13
+berz_01,99,10,0	warp	berzewarp3-1	1,1,berz_intr,35,179
+
+//left warps
+berz_01,26,134,0	warp	berzewarp3	1,1,berz_01,26,159
+berz_01,25,65,0	warp	berzewarp4	1,1,berz_01,25,43
+berz_01,26,155,0	warp	berzewarp5	1,1,berz_01,26,130
+berz_01,44,25,0	warp	berzewarp6	1,1,berz_01,67,25
+berz_01,63,25,0	warp	berzewarp7	1,1,berz_01,40,25
+berz_01,65,173,0	warp	berzewarp8	1,1,berz_01,44,173
+berz_01,134,173,0	warp	berzewarp8-1	1,1,berz_01,159,173
+
+//right warps
+berz_01,173,134,0	warp	berzewarp9	1,1,berz_01,173,155
+berz_01,173,65,0	warp	berzewarp10	1,1,berz_01,174,40
+berz_01,173,44,0	warp	berzewarp11	1,1,berz_01,173,69
+berz_01,99,81,0	warp	berzewarp12	1,1,berz_01,99,50
+berz_01,155,174,0	warp	berzewarp13	1,1,berz_01,130,173
+berz_01,100,124,0	warp	berzewarp13-1	1,1,berz_02,100,26
+
+//==================================================================
+berz_02,41,25,0	warp	berzewarp15	1,1,berz_02,89,25
+berz_02,85,25,0	warp	berzewarp16	1,1,berz_02,36,25
+
+berz_02,158,25,0	warp	berzewarp17	1,1,berz_02,110,25
+berz_02,114,25,0	warp	berzewarp18	1,1,berz_02,163,25
+
+berz_02,49,131,0	warp	berzewarp19	1,1,berz_02,91,125
+berz_02,92,129,0	warp	berzewarp20	1,1,berz_02,49,134
+
+berz_02,25,115,0	warp	berzewarp21	1,1,berz_02,26,88
+berz_02,26,92,0	warp	berzewarp22	1,1,berz_02,25,119
+
+berz_02,41,77,0	warp	berzewarp23	1,1,berz_02,89,78
+berz_02,84,77,0	warp	berzewarp24	1,1,berz_02,36,77
+
+berz_02,99,63,0	warp	berzewarp25	1,1,berz_02,100,36
+berz_02,100,40,0	warp	berzewarp26	1,1,berz_02,99,67
+
+berz_02,115,77,0	warp	berzewarp27	1,1,berz_02,163,77
+berz_02,158,77,0	warp	berzewarp28	1,1,berz_02,110,78
+
+berz_02,174,92,0	warp	berzewarp29	1,1,berz_02,173,119
+berz_02,173,115,0	warp	berzewarp30	1,1,berz_02,174,88
+
+berz_02,158,177,0	warp	berzewarp31	1,1,berz_02,132,177
+berz_02,137,177,0	warp	berzewarp32	1,1,berz_02,163,177
+
+berz_02,55,177,0	warp	berzewarp33	1,1,berz_02,28,177
+berz_02,33,177,0	warp	berzewarp34	1,1,berz_02,59,177
+
+berz_02,96,184,0	warp	berzewarp35	1,1,berz_03,100,15
+berz_03,100,11,0	warp	berzewarp36	1,1,berz_02,96,181
+
+//==================================================================
+
+berz_03,90,59,0	script	MazeWarp	45,1,1,{
+OnTouch:
+set	@warp1,rand(15);
+if(@warp1==0)goto L_warp0;
+if(@warp1==1)goto L_warp21;
+if(@warp1==2)goto L_warp31;
+if(@warp1==3)goto L_warp41;
+if(@warp1==4)goto L_warp51;
+if(@warp1==5)goto L_warp61;
+if(@warp1==6)goto L_warp71;
+if(@warp1==7)goto L_warp81;
+if(@warp1==8)goto L_warp91;
+if(@warp1==9)goto L_warp101;
+if(@warp1==10)goto L_warp111;
+if(@warp1==11)goto L_warp121;
+if(@warp1==12)goto L_warp131;
+if(@warp1==13)goto L_warp141;
+if(@warp1==14)goto L_warp151;
+
+L_warp0:	
+warp "berz_03",160,138; end;
+L_warp21:	
+warp "berz_03",20,177; end;	
+L_warp31:	
+warp "berz_03",182,62; end;	
+L_warp41:	
+warp "berz_03",160,20; end;	
+L_warp51:	
+warp "berz_03",140,80; end;	
+L_warp61:	
+warp "berz_03",100,138; end;	
+L_warp71:	
+warp "berz_03",79,100; end;	
+L_warp81:	
+warp "berz_03",100,59; end;	
+L_warp91:	
+warp "berz_03",60,18; end;
+L_warp101:	
+warp "berz_03",21,20; end;
+L_warp111:	
+warp "berz_03",40,60; end;
+L_warp121:	
+warp "berz_03",60,139; end;	
+L_warp131:	
+warp "berz_03",20,119; end;
+L_warp141:	
+warp "berz_03",20,177; end;
+L_warp151:	
+warp "berz_03",181,181; end;
+}
+
+berz_03,100,129,0	script	MazeWarpEnd	45,1,1,{
+OnTouch:
+set	@warp,rand(2);
+if(@warp==0)goto L_Warptoend;
+if(@warp==1)goto L_Warpcontinue;
+
+L_Warptoend:
+warp "berz_03",100,166; 
+end;
+
+L_Warpcontinue:
+	set	@warp,rand(15);
+	if(@warp==0)goto L_warp1;
+	if(@warp==1)goto L_warp2;
+	if(@warp==2)goto L_warp3;
+	if(@warp==3)goto L_warp4;
+	if(@warp==4)goto L_warp5;
+	if(@warp==5)goto L_warp6;
+	if(@warp==6)goto L_warp7;
+	if(@warp==7)goto L_warp8;
+	if(@warp==8)goto L_warp9;
+	if(@warp==9)goto L_warp10;
+	if(@warp==10)goto L_warp11;
+	if(@warp==11)goto L_warp12;
+	if(@warp==12)goto L_warp13;
+	if(@warp==13)goto L_warp14;
+	if(@warp==14)goto L_warp15;
+
+L_warp1:	
+warp "berz_03",160,138; end;
+L_warp2:	
+warp "berz_03",20,177; end;	
+L_warp3:	
+warp "berz_03",182,62; end;	
+L_warp4:	
+warp "berz_03",160,20; end;	
+L_warp5:	
+warp "berz_03",140,80; end;	
+L_warp6:	
+warp "berz_03",100,138; end;	
+L_warp7:	
+warp "berz_03",79,100; end;	
+L_warp8:	
+warp "berz_03",100,59; end;	
+L_warp9:	
+warp "berz_03",60,18; end;
+L_warp10:	
+warp "berz_03",21,20; end;
+L_warp11:	
+warp "berz_03",40,60; end;
+L_warp12:	
+warp "berz_03",60,139; end;	
+L_warp13:	
+warp "berz_03",20,119; end;
+L_warp14:	
+warp "berz_03",20,177; end;
+L_warp15:	
+warp "berz_03",181,181; end;
+}
+
+//1
+berz_03,140,146,0	duplicate(MazeWarp)	MazeWarp11	45,1,1
+berz_03,130,137,0	duplicate(MazeWarp)	MazeWarp12	45,1,1
+berz_03,179,129,0	duplicate(MazeWarp)	MazeWarp13	45,1,1
+
+//2
+berz_03,180,91,0	duplicate(MazeWarp)	MazeWarp21	45,1,1
+berz_03,170,99,0	duplicate(MazeWarp)	MazeWarp22	45,1,1
+berz_03,180,108,0	duplicate(MazeWarp)	MazeWarp23	45,1,1
+
+//3
+berz_03,180,51,0	duplicate(MazeWarp)	MazeWarp31	45,1,1
+berz_03,170,59,0	duplicate(MazeWarp)	MazeWarp32	45,1,1
+
+//4
+berz_03,180,28,0	duplicate(MazeWarp)	MazeWarp41	45,1,1
+berz_03,130,19,0	duplicate(MazeWarp)	MazeWarp42	45,1,1
+
+//5
+berz_03,140,108,0	duplicate(MazeWarp)	MazeWarp51	45,1,1
+berz_03,130,99,0	duplicate(MazeWarp)	MazeWarp52	45,1,1
+berz_03,140,50,0	duplicate(MazeWarp)	MazeWarp53	45,1,1
+
+//6
+berz_03,109,137,0	duplicate(MazeWarpEnd)	MazeWarpEnd62	45,1,1
+berz_03,90,137,0	duplicate(MazeWarpEnd)	MazeWarpEnd63	45,1,1
+berz_03,100,146,0	duplicate(MazeWarpEnd)	MazeWarpEnd64	45,1,1
+
+//7
+berz_03,60,108,0	duplicate(MazeWarp)	MazeWarp71	45,1,1
+berz_03,60,91,0	duplicate(MazeWarp)	MazeWarp72	45,1,1
+berz_03,109,99,0	duplicate(MazeWarp)	MazeWarp73	45,1,1
+
+//8
+berz_03,109,59,0	duplicate(MazeWarp)	MazeWarp81	45,1,1
+
+//9
+berz_03,60,28,0	duplicate(MazeWarp)	MazeWarp91	45,1,1
+berz_03,69,19,0	duplicate(MazeWarp)	MazeWarp92	45,1,1
+
+//10
+berz_03,20,11,0	duplicate(MazeWarp)	MazeWarp101	45,1,1
+berz_03,20,28,0	duplicate(MazeWarp)	MazeWarp102	45,1,1
+
+//11
+berz_03,20,51,0	duplicate(MazeWarp)	MazeWarp111	45,1,1
+berz_03,60,68,0	duplicate(MazeWarp)	MazeWarp112	45,1,1
+berz_03,69,59,0	duplicate(MazeWarp)	MazeWarp113	45,1,1
+
+//12
+berz_03,60,129,0	duplicate(MazeWarp)	MazeWarp121	45,1,1
+berz_03,69,137,0	duplicate(MazeWarp)	MazeWarp122	45,1,1
+
+//13
+berz_03,20,146,0	duplicate(MazeWarp)	MazeWarp131	45,1,1
+berz_03,29,99,0	duplicate(MazeWarp)	MazeWarp132	45,1,1
+berz_03,10,99,0	duplicate(MazeWarp)	MazeWarp133	45,1,1
+
+//14
+berz_03,29,179,0	duplicate(MazeWarp)	MazeWarp141	45,1,1
+berz_03,20,188,0	duplicate(MazeWarp)	MazeWarp142	45,1,1
+
+//15
+berz_03,180,171,0	duplicate(MazeWarp)	MazeWarp151	45,1,1
+berz_03,170,179,0	duplicate(MazeWarp)	MazeWarp152	45,1,1
+
+//====================================================================
+
+berz_03,100,186,0	warp	berzewarp37	1,1,berz_04,45,20
+
+berz_end,99,178,4	script	Portal#2	723,{
+
+mes "Do you want to leave this map? Note that you will need to start from the beginning of the castle to return here if you use this Portal.";
+next;
+menu "Yes.",-,"No.",L_Remain;
+set BERZEQ,6;
+set Plantvar,0;
+set BerzeTimesIn,0;
+warp "geffen",119,59;
+close;
+
+L_Remain:
+close;
+}
+
+//=====================================================================
+//Map Flags
+//=====================================================================
+
+berz_04	mapflag	nomemo
+berz_04	mapflag	noteleport
+berz_04	mapflag	nobranch
+berz_04	mapflag	noexp
+berz_04	mapflag	noloot
+berz_04	mapflag	nosave	SavePoint
+berz_04	mapflag	monster_noteleport
+berz_04	mapflag	noreturn
+
+berz_end	mapflag	nomemo
+berz_end	mapflag	nosave	SavePoint
+berz_end	mapflag	nobranch
+
+berz_intr	mapflag	nomemo
+berz_intr	mapflag	noteleport
+berz_intr	mapflag	nobranch
+berz_intr	mapflag	nosave	SavePoint
+berz_intr	mapflag	noexp
+berz_intr	mapflag	noloot
+
+berz_03	mapflag	nomemo
+berz_03	mapflag	noteleport
+berz_03	mapflag	nobranch
+berz_03	mapflag	nosave	SavePoint
+berz_03	mapflag	noexp
+berz_03	mapflag	noloot
+
+berz_02	mapflag	nomemo
+berz_02	mapflag	noteleport
+berz_02	mapflag	nobranch
+berz_02	mapflag	noexp
+berz_02	mapflag	noloot
+berz_02	mapflag	monster_noteleport
+
+berz_01	mapflag	nomemo
+berz_01	mapflag	noteleport
+berz_01	mapflag	nosave	SavePoint
+berz_01	mapflag	monster_noteleport
+berz_01	mapflag	nobranch
+berz_01	mapflag	noexp
+berz_01	mapflag	noloot

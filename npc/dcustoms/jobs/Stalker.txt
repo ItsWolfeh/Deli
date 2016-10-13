@@ -1,0 +1,64 @@
+valkyrie.gat,53,58,4	script	Stalker	747,{
+
+if(Class == Job_Novice_High) goto L_ThiefHighChange;
+if(Class == Job_Thief_High) goto L_StalkerChange;
+
+	mes "[ ^0065DFStalker^000000 ]";
+	mes "You're not a Novice High or Thief High. I can train only these two classes.";
+	close;
+
+L_ThiefHighChange:
+	mes "[ ^0065DFStalker^000000 ]";
+	mes "I see you've been reborn...do you wish to become a Thief High?";
+	next;
+	menu "Cancel",L_Cancel,"Yes, train me to be a Thief High",-;
+	
+	if(checkfalcon() || checkcart() || checkriding()) goto L_remove;
+	if(JobLevel <10) goto Ljobten;
+	if(SkillPoint != 0) goto L_skillUsed;
+	next;
+	mes "[ ^0065DFStalker^000000 ]";
+	mes "Those devious hands of yours really look like they need to grab something (no comment)... go forth and steal!";
+	jobchange Job_Thief_High;
+	close;
+
+Ljobten:
+	mes "[ ^0065DFStalker^000000 ]";
+	mes "You need to be at least Job Level 10 before changing into a Thief High... go kill some porings or something.";
+	close;
+
+L_StalkerChange:
+	mes "[ ^0065DFStalker^000000 ]";
+	mes "I see you're a Thief High...do you wish to train as a Stalker?";
+	next;
+	menu "Cancel",L_Cancel,"Yes, train me to be a Stalker",-;
+
+	if(checkfalcon() || checkcart() || checkriding()) goto L_remove;
+	if(JobLevel <40) goto Ljobforty;
+	if(SkillPoint != 0) goto L_skillUsed;
+	next;
+	mes "[ ^0065DFStalker^000000 ]";
+	mes "Be careful or people will get restraining orders against you. Stalker.";
+	jobchange Job_Stalker;
+	close;
+
+Ljobforty:
+	mes "[ ^0065DFStalker^000000 ]";
+	mes "You must be at least Job Level 40 before even thinking about changing into a Stalker.";
+	close;
+
+L_Cancel:
+	mes "[ ^0065DFStalker^000000 ]";
+	mes "So be it.";
+	close;
+
+L_skillUsed:
+	mes "[ ^0065DFStalker^000000 ]";
+	mes "Please use up all your skill points before changing jobs.";
+	close;
+
+L_remove:
+	mes "[ ^0065DFStalker^000000 ]";
+	mes "Remove your Cart, Falcon or Peco first.";
+	close;
+}

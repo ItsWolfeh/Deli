@@ -1,0 +1,7 @@
+sec_pri,15,84,5	script	Jail Timer::delijailguy	799,{
+
+atcommand strcharinfo(0) + "@jailtime";
+close;
+}
+
+sec_pri,42,83,5	duplicate(delijailguy)	Jail Timer	799

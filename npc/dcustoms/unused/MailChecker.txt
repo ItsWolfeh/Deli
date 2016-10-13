@@ -1,0 +1,100 @@
+//===== eAthena Script ======================================
+//= Mail System (using built in mail function)
+//===========================================================
+//===== By ==================================================
+//= [Lance]
+//===== Version =============================================
+//= 1.1
+//===== Compatible With =====================================
+//= Any flavours of Athena SQL
+//===== Comments ============================================
+//= 1.0 - Initial release                             [Lance]
+//===========================================================
+
+//Deli: Minor edits + waitingroom
+
+prontera,182,214,3	script	Kafra Mailgirl::delimail	831,{
+
+waitingroom "Kafra Mail",0;
+
+	mes "[Kafra Mailgirl]";
+	mes "Hey there!";
+	mes "Im the Kafra Corp. Mailgirl ^_~";
+	mes "I'll hold your personal messages for your friend, and I'll make sure they recieve it when I see them.";
+	next;
+	mes "[Kafra Mailgirl]";
+	mes "Would you like to use my services?";
+	menu "Sure", MENUSYS, "No, Thanks.", -;
+	next;
+	mes "[Kafra Mailgirl]";
+	mes "Do come again!";
+	close;
+
+MENUSYS:
+	next;
+	mes "[Kafra Mailgirl]";
+	mes "Cool, what can I do for ya?";
+	emotion e_ok;
+	menu "Check Mail",L_CHECK,"Send Mail",L_SEND, "Leave", -;
+	next;
+	mes "[Kafra Mailgirl]";
+	mes "Do come again!";
+	close;
+
+L_CHECK:
+	atcommand strcharinfo(0) + ":@listnewmail";
+	menu "Read Mail", L_READ, "Check All Mails",CHKALLMAIL,"Send Mail",L_SEND, "Delete Mail", DELMAIL, "Back", MENUSYS;
+	close;
+
+CHKALLMAIL:
+	atcommand strcharinfo(0) + ":@listmail";
+	menu "Read Mail", L_READ, "Delete Mail", DELMAIL, "Back", MENUSYS;
+	close;
+
+L_READ:
+	next;
+	mes "[Kafra Mailgirl]";
+	mes "Please tell me the message number you want to read.";
+	input @msgnum;
+	next;
+	mes "[Kafra Mailgirl]";
+	mes "Here ya go~!";
+	atcommand strcharinfo(0) + ":@readmail " + @msgnum;
+	menu "Reply Mail", L_SEND, "Back", MENUSYS;
+	close;
+
+L_SEND:
+	next;
+	mes "[Kafra Mailgirl]";
+	mes "Who do you want to send this message to? If they have a space in their name, write their name with quotation marks around it!";
+	input @rcpt$;
+	next;
+	mes "[Kafra Mailgirl]";
+	mes "What message do you want to send?";
+	input @body$;
+	next;
+	atcommand strcharinfo(0) + ":@sendmail " + @rcpt$ + " " + @body$;
+	mes "[Kafra Mailgirl]";
+	mes "All done!";
+	menu "Send another mail", L_SEND, "Back", MENUSYS;
+	close;
+
+DELMAIL:
+	next;
+	mes "[Kafra Mailgirl]";
+	mes "Tell me the message number of the message you wish to delete.";
+	input @msgnum;
+	next;
+	mes "[Kafra Mailgirl]";
+	mes "Are you sure you want to delete message number " + @msgnum + "?";
+	menu "Yes",-,"No",DELMAIL, "Back", MENUSYS;
+	next;
+	atcommand strcharinfo(0) + ":@deletemail " + @msgnum;
+	mes "[Kafra Mailgirl]";
+	mes "All Gone!";
+
+	menu "Delete another mail", DELMAIL, "Back", MENUSYS;
+	close;
+}
+
+alberta,110,204,3	duplicate(delimail)	Kafra Mailgirl	831

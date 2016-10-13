@@ -1,0 +1,100 @@
+//Deliverance Mod: OVERHAULED.
+
+valkyrie.gat,48,48,0	script	Master Novice	812,{
+
+if (((readparam(19) >= 46) && (readparam(19) <= 68)) || ((readparam(19) >= 4023) && (readparam(19) <= 4049))) goto BabyorTKNJGSnochange;
+if (((readparam(19) >= 22) && (readparam(19) <= 26)) || ((readparam(19) >= 4050) && (readparam(19) <= 4096))) goto BabyorTKNJGSnochange;
+if((Class >=Job_Knight) && (Class <=Job_Dancer)) goto START;
+if (readparam(19) == 21) goto START;
+if (lastJob != 0) goto alreadynovice;
+if (class < 7) goto LClass2;
+
+mes "[ ^0065DFMaster Novice^000000 ]";
+mes "Huh? What class are you?";
+close;
+
+
+START:
+mes "[ ^0065DFMaster Novice^000000 ]";
+mes "Greetings, I am the Master Novice. I can reincarnate you into a High Novice in order to become an Advanced Class. Would you like to be reincarnated, young one?";
+next;
+menu "Yes, I would",LNovice2,"I would like some information",info,"No",No;
+
+info:
+mes "[ ^0065DFMaster Novice^000000 ]";
+mes "You must either be a 2-1 or 2-2 class, your Base Level must be 99 and Job Level must be 50.";
+close;
+
+No:
+mes "[ ^0065DFMaster Novice^000000 ]";
+mes "Goodbye, young one.";
+close;
+
+LNovice2:
+	if(baselevel<99) goto LReq;
+	if(joblevel<50) goto LReq2;
+	if(SkillPoint != 0) goto Lskillpt;
+	if(checkfalcon() || checkcart() || checkriding()) goto L_remove;
+	if (Class == Job_Alchem) goto L_HomunExploit;
+L_Hom2:
+	mes "[ ^0065DFMaster Novice^000000 ]";
+	mes "So... getting reborn, eh? That's cool, we all need a rebirth sometime I guess...";
+	set lastJob, readparam(19);
+	next;
+	jobchange Job_Novice_High;
+	resetlvl(1);
+	mes "[ ^0065DFMaster Novice^000000 ]";	
+	mes "It is done...go now and seek your Deliverance!";
+	next;
+	soundeffect "alleluia.wav",0;
+	specialeffect2 410;
+	specialeffect2 514;
+	close;
+
+BabyorTKNJGSnochange:
+	mes "[ ^0065DFMaster Novice^000000 ]";
+	mes "Sorry, Baby Classes, TaeKwon Classes, Ninjas and Gunslingers don't have any advanced jobs...You may not be reborn also if you are wearing sprite-changing equipment.";
+	close;
+
+alreadynovice:
+mes "[ ^0065DFMaster Novice^000000 ]";
+mes "You've been reborn already.";
+close;
+
+L_HomunExploit:
+			if (MaxWeight*90/100 < Weight) goto L_HomunWeight;
+	            heal 100000,100000;
+			unitskilluseid getcharid(3),244,1;
+			goto L_Hom2;
+
+L_HomunWeight:
+			mes "[ ^0065DFMaster Novice^000000 ]";
+			mes "Please drop below 90% weight to continue.";
+			close;
+
+LReq:
+	mes "[ ^0065DFMaster Novice^000000 ]";
+	mes "You need to be Base Level 99 to be Reborn.";
+	close;
+LReq2:
+	next;
+	mes "[ ^0065DFMaster Novice^000000 ]";
+	mes "You need to be Job Level 50 to be Reborn.";
+	close;
+
+L_remove:
+	mes "[ ^0065DFMaster Novice^000000 ]";
+	mes "Please remove your Cart, Falcon or Peco.";
+	close;
+
+LClass2:
+	mes "[ ^0065DFMaster Novice^000000 ]";
+	mes "Only 2nd Classes and Alternate 2nd Classes can change into Novice High.";
+	close;
+
+Lskillpt:
+	next;
+	mes "[ ^0065DFMaster Novice^000000 ]";
+	mes "Please use up all your skill points!";
+	close;
+}

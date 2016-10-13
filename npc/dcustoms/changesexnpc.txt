@@ -1,0 +1,42 @@
+lighthalzen,143,96,5	script	Gender Bender	87,{
+
+set @npc$,"^00ade6[Gender Bender]^000000";
+mes @npc$;
+	if ( basejob == 19 || basejob == 20 ) {        
+	mes "Sorry, my formula doesn't work on Bard or Dancer classes.";
+	close;    
+	}
+	query_sql "select class from `char` where account_id = "+ getcharid(3), .@jobs;    
+	for ( set .@i, 0; .@i < getarraysize(.@jobs); set .@i, .@i +1 ) {        
+	if ( .@jobs[.@i] == 19 || .@jobs[.@i] == 20 || .@jobs[.@i] == 4020 || .@jobs[.@i] == 4021 || .@jobs[.@i] == 4042 || .@jobs[.@i] == 4043 ) {
+		mes "Sorry, but one of your characters on this account seems to belong to the Bard or Dancer branch.";
+		close;        
+		}    
+	}    
+
+	mes "Want to change sex for 5,000,000 zeny? This will change the sex of ALL characters on your account. You won't be able to change back if you make a Bard or Dancer branch character unless you delete them.";
+	next;
+	menu "Yes!",YCS,"No.",NCS;
+
+	YCS:
+	if (Zeny < 5000000) {
+	mes @npc$;
+	mes "You don't have enough zeny.";
+	close;
+	}
+
+	mes @npc$;
+	mes "Thanks, you will be auto-kicked for the formula to work.";
+	next;
+	set Zeny,Zeny - 5000000;
+	changesex;
+
+	atcommand "@kick "+strcharinfo(0);
+	close;
+
+	NCS:
+	mes @npc$;
+	mes "See ya!";
+	close;
+
+}

@@ -1,0 +1,73 @@
+function	script	F_DeliHealer	{
+
+// Arguments: 
+// getarg(0) is price
+// getarg(1) is how many free levels it permits
+
+	cutin "kafra_07",2;
+	mes "[Nurse]";
+	mes "Hey sexy, I'm the super cute healing Nurse! All I need is ^1200F7"+getarg(0)+"z^000000 to patch you up...and it's free if you're level "+getarg(1)+" or lower!";
+	next;
+	menu "Pay the Nurse",Case1,"Leave",Case2;
+
+Case1:
+	if(BaseLevel<=getarg(1)) goto DFreeHeal;
+	if(Zeny<getarg(0)) goto NoZeny;
+	set Zeny,Zeny-getarg(0);
+	specialeffect2 7;
+	heal 100000,100000;
+	sc_end SC_Poison;
+	sc_end SC_Silence;
+	sc_end SC_Blind;
+	sc_end SC_Confusion;
+	sc_end SC_Curse;
+	sc_end SC_Hallucination;
+	mes "[Nurse]";
+	mes "Your health has been ^1200F7fully restored^000000! Come again anytime!";
+	cutin "kafra_07",255;
+	close;
+
+DFreeHeal:
+	specialeffect2 7;
+	heal 100000,100000;
+	sc_end SC_Poison;
+	sc_end SC_Silence;
+	sc_end SC_Blind;
+	sc_end SC_Confusion;
+	sc_end SC_Curse;
+	sc_end SC_Hallucination;
+	mes "[Nurse]";
+	mes "Your health has been ^1200F7fully restored^000000! Come again anytime!";
+	cutin "kafra_07",255;
+	close;
+
+NoZeny:
+	mes "[Nurse]";
+	mes "You do not have enough zeny! Are you trying to steal from me?!";
+	cutin "kafra_07",255;
+	close;
+
+Case2:
+	mes "[Nurse]";
+	mes "Oh, okay then. Have it your way.";
+	cutin "kafra_07",255;
+	close;
+}
+
+
+
+prontera,141,182,5	script	Nurse Kyoko	721,{
+callfunc "F_DeliHealer",1500,45;
+}
+
+premcity,145,120,5	script	Nurse Joy	721,{
+callfunc "F_DeliHealer",1500,45;
+}
+
+arenalounge,88,70,3	script	Nurse Sharu	721,{
+callfunc "F_DeliHealer",2500,30;
+}
+
+alberta,91,191,5	script	Nurse Alberta	721,{
+callfunc "F_DeliHealer",1500,45;
+}

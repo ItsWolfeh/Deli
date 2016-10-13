@@ -1,0 +1,151 @@
+amatsu,193,253,4	script	Artist	808,{
+if(cov != 3) goto leave;
+if(masterhoshu == 1) goto alreadymaster;
+if(masterhoshu == 2) goto donequest;
+if(artgear1 == 1) goto done;
+
+mes "[Artist]";
+mes "I am the Artist";
+mes "No, not the painting art, but the Art of Fighting.";
+next;
+if(countitem(2275)<1) goto redbandana;
+mes "[Artist]";
+mes "I see you have your Artist gear, that is good.";
+mes "But the road to mastering the Art is not easy. It takes alot of discipline and dedication.";
+next;
+mes "[Artist]";
+mes "To test your abilities I will send you to search for Master Hoshu.";
+next;
+mes "[Artist]";
+mes "He will teach you the way of the Artist.";
+mes "Once you have learnt the way of the Artist, return to me.";
+next;
+mes "[Artist]";
+mes "Do you accept this Quest?";
+menu "Yes",yes1,"No",no1;
+
+yes1:
+mes "[Artist]";
+mes "Excellent, Master Hoshu will be waiting. I will give you one hint for your journey: he is on the highest peak in the land, surrounded by many legs..";
+set masterhoshu,1;
+close;
+
+donequest:
+mes "[Artist]";
+mes "Ah, you have learnt one of the values of the Art, I trust all went well.";
+mes "Now I shall unlock the first level of your coven gear.";
+next;
+mes "[Artist]";
+mes "Hmmmmm Hmmmmm Ahmmmmm MISHUHI!";
+set masterhoshu,0;
+set artgear1,1;
+next;
+mes "[Artist]";
+mes "It is done!";
+close;
+
+
+alreadymaster:
+mes "[Artist]";
+mes "Go seek Master Hoshu. He is on the highest peak in the land, surrounded by many legs..";
+close;
+
+no1:
+mes "[Artist]";
+mes "I understand, You are not ready yet. Return when you are.";
+close;
+
+
+redbandana:
+mes "[Artist]";
+mes "You do not have your Artist Gear, go find it.";
+close;
+
+
+leave:
+	if (cov == 1) goto ItsaSlayer;
+	if (cov == 2) goto ItsaCraft;
+	if (cov == 4) goto ItsaWeaving;
+	if (cov == 5) goto ItsaProphecy;
+
+	mes "[Artist]";
+	mes "I have nothing to teach someone with no coven. Begone.";
+	close;
+
+ItsaSlayer:
+	mes "[Artist]";
+	mes "I have nothing to teach you, Slayer.";
+	close;
+
+ItsaCraft:
+	mes "[Artist]";
+	mes "I have nothing to teach you, Crafter.";
+	close;
+
+ItsaWeaving:
+	mes "[Artist]";
+	mes "I have nothing to teach you, Weaver.";
+	close;
+
+ItsaProphecy:
+	mes "[Artist]";
+	mes "I have nothing to teach you, Prophet.";
+	close;
+
+done:
+mes "[Artist]";
+mes "Go seek out other users of the Art, for they will help you along your path..";
+close;
+}
+
+
+
+
+
+
+
+//Hoshu
+
+mjolnir_03,212,213,4	script	Master Hoshu	765,{
+if(artgear1 == 1) goto done;
+if (masterhoshu == 2) goto done;
+mes "[Master Hoshu]";
+mes " I am of the Hoshu Decendents, the Blood of the Art flows strongly within me.";
+next;
+if (cov != 3) goto done2;
+mes "[Master Hoshu]";
+mes "I have a riddle for you. Answer wrongly and I will kill you.";
+mes "Someone at a party introduces you to your mother's only sister's husband's sister in law. He has no brothers. What do you call this lady?";
+menu "Uncle",die,"Aunt",die,"Niece",die,"Second Niece Twice Removed",die,"Father",die,"Great Aunt",die,"Mother",correct,"Cousin",die,"Second Cousin Twice Removed",die,"None of the Above",die;
+
+die:
+mes "[Master Hoshu]";
+mes "Wrong! You IDIOT! And you want to learn the way of the art??";
+mes "*SMACK*";
+next;
+percentheal -100,-100;
+warp "prontera",156,191;
+close;
+
+correct:
+mes "[Master Hoshu]";
+mes "Ah interesting, not many figure it out.";
+mes "Users of the Art must not only use the power of their body but that of the mind. Often the most difficult of tasks can become the easiest.";
+next;
+mes "[Master Hoshu]";
+mes "Go see the Artist. Good luck.";
+set masterhoshu,2;
+close;
+
+
+done:
+mes "[Master Hoshu]";
+mes "The Blood of the Art flows strongly within you..";
+close;
+
+done2:
+mes "[Master Hoshu]";
+mes "You are not a member of the Coven of the Arts! Go away!";
+close;
+
+}

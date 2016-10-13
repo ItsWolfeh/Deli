@@ -1,0 +1,70 @@
+valkyrie.gat,53,56,4	script	Gypsy	101,{
+
+if (sex == 1) goto L_Male;
+if(Class == Job_Novice_High) goto L_ArcherHighChange;
+if(Class == Job_Archer_High) goto L_GypsyChange;
+
+	mes "[ ^0065DFGypsy^000000 ]";
+	mes "You're not a Novice High or Archer High. I can train only these two classes.";
+	close;
+
+L_ArcherHighChange:
+	mes "[ ^0065DFGypsy^000000 ]";
+	mes "I see you've been reborn...do you wish to become an Archer High?";
+	next;
+	menu "Cancel",L_Cancel,"Yes, train me to be an Archer High",-;
+	
+	if(checkfalcon() || checkcart() || checkriding()) goto L_remove;
+	if(JobLevel <10) goto Ljobten;
+	if(SkillPoint != 0) goto L_skillUsed;
+	next;
+	mes "[ ^0065DFGypsy^000000 ]";
+	mes "Archer High huh..? I wouldn't want you trying to shoot an apple on my head.";
+	jobchange Job_Archer_High;
+	close;
+
+Ljobten:
+	mes "[ ^0065DFGypsy^000000 ]";
+	mes "You need to be at least Job Level 10 before changing into an Archer High... go kill some porings or something.";
+	close;
+
+L_GypsyChange:
+	mes "[ ^0065DFGypsy^000000 ]";
+	mes "I see you're an Archer High...do you wish to train as a Gypsy?";
+	next;
+	menu "Cancel",L_Cancel,"Yes, train me to be a Gypsy.",-;
+
+	if(checkfalcon() || checkcart() || checkriding()) goto L_remove;
+	if(JobLevel <40) goto Ljobforty;
+	if(SkillPoint != 0) goto L_skillUsed;
+	next;
+	mes "[ ^0065DFGypsy^000000 ]";
+	mes "You're ready to be a Gypsy! Go shake what your momma gave you!";
+	jobchange Job_Gypsy;
+	close;
+
+Ljobforty:
+	mes "[ ^0065DFGypsy^000000 ]";
+	mes "You must be at least Job Level 40 before even thinking about changing into a Gypsy.";
+	close;
+
+L_Cancel:
+	mes "[ ^0065DFGypsy^000000 ]";
+	mes "So be it.";
+	close;
+
+L_skillUsed:
+	mes "[ ^0065DFGypsy^000000 ]";
+	mes "Please use up all your skill points before changing jobs.";
+	close;
+
+L_remove:
+	mes "[ ^0065DFGypsy^000000 ]";
+	mes "Remove your Cart, Falcon or Peco first.";
+	close;
+
+L_Male:
+	mes "[ ^0065DFGypsy^000000 ]";
+	mes "I'm not sure people want to see a male Gypsy. You should talk to the Clown.";
+	close;
+}

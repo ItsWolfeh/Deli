@@ -1,0 +1,117 @@
+gonryun,46,260,5	script	Mirage	724,{
+
+	cutin "job_dancer_eir01",2;
+	mes "[^17731CMirage^000000]";
+	mes "Hello there, human. I've been sent here to lend aid to truly deserving novices by giving them the ^724168OoberNovis^000000. Unfortunately, the smiths of Valhalla have run low on supplies.";
+	next;
+	cutin "job_dancer_eir01",255;
+	menu "I will find the required items.",Alright,"Oh well, I'm lazy.",notinto;
+	
+	
+	notinto:
+	cutin "job_dancer_eir03",2;
+	mes "[^17731CMirage^000000]";
+	mes "Good riddance.";
+	next;
+	mes "[^17731CMirage^000000]";
+	mes "Didn't want to help a person like you anyway.";
+	cutin "job_dancer_eir03",255;
+	close;
+	
+	Alright:
+	cutin "job_dancer_eir02",2;
+	mes "[^17731CMirage^000000]";
+	mes "Excellent! The following are required for the production of the OoberNovis:";
+	mes "- ^8B0C2F 3 Knife^000000";
+	mes "- ^8B0C2F 1 Fortune Sword^000000";
+	mes "- ^8B0C2F 1 Moonlight Dagger^000000";
+	mes "- ^8B0C2F 1 Grimtooth Dagger^000000";
+	mes "- ^8B0C2F 1 Sucsamad^000000";
+	mes "- ^259E58 10 3-Carat Diamonds ^000000";
+	mes "- ^259E58 50 Oridecon ^000000";
+	mes "- ^259E58 50 Steel ^000000";
+	mes "- ^259E58 50 Soft Feather ^000000";
+	mes "- ^259E58 25 Hand of God ^000000";
+	next;
+	cutin "job_dancer_eir02",255;
+	menu "I have gathered the required materials.",have_items,"I will go collect the required materials.",gocollect;
+	
+	gocollect:
+	mes "[^17731CMirage^000000]";
+	mes "Good luck!";
+	close;
+	
+	have_items:
+	cutin "job_dancer_eir01",2;
+	mes "[^17731CMirage^000000]";
+	mes "Let's see what you've got...";
+	next;
+	cutin "job_dancer_eir01",255;
+	if((countitem(1201)<3) || (countitem(1234)<1) || (countitem(1009)<25) || (countitem(7063)<50) || (countitem(999)<50) || (countitem(984)<50) || (countitem(732)<10) || (countitem(1236)<1) || (countitem(1223)<1) || (countitem(1237)<1)) goto noitems;
+	
+	mes "[^17731CMirage^000000]";
+	cutin "job_dancer_eir02",2;
+	mes "Excellent, I knew you could do it!!! I will now take the items up..this won't take longer than a mortal second.";
+	next;
+	delitem 1201,3;
+	delitem 1234,1;
+	delitem 1237,1;
+	delitem 1236,1;
+	delitem 1223,1;
+	delitem 732,10;
+	delitem 984,50;
+	delitem 999,50;
+	delitem 7063,50;
+	delitem 1009,25;
+
+	mes "[^17731CMirage^000000]";
+	mes "Here is your reward, you have certainly earned it.";
+	getitem 32064,1;
+	next;
+	cutin "job_dancer_eir02",255;
+	close;
+	
+	noitems:
+	cutin "job_dancer_eir03",2;
+	mes "[^17731CMirage^000000]";
+	mes "I'm not blind, you know...";
+	next;
+	cutin "job_dancer_eir03",255;
+	close;
+		
+}
+
+
+gonryun,49,256,1	script	Memorial	736,{
+
+mes "A memorial for a fallen hero. The plate reads as follows...";
+next;
+mes "God is quite remarkable.";
+mes "Everywhere you tread, magnificent work can be seen,";
+mes "In his rivers, his mountains, and people,";
+mes "and in every being, every happening, every sound.";
+next;
+mes "And at times the Lord surpasses Himself,";
+mes "and makes a dolphin or a bird of paradise,";
+mes "or He creates someone with so much love and kindness,";
+mes "that you'd never meet anyone who's even half as nice,";
+mes "with the spirit of the angels...";
+next;
+mes "And that's how we think of Jessica,";
+mes "A soul full of warmth, an undying spirit of love";
+mes "She had a wonderful outlook on life,";
+mes "Love it, live it, but most of all, be in it while smiling...";
+next;
+mes "Now that time is lost... but it should always be cherished...";
+mes "You were always there to lend your aid to those who needed it...";
+mes "Now we return the favour... Our hearts are with yours...";
+next;
+mes "Find your everlasting peace and rest well.";
+mes "Your friends dearly loved you, we will not let you down.";
+mes "We will always be there with you Taki... in spirit!";
+mes " ";
+mes "-Akihito";
+
+close;
+		
+}

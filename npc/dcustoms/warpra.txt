@@ -1,0 +1,328 @@
+//=======================
+// New 100% Deli Warpra =
+//=======================
+// v0.9 by Crono =
+//================================================
+//Ideas:
+//	- Mes. disp. bottom
+//	- New sprite and cutin
+//	- Unlockable more?
+//	- Know your name
+//	- Track how often you've warpra'd?
+//	- "Where do I level?"
+//	- "Surprise me"
+//	- Dungeons submenu sorted by DIFFICULTY
+//	- Rand1000?
+//================================================
+
+-	script	Warp Script::warpra	708,{
+
+	cutin "pay_soldier",2;
+if (Class == Job_Novice_High) goto L_StartWarpraChick;
+if (Class == Job_Baby) goto L_StartWarpraChick;
+if (Class!=Job_Novice && getskilllv(1)<9) goto L_ForceBasic;
+
+L_StartWarpraChick:
+	mes "[Warpra]";
+	mes "Welcome to Warpra Corp!";
+	mes "Where would you like to be teleported?";
+
+L_TownsDungeonsMenu:
+	menu "Towns",L_TownWarps,"Dungeons A-I",L_DunWarps1,"Dungeons J-Z",L_DunWarps2,"Deliverance Arena",L_ArenaWarp,"Cancel",L_StopTalking;
+
+
+//=============
+// Arena Warp =
+//=============
+L_ArenaWarp:				specialeffect2 35;specialeffect2 36;specialeffect2 36;sleep2 1800;warp "arenalounge",88,50;close;
+
+
+//=========
+// Cancel =
+//=========
+L_StopTalking:
+	mes " ";
+	mes "Feel free to come back when you need our teleportation services.";
+	cutin "pay_soldier",255;
+	close;
+
+
+//===================
+//Force Basic Skill =
+//===================
+L_ForceBasic:
+	mes "[Warpra]";
+	mes "Trying to get away with not having Level 9 Basic Skill? I don't think so.";
+	cutin "pay_soldier",255;
+	close;
+
+
+//=============
+// Town Warps =
+//=============
+L_TownWarps:
+	menu "Prontera (Main City)",L_TownWarpsProntera,"Izlude",L_TownWarpsIzlude,"Alberta (Main City)",L_TownWarpsAlberta,"Al de Baran",L_TownWarpsAldebaran,"Amatsu",L_TownWarpsAmatsu,"Ayothaya",L_TownWarpsAyothaya,"Comodo",L_TownWarpsComodo,"Einbech",L_TownWarpsEinbech,"Einbroch",L_TownWarpsEinbroch,"Geffen",L_TownWarpsGeffen,"Gonryun",L_TownWarpsGonryun,"Hugel",L_TownWarpsHugel,"Jawaii",L_TownWarpsJawaii,"Lighthalzen",L_TownWarpsLighthalzen,"Louyang",L_TownWarpsLouyang,"Lutie",L_TownWarpsLutie,"Morocc",L_TownWarpsMorocc,"Niflheim",L_TownWarpsNiflheim,"Payon",L_TownWarpsPayon,"Payon Archer Village",L_TownWarpsPayonArcher,"Rachel",L_TownWarpsRachel,"Umbala",L_TownWarpsUmbala,"Veins",L_TownWarpsVeins,"Yuno",L_TownWarpsYuno,"Back",L_TownsDungeonsMenu;
+
+	L_TownWarpsProntera:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "prontera",156,191;close;
+
+	L_TownWarpsIzlude:
+						if(izludepvp==1) goto izludepvpwarp;
+						specialeffect2 35;specialeffect2 36;sleep2 1800;warp "izlude",128,93;close;
+		izludepvpwarp:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "pvpizlude",128,93;close;
+
+	L_TownWarpsAlberta:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "alberta",104,207;close;
+	L_TownWarpsAldebaran:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "aldebaran",140,121;close;
+	L_TownWarpsAmatsu:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "amatsu",198,84;close;
+	L_TownWarpsAyothaya:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "ayothaya",151,117;close;
+	L_TownWarpsComodo:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "comodo",209,143;close;
+	L_TownWarpsEinbech:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "einbech",178,132;close;
+	L_TownWarpsEinbroch:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "einbroch",64,200;close;
+	L_TownWarpsGeffen:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "geffen",119,59;close;
+	L_TownWarpsGonryun:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "gonryun",160,120;close;
+	L_TownWarpsHugel:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "hugel",96,145;close;
+	L_TownWarpsJawaii:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "jawaii",249,127;close;
+	L_TownWarpsLighthalzen:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "lighthalzen",158,92;close;
+	L_TownWarpsLouyang:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "louyang",217,101;close;
+	L_TownWarpsLutie:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "xmas",147,132;close;
+	L_TownWarpsMorocc:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "morocc",159,93;close;
+	L_TownWarpsNiflheim:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "niflheim",32,152;close;
+	L_TownWarpsPayon:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "payon",171,222;close;
+	L_TownWarpsPayonArcher:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "pay_arche",52,128;close;
+	L_TownWarpsRachel:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "rachel",130,115;close;
+	L_TownWarpsUmbala:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "umbala",124,131;close;
+	L_TownWarpsVeins:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "veins",216,123;close;
+	L_TownWarpsYuno:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "yuno",157,167;close;
+
+//==========================
+// Dungeon Warps 1, A to I =
+//==========================
+L_DunWarps1:
+	menu "Abyss Lake",L_DunWarpsAbyss,"Amatsu Dungeon",L_DunWarpsAmatsu,"Ancient Pyramids",L_DunWarpsPyramids,"Ant Hell",L_DunWarpsAnthell,"Ayothaya Shrine Dungeon",L_DunWarpsAyo,"Beach Dungeon",L_DunWarpsBeachD,"Byalan Caves",L_DunWarpsByalan,"Clock Tower",L_DunWarpsClockT,"Coal Mines",L_DunWarpsCoalM,"Einbroch Mines",L_DunWarpsEinM,"Gefenia",L_DunWarpsGefenia,"Geffen Caves",L_DunWarpsGeffenC,"Glast Heim",L_DunWarpsGlast,"Gonryun Dungeon",L_DunWarpsGonryunD,"Hidden Temple",L_DunWarpsHiddenT,"Ice Dungeon",L_DunWarpsIceD,"Back",L_TownsDungeonsMenu;
+
+	L_DunWarpsAbyss:
+						next;
+						mes "[Warpra]";
+						mes "Legend has it that an ancient cave of dragons lies secluded on the dragon-jawed island west of the dropoff from this warp. Few have made it to that island alive, though.";
+						next;
+						mes "[Warpra]";
+						mes "Some people say they can hear an ancient voice emanating from a stone pillar nearby. It might be worth checking out. Good luck!";
+						next;
+						specialeffect2 35;specialeffect2 36;sleep2 1800;warp "hu_fild06",335,233;close;
+
+	L_DunWarpsAmatsu:			if(event_amatsu == 6) {
+										specialeffect2 35;specialeffect2 36;sleep2 1800;warp "ama_dun01",229,10;close;
+										}
+						next;
+						mes "[Warpra]";
+						mes "I can't send you in there unless you get permission from the Feudal Lord of Amatsu.";
+						next;
+						specialeffect2 35;specialeffect2 36;sleep2 1800;warp "amatsu",168,171;close;
+
+	L_DunWarpsPyramids:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "moc_ruins",61,161;close;
+
+	L_DunWarpsAnthell:		menu "Ant Hell I",L_DunWarpsAntHell_1,"Ant Hell II",L_DunWarpsAntHell_2,"Back",L_DunWarps1;
+						L_DunWarpsAntHell_1:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "moc_fild04",210,328;close;
+						L_DunWarpsAntHell_2:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "anthell02",37,260;close;
+
+	L_DunWarpsAyo:			if(ayodunquest > 12) {
+										specialeffect2 35;specialeffect2 36;sleep2 1800;warp "ayo_fild02",277,150;close;
+										}
+						next;
+						mes "[Warpra]";
+						mes "The Ayothaya ruins are concentrated with malicious spiritual energy. You wouldn't last a second in there. I suggest you find someone in that city who can make it possible for you to enter.";
+						next;
+						specialeffect2 35;specialeffect2 36;sleep2 1800;warp "ayothaya",151,117;close;
+
+	L_DunWarpsBeachD:			menu "Beach Dungeon I",L_DunWarpsBeach_1,"Beach Dungeon II",L_DunWarpsBeach_2,"Back",L_DunWarps1;
+						L_DunWarpsBeach_1:	specialeffect2 35;specialeffect2 36;sleep2 1800;warp "comodo",28,215;close;
+						L_DunWarpsBeach_2:	specialeffect2 35;specialeffect2 36;sleep2 1800;warp "beach_dun2",154,25;close;
+
+	L_DunWarpsByalan:			menu "Byalan Island",L_DunWarpsByalan_1,"Byalan Caves IV",L_DunWarpsByalan_4,"Back",L_DunWarps1;
+						L_DunWarpsByalan_1:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "izlu2dun",108,52;close;
+						L_DunWarpsByalan_4:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "iz_dun04",26,27;close;
+
+	L_DunWarpsClockT:			menu "Clock Tower III",L_DunWarpsCT_3,"Clock Tower IV",L_DunWarpsCT_4,"Back",L_DunWarps1;
+						L_DunWarpsCT_3:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "c_tower3",63,143;close;
+						L_DunWarpsCT_4:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "c_tower4",42,36;close;
+
+	L_DunWarpsCoalM:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "mjolnir_02",79,361;close;
+	L_DunWarpsEinM:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "ein_dun01",22,14;close;
+
+	L_DunWarpsGefenia:		next;
+						mes "[Warpra]";
+						mes "Gefenia? I've never heard of it... sorry, you'll have to find some other way to get there.";close;
+
+	L_DunWarpsGeffenC:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "gef_dun00",104,99;close;
+
+	L_DunWarpsGlast:			menu "Glast Heim Castle I",L_DunWarpsGHCI,"Glast Heim Castle II",L_DunWarpsGHCII,"Glast Heim Cave Dungeon",L_DunWarpsGHCD,"Glast Heim Chivalry",L_DunWarpsGHCH,"Glast Heim Church",L_DunWarpsGChur,"Glast Heim Culvert I",L_DunWarpsGHCUI,"Glast Heim Culvert IV",L_DunWarpsGHCUII,"Glast Heim Entrance",L_DunWarpsGHE,"Glast Heim Graveyard",L_DunWarpsGHG,"Glast Heim Interior",L_DunWarpsGHI,"Glast Heim Stairway",L_DunWarpsGHS,"Glast Heim Underprison",L_DunWarpsGHUP,"Back",L_DunWarps1;
+						L_DunWarpsGHE:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "gef_fild06",23,304;close;
+						L_DunWarpsGHG:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "gl_chyard",147,16;close;
+						L_DunWarpsGChur:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "gl_church",156,7;close;
+						L_DunWarpsGHCI:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "glast_01",200,293;close;
+						L_DunWarpsGHCII:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "glast_01",200,326;close;
+						L_DunWarpsGHCH:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "gl_knt01",150,11;close;
+						L_DunWarpsGHUP:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "gl_prison",14,70;close;
+						L_DunWarpsGHCUI:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "gl_sew01",258,254;close;
+						L_DunWarpsGHCUII:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "gl_sew04",68,277;close;
+						L_DunWarpsGHI:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "gl_in01",110,125;close;
+						L_DunWarpsGHS:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "gl_step",12,7;close;
+						L_DunWarpsGHCD:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "gl_dun01",133,271;close;
+
+	L_DunWarpsGonryunD:		menu "Gonryun Dungeon I",L_DunWarpsGonryun_1,"Gonryun Dungeon II",L_DunWarpsGonryun_2,"Gonryun Dungeon III",L_DunWarpsGonryun_3,"Back",L_DunWarps1;
+						L_DunWarpsGonryun_1:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "gonryun",160,198;close;
+						L_DunWarpsGonryun_2:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "gon_dun02",17,113;close;
+						L_DunWarpsGonryun_3:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "gon_dun03",68,13;close;
+
+	L_DunWarpsHiddenT:		menu "Hidden Temple I",L_DunWarpsHidden_1,"Hidden Temple II",L_DunWarpsHidden_2,"Back",L_DunWarps1;
+						L_DunWarpsHidden_1:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "prt_maze01",176,7;close;
+						L_DunWarpsHidden_2:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "prt_maze02",80,175;close;
+
+	L_DunWarpsIceD:			next;
+						mes "[Warpra]";
+						mes "I hope you packed a parka for the trip, it's awful cold down there. That place is the remnant of an age when the world was much cooler, preserved deep underground in an ancient cavern.";
+						next;
+						mes "[Warpra]";
+						mes "Continue north of where I send you, but be sure to watch out for all the man-eating monsters that populate the entrance, and keep your eyes out for falling icicles.";
+						next;
+						specialeffect2 35;specialeffect2 36;sleep2 1800;warp "ra_fild04",186,361;close;
+
+
+//==========================
+// Dungeon Warps 2, J to Z =
+//==========================
+L_DunWarps2:
+	menu "Juperos Ruins",L_DunWarpsJuperos,"Lighthalzen Laboratory",L_DunWarpsLhzLab,"Louyang Dungeon",L_DunWarpsLouyang,"Machine Doll Factory/Kiel Dungeon",L_DunWarpsKielD,"Magma Dungeon",L_DunWarpsMagmaD,"Nameless Island",L_DunWarpsNameless,"Odin Temple",L_DunWarpsOdin,"Orc Dungeon",L_DunWarpsOrcD,"Payon Caves",L_DunWarpsPayonC,"Prontera Sewers/Culvert",L_DunWarpsPronteraS,"Rachel Sanctuary",L_DunWarpsRachelSan,"Sphinx Labyrinth",L_DunWarpsSphinxM,"Sunken Pirate Ship",L_DunWarpsSunkenS,"Thanatos Tower",L_DunWarpsThana,"Thor's Volcano",L_DunWarpsThor,"Toy Factory",L_DunWarpsToyFact,"Turtle Island/Dungeon",L_DunWarpsTurtle,"Umbala Dungeon",L_DunWarpsUmbalaD,"Back",L_TownsDungeonsMenu;
+
+	L_DunWarpsJuperos:		next;
+						mes "[Warpra]";
+						mes "Juperos once occupied a huge territory, but was swallowed into the ground during the Wars.";
+						next;
+						mes "[Warpra]";
+						mes "The Juperos Ruins are rumored to lie underground near the Warpra Corp. camp, supposedly somewhere to the north, perhaps up in the next area. One thing's for sure, nothing living survived.";
+						next;
+						specialeffect2 35;specialeffect2 36;sleep2 1800;warp "yuno_fild11",300,120;close;
+
+	L_DunWarpsLhzLab:			next;
+						mes "[Warpra]";
+						mes "You'll need a pass to get into the Labs. Try looking around the warp destination for information...";
+						next;
+						specialeffect2 35;specialeffect2 36;sleep2 1800;warp "lhz_in01",114,176;close;
+
+	L_DunWarpsLouyang:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "louyang",41,270;close;
+
+	L_DunWarpsKielD:			if(KielHyreQuest >= 38) {
+										specialeffect2 35;specialeffect2 36;sleep2 1800;warp "yuno_fild08",74,172;close;
+										}
+						next;
+						mes "[Warpra]";
+						mes "So, you want to enter the Kiel Hyre Doll Factory? You're nuts, it's been closed down for a while now... ever since... Well, maybe it's best if you find out for yourself!";
+						next;
+						mes "[Warpra]";
+						mes "If you really and truly want access to the factory, go to the Yuno bar. There's a whale sign on the building so you can't miss it... and one more thing... ^FF0000I suggest you pay attention to details!^000000";
+						next;
+						specialeffect2 35;specialeffect2 36;sleep2 1800;warp "yuno",157,167;close;
+
+	L_DunWarpsMagmaD:			menu "Magma Dungeon I",L_DunWarpsMagma_1,"Magma Dungeon II",L_DunWarpsMagma_2,"Back",L_DunWarps2;
+						L_DunWarpsMagma_1:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "yuno_fild03",41,146;close;
+						L_DunWarpsMagma_2:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "mag_dun02",47,30;close;
+
+	L_DunWarpsNameless:		next;
+						mes "[Warpra]";
+						mes "The Nameless Island is nameless for a reason. No one ever goes there due to its curse. I can't warp you there myself, but friends tell me there is a sailor south of Veins that'll get you there for a price.";
+						next;
+						specialeffect2 35;specialeffect2 36;sleep2 1800;warp "veins",216,123;close;
+
+	L_DunWarpsOdin:			next;
+						mes "[Warpra]";
+						mes "Warpra Corp. has no coordinates for this place. Someone in Hugel claims to know the way, so I'll warp you there instead.";
+						next;
+						specialeffect2 35;specialeffect2 36;sleep2 1800;warp "hugel",96,145;close;
+
+	L_DunWarpsOrcD:			menu "Orc Dungeon I",L_DunWarpsOrcDun_1,"Orc Dungeon II",L_DunWarpsOrcDun_2,"Back",L_DunWarps2;
+						L_DunWarpsOrcDun_1:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "gef_fild10",67,334;close;
+						L_DunWarpsOrcDun_2:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "gef_fild10",222,200;close;
+
+
+	L_DunWarpsPayonC:			menu "Payon Caves",L_DunWarpsPayon_0,"Payon Caves IV",L_DunWarpsPayon_4,"Back",L_DunWarps2;
+						L_DunWarpsPayon_0:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "pay_dun00",21,180;close;
+						L_DunWarpsPayon_4:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "pay_dun04",199,204;close;
+
+	L_DunWarpsPronteraS:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "prt_sewb1",125,248;close;
+
+	L_DunWarpsRachelSan:		next;
+						mes "[Warpra]";
+						mes "I've never been there, but the Sanctuary is apparently located deep in the Sessimir Castle. I'm not really sure how you can get into the Sanctuary, exactly, so I'll just warp you to Rachel.";
+						next;
+						mes "[Warpra]";
+						mes "You usually need an audience with the Pope to just enter the castle itself... but you simply must be sure to visit the beautiful gardens surrounding the temple while you're there. You won't regret it.";
+						next;
+						specialeffect2 35;specialeffect2 36;sleep2 1800;warp "rachel",129,110;close;
+
+	L_DunWarpsSphinxM:		menu "Sphinx Labyrinth",L_DunWarpsSphinx_1,"Sphinx Labyrinth V",L_DunWarpsSphinx_5,"Back",L_DunWarps2;
+						L_DunWarpsSphinx_1:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "moc_fild19",106,99;close;
+						L_DunWarpsSphinx_5:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "in_sphinx5",100,99;close;
+
+
+	L_DunWarpsSunkenS:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "alb2trea",86,108;close;
+
+	L_DunWarpsThana:			next;
+						mes "[Warpra]";
+						mes "Thanatos Tower? Are you nuts? The closest I can bring you is somewhere south of the Tower, as Rekenber Corp. has just about taken over the area.";
+						next;
+						mes "[Warpra]";
+						mes "Seems they're looking for a 'Thanatos Tower Task Force,' so they probably left one of their staff members nearby. Sounds like a death wish to me! Good luck out there.";
+						next;
+						specialeffect2 35;specialeffect2 36;sleep2 1800;warp "yuno_fild06",310,167;close;
+
+	L_DunWarpsThor:			next;
+						mes "[Warpra]";
+						mes "Youch! That volcano is sizzling hot, and the monsters that live down there are even hotter. The hottest of which lurk at the very end!";
+						next;
+						mes "[Warpra]";
+						mes "I can only get you so close since the territory around there is pretty treacherous, so head north of where you land. Ready... Aim... FIRE!";
+						next;
+						specialeffect2 35;specialeffect2 36;sleep2 1800;warp "ve_fild01",205,19;close;
+
+	L_DunWarpsToyFact:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "xmas_dun01",205,19;close;
+
+	L_DunWarpsTurtle:			menu "Turtle Island",L_DunWarpsTur_1,"Turtle Dungeon IV",L_DunWarpsTur_4,"Back",L_DunWarps2;
+						L_DunWarpsTur_1:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "tur_dun01",162,33;close;
+						L_DunWarpsTur_4:			specialeffect2 35;specialeffect2 36;sleep2 1800;warp "tur_dun04",100,192;close;
+
+	L_DunWarpsUmbalaD:		menu "Umbala Dungeon I",L_DunWarpsUmbala_1,"Umbala Dungeon II",L_DunWarpsUmbala_2,"Back",L_DunWarps2;
+						L_DunWarpsUmbala_1:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "um_dun01",42,31;close;
+						L_DunWarpsUmbala_2:		specialeffect2 35;specialeffect2 36;sleep2 1800;warp "um_dun02",48,30;close;
+
+
+}
+prontera,147,203,4	duplicate(warpra)	Warpra#pron	708
+geffen,122,62,8	duplicate(warpra)	Warpra#gef	708
+izlude,136,92,4	duplicate(warpra)	Warpra#izl	708
+pvpizlude,136,92,4	duplicate(warpra)	Warpra#pvpiz	708
+alberta,117,59,3	duplicate(warpra)	Warpra#alb	708
+payon,175,223,4	duplicate(warpra)	Warpra#pay	708
+pay_arche,55,121,4	duplicate(warpra)	Warpra#arc	708
+morocc,152,97,4	duplicate(warpra)	Warpra#moc	708
+aldebaran,143,116,4	duplicate(warpra)	Warpra#ald	708
+xmas,146,135,4	duplicate(warpra)	Warpra#lut	708
+comodo,213,148,4	duplicate(warpra)	Warpra#com	708
+yuno,162,187,4	duplicate(warpra)	Warpra#yun	708
+gonryun,161,122,4	duplicate(warpra)	Warpra#gon	708
+amatsu,202,90,4	duplicate(warpra)	Warpra#ama	708
+umbala,130,133,4	duplicate(warpra)	Warpra#umb	708
+niflheim,34,161,3	duplicate(warpra)	Warpra#nif	708
+yuno_in01,97,103,3	duplicate(warpra)	Warpra#yin	708
+louyang,210,101,5	duplicate(warpra)	Warpra#lou	708
+arenalounge,90,75,5	duplicate(warpra)	Warpra#arn	708
+sec_in02,179,167,4	duplicate(warpra)	Warpra#sec	708
+ayothaya,154,120,3	duplicate(warpra)	Warpra#ayo	708
+premcity,154,120,3	duplicate(warpra)	Warpra#pre	708
+jawaii,245,127,5	duplicate(warpra)	Warpra#jaw	708
+einbroch,56,203,5	duplicate(warpra)	Warpra#bro	708
+einbech,183,132,3	duplicate(warpra)	Warpra#bec	708
+lighthalzen,164,96,3	duplicate(warpra)	Warpra#lhz	708
+hugel,95,152,4	duplicate(warpra)	Warpra#hug	708
+yuno_fild11,300,116,0	duplicate(warpra)	Warpra#yfi	708
+alberta,99,202,5	duplicate(warpra)	Warpra#alb2	708
+rachel,134,110,3	duplicate(warpra)	Warpra#rac	708
+veins,209,126,5	duplicate(warpra)	Warpra#vein	708

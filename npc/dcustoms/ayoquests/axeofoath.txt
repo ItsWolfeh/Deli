@@ -1,0 +1,48 @@
+ayothaya,168,45,5	script	Warder of Oath	730,{
+	mes "[^17731CWarder^000000]";
+	mes "Greetings, adventurer. I can create an ^724168Axe of the Oath^000000. However, I will require some items.";
+	next;
+	menu "What do you need?",Alright,"Not interested.",notinto;
+	
+	notinto:
+	mes "[^17731CWarder^000000]";
+	mes "Very well, then.";
+	close;
+	
+	Alright:
+	mes "[^17731CWarder^000000]";
+	mes "Here is what you'll need:";
+	mes "- ^8B0C2F 3 Light Epsilon^000000";
+	mes "- ^181B74 3 Cape of Old Marquess ^000000 and";
+	mes "- ^259E58 3 Yggdrasil Leaf^000000";
+	next;
+	menu "I have gathered the items.",have_items,"I don't have them yet...",gocollect;
+	
+	gocollect:
+	mes "[^17731CWarder^000000]";
+	mes "Make haste!";
+	close;
+	
+	have_items:
+	mes "[^17731CWarder^000000]";
+	mes "Let's see...";
+	next;
+	if((countitem(1366)<3) || (countitem(2507)<3) || (countitem(610)<3)) goto noitems;
+	
+	mes "[^17731CWarder^000000]";
+	mes "Excellent, you have succeeded! I will now take the items.";
+	next;
+	delitem 1366,3;
+	delitem 2507,3;
+	delitem 610,3;
+	
+	mes "[^17731CWarder^000000]";
+	mes "Here is your reward, you have earned it...";
+	getitem 32056,1;
+	close;
+	
+	noitems:
+	mes "[^17731CWarder^000000]";
+	mes "Lying filth! Begone!";
+	close;		
+}

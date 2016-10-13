@@ -1,0 +1,155 @@
+gonryun,194,156,5	script	Coven Resetter	766,{
+
+	mes "[Coven Resetter]";
+	mes "FOOL! You chose the wrong Coven and expect me to undo the past for you?!";
+	next;
+	menu "...yes, yes I do.",yarly,"Uh...no, and please don't hurt me.",norly;
+
+yarly:
+	mes "[Coven Resetter]";
+	mes "IMBECILE! It will not be as simple as just asking me! Would you like to hear what you have to do to reverse your bond with your Coven?";
+	next;
+	menu "Yes.",hearrequirement,"No.",igiveup,"STOP INSULTING ME",insulting;
+
+hearrequirement:
+	if (cov == 1) goto ResetSlayer;
+	if (cov == 2) goto ResetCraft;
+	if (cov == 3) goto ResetArt;
+	if (cov == 4) goto ResetWeaving;
+	if (cov == 5) goto ResetProphecy;
+
+	mes "[Coven Resetter]";
+	mes "You aren't even in a coven! I guess that makes resetting pretty useless, huh?";
+	close;
+
+
+
+
+
+ResetSlayer:
+	mes "[Coven Resetter]";
+	mes "I see that you are a member of the Slayer Coven. You will need a Majestic Goat and 1 million Zeny to reset your status with the Slayers. Please note that if you are wearing another Majestic Goat and do not wish to lose it, you should put it in your storage.";
+	next;
+	menu "I'll go get it",willcollect,"Got everything.",-;
+	if(countitem(2256) < 1 || Zeny < 1000000) goto noitems;
+	delitem 2256,1;//MG
+	set Zeny,Zeny-1000000;
+	mes "[Coven Resetter]";
+	mes "It is done!";
+	set cov,0;
+	set potato,0;
+	set epotion,0;
+	set letter,0;
+	set slayergear1,0;
+	close;
+
+ResetCraft:
+	mes "[Coven Resetter]";
+	mes "I see that you are a member of the Craft Coven. You will need a Mage Hat and 1 million Zeny to reset your status with the Crafters. Please note that if you are wearing another Mage Hat and do not wish to lose it, you should put it in your storage.";
+	next;
+	menu "I'll go get it",willcollect,"Got everything.",-;
+	if(countitem(5027) < 1 || Zeny < 1000000) goto noitems;
+	delitem 5027,1;//MageHat
+	set Zeny,Zeny-1000000;
+	mes "[Coven Resetter]";
+	mes "It is done!";
+	set cov,0;
+	set potentiolquest,0;
+	set craftgear1,0;
+	close;
+
+ResetArt:
+	mes "[Coven Resetter]";
+	mes "I see that you are a member of the Arts Coven. You will need a Red Bandana and 1 million Zeny to reset your status with the Artists. Please note that if you are wearing another Red Bandana and do not wish to lose it, you should put it in your storage.";
+	next;
+	menu "I'll go get it",willcollect,"Got everything.",-;
+	if(countitem(2275) < 1 || Zeny < 1000000) goto noitems;
+	delitem 2275,1;//RedBand
+	set Zeny,Zeny-1000000;
+	mes "[Coven Resetter]";
+	mes "It is done!";
+	set cov,0;
+	set masterhoshu,0;
+	set artgear1,0;
+	close;
+
+ResetWeaving:
+	mes "[Coven Resetter]";
+	mes "I see that you are a member of the Weaving Coven. You will need a Grand Circlet and 1 million Zeny to reset your status with the Weavers. Please note that if you are wearing another Grand Circlet and do not wish to lose it, you should put it in your storage.";
+	next;
+	menu "I'll go get it",willcollect,"Got everything.",-;
+	if(countitem(5007) < 1 || Zeny < 1000000) goto noitems;
+	delitem 5007,1;//GrandCirc
+	set Zeny,Zeny-1000000;
+	mes "[Coven Resetter]";
+	mes "It is done!";
+	set cov,0;
+	set weavequest,0;
+	set ancient1,0;
+	set ancient2,0;
+	set ancient3,0;
+	set ancient4,0;
+	set frozenquest,0;
+	set flamequest,0;
+	set rwindquest,0;
+	set naturequest,0;
+	set weavegear1,0;
+	close;
+
+ResetProphecy:
+	mes "[Coven Resetter]";
+	mes "I see that you are a member of the Prophecy Coven. You will need a Sakkat and 1 million Zeny to reset your status with the Prophets. Please note that if you are wearing another Sakkat and do not wish to lose it, you should put it in your storage.";
+	next;
+	menu "I'll go get it",willcollect,"Got everything.",-;
+	if(countitem(2280) < 1 || Zeny < 1000000) goto noitems;
+	delitem 2280,1;//Sakkat
+	set Zeny,Zeny-1000000;
+
+	mes "[Coven Resetter]";
+	mes "It is done!";
+	set cov,0;
+	set gotprophetquest,0;
+	set gavetimerandpizza,0;
+	set gottamakepizzanow,0;
+	set prophecygear1,0;
+	close;
+
+willcollect:
+	mes "[Coven Resetter]";
+	mes "Make haste!";
+	close;
+
+noitems:
+	mes "[Coven Resetter]";
+	mes "Lying scum! You are missing something!";
+	close;
+
+insulting:
+	mes "[Coven Resetter]";
+	mes "Do not raise your voice with me, fool, or you shall pay.";
+	next;
+	menu "Say something loud",loudtalk,"Back off...",backoff;
+
+loudtalk:
+	mes "[Coven Resetter]";
+	mes "So be it.";
+	specialeffect2 183;
+	specialeffect2 267;
+	percentheal -100,0;
+	close;
+
+igiveup:
+	mes "[Coven Resetter]";
+	mes "Stay with your coven, then.";
+	close;
+
+norly:
+	mes "[Coven Resetter]";
+	mes "Wise decision.";
+	close;
+
+backoff:
+	mes "[Coven Resetter]";
+	mes "Wise decision.";
+	close;
+}

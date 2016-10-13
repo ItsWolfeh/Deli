@@ -1,0 +1,52 @@
+aldebaran,62,129,3	script	Zosimus	121,{
+
+	mes "[^17731CZosimus^000000]";
+	mes "Greetings! I can create for you the Alchemist's Caduceus!";
+	next;
+	menu "I will find the required items.",Alright,"Oh well, I'm lazy.",notinto;
+	
+	notinto:
+	mes "[^17731CZosimus^000000]";
+	mes "Good riddance.";
+	close;
+	
+	Alright:
+	mes "[^17731CZosimus^000000]";
+	mes "The following are required for the production of the Caduceus:";
+	mes "- ^8B0C2F 1 Mighty Staff^000000";
+	mes "- ^8B0C2F 10 Hand of God^000000";
+	mes "- ^8B0C2F 100 Snake Scales^000000";
+	mes "- ^8B0C2F 888 Feathers^000000";
+	next;
+	menu "I have gathered the required materials.",have_items,"I will go collect the required materials.",gocollect;
+	
+	gocollect:
+	mes "[^17731CZosimus^000000]";
+	mes "Good luck!";
+	close;
+	
+	have_items:
+	mes "[^17731CZosimus^000000]";
+	mes "Let's see what you've got...";
+	next;
+	if((countitem(1613)<1) || (countitem(1009)<10) || (countitem(926)<100) || (countitem(949)<888)) goto noitems;
+	
+	mes "[^17731CZosimus^000000]";
+	mes "Excellent! I will now take the items up and make you your Caduceus!";
+	next;
+	delitem 1613,1;//MightyStaff
+	delitem 1009,10;//HandOfGod
+	delitem 926,100;//SnakeScale
+	delitem 949,888;//Feather
+
+	mes "[^17731CZosimus^000000]";
+	mes "Here is your Caduceus.";
+	getitem 32067,1;
+	close;
+	
+	noitems:
+	mes "[^17731CZosimus^000000]";
+	mes "I'm old, not blind.";
+	close;
+		
+}

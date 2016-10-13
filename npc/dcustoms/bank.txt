@@ -1,0 +1,114 @@
+//===== eAthena Script ======================================= 
+//= Banker Script 
+//===== By: ================================================== 
+//= Syrus22 (1.0)
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= Any eAthena version with Account variables.
+//===== Description: ========================================= 
+//= An account wide Banker to store Zeny
+//===== Additional Comments: ================================= 
+//= Syrus22 - There's an optional transaction fee at the top of
+//= the script. To use it simply change the first set command
+//= to set the cost variable to whatever you want the fee to be.
+//============================================================ 
+prontera,170,182,3	script	Banker::delibanker	109,{
+
+mes "[Banker]";
+mes "Welcome to the First Bank of Rune-Midgard. Your current balance is ^9900FF"+#bankstorage+"^000000 Zeny. How can I help you today?";
+next;
+mes "[Deliverance Administration]";
+mes "Warning: Note that we at Deliverance strongly distrust Banker NPCs. Use this bank at your own risk. Money lost will not be restored. You should only use this banker for quick transfers. Keep your zeny on a Merchant Character.";
+next;
+
+menu "I'd like to make a deposit.",Ldeposit,"I'd like to make a withdrawal.",Lwithdrawl,"Cancel",Lcancel;
+
+Ldeposit:
+	mes "[Banker]";
+	mes "Very well. How much would you like to deposit? Note that there is a maximum of 10 million Zeny per transaction.";
+	next;
+	goto Ldepocont;
+
+
+Ldepocont:
+	input @deposit;
+	if (@deposit < 1) goto Lrealamount;
+	if (@deposit > 10000000) goto Lrealamount;
+	if (@deposit > Zeny) goto Lneedzeny;
+	set Zeny,Zeny - @deposit;
+	set #bankstorage,#bankstorage + @deposit;
+	mes "[Banker]";
+	mes "Thank you very much. Your zeny is in good hands.";
+	close;
+
+Lwithdrawl:
+	mes "[Banker]";
+	mes "Very well. How much would you like to withdraw? Note that there is a maximum of 10 million Zeny per transaction. Your current balance is ^9900FF"+#bankstorage+"^000000 Zeny.";
+	next;
+	goto Lwithcont;
+
+
+Lwithcont:
+	input @withdrawl;
+	if (@withdrawl < 1) goto Lrealamount;
+	if (@withdrawl > 10000000) goto Lrealamount;
+	if ((@withdrawl + Zeny) > 1000000000) goto L_morethanabil;
+	if (@withdrawl > #bankstorage) goto Lneedzeny3;
+	goto Lwithcont2;
+
+	Lcostask:
+		mes "[Banker]";
+		mes "You don't have the Zeny for the transaction fee right now. Would you like me to take the fee directly from your withdrawl?";
+		next;
+		menu "Yes please.",Lwithtake,"No thank you.",Lcancel;
+
+	Lwithtake:
+		mes "[Banker]";
+		mes "Ok then.";
+		set @withdrawl,@withdrawl - @cost;
+		set #bankstorage,#bankstorage - @cost;
+		next;
+		goto Lwithcont2;
+
+Lwithcont2:
+	set Zeny,Zeny - @cost;
+	set Zeny,Zeny + @withdrawl;
+	set #bankstorage,#bankstorage - @withdrawl;
+	mes "[Banker]";
+	mes "There's your Zeny. Have a good day.";
+	close;
+
+Lrealamount:
+	mes "[Banker]";
+	mes "Don't play jokes with me please. Ask for a valid amount.";
+	close;
+
+L_morethanabil:
+	mes "[Banker]";
+	mes "Withdrawing that much would cause you to lose Zeny as you would hit the maximum Zeny cap";
+	close;
+
+Lneedzeny:
+	mes "[Banker]";
+	mes "You don't have enough Zeny to make that deposit.";
+	close;
+
+Lneedzeny2:
+	mes "[Banker]";
+	mes "You don't have enough Zeny to cover the transaction fee.";
+	close;
+
+Lneedzeny3:
+	mes "[Banker]";
+	mes "You don't have enough Zeny in your account.";
+	close;
+
+Lcancel:
+	mes "[Banker]";
+	mes "Very well... come again soon.";
+	close;
+}
+
+alberta,116,187,3	duplicate(delibanker)	Banker#a	109
+premcity,153,172,3	duplicate(delibanker)	Banker#p	109

@@ -1,0 +1,43 @@
+//Crono: Fixed freeze on cancel
+
+new_1-1,144,108,7	script	Fallen	756,{
+
+if (PlayerIsEvil == 1) goto done;
+if (PlayerIsGood == 1) goto done;
+mes "[Fallen]";
+mes "Who dares speak to me?";
+next;
+mes "Do you hunger for power and crave the forces of Evil?";
+next;
+menu "Yes",yes,"No",No;
+next;
+
+Yes:
+mes "[Fallen]";
+mes "Ah, you have made a wise decision, the path of hatred and deception is the correct choice...";
+next;
+mes "[Fallen]";
+mes "You will be aided by the shadows of Hel and will have access to some of the most powerful weapons created. Go now. Cast the land into darkness and show them true power.";
+
+//TEMPORARY REMOVE
+//set PlayerIsEvil,1;
+//set PlayerIsGood,0;
+next;
+warp "new_1-2",100,9;
+end;
+
+No:
+mes "[Fallen]";
+mes "Bah! You fool, get out of my sight!";
+close;
+
+done:
+mes "[Fallen]";
+mes "You have already chosen your path.";
+next;
+warp "new_1-2",100,9;
+close;
+
+
+}
+

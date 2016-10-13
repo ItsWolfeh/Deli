@@ -1,0 +1,1069 @@
+// Items Additional Database - Custom Items go here
+//
+// Structure of Database:
+// ID,Name,Name,Type,Price,Sell,Weight,ATK,DEF,Range,Slot,Job,Upper,Gender,Loc,wLV,eLV,Refineable,View,{ Script },{ OnEquip_Script },{ OnUnequip_Script }
+//
+// THQ Quest Items
+//=============================================================
+//7950,THG_Membership,THG Membership,3,,10,10,,,,,,,,,,,,,{},{},{}
+//7951,Token_Bag,Token Bag,3,,10,10,,,,,,,,,,,,,{},{},{}
+//1998,Jeramiah's_Jur,Jeramiah's Jur,3,,10,10,,,,,,,,,,,,,{},{},{}
+//1999,Zed's_Staff,Zed's Staff,3,,10,10,,,,,,,,,,,,,{},{},{}
+
+
+
+
+
+//=========================
+// Edits from item_db.txt =
+//=========================
+
+//Jobcode, so people shut up XD - Jake
+5133,Sheep_Hat,Sheep Hat,5,20,,150,,1,,0,0xFFFFFFFF,7,2,256,,0,0,205,{ bonus bShortWeaponDamageReturn,5; },{},{}
+
+//Removed speedrate bonus which should be Event Only
+5150,Joker_Jester_,Brazil Event Hat,5,20,,100,,1,,0,0xFFFFFFFF,7,2,256,,0,0,219,{},{},{}
+
+//Official Doppel sucks - this one stacks with customs but not officials, more balanced.
+//Be careful to edit this - new ASPD calculations really fucked up. The more AGI you have, the less it does.
+//But if you have low AGI, upping it much more is dangerous. Can be a huge freebie to AGI.
+4142,Doppelganger_Card,Doppelganger Card,6,,10,10,,,,,,,,2,,,,,{ bonus bAspdRate,17; if(readparam(bAgi)>=50) bonus bAspdRate,23; },{},{}
+
+//Changed jobcode to keep people from bitching
+1530,Mjolnir,Mjolnir,4,,10,6000,250,,1,0,0x0004C5B2,7,2,2,4,95,0,8,{ bonus bAtkEle,Ele_Wind; bonus bDex,40; bonus bStr,15; bonus bAspdRate,10; bonus bUnbreakableWeapon,0; if (BaseClass==Job_Acolyte) bonus bDex,-20; if (BaseClass==Job_Acolyte) bonus bStr,-15; },{},{}
+
+//Changed 522 to 10 to lower skull sell price to prevent PVP Skull Drop exploit
+7005,Skull,Skull,3,10,,10,,,,,,,,,,,,,{},{},{}
+
+
+
+//Added Coven stuff and changed jobcode - remember to change AspdRate to Aspd.
+2256,Majestic_Goat,Majestic Goat,5,20,,800,,5,,0,0xFFFFFFFF,7,2,256,,0,1,41,{ bonus bStr,1; if(slayergear1==1) bonus bStr,3; if(slayergear1==1) bonus bVit,2; if(slayergear1==1) bonus bAspd,2; },{},{}
+
+//Added Coven stuff and changed jobcode
+2275,Red_Bandana,Red Bandana,5,20,,100,,2,,0,0xFFFFFFFF,7,2,256,,0,1,62,{ if(artgear1==1) bonus bBaseAtk,1; if(artgear1==1) bonus bInt,2; if(artgear2==1) skill 263,1; if(artgear3==1) skill 262,1; if(artgear3==1) skill 263,1; if(artgear4==1) bonus bDef,4; if(artgear4==1) bonus bMdef,4; if(artgear5==1) bonus bHit,50; if(artgear5==1) bonus bStr,3; if(artgear5==1) bonus bFlee,3; if(artgear6==1) skill 263,3; if(artgear6==1) bonus bStr,5; if(artgear6==1) bonus bDex,5; },{},{}
+
+//Added Coven stuff and changed jobcode
+2280,Sahkkat,Sakkat,5,20,,300,,3,,0,0xFFFFFFFF,7,2,256,,0,1,67,{ bonus bAgi,1; if(prophecygear1==1) bonus bAgi,3; if(prophecygear1==1) bonus bFlee2,2; if(prophecygear1==1) bonus bCritical,2; if(prophecygear2==1) skill 49,1; if(prophecygear3==1) bonus bAgi,2; if(prophecygear3==1) bonus bFlee,3; if(prophecygear4==1) skill 92,1; if(prophecygear5==1) skill 49,4; if(prophecygear5==1) bonus bCritical,2; if(prophecygear5==1) bonus bSpeedRate,5; if(prophecygear6==1) skill 60,1; if(prophecygear6==1) bonus bSpeedRate,10; },{},{}
+
+//Added Coven stuff and changed jobcode - Removed beyond level 1
+5007,Loard_Circlet,Grand Circlet,5,20,,200,,3,,0,0xFFFFFFFF,7,2,256,,55,1,93,{ bonus bMdef,4; bonus bStr,1; bonus bInt,1; bonus bLuk,1; if(weavegear1==1) bonus bInt,3; if(weavegear1==1) bonus bDex,2; if(weavegear1==1) bonus bMdef,3; if(weavegear2==1) skill 279,1; if(weavegear3==1) bonus bDef,5; if(weavegear3==1) bonus bMdef,5; if(weavegear3==1) bonus bMatk,3; if(weavegear4==1) skill 364,1; if(weavegear5==1) bonus bDef,5; if(weavegear5==1) bonus bMdef,5; if(weavegear5==1) bonus bMatk,3; if(weavegear6==1) skill 279,2; if(weavegear6==1) skill 364,4; if(weavegear6==1) bonus bDex,3; },{},{}
+
+//Added Coven stuff and changed jobcode
+5027,Wizardry_Hat,Mage Hat,5,20,,300,,1,,0,0xFFFFFFFF,7,2,256,,0,1,112,{ bonus bInt,2; bonus bMaxSP,150; if(craftgear1==1) bonus bMaxSP,300; if(craftgear1==1) bonus bInt,2; if(craftgear1==1) bonus bCastRate,-2; if(craftgear2==1) bonus bUseSPrate,-2; if(craftgear2==1) bonus bMatk,10; if(craftgear3==1) skill 364,1; if(craftgear4==1) bonus bAtkEle,4; if(craftgear4==1) bonus bAtkEle,1; if(craftgear4==1) bonus bAtkEle,7; if(craftgear4==1) bonus bAtkEle,9; if(craftgear5==1) bonus bMaxSPRate,10; if(craftgear5==1) bonus bInt,3; if(craftgear5==1) bonus bCastRate,-3; if(craftgear6==1) bonus bCastRate,-2; if(craftgear6==1) bonus bUseSPrate,10; if(craftgear6==1) skill 364,4; },{},{}
+
+
+
+//Removed ViewID
+2220,Hat,Hat,5,1000,,200,,2,,0,0xFFFFFFFF,7,2,256,,0,1,0,{},{},{}
+2221,Hat_,Hat,5,1000,,200,,2,,1,0xFFFFFFFF,7,2,256,,0,1,0,{},{},{}
+
+//Removed ViewID
+2276,Eagle_Eyes,Angled Glasses,5,20,,100,,1,,0,0xFFFFFFFF,7,2,512,,0,0,0,{},{},{}
+
+//Removed ViewID
+2239,One_Eyed_Glass,Monocle,5,10000,,100,,0,,0,0xFFFFFFFF,7,2,512,,0,0,0,{},{},{}
+
+//Removed ViewID
+5013,Horn_Of_Lord_Kaho,Lord Kaho's Horn,5,20,,100,,5,,0,0xFFFFFFFF,7,2,256,,0,1,0,{ bonus bMdef,10; bonus bStr,5; bonus bAgi,10; bonus bVit,10; bonus bInt,5; bonus bLuk,20; },{},{}
+
+//Removed ViewID
+2266,Iron_Cane,Iron Cain,5,20,,300,,1,,0,0x00004082,7,2,1,,50,0,0,{},{},{}
+
+//Removed ViewID
+2232,Circlet,Circlet,5,7500,,300,,3,,0,0x00818314,7,2,256,,0,1,0,{ bonus bMdef,3; },{},{}
+2233,Circlet_,Circlet,5,7500,,300,,3,,1,0x00818314,7,2,256,,0,1,0,{ bonus bMdef,3; },{},{}
+
+//Removed ViewID
+2203,Glasses,Glasses,5,4000,,100,,0,,0,0xFFFFFFFF,7,2,512,,0,0,0,{},{},{}
+2204,Glasses_,Glasses,5,4000,,100,,0,,1,0xFFFFFFFF,7,2,512,,0,0,0,{},{},{}
+
+//Removed ViewID
+2218,Flu_Mask,Flu Mask,5,300,,100,,0,,0,0xFFFFFFFF,7,2,1,,0,0,0,{ bonus2 bResEff,Eff_Silence,1000; },{},{}
+2219,Flu_Mask_,Flu Mask,5,300,,100,,0,,0,0xFFFFFFFF,7,2,1,,0,0,0,{ bonus2 bResEff,Eff_Silence,1000; },{},{}
+
+//Removed ViewID
+2222,Turban,Turban,5,4500,,300,,3,,0,0xFFFFFFFE,7,2,256,,0,1,0,{},{},{}
+2223,Turban_,Turban,5,4500,,300,,3,,1,0xFFFFFFFE,7,2,256,,0,1,0,{},{},{}
+
+
+
+//Added effects to curly brackets to combat cheap play
+522,Fruit_Of_Mastela,Mastela Fruit,0,8500,,30,,,,,0xFFFFFFFF,7,2,,,,,,{ itemheal rand(400,600),0; misceffect 208; },{},{}
+
+//Added effects to curly brackets to combat cheap play
+525,Panacea,Panacea,0,500,,100,,,,,0xFFFFFFFF,7,2,,,,,,{ misceffect 206; sc_end SC_Poison; sc_end SC_Silence; sc_end SC_Blind; sc_end SC_Confusion; sc_end SC_Curse; sc_end SC_Hallucination; },{},{}
+
+//Added effects to curly brackets to combat cheap play
+540,Falcon's_Feed,Falcon food,0,2000,,50,,,,,0xFFFFFFFF,7,2,,,,,,{ misceffect 207; itemheal rand(185,225),0; },{},{}
+
+//Added effects to curly brackets to combat cheap play
+541,Pecopeco's_Feed,Peco Peco food,0,3000,,50,,,,,0xFFFFFFFF,7,2,,,,,,{ misceffect 207; itemheal rand(325,405),0; },{},{}
+
+//Added effects to curly brackets to combat cheap play
+552,KETUPAT,Ketupat,0,1,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ itemheal rand(70,90),rand(20,30); misceffect 207; },{},{}
+
+//Added effects to curly brackets to combat cheap play
+553,Bun,Bao,0,1,,50,,,,,0xFFFFFFFF,7,2,,,,,,{ itemheal rand(35,70),0; misceffect 207; },{},{}
+
+//Added effects to curly brackets to combat cheap play
+555,Rice_Cake,Traditional Rice Cake,0,100,,20,,,,,0xFFFFFFFF,7,2,,,,,,{ itemheal rand(105,145),0; misceffect 207; },{},{}
+
+//Added effects to curly brackets to combat cheap play
+565,Vita500_Bottle,Vita500,0,580,,100,,,,,0xFFFFFFFF,7,2,,,,,,{ itemheal rand(142,274),0; misceffect 205; },{},{}
+
+//Added effects to curly brackets to combat cheap play
+566,Tomyumkung,Tom Yum Goong,0,10000,,150,,,,,0xFFFFFFFF,7,2,,,,,,{ misceffect 205; itemheal rand(244,350),rand(10,30); sc_end SC_Poison; sc_end SC_Silence; sc_end SC_Blind; sc_end SC_Confusion; sc_end SC_Curse; sc_end SC_Hallucination; },{},{}
+
+//Added effects to curly brackets to combat cheap play
+567,Prawn,Shrimp,0,500,,40,,,,,0xFFFFFFFF,7,2,,,,,,{ itemheal rand(117,192),0; misceffect 204; },{},{}
+
+//Added effects to curly brackets to combat cheap play
+568,Lemon,Lemon,0,60,,40,,,,,0xFFFFFFFF,7,2,,,,,,{ itemheal 0,rand(10,20); misceffect 206; },{},{}
+
+//Added effects to curly brackets to combat cheap play
+576,Prickly_Fruit,Prickly Fruit,0,540,,60,,,,,0xFFFFFFFF,7,2,,,,,,{ itemheal rand(150,300),rand(20,30); misceffect 207; },{},{}
+
+//Added effects to curly brackets to combat cheap play
+587,Prickly_Fruit_,Red Thorn Fruit,0,880,,60,,,,,0xFFFFFFFF,7,2,,,,,,{ itemheal rand(270,330),rand(20,30); misceffect 204; },{},{}
+
+//Added effects to curly brackets to combat cheap play
+607,Yggdrasilberry,Yggdrasil Berry,0,5000,,300,,,,,0xFFFFFFFF,7,2,,,,,,{ percentheal 100,100; misceffect 206; },{},{}
+
+//Added effects to curly brackets to combat cheap play
+608,Seed_Of_Yggdrasil,Yggdrasil Seed,0,5000,,300,,,,,0xFFFFFFFF,7,2,,,,,,{ percentheal 50,50; misceffect 207; },{},{}
+
+//Added effects to curly brackets to combat cheap play
+663,Korea_Rice_Cake,Songpyun,0,1,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ percentheal 10,0; misceffect 207; },{},{}
+
+//Added effects to curly brackets to combat cheap play
+679,Gold_Pill,Pilule,0,5000,,300,,,,,0xFFFFFFFF,7,2,,,,,,{ percentheal 50,50; misceffect 207; },{},{}
+
+
+
+
+//=============================
+// Summoners - 29000 to 29999 =
+//=============================
+
+29000,Summoner_of_Poring,Summoner of Poring,0,50,,70,,,,,0xFFFFFFFF,7,2,,,1,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1002"; set @UsedSummon,1; },{},{}
+29001,Summoner_of_Familiar,Summoner of Familiar,0,50,,70,,,,,0xFFFFFFFF,7,2,,,8,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1005"; set @UsedSummon,1; },{},{}
+29002,Summoner_of_Fabre,Summoner of Fabre,0,50,,70,,,,,0xFFFFFFFF,7,2,,,2,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1007"; set @UsedSummon,1; },{},{}
+29003,Summoner_of_Wolf,Summoner of Wolf,0,50,,70,,,,,0xFFFFFFFF,7,2,,,25,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1013"; set @UsedSummon,1; },{},{}
+29004,Summoner_of_Zombie,Summoner of Zombie,0,50,,70,,,,,0xFFFFFFFF,7,2,,,15,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1015"; set @UsedSummon,1; },{},{}
+29005,Summoner_of_PecoPeco,Summoner of PecoPeco,0,50,,70,,,,,0xFFFFFFFF,7,2,,,19,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1019"; set @UsedSummon,1; },{},{}
+29006,Summoner_of_Munak,Summoner of Munak,0,50,,70,,,,,0xFFFFFFFF,7,2,,,30,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1026"; set @UsedSummon,1; },{},{}
+29007,Summoner_of_Soldier_Skeleton,Summoner of Soldier Skeleton,0,50,,70,,,,,0xFFFFFFFF,7,2,,,29,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1028"; set @UsedSummon,1; },{},{}
+29008,Summoner_of_Isis,Summoner of Isis,0,50,,70,,,,,0xFFFFFFFF,7,2,,,47,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1029"; set @UsedSummon,1; },{},{}
+29009,Summoner_of_Golem,Summoner of Golem,0,50,,70,,,,,0xFFFFFFFF,7,2,,,25,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1040"; set @UsedSummon,1; },{},{}
+29010,Summoner_of_Mummy,Summoner of Mummy,0,50,,70,,,,,0xFFFFFFFF,7,2,,,37,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1041"; set @UsedSummon,1; },{},{}
+29011,Summoner_of_Poporing,Summoner of Poporing,0,50,,70,,,,,0xFFFFFFFF,7,2,,,14,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1031"; set @UsedSummon,1; },{},{}
+29012,Summoner_of_Marc,Summoner of Marc,0,50,,70,,,,,0xFFFFFFFF,7,2,,,36,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1045"; set @UsedSummon,1; },{},{}
+29013,Summoner_of_Picky,Summoner of Picky,0,50,,70,,,,,0xFFFFFFFF,7,2,,,3,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1049"; set @UsedSummon,1; },{},{}
+29014,Summoner_of_Smokie,Summoner of Smokie,0,50,,70,,,,,0xFFFFFFFF,7,2,,,18,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1056"; set @UsedSummon,1; },{},{}
+29015,Summoner_of_Yoyo,Summoner of Yoyo,0,50,,70,,,,,0xFFFFFFFF,7,2,,,21,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1057"; set @UsedSummon,1; },{},{}
+29016,Summoner_of_Bigfoot,Summoner of Bigfoot,0,50,,70,,,,,0xFFFFFFFF,7,2,,,25,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1060"; set @UsedSummon,1; },{},{}
+29017,Summoner_of_Nightmare,Summoner of Nightmare,0,50,,70,,,,,0xFFFFFFFF,7,2,,,49,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1061"; set @UsedSummon,1; },{},{}
+29018,Summoner_of_Santa_Poring,Summoner of Santa Poring,0,50,,70,,,,,0xFFFFFFFF,7,2,,,3,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1062"; set @UsedSummon,1; },{},{}
+29019,Summoner_of_Lunatic,Summoner of Lunatic,0,50,,70,,,,,0xFFFFFFFF,7,2,,,3,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1063"; set @UsedSummon,1; },{},{}
+29020,Summoner_of_Swordfish,Summoner of Swordfish,0,50,,70,,,,,0xFFFFFFFF,7,2,,,30,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1069"; set @UsedSummon,1; },{},{}
+29021,Summoner_of_Pirate_Skeleton,Summoner of Pirate Skeleton,0,50,,70,,,,,0xFFFFFFFF,7,2,,,25,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1071"; set @UsedSummon,1; },{},{}
+29022,Summoner_of_Mastering,Summoner of Mastering,0,50,,70,,,,,0xFFFFFFFF,7,2,,,2,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1090"; set @UsedSummon,1; },{},{}
+29023,Summoner_of_Andre,Summoner of Andre,0,50,,70,,,,,0xFFFFFFFF,7,2,,,17,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1095"; set @UsedSummon,1; },{},{}
+29024,Summoner_of_Angeling,Summoner of Angeling,0,50,,70,,,,,0xFFFFFFFF,7,2,,,20,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1096"; set @UsedSummon,1; },{},{}
+29025,Summoner_of_Baphomet_Jr.,Summoner of Baphomet Jr.,0,50,,70,,,,,0xFFFFFFFF,7,2,,,50,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1101"; set @UsedSummon,1; },{},{}
+29026,Summoner_of_Bathory,Summoner of Bathory,0,50,,70,,,,,0xFFFFFFFF,7,2,,,44,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1102"; set @UsedSummon,1; },{},{}
+29027,Summoner_of_Coco,Summoner of Coco,0,50,,70,,,,,0xFFFFFFFF,7,2,,,17,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1104"; set @UsedSummon,1; },{},{}
+29028,Summoner_of_Deviruchi,Summoner of Deviruchi,0,50,,70,,,,,0xFFFFFFFF,7,2,,,46,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1109"; set @UsedSummon,1; },{},{}
+29029,Summoner_of_Drops,Summoner of Drops,0,50,,70,,,,,0xFFFFFFFF,7,2,,,3,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1113"; set @UsedSummon,1; },{},{}
+29030,Summoner_of_Evil_Druid,Summoner of Evil Druid,0,50,,70,,,,,0xFFFFFFFF,7,2,,,58,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1117"; set @UsedSummon,1; },{},{}
+29031,Summoner_of_Goblin_1,Summoner of Goblin 1,0,50,,70,,,,,0xFFFFFFFF,7,2,,,25,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1122"; set @UsedSummon,1; },{},{}
+29032,Summoner_of_Goblin_2,Summoner of Goblin 2,0,50,,70,,,,,0xFFFFFFFF,7,2,,,24,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1123"; set @UsedSummon,1; },{},{}
+29033,Summoner_of_Goblin_3,Summoner of Goblin 3,0,50,,70,,,,,0xFFFFFFFF,7,2,,,24,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1124"; set @UsedSummon,1; },{},{}
+29034,Summoner_of_Goblin_4,Summoner of Goblin 4,0,50,,70,,,,,0xFFFFFFFF,7,2,,,24,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1125"; set @UsedSummon,1; },{},{}
+29035,Summoner_of_Goblin_5,Summoner of Goblin 5,0,50,,70,,,,,0xFFFFFFFF,7,2,,,22,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1126"; set @UsedSummon,1; },{},{}
+29036,Summoner_of_Hode,Summoner of Hode,0,50,,70,,,,,0xFFFFFFFF,7,2,,,26,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1127"; set @UsedSummon,1; },{},{}
+29037,Summoner_of_Jakk,Summoner of Jakk,0,50,,70,,,,,0xFFFFFFFF,7,2,,,38,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1130"; set @UsedSummon,1; },{},{}
+29038,Summoner_of_Kobold_1,Summoner of Kobold 1,0,50,,70,,,,,0xFFFFFFFF,7,2,,,36,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1133"; set @UsedSummon,1; },{},{}
+29039,Summoner_of_Kobold_2,Summoner of Kobold 2,0,50,,70,,,,,0xFFFFFFFF,7,2,,,31,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1134"; set @UsedSummon,1; },{},{}
+29040,Summoner_of_Kobold_3,Summoner of Kobold 3,0,50,,70,,,,,0xFFFFFFFF,7,2,,,31,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1135"; set @UsedSummon,1; },{},{}
+//29041,Summoner_of_Kobold_4,Summoner of Kobold 4,0,50,,70,,,,,0xFFFFFFFF,7,2,,,30,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1136"; set @UsedSummon,1; },{},{}
+//29042,Summoner_of_Kobold_5,Summoner of Kobold 5,0,50,,70,,,,,0xFFFFFFFF,7,2,,,30,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1137"; set @UsedSummon,1; },{},{}
+29043,Summoner_of_Marduk,Summoner of Marduk,0,50,,70,,,,,0xFFFFFFFF,7,2,,,40,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1140"; set @UsedSummon,1; },{},{}
+29044,Summoner_of_Marionette,Summoner of Marionette,0,50,,70,,,,,0xFFFFFFFF,7,2,,,41,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1143"; set @UsedSummon,1; },{},{}
+29045,Summoner_of_Martin,Summoner of Martin,0,50,,70,,,,,0xFFFFFFFF,7,2,,,18,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1145"; set @UsedSummon,1; },{},{}
+29046,Summoner_of_Earth_Petite,Summoner of Earth Petite,0,50,,70,,,,,0xFFFFFFFF,7,2,,,44,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1155"; set @UsedSummon,1; },{},{}
+29047,Summoner_of_Sky_Petite,Summoner of Sky Petite,0,50,,70,,,,,0xFFFFFFFF,7,2,,,45,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1156"; set @UsedSummon,1; },{},{}
+29048,Summoner_of_Raydric,Summoner of Raydric,0,50,,70,,,,,0xFFFFFFFF,7,2,,,52,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1163"; set @UsedSummon,1; },{},{}
+29049,Summoner_of_Savage,Summoner of Savage,0,50,,70,,,,,0xFFFFFFFF,7,2,,,26,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1166"; set @UsedSummon,1; },{},{}
+29050,Summoner_of_Savage_Babe,Summoner of Savage Babe,0,50,,70,,,,,0xFFFFFFFF,7,2,,,7,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1167"; set @UsedSummon,1; },{},{}
+29051,Summoner_of_Sohee,Summoner of Sohee,0,50,,70,,,,,0xFFFFFFFF,7,2,,,33,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1170"; set @UsedSummon,1; },{},{}
+29052,Summoner_of_Zerom,Summoner of Zerom,0,50,,70,,,,,0xFFFFFFFF,7,2,,,23,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1178"; set @UsedSummon,1; },{},{}
+29053,Summoner_of_Whisper,Summoner of Whisper,0,50,,70,,,,,0xFFFFFFFF,7,2,,,34,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1179"; set @UsedSummon,1; },{},{}
+29054,Summoner_of_Mimic,Summoner of Mimic,0,50,,70,,,,,0xFFFFFFFF,7,2,,,51,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1191"; set @UsedSummon,1; },{},{}
+29055,Summoner_of_Alarm,Summoner of Alarm,0,50,,70,,,,,0xFFFFFFFF,7,2,,,58,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1193"; set @UsedSummon,1; },{},{}
+29056,Summoner_of_Rideword,Summoner of Rideword,0,50,,70,,,,,0xFFFFFFFF,7,2,,,59,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1195"; set @UsedSummon,1; },{},{}
+29057,Summoner_of_Dark_Priest,Summoner of Dark Priest,0,50,,70,,,,,0xFFFFFFFF,7,2,,,79,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1198"; set @UsedSummon,1; },{},{}
+29058,Summoner_of_Zherlthsh,Summoner of Zherlthsh,0,50,,70,,,,,0xFFFFFFFF,7,2,,,63,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1200"; set @UsedSummon,1; },{},{}
+29059,Summoner_of_Mysteltainn,Summoner of Mysteltainn,0,50,,70,,,,,0xFFFFFFFF,7,2,,,76,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1203"; set @UsedSummon,1; },{},{}
+29060,Summoner_of_Tyrfing,Summoner of Tyrfing,0,50,,70,,,,,0xFFFFFFFF,7,2,,,71,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1204"; set @UsedSummon,1; },{},{}
+29061,Summoner_of_Executioner,Summoner of Executioner,0,50,,70,,,,,0xFFFFFFFF,7,2,,,65,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1205"; set @UsedSummon,1; },{},{}
+29062,Summoner_of_Sting,Summoner of Sting,0,50,,70,,,,,0xFFFFFFFF,7,2,,,61,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1207"; set @UsedSummon,1; },{},{}
+29063,Summoner_of_Wanderer,Summoner of Wanderer,0,50,,70,,,,,0xFFFFFFFF,7,2,,,74,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1208"; set @UsedSummon,1; },{},{}
+29064,Summoner_of_Penomena,Summoner of Penomena,0,50,,70,,,,,0xFFFFFFFF,7,2,,,57,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1216"; set @UsedSummon,1; },{},{}
+29065,Summoner_of_Marin,Summoner of Marin,0,50,,70,,,,,0xFFFFFFFF,7,2,,,15,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1242"; set @UsedSummon,1; },{},{}
+29066,Summoner_of_Cruiser,Summoner of Cruiser,0,50,,70,,,,,0xFFFFFFFF,7,2,,,35,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1248"; set @UsedSummon,1; },{},{}
+29067,Summoner_of_Gryphon,Summoner of Gryphon,0,50,,70,,,,,0xFFFFFFFF,7,2,,,72,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1259"; set @UsedSummon,1; },{},{}
+29068,Summoner_of_Wild_Rose,Summoner of Wild Rose,0,50,,70,,,,,0xFFFFFFFF,7,2,,,38,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1261"; set @UsedSummon,1; },{},{}
+29069,Summoner_of_Mutant Dragonoid,Summoner of Mutant Dragonoid,0,50,,70,,,,,0xFFFFFFFF,7,2,,,65,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1262"; set @UsedSummon,1; },{},{}
+29070,Summoner_of_Carat,Summoner of Carat,0,50,,70,,,,,0xFFFFFFFF,7,2,,,51,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1267"; set @UsedSummon,1; },{},{}
+29071,Summoner_of_Alice,Summoner of Alice,0,50,,70,,,,,0xFFFFFFFF,7,2,,,62,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1275"; set @UsedSummon,1; },{},{}
+29072,Summoner_of_Mini_Demon,Summoner of Mini Demon,0,50,,70,,,,,0xFFFFFFFF,7,2,,,68,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1292"; set @UsedSummon,1; },{},{}
+29073,Summoner_of_Owl Baron,Summoner of Owl Baron,0,50,,70,,,,,0xFFFFFFFF,7,2,,,75,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1295"; set @UsedSummon,1; },{},{}
+29074,Summoner_of_Dark_Illusion,Summoner of Dark Illusion,0,50,,70,,,,,0xFFFFFFFF,7,2,,,77,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1302"; set @UsedSummon,1; },{},{}
+29075,Summoner_of_Leib_Olmai,Summoner of Leib Olmai,0,50,,70,,,,,0xFFFFFFFF,7,2,,,58,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1306"; set @UsedSummon,1; },{},{}
+29076,Summoner_of_Majoruros,Summoner of Majoruros,0,50,,70,,,,,0xFFFFFFFF,7,2,,,66,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1310"; set @UsedSummon,1; },{},{}
+29077,Summoner_of_Assaulter,Summoner of Assaulter,0,50,,70,,,,,0xFFFFFFFF,7,2,,,71,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1315"; set @UsedSummon,1; },{},{}
+29078,Summoner_of_Solider,Summoner of Solider,0,50,,70,,,,,0xFFFFFFFF,7,2,,,70,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1316"; set @UsedSummon,1; },{},{}
+29079,Summoner_of_Seal,Summoner of Seal,0,50,,70,,,,,0xFFFFFFFF,7,2,,,63,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1317"; set @UsedSummon,1; },{},{}
+29080,Summoner_of_Heater,Summoner of Heater,0,50,,70,,,,,0xFFFFFFFF,7,2,,,68,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1318"; set @UsedSummon,1; },{},{}
+29081,Summoner_of_Freezer,Summoner of Freezer,0,50,,70,,,,,0xFFFFFFFF,7,2,,,72,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1319"; set @UsedSummon,1; },{},{}
+29082,Summoner_of_Apocalypse,Summoner of Apocalypse,0,50,,70,,,,,0xFFFFFFFF,7,2,,,66,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1365"; set @UsedSummon,1; },{},{}
+29083,Summoner_of_Lava_Golem,Summoner of Lava Golem,0,50,,70,,,,,0xFFFFFFFF,7,2,,,77,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1366"; set @UsedSummon,1; },{},{}
+29084,Summoner_of_Fake_Angel,Summoner of Fake Angel,0,50,,70,,,,,0xFFFFFFFF,7,2,,,65,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1371"; set @UsedSummon,1; },{},{}
+29085,Summoner_of_Goat,Summoner of Goat,0,50,,70,,,,,0xFFFFFFFF,7,2,,,69,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1372"; set @UsedSummon,1; },{},{}
+29086,Summoner_of_Incubus,Summoner of Incubus,0,50,,70,,,,,0xFFFFFFFF,7,2,,,75,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1374"; set @UsedSummon,1; },{},{}
+29087,Summoner_of_Elder,Summoner of Elder,0,50,,70,,,,,0xFFFFFFFF,7,2,,,64,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1377"; set @UsedSummon,1; },{},{}
+29088,Summoner_of_Diabolic,Summoner of Diabolic,0,50,,70,,,,,0xFFFFFFFF,7,2,,,67,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1382"; set @UsedSummon,1; },{},{}
+29089,Summoner_of_Sky_Deleter,Summoner of Sky Deleter,0,50,,70,,,,,0xFFFFFFFF,7,2,,,66,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1384"; set @UsedSummon,1; },{},{}
+29090,Summoner_of_Earth_Deleter,Summoner of Earth Deleter,0,50,,70,,,,,0xFFFFFFFF,7,2,,,65,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1385"; set @UsedSummon,1; },{},{}
+29091,Summoner_of_Galapago,Summoner of Galapago,0,50,,70,,,,,0xFFFFFFFF,7,2,,,61,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1391"; set @UsedSummon,1; },{},{}
+29092,Summoner_of_Antique_Firelock,Summoner of Antique Firelock,0,50,,70,,,,,0xFFFFFFFF,7,2,,,47,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1403"; set @UsedSummon,1; },{},{}
+29093,Summoner_of_Kapha,Summoner of Kapha,0,50,,70,,,,,0xFFFFFFFF,7,2,,,41,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1406"; set @UsedSummon,1; },{},{}
+29094,Summoner_of_Dumpling_Child,Summoner of Dumpling Child,0,50,,70,,,,,0xFFFFFFFF,7,2,,,27,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1409"; set @UsedSummon,1; },{},{}
+29095,Summoner_of_Taoist_Hermit,Summoner of Taoist Hermit,0,50,,70,,,,,0xFFFFFFFF,7,2,,,56,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1412"; set @UsedSummon,1; },{},{}
+29096,Summoner_of_Dryad,Summoner of Dryad,0,50,,70,,,,,0xFFFFFFFF,7,2,,,50,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1493"; set @UsedSummon,1; },{},{}
+29097,Summoner_of_Wooden_Golem,Summoner of Wooden Golem,0,50,,70,,,,,0xFFFFFFFF,7,2,,,51,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1497"; set @UsedSummon,1; },{},{}
+29098,Summoner_of_Wooden_Fighter,Summoner of Wooden Fighter,0,50,,70,,,,,0xFFFFFFFF,7,2,,,41,,,{ atcommand strcharinfo(0) + "@summon 1499"; set @UsedSummon,1; },{},{}
+29099,Summoner_of_Dullahan,Summoner of Dullahan,0,50,,70,,,,,0xFFFFFFFF,7,2,,,62,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1504"; set @UsedSummon,1; },{},{}
+29100,Summoner_of_Hyegun,Summoner of Hyegun,0,50,,70,,,,,0xFFFFFFFF,7,2,,,56,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1512"; set @UsedSummon,1; },{},{}
+29101,Summoner_of_Bongun,Summoner of Bongun,0,50,,70,,,,,0xFFFFFFFF,7,2,,,32,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1188"; set @UsedSummon,1; },{},{}
+29102,Summoner_of_Garm_Baby,Summoner of Garm Baby,0,50,,70,,,,,0xFFFFFFFF,7,2,,,61,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1515"; set @UsedSummon,1; },{},{}
+29103,Summoner_of_Chung_E,Summoner of Chung E,0,50,,70,,,,,0xFFFFFFFF,7,2,,,49,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1519"; set @UsedSummon,1; },{},{}
+29104,Summoner_of_Deviling,Summoner of Deviling,0,50,,70,,,,,0xFFFFFFFF,7,2,,,31,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1582"; set @UsedSummon,1; },{},{}
+29105,Summoner_of_Tamruan,Summoner of Tamruan,0,50,,70,,,,,0xFFFFFFFF,7,2,,,52,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1584"; set @UsedSummon,1; },{},{}
+29106,Summoner_of_Mime_Monkey,Summoner of Mime Monkey,0,50,,70,,,,,0xFFFFFFFF,7,2,,,40,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1585"; set @UsedSummon,1; },{},{}
+29107,Summoner_of_Leaf_Cat,Summoner of Leaf Cat,0,50,,70,,,,,0xFFFFFFFF,7,2,,,38,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1586"; set @UsedSummon,1; },{},{}
+29108,Summoner_of_Pitman,Summoner of Pitman,0,50,,70,,,,,0xFFFFFFFF,7,2,,,43,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1616"; set @UsedSummon,1; },{},{}
+29109,Summoner_of_Doppelganger,Summoner of Doppelganger,0,50,,70,,,,,0xFFFFFFFF,7,2,,,72,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1046"; set @UsedSummon,1; },{},{}
+29110,Summoner_of_Gold_Bug,Summoner of Gold Bug,0,50,,70,,,,,0xFFFFFFFF,7,2,,,64,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1086"; set @UsedSummon,1; },{},{}
+29111,Summoner_of_Orc_Hero,Summoner of Orc Hero,0,50,,70,,,,,0xFFFFFFFF,7,2,,,77,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1087"; set @UsedSummon,1; },{},{}
+29112,Summoner_of_Eddga,Summoner of Eddga,0,50,,70,,,,,0xFFFFFFFF,7,2,,,65,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1115"; set @UsedSummon,1; },{},{}
+29113,Summoner_of_Ghostring,Summoner of Ghostring,0,50,,70,,,,,0xFFFFFFFF,7,2,,,18,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1120"; set @UsedSummon,1; },{},{}
+29114,Summoner_of_Pharaoh,Summoner of Pharaoh,0,50,,70,,,,,0xFFFFFFFF,7,2,,,93,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1157"; set @UsedSummon,1; },{},{}
+29115,Summoner_of_Phreeoni,Summoner of Phreeoni,0,50,,70,,,,,0xFFFFFFFF,7,2,,,69,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1159"; set @UsedSummon,1; },{},{}
+29116,Summoner_of_Garm,Summoner of Garm,0,50,,70,,,,,0xFFFFFFFF,7,2,,,73,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1252"; set @UsedSummon,1; },{},{}
+29117,Summoner_of_Stormy_Knight,Summoner of Stormy Knight,0,50,,70,,,,,0xFFFFFFFF,7,2,,,77,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1251"; set @UsedSummon,1; },{},{}
+29118,Summoner_of_Bloody_Knight,Summoner of Bloody Knight,0,50,,70,,,,,0xFFFFFFFF,7,2,,,82,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1268"; set @UsedSummon,1; },{},{}
+29119,Summoner_of_Dark_Lord,Summoner of Dark Lord,0,50,,70,,,,,0xFFFFFFFF,7,2,,,80,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1272"; set @UsedSummon,1; },{},{}
+29120,Summoner_of_Dracula,Summoner of Dracula,0,50,,70,,,,,0xFFFFFFFF,7,2,,,85,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1389"; set @UsedSummon,1; },{},{}
+29121,Summoner_of_Shinobi,Summoner of Shinobi,0,50,,70,,,,,0xFFFFFFFF,7,2,,,69,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1401"; set @UsedSummon,1; },{},{}
+29122,Summoner_of_Evil_Snake_Lord,Summoner of Evil Snake Lord,0,50,,70,,,,,0xFFFFFFFF,7,2,,,73,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1418"; set @UsedSummon,1; },{},{}
+29123,Summoner_of_Incantation_Samurai,Summoner of Incantation Samurai,0,50,,70,,,,,0xFFFFFFFF,7,2,,,71,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1492"; set @UsedSummon,1; },{},{}
+29124,Summoner_of_Baphomet,Summoner of Baphomet,0,50,,70,,,,,0xFFFFFFFF,7,2,,,81,,,{ if(@UsedSummon==1) end; atcommand strcharinfo(0) + "@summon 1039"; set @UsedSummon,1; },{},{}
+
+
+
+
+
+//==================================
+//= Custom Pet Eggs: 30000 - 30999 =
+//==================================
+
+// Phase 1 Pets
+30000,Farmiliar_Egg,Farmiliar Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30001,Wolf_Egg,Wolf Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30002,Zombie_Egg,Zombie Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30003,Archer_Skeleton_Egg,Archer Skeleton Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30004,Thief_Bug_Female_Egg,Thief Bug Female Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30005,Werewolf_Egg,Werewolf Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30006,Boa_Egg,Boa Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30007,Raptice_Egg,Raptice Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30008,Soldier_Skeleton_Egg,Soldier Skeleton Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30009,Anacondaq_Egg,Anacondaq Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30010,Verit_Egg,Verit Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30011,Elder_Willow_Egg,Elder Willow Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30012,Thara_Frog_Egg,Thara Frog Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30013,Ghoul_Egg,Ghoul Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30014,Sidewinder_Egg,Sidewinder Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30015,Osiris_Egg,Osiris Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30016,Baphomet_Egg,Baphomet Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30017,Golem_Egg,Golem Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30018,Mummy_Egg,Mummy Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30019,Marc_Egg,Marc Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30020,Doppelganger_Egg,Doppelganger Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30021,Shell_Picky_Egg,Shell Picky Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30022,Muka_Egg,Muka Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30023,Metaller_Egg,Metaller Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30024,Mistress_Egg,Mistress Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30025,Bigfoot_Egg,Bigfoot Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30026,Nightmare_Egg,Mightmare Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30027,Santa_Poring_Egg,Santa Poring Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30028,Vadon_Egg,Vadon Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30029,Swordfish_Egg,Swordfish Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30030,Pirate_Skeleton_Egg,Pirate Skeleton Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30031,Kaho_Egg,Kaho Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30032,Crab_Egg,Crab Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30033,Shellfish_Egg,Shellfish Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30034,Skeleton_Egg,Skeleton Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+//30035,Poison_Spore_Egg,Poison Spore Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30036,Shining_Plant_Egg,Shining Plant Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30037,Black_Mushroom_Egg,Black Mushroom Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30038,Red_Mushroom_Egg,Red Mushroom Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30039,Golden_Bug_Egg,Golden Thief Bug Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30040,Orc_Hero_Egg,Orc Hero Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30041,Mastering_Egg,Mastering Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30042,Dragon_Fly_Egg,Dragon Fly Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30043,Vagabond_Wolf_Egg,Vagabod Wolf Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30044,Eclipse_Egg,Eclipse Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30045,Andre_Egg,Andre Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30046,Angeling_Egg,Angeling Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30047,Argiope_Egg,Argiope Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30048,Bathory_Egg,Bathory Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30049,Caramel_Egg,Caramel Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30050,Coco_Egg,Coco Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30051,Deniro_Egg,Deniro Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30052,Desert_Wolf_Egg,Desert Wolf Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30053,Deviace_Egg,Deviace Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30054,Drainliar_Egg,Drainliar Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30055,Drake_Egg,Drake Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30056,Dustiness_Egg,Dustiness Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30057,Eddga_Egg,Eddga Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30058,Eggyra_Egg,Eggyra Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30059,Evil_Druid_Egg,Evil Druid Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30060,Flora_Egg,Flora Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30061,Ghostring_Egg,Ghostring Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30062,Giearth_Egg,Giearth Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+//30063,Goblin_1_Egg,Goblin 1 Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+//30064,Goblin_2_Egg,Goblin 2 Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30065,Goblin_3_Egg,Goblin 3 Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+//30066,Goblin_4_Egg,Goblin 4 Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30067,Goblin_5_Egg,Goblin 5 Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30068,Hode_Egg,Hode Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30069,Horong_Egg,Horong Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30070,Jakk_Egg,Jakk Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30071,Joker_Egg,Joker Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30072,Khalitzburg_Egg,Khalitzburg Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30073,Kobold_1_Egg,Kobold 1 Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30074,Kobold_2_Egg,Kobold 2 Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30075,Kobold_3_Egg,Kobold 3 Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+//30076,Kobold_4_Egg,Kobold 4 Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+//30077,Kobold_5_Egg,Kobold 5 Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30078,Magnolia_Egg,Magnolia Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30079,Mantis_Egg,Mantis Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30080,Marduk_Egg,Marduk Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30081,Marina_Egg,Marina Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30082,Marine_Sphere_Egg,Marine Sphere Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30083,Marionette_Egg,Marionette Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30084,Martin_Egg,Martin Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30085,Matyr_Egg,Matyr Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30086,Maya_Egg,Maya Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30087,Medusa_Egg,Medusa Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30088,Minorous_Egg,Minorous Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30089,Moonlight_Flower_Egg,Moonlight Flower Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30090,Myst_Egg,Myst Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30091,Orc_Skeleton_Egg,Orc Skeleton Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30092,Orc_Zombie_Egg,Orc Zombie Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+//30093,Earth_Petit_Egg,Earth Petit Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30094,Sky_Petit_Egg,Sky Petit Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30095,Pharaoh_Egg,Pharaoh Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30096,Phen_Egg,Phen Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30097,Phreeoni_Egg,Phreeoni Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30098,Piere_Egg,Piere Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30099,Rafflesia_Egg,Rafflesia Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30100,Raydric_Egg,Raydric Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30101,Skeleton_Worker_Egg,Skeleton Worker Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+//30102,Soldier_Andre_Egg,Soldier Andre Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30103,Stainer_Egg,Stainer Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30104,Tarou_Egg,Tarou Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30105,Vitata_Egg,Vitata Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30106,Zenorc_Egg,Zenorc Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30107,Zerom Egg,Zerom Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30108,Whisper_Egg,Whisper Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30109,Nine_Tail_Egg,Nine Tail Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30110,Giant_Whisper_Egg,Giant Whisper Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30111,Orc_Archer_Egg,Orc Archer Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30112,Orc_Lord_Egg,Orc Lord Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30113,Mimic_Egg,Mimic Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30114,Wraith_Egg,Wraith Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30115,Arclouse_Egg,Arclouse Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30116,Rideword_Egg,Rideword Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30117,Skeleton_Prisoner_Egg,Skeleton Prisoner Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30118,Zombie_Prisoner_Egg,Zombie Prisoner Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30119,Dark_Priest_Egg,Dark Priest Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30120,Punk_Egg,Punk Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30121,Mysteltainn_Egg,Mysteltainn Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30122,Tirfing_Egg,Tirfing Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30123,Executioner_Egg,Executioner Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30124,Anolian_Egg,Anolian Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30125,Sting_Egg,Sting Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+//30126,Wanderer_Egg,Wanderer Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30127,Brilight_Egg,Brilight Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30128,Iron_Fist_Egg,Iron Fist Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30129,High_Orc_Egg,High Orc Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30130,Choco_Egg,Choco Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30131,Penomena_Egg,Penomena Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30132,Abyss_Knight_Egg,Abyss Knight Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30133,Marin_Egg,Marin Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30134,Sasquatch_Egg,Sasquatch Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30135,Christmas_Jakk_Egg,Christmas Jakk Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+//30136,Christmas_Goblin_Egg,Christmas Goblin Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30137,Christmas_Cookie_Egg,Christmas Cookie Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30138,Antonio_Egg,Antonio Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30139,Cruiser_Egg,Cruiser Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30140,Myst_Case_Egg,Myst Case Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30141,Chepet_Egg,Chepet Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30142,Stormy_Knight_Egg,Stormy Knight Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30143,Garm_Egg,Garm Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30144,Gargoyle_Egg,Gargoyle Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30145,Raggler_Egg,Raggler Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30146,Neraid_Egg,Neraid Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30147,Pest_Egg,Pest Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30148,Injustice_Egg,Injustice Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30149,Goblin_Archer_Egg,Goblin Archer Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30150,Gryphon_Egg,Gryphon Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30151,Dark_Frame_Egg,Dark Frame Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30152,Wild_Rose_Egg,Wild Rose Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30153,Mutant_Dragonoid_Egg,Mutant Dragonoid Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30154,Wind_Ghost_Egg,Wind Ghost Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30155,Merman_Egg,Merman Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30156,Cookie_Egg,Cookie Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30157,Carat_Egg,Carat Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30158,Bloody_Knight_Egg,Bloody Knight Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30159,Clock_Egg,Clock Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30160,Tower_Keeper_Egg,Tower Keeper Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30161,Dark_Lord_Egg,Dark Lord Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30162,Orc_Lady_Egg,Orc Lady Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30163,Megalith_Egg,Megalith Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30164,Raydric_Archer_Egg,Raydric Archer Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30165,Greatest_General_Egg,Greatest General Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30166,Stalactic_Golem_Egg,Stalactic Golem Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30167,Sageworm_Egg,Sage Worm Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30168,Kobold_Archer_Egg,Kobold Archer Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30169,Chimera_Egg,Chimera Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30170,Skeleton_General_Egg,Skeleton General Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30171,Wraith_Dead_Egg,Wraith Dead Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30172,Mini_Demon_Egg,Mini Demon Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30173,Killer_Mantis_Egg,Killer Mantis Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30174,Owl_Baron_Egg,Owl Baron Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30175,Kobold_Leader_Egg,Kobold Leader Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30176,Ancient_Mummy_Egg,Ancient Mummy Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30177,Zombie_Master_Egg,Zombie Master Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30178,Goblin_Leader_Egg,Goblin Leader Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30179,Dark_Illusion_Egg,Dark Illusion Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30180,Cat_o_Nine_Tails_Egg,Cat o' Nine Tails Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30181,Majoruros_Egg,Majoruros Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30182,Turtle_General_Egg,Turtle General Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30183,Perimeter_Egg,Perimeter Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30184,Assaulter_Egg,Assaulter Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30185,Solider_Egg,Solider Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30186,Seal_Egg,Seal Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30187,Heater_Egg,Heater Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30188,Freezer_Egg,Freezer Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30189,Owl_Duke_Egg,Owl Duke Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30190,Dragon_Tail_Egg,Dragon Tail Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30191,Sea_Otter_Egg,Sea Otter Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30192,Apocalypse_Egg,Apocalypse Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30193,Blazer_Egg,Blazer Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30194,Geographer_Egg,Geographer Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30195,Grand_Peco_Egg,Grand Peco Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30196,Succubus_Egg,Succubus Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30197,Fake_Angel_Egg,Fake Angel Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30198,Goat_Egg,Goat Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30199,Lord_of_Death_Egg,Lord of Death Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30200,Incubus_Egg,Incubus Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30201,The_Paper_Egg,The Paper Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30202,Harpy_Egg,Harpy Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30203,Elder_Egg,Elder Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30204,Nightmare_Terror_Egg,Nightmare Terror Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30205,Driller_Egg,Driller Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30206,Grizzly_Egg,Grizzly Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+//30207,Diabolic_Egg,Diabolic Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30208,Explosion_Egg,Explosion Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30209,Sky_Deleter_Egg,Sky Deleter Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+//30210,Earth_Deleter_Egg,Earth Deleter Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30211,Archangeling_Egg,Archangeling Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30212,Dracula_Egg,Dracula Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30213,Violy_Egg,Violy Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30214,Galapago_Egg,Galapago Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30215,Shinobi_Egg,Shinobi Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30216,Antique_Firelock_Egg,Antique Firelock Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30217,Miyabi_Doll_Egg,Miyabi Doll Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30218,Tengu_Egg,Tengu Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30219,Kapha_Egg,Kapha Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30220,Bloody_Butterfly_Egg,Bloody Butterfly Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30221,Dumpling_Child_Egg,Dumpling Child Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30222,Enchanted_Peach_Tree_Egg,Enchanted Peach Tree Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30223,Taoist_Hermit_Egg,Taoist Hermit Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30224,Baby_Leopard_Egg,Baby Leopard Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30225,Evil_Nymph_Egg,Evil Nymph Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30226,Zipper_Bear_Egg,Zipper Bear Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30227,Evil_Snake_Lord_Egg,Evil Snake Lord Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30228,Incantation_Samurai_Egg,Incantation Samurai Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30229,Dryad_Egg,Dryad Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30230,Stone_Shooter_Egg,Stone Shooter Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30231,Wooden_Golem_Egg,Wooden Golem Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30232,Wootan_Shooter_Egg,Wootan Shooter Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30233,Wootan_Fighter_Egg,Wootan Fighter Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30234,Parasite_Egg,Parasite Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30235,Gibbet_Egg,Gibbet Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30236,Dullahan_Egg,Dullahan Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30237,Loli_Ruri_Egg,Loli Ruri Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30238,Disguise_Egg,Disguise Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30239,Quve_Egg,Quve Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30240,Lude_Egg,Lude Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30241,Hylozoist_Egg,Hylozoist Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30242,Amon_Ra_Egg,Amon Ra Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30243,Hyegun_Egg,Hyegun Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30244,Civil_Servant_Egg,Civil Servant Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30245,Dancing_Dragon_Egg,Dancing Dragon Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30246,Garm_Baby_Egg,Hatii Baby Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30247,Li_Me_Mang_Ryang_Egg,Li Me Mang Ryang Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30248,Bacsojin_Egg,Bacsojin Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+//30249,Chung_E_Egg,Chung E Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30250,Boiled_Rice_Egg,Boiled Rice Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30251,Deviling_Egg,Deviling Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30252,Tao_Gunka_Egg,Tao Gunka Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30253,Mime_Monkey_Egg,Mime Monkey Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30254,Leaf_Cat_Egg,Leaf Cat Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30255,Metaling_Egg,Metaling Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30256,Obsidian_Egg,Obsidian Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30257,Pitman_Egg,Pitman Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30258,Waste_Stove_Egg,Waste Stove Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30259,Ungoliant_Egg,Ungoliant Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30260,Porcellio_Egg,Porcellio Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30261,Noxious_Egg,Noxious Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30262,Venomous_Egg,Venomous Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30263,Teddy_Bear_Egg,Teddy Bear Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+
+// Phase 2 Pets
+30264,RSX_0806_Egg,RSX 0806 Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30265,Anopheles_Egg,Anopheles Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30266,Mole_Egg,Mole Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30267,Hill_Wind_Egg,Hill Wind Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30268,Gremlin_Egg,Gremlin Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30269,Beholder_Egg,Beholder Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30270,Seyren_Egg,Seyren Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30271,Eremes_Egg,Eremes Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30272,Harword_Egg,Harword Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30273,Magaleta_Egg,Magaleta Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30274,Shecil_Egg,Shecil Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30275,Katrinn_Egg,Katrinn Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30276,Ygnizem_Egg,Ygnizem Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30277,Whikebain_Egg,Whikebain Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30278,Armaia_Egg,Armaia Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30279,Erend_Egg,Erend Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30280,Kavac_Egg,Kavac Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30281,Rawrel_Egg,Rawrel Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30282,Photon_Cannon_Egg,Photon Cannon Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30283,Archdam_Egg,Archdam Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30284,Dimik_Egg,Dimik Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30285,Monemus_Egg,Monemus Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30286,Venatu_Egg,Venatu Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30287,Gemini_Egg,Gemini Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30288,Removal_Egg,Removal Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30289,Orc_Baby_Egg,Orc Baby Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30290,Green_Iguana_Egg,Green Iguana Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30291,Lady_Tany_Egg,Lady Tany Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30292,Breeze_Egg,Breeze Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30293,Deathword_Egg,Deathword Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30294,Ancient_Mimic_Egg,Ancient Mimic Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30295,Observation_Egg,Observation Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30296,Shelter_Egg,Shelter Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30297,Retribution_Egg,Retribution Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30298,Solace_Egg,Solace Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30299,Thanatos_Odium_Egg,Thanatos Odium Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30300,Thanatos Despero_Egg,Thanatos Despero Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30301,Thanatos_Maero_Egg,Thanatos Maero Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30302,Thanatos_Dolor_Egg,Thanatos Dolor Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30303,Thanatos_Egg,Thanatos Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30304,Brown_Acidus_Egg,Brown Acidus Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30305,Red_Ferus_Egg,Red Ferus Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30306,Red_Novus_Egg,Red Novus Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30307,Blue_Acidus_Egg,Blue Acidus Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30308,Green_Ferus_Egg,Green Ferus Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30309,Yellow_Novus_Egg,Yellow Novus Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30310,Detale_Egg,Detale Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30311,Hydro_Egg,Hydro Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30312,Dragon_Egg_Egg,Dragon Egg Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30313,Kiel_Egg,Kiel Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30314,Kiel_D-01_Egg,Kiel D-01 Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30315,Alicel_Egg,Alicel Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30316,Aliot_Egg,Aliot Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30317,Aliza_Egg,Aliza Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30318,Constant_Egg,Constant Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30319,Valkyrie_Landgris_Egg,Valkyrie Landgris Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30320,Skogul_Egg,Skogul Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30321,Frus_Egg,Frus Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30322,Skeggiold_Brown_Egg,Skeggiold Brown Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30323,Skeggiold_Blue_Egg,Skeggiold Blue Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30324,Gloom_Under_Night_Egg,Gloom Under Night Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30325,Agav_Egg,Agav Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30326,Echio_Egg,Echio Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30327,Vanberk_Egg,Vanberk Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30328,Isilla_Egg,Isilla Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30329,Hodremlin_Egg,Hodremlin Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30330,Seeker_Egg,Seeker Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30331,Snowier_Egg,Snowier Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30332,Siroma_Egg,Siroma Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30333,Ice_Titan_Egg,Ice Titan Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30334,Gazeti_Egg,Gazeti Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30335,Ktullanux_Egg,Ktullanux Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30336,Muscipular_Egg,Muscipular Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30337,Drosera_Egg,Drosera Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30338,Roween_Egg,Roween Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30339,Galion_Egg,Galion Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30340,Stapo_Egg,Stapo Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30341,Atros_Egg,Atros Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30342,GM_Fangirl_Egg,GM Fangirl Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30343,Skoll_Egg,Skoll Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30344,Skoll_Pup_Egg,Skoll Pup Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+30345,Vesper_Egg,Vesper Egg,7,,10,0,,,,,,,,,,,,,{},{},{}
+
+// Phase 3 Eggs
+
+
+
+
+//===============================
+//= Egg Vouchers: 31000 - 31999 =
+//===============================
+
+// Phase 1 Egg Vouchers
+31000,Farmiliar_Egg_Voucher,Farmiliar Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1005; },{},{}
+31001,Wolf_Egg_Voucher,Wolf Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1013; },{},{}
+31002,Zombie_Egg_Voucher,Zombie Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1015; },{},{}
+31003,Archer_Skeleton_Egg_Voucher,Archer Skeleton Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1016; },{},{}
+31004,Thief_Bug_Female_Egg_Voucher,Thief Bug Female Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1053; },{},{}
+31005,Werewolf_Egg_Voucher,Werewolf Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1022; },{},{}
+31006,Boa_Egg_Voucher,Boa Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1025	; },{},{}
+31007,Raptice_Egg_Voucher,Raptice Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1027; },{},{}
+31008,Soldier_Skeleton_Egg_Voucher,Soldier Skeleton Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1028; },{},{}
+31009,Anacondaq_Egg_Voucher,Anacondaq Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1030; },{},{}
+31010,Verit_Egg_Voucher,Verit Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1032; },{},{}
+31011,Elder_Willow_Egg_Voucher,Elder Willow Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1033; },{},{}
+31012,Thara_Frog_Egg_Voucher,Thara Frog Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1034; },{},{}
+31013,Ghoul_Egg_Voucher,Ghoul Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1036; },{},{}
+31014,Sidewinder_Egg_Voucher,Sidewinder Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1037; },{},{}
+31015,Osiris_Egg_Voucher,Osiris Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1038; },{},{}
+31016,Baphomet_Egg_Voucher,Baphomet Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1039; },{},{}
+31017,Golem_Egg_Voucher,Golem Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1040; },{},{}
+31018,Mummy_Egg_Voucher,Mummy Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1041; },{},{}
+31019,Marc_Egg_Voucher,Marc Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1045; },{},{}
+31020,Doppelganger_Egg_Voucher,Doppelganger Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1046; },{},{}
+31021,Shell_Picky_Egg_Voucher,Shell Picky Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1050; },{},{}
+31022,Muka_Egg_Voucher,Muka Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1055; },{},{}
+31023,Metaller_Egg_Voucher,Metaller Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1058; },{},{}
+31024,Mistress_Egg_Voucher,Mistress Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1059; },{},{}
+31025,Bigfoot_Egg_Voucher,Bigfoot Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1060; },{},{}
+31026,Nightmare_Egg_Voucher,Mightmare Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1061; },{},{}
+31027,Santa_Poring_Egg_Voucher,Santa Poring Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1062; },{},{}
+31028,Vadon_Egg_Voucher,Vadon Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1066; },{},{}
+31029,Swordfish_Egg_Voucher,Swordfish Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1069; },{},{}
+31030,Pirate_Skeleton_Egg_Voucher,Pirate Skeleton Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1071; },{},{}
+31031,Kaho_Egg_Voucher,Kaho Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1072; },{},{}
+31032,Crab_Egg_Voucher,Crab Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1073; },{},{}
+31033,Shellfish_Egg_Voucher,Shellfish Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1074; },{},{}
+31034,Skeleton_Egg_Voucher,Skeleton Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1076; },{},{}
+31035,Poison_Spore_Egg_Voucher,Poison Spore Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1077; },{},{}
+31036,Shining_Plant_Egg_Voucher,Shining Plant Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1083; },{},{}
+31037,Black_Mushroom_Egg_Voucher,Black Mushroom Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1084; },{},{}
+31038,Red_Mushroom_Egg_Voucher,Red Mushroom Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1085; },{},{}
+31039,Golden_Bug_Egg_Voucher,Golden Thief Bug Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1086; },{},{}
+31040,Orc_Hero_Egg_Voucher,Orc Hero Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1087; },{},{}
+31041,Mastering_Egg_Voucher,Mastering Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1090; },{},{}
+31042,Dragon_Fly_Egg_Voucher,Dragon Fly Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1091; },{},{}
+31043,Vagabond_Wolf_Egg_Voucher,Vagabod Wolf Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1092; },{},{}
+31044,Eclipse_Egg_Voucher,Eclipse Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1093; },{},{}
+31045,Andre_Egg_Voucher,Andre Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1095; },{},{}
+31046,Angeling_Egg_Voucher,Angeling Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1096; },{},{}
+31047,Argiope_Egg_Voucher,Argiope Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1099; },{},{}
+31048,Bathory_Egg_Voucher,Bathory Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1102; },{},{}
+31049,Caramel_Egg_Voucher,Caramel Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1103; },{},{}
+31050,Coco_Egg_Voucher,Coco Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1104; },{},{}
+31051,Deniro_Egg_Voucher,Deniro Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1105; },{},{}
+31052,Desert_Wolf_Egg_Voucher,Desert Wolf Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1106; },{},{}
+31053,Deviace_Egg_Voucher,Deviace Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1108; },{},{}
+31054,Drainliar_Egg_Voucher,Drainliar Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1111; },{},{}
+31055,Drake_Egg_Voucher,Drake Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1112; },{},{}
+31056,Dustiness_Egg_Voucher,Dustiness Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1114; },{},{}
+31057,Eddga_Egg_Voucher,Eddga Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1115; },{},{}
+31058,Eggyra_Egg_Voucher,Eggyra Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1116; },{},{}
+31059,Evil_Druid_Egg_Voucher,Evil Druid Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1117; },{},{}
+31060,Flora_Egg_Voucher,Flora Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1118; },{},{}
+31061,Ghostring_Egg_Voucher,Ghostring Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1120; },{},{}
+31062,Giearth_Egg_Voucher,Giearth Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1121; },{},{}
+31063,Goblin_1_Egg_Voucher,Goblin 1 Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1122; },{},{}
+31064,Goblin_2_Egg_Voucher,Goblin 2 Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1123; },{},{}
+31065,Goblin_3_Egg_Voucher,Goblin 3 Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1124; },{},{}
+31066,Goblin_4_Egg_Voucher,Goblin 4 Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1125; },{},{}
+31067,Goblin_5_Egg_Voucher,Goblin 5 Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1126; },{},{}
+31068,Hode_Egg_Voucher,Hode Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1127; },{},{}
+31069,Horong_Egg_Voucher,Horong Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1129; },{},{}
+31070,Jakk_Egg_Voucher,Jakk Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1130; },{},{}
+31071,Joker_Egg_Voucher,Joker Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1131; },{},{}
+31072,Khalitzburg_Egg_Voucher,Khalitzburg Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1132; },{},{}
+31073,Kobold_1_Egg_Voucher,Kobold 1 Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1133; },{},{}
+31074,Kobold_2_Egg_Voucher,Kobold 2 Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1134; },{},{}
+31075,Kobold_3_Egg_Voucher,Kobold 3 Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1135; },{},{}
+//31076,Kobold_4_Egg_Voucher,Kobold 4 Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1136; },{},{}
+//31077,Kobold_5_Egg_Voucher,Kobold 5 Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1137; },{},{}
+31078,Magnolia_Egg_Voucher,Magnolia Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1138; },{},{}
+31079,Mantis_Egg_Voucher,Mantis Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1139; },{},{}
+31080,Marduk_Egg_Voucher,Marduk Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1140; },{},{}
+31081,Marina_Egg_Voucher,Marina Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1141; },{},{}
+31082,Marine_Sphere_Egg_Voucher,Marine Sphere Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1142; },{},{}
+31083,Marionette_Egg_Voucher,Marionette Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1143; },{},{}
+31084,Martin_Egg_Voucher,Martin Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1145; },{},{}
+31085,Matyr_Egg_Voucher,Matyr Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1146; },{},{}
+31086,Maya_Egg_Voucher,Maya Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1147; },{},{}
+31087,Medusa_Egg_Voucher,Medusa Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1148; },{},{}
+31088,Minorous_Egg_Voucher,Minorous Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1149; },{},{}
+31089,Moonlight_Flower_Egg_Voucher,Moonlight Flower Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1150; },{},{}
+31090,Myst_Egg_Voucher,Myst Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1151; },{},{}
+31091,Orc_Skeleton_Egg_Voucher,Orc Skeleton Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1152; },{},{}
+31092,Orc_Zombie_Egg_Voucher,Orc Zombie Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1153; },{},{}
+31093,Earth_Petit_Egg_Voucher,Earth Petit Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1155; },{},{}
+31094,Sky_Petit_Egg_Voucher,Sky Petit Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1156; },{},{}
+31095,Pharaoh_Egg_Voucher,Pharaoh Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1157; },{},{}
+31096,Phen_Egg_Voucher,Phen Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1158; },{},{}
+31097,Phreeoni_Egg_Voucher,Phreeoni Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1159; },{},{}
+31098,Piere_Egg_Voucher,Piere Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1160; },{},{}
+31099,Rafflesia_Egg_Voucher,Rafflesia Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1162; },{},{}
+31100,Raydric_Egg_Voucher,Raydric Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1163; },{},{}
+31101,Skeleton_Worker_Egg_Voucher,Skeleton Worker Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1169; },{},{}
+//31102,Soldier_Andre_Egg_Voucher,Soldier Andre Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1171; },{},{}
+31103,Stainer_Egg_Voucher,Stainer Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1174; },{},{}
+31104,Tarou_Egg_Voucher,Tarou Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1175; },{},{}
+31105,Vitata_Egg_Voucher,Vitata Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1176; },{},{}
+31106,Zenorc_Egg_Voucher,Zenorc Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1177; },{},{}
+31107,Zerom Egg Voucher,Zerom Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1178; },{},{}
+31108,Whisper_Egg_Voucher,Whisper Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1179; },{},{}
+31109,Nine_Tail_Egg_Voucher,Nine Tail Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1180; },{},{}
+31110,Giant_Whisper_Egg_Voucher,Giant Whisper Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1186; },{},{}
+31111,Orc_Archer_Egg_Voucher,Orc Archer Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1189; },{},{}
+31112,Orc_Lord_Egg_Voucher,Orc Lord Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1190; },{},{}
+31113,Mimic_Egg_Voucher,Mimic Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1191; },{},{}
+31114,Wraith_Egg_Voucher,Wraith Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1192; },{},{}
+31115,Arclouse_Egg_Voucher,Arclouse Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1194; },{},{}
+31116,Rideword_Egg_Voucher,Rideword Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1195; },{},{}
+31117,Skeleton_Prisoner_Egg_Voucher,Skeleton Prisoner Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1196; },{},{}
+31118,Zombie_Prisoner_Egg_Voucher,Zombie Prisoner Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1197; },{},{}
+31119,Dark_Priest_Egg_Voucher,Dark Priest Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1198; },{},{}
+31120,Punk_Egg_Voucher,Punk Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1199; },{},{}
+31121,Mysteltainn_Egg_Voucher,Mysteltainn Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1203; },{},{}
+31122,Tirfing_Egg_Voucher,Tirfing Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1204; },{},{}
+31123,Executioner_Egg_Voucher,Executioner Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1205; },{},{}
+31124,Anolian_Egg_Voucher,Anolian Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1206; },{},{}
+31125,Sting_Egg_Voucher,Sting Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1207; },{},{}
+31126,Wanderer_Egg_Voucher,Wanderer Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1208; },{},{}
+31127,Brilight_Egg_Voucher,Brilight Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1211; },{},{}
+31128,Iron_Fist_Egg_Voucher,Iron Fist Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1212; },{},{}
+31129,High_Orc_Egg_Voucher,High Orc Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1213; },{},{}
+31130,Choco_Egg_Voucher,Choco Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1214; },{},{}
+31131,Penomena_Egg_Voucher,Penomena Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1216; },{},{}
+31132,Abyss_Knight_Egg_Voucher,Abyss Knight Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1219; },{},{}
+31133,Marin_Egg_Voucher,Marin Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1242; },{},{}
+31134,Sasquatch_Egg_Voucher,Sasquatch Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1243; },{},{}
+31135,Christmas_Jakk_Egg_Voucher,Christmas Jakk Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1244; },{},{}
+31136,Christmas_Goblin_Egg_Voucher,Christmas Goblin Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1245; },{},{}
+31137,Christmas_Cookie_Egg_Voucher,Christmas Cookie Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1246; },{},{}
+31138,Antonio_Egg_Voucher,Antonio Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1247; },{},{}
+31139,Cruiser_Egg_Voucher,Cruiser Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1248; },{},{}
+31140,Mystcase_Egg_Voucher,Mystcase Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1249; },{},{}
+31141,Chepet_Egg_Voucher,Chepet Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1250; },{},{}
+31142,Stormy_Knight_Egg_Voucher,Stormy Knight Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1251; },{},{}
+31143,Garm_Egg_Voucher,Garm Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1252; },{},{}
+31144,Gargoyle_Egg_Voucher,Gargoyle Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1253; },{},{}
+31145,Raggler_Egg_Voucher,Raggler Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1254; },{},{}
+31146,Neraid_Egg_Voucher,Neraid Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1255; },{},{}
+31147,Pest_Egg_Voucher,Pest Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1256; },{},{}
+31148,Injustice_Egg_Voucher,Injustice Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1257; },{},{}
+31149,Goblin_Archer_Egg_Voucher,Goblin Archer Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1258; },{},{}
+31150,Gryphon_Egg_Voucher,Gryphon Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1259; },{},{}
+31151,Dark_Frame_Egg_Voucher,Dark Frame Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1260; },{},{}
+31152,Wild_Rose_Egg_Voucher,Wild_Rose_Egg_Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1261; },{},{}
+31153,Mutant_Dragonoid_Egg_Voucher,Mutant Dragonoid Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1262; },{},{}
+31154,Wind_Ghost_Egg_Voucher,Wind Ghost Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1263; },{},{}
+31155,Merman_Egg_Voucher,Merman Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1264; },{},{}
+31156,Cookie_Egg_Voucher,Cookie Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1265; },{},{}
+31157,Carat_Egg_Voucher,Carat Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1267; },{},{}
+31158,Bloody_Knight_Egg_Voucher,Bloody Knight Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1268; },{},{}
+31159,Clock_Egg_Voucher,Clock Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1269; },{},{}
+31160,Tower_Keeper_Egg_Voucher,Tower Keeper Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1270; },{},{}
+31161,Dark_Lord_Egg_Voucher,Dark Lord Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1272; },{},{}
+31162,Orc_Lady_Egg_Voucher,Orc Lady Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1273; },{},{}
+31163,Megalith_Egg_Voucher,Megalith Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1274; },{},{}
+31164,Raydric_Archer_Egg_Voucher,Raydric Archer Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1276; },{},{}
+31165,Greatest_General_Egg_Voucher,Greatest General Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1277; },{},{}
+31166,Stalactic_Golem_Egg_Voucher,Stalactic Golem Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1278; },{},{}
+31167,Sageworm_Egg_Voucher,Sage Worm Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1281; },{},{}
+31168,Kobold_Archer_Egg_Voucher,Kobold Archer Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1282; },{},{}
+31169,Chimera_Egg_Voucher,Chimera Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1283; },{},{}
+31170,Skeleton_General_Egg_Voucher,Skeleton General Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1290; },{},{}
+31171,Wraith_Dead_Egg_Voucher,Wraith Dead Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1291; },{},{}
+31172,Mini_Demon_Egg_Voucher,Mini Demon Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1292; },{},{}
+31173,Killer_Mantis_Egg_Voucher,Killer Mantis Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1294; },{},{}
+31174,Owl_Baron_Egg_Voucher,Owl Baron Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1295; },{},{}
+31175,Kobold_Leader_Egg_Voucher,Kobold Leader Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1296; },{},{}
+31176,Ancient_Mummy_Egg_Voucher,Ancient Mummy Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1297; },{},{}
+31177,Zombie_Master_Egg_Voucher,Zombie Master Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1298; },{},{}
+31178,Goblin_Leader_Egg_Voucher,Goblin Leader Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1299; },{},{}
+31179,Dark_Illusion_Egg_Voucher,Dark Illusion Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1302; },{},{}
+31180,Cat_Nine_Tail_Egg_Voucher,Cat'o'Nine Tails Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1307; },{},{}
+31181,Majoruros_Egg_Voucher,Majoruros Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1310; },{},{}
+31182,Turtle_General_Egg_Voucher,Turtle General Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1312; },{},{}
+31183,Perimeter_Egg_Voucher,Perimeter Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1314; },{},{}
+31184,Assaulter_Egg_Voucher,Assaulter Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1315; },{},{}
+31185,Solider_Egg_Voucher,Solider Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1316; },{},{}
+31186,Seal_Egg_Voucher,Seal Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1317; },{},{}
+31187,Heater_Egg_Voucher,Heater Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1318; },{},{}
+31188,Freezer_Egg_Voucher,Freezer Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1319; },{},{}
+31189,Owl_Duke_Egg_Voucher,Owl Duke Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1320; },{},{}
+31190,Dragon_Tail_Egg_Voucher,Dragon Tail Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1321; },{},{}
+31191,Sea_Otter_Egg_Voucher,Sea Otter Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1323; },{},{}
+31192,Apocalypse_Egg_Voucher,Apocalypse Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1365; },{},{}
+31193,Blazer_Egg_Voucher,Blazer Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1367; },{},{}
+31194,Geographer_Egg_Voucher,Geographer Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1368; },{},{}
+31195,Grand_Peco_Egg_Voucher,Grand Peco Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1369; },{},{}
+31196,Succubus_Egg_Voucher,Succubus Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1370; },{},{}
+31197,Fake_Angel_Egg_Voucher,Fake Angel Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1371; },{},{}
+31198,Goat_Egg_Voucher,Goat Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1372; },{},{}
+31199,Lord_of_Death_Egg_Voucher,Lord of Death Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1373; },{},{}
+31200,Incubus_Egg_Voucher,Incubus Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1374; },{},{}
+31201,The_Paper_Egg_Voucher,The Paper Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1375; },{},{}
+31202,Harpy_Egg_Voucher,Harpy Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1376; },{},{}
+31203,Elder_Egg_Voucher,Elder Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1377; },{},{}
+31204,Nightmare_Terror_Egg_Voucher,Nightmare Terror Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1379; },{},{}
+31205,Driller_Egg_Voucher,Driller Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1380; },{},{}
+31206,Grizzly_Egg_Voucher,Grizzly Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1381; },{},{}
+31207,Diabolic_Egg_Voucher,Diabolic Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1382; },{},{}
+31208,Explosion_Egg_Voucher,Explosion Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1383; },{},{}
+31209,Sky_Deleter_Egg_Voucher,Sky Deleter Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1384; },{},{}
+31210,Earth_Deleter_Egg_Voucher,Earth Deleter Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1385; },{},{}
+31211,Archangeling_Egg_Voucher,Archangeling Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1388; },{},{}
+31212,Dracula_Egg_Voucher,Dracula Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1389; },{},{}
+31213,Violy_Egg_Voucher,Violy Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1390; },{},{}
+31214,Galapago_Egg_Voucher,Galapago Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1391; },{},{}
+31215,Shinobi_Egg_Voucher,Shinobi Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1401; },{},{}
+31216,Antique_Firelock_Egg_Voucher,Antique Firelock Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1403; },{},{}
+31217,Miyabi_Doll_Egg_Voucher,Miyabi_Doll Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1404; },{},{}
+31218,Tengu_Egg_Voucher,Tengu Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1405; },{},{}
+31219,Kapha_Egg_Voucher,Kapha Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1406; },{},{}
+31220,Bloody_Butterfly_Egg_Voucher,Bloody Butterfly Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1408; },{},{}
+31221,Dumpling_Child_Egg_Voucher,Dumpling Child Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1409; },{},{}
+31222,Enchanted_Peach_Tree_Egg_Voucher,Enchanted Peach Tree Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1410; },{},{}
+31223,Taoist_Hermit_Egg_Voucher,Taoist Hermit Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1412; },{},{}
+31224,Baby_Leopard_Egg_Voucher,Baby Leopard Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1415; },{},{}
+31225,Evil_Nymph_Egg_Voucher,Evil Nymph Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1416; },{},{}
+31226,Zipper_Bear_Egg_Voucher,Zipper Bear Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1417; },{},{}
+31227,Evil_Snake_Lord_Egg_Voucher,Evil Snake Lord Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1418; },{},{}
+31228,Incantation_Samurai_Egg_Voucher,Incantation Samurai Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1492; },{},{}
+31229,Dryad_Egg_Voucher,Dryad Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1493; },{},{}
+31230,Stone_Shooter_Egg_Voucher,Stone Shooter Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1495; },{},{}
+31231,Wooden_Golem_Egg_Voucher,Wooden Golem Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1497; },{},{}
+31232,Wootan_Shooter_Egg_Voucher,Wootan Shooter Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1498; },{},{}
+31233,Wootan_Fighter_Egg_Voucher,Wootan Fighter Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1499; },{},{}
+31234,Parasite_Egg_Voucher,Parasite Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1500; },{},{}
+31235,Gibbet_Egg_Voucher,Gibbet Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1503; },{},{}
+31236,Dullahan_Egg_Voucher,Dullahan Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1504; },{},{}
+31237,Loli_Ruri_Egg_Voucher,Loli Ruri Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1505; },{},{}
+31238,Disguise_Egg_Voucher,Disguise Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1506; },{},{}
+31239,Quve_Egg_Voucher,Quve Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1508; },{},{}
+31240,Lude_Egg_Voucher,Lude Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1509; },{},{}
+31241,Hylozoist_Egg_Voucher,Hylozoist Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1510; },{},{}
+31242,Amon_Ra_Egg_Voucher,Amon Ra Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1511; },{},{}
+31243,Hyegun_Egg_Voucher,Hyegun Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1512; },{},{}
+31244,Civil_Servant_Egg_Voucher,Civil Servant Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1513; },{},{}
+31245,Dancing_Dragon_Egg_Voucher,Dancing Dragon Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1514; },{},{}
+31246,Garm_Baby_Egg_Voucher,Hatii Baby Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1515; },{},{}
+31247,Li_Me_Mang_Ryang_Egg_Voucher,Li Me Mang Ryang Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1517; },{},{}
+31248,Bacsojin_Egg_Voucher,Bacsojin Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1518; },{},{}
+31249,Chung_E_Egg_Voucher,Chung E Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1519; },{},{}
+31250,Boiled_Rice_Egg_Voucher,Boiled Rice Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1520; },{},{}
+31251,Deviling_Egg_Voucher,Deviling Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1582; },{},{}
+31252,Tao_Gunka_Egg_Voucher,Tao Gunka Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1583; },{},{}
+31253,Mime_Monkey_Egg_Voucher,Mime Monkey Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1585; },{},{}
+31254,Leaf_Cat_Egg_Voucher,Leaf Cat Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1586; },{},{}
+31255,Metaling_Egg_Voucher,Metaling Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1613; },{},{}
+31256,Obsidian_Egg_Voucher,Obsidian Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1615; },{},{}
+31257,Pitman_Egg_Voucher,Pitman Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1616; },{},{}
+31258,Waste_Stove_Egg_Voucher,Waste Stove Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1617; },{},{}
+31259,Ungoliant_Egg_Voucher,Ungoliant Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1618; },{},{}
+31260,Porcellio_Egg_Voucher,Porcellio Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1619; },{},{}
+31261,Noxious_Egg_Voucher,Noxious Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1620; },{},{}
+31262,Venomous_Egg_Voucher,Venomous Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1621; },{},{}
+31263,Teddy_Bear_Egg_Voucher,Teddy Bear Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1622; },{},{}
+
+// Phase 2 Egg Vouchers
+31264,RSX_0806_Egg_Voucher,RSX 0806 Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1623; },{},{}
+31265,Anopheles_Egg_Voucher,Anopheles Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1627; },{},{}
+31266,Mole_Egg_Voucher,Mole Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1628; },{},{}
+31267,Hill_Wind_Egg_Voucher,Hill Wind Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1629; },{},{}
+31268,Gremlin_Egg_Voucher,Gremlin Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1632; },{},{}
+31269,Beholder_Egg_Voucher,Beholder Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1633; },{},{}
+31270,Seyren_Egg_Voucher,Seyren Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1634; },{},{}
+31271,Eremes_Egg_Voucher,Eremes Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1635; },{},{}
+31272,Harword_Egg_Voucher,Harword Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1636; },{},{}
+31273,Magaleta_Egg_Voucher,Magaleta Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1637; },{},{}
+31274,Shecil_Egg_Voucher,Shecil Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1638; },{},{}
+31275,Katrinn_Egg_Voucher,Katrinn Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1639; },{},{}
+31276,Ygnizem_Egg_Voucher,Ygnizem Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1652; },{},{}
+31277,Whikebain_Egg_Voucher,Whikebain Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1653; },{},{}
+31278,Armaia_Egg_Voucher,Armaia Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1654; },{},{}
+31279,Erend_Egg_Voucher,Erend Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1655; },{},{}
+31280,Kavac_Egg_Voucher,Kavac Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1656; },{},{}
+31281,Rawrel_Egg_Voucher,Rawrel Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1657; },{},{}
+31282,Photon_Cannon_Egg_Voucher,Photon Cannon Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1664; },{},{}
+31283,Archdam_Egg_Voucher,Archdam Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1668; },{},{}
+31284,Dimik_Egg_Voucher,Dimik Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1669; },{},{}
+31285,Monemus_Egg_Voucher,Monemus Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1674; },{},{}
+31286,Venatu_Egg_Voucher,Venatu Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1675; },{},{}
+31287,Gemini_Egg_Voucher,Gemini Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1681; },{},{}
+31288,Removal_Egg_Voucher,Removal Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1682; },{},{}
+31289,Orc_Baby_Egg_Voucher,Orc Baby Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1686; },{},{}
+31290,Green_Iguana_Egg_Voucher,Green Iguana Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1687; },{},{}
+31291,Lady_Tany_Egg_Voucher,Lady Tany Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1688; },{},{}
+31292,Breeze_Egg_Voucher,Breeze Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1692; },{},{}
+31293,Deathword_Egg_Voucher,Deathword Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1698; },{},{}
+31294,Ancient_Mimic_Egg_Voucher,Ancient Mimic Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1699; },{},{}
+31295,Observation_Egg_Voucher,Observation Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1700; },{},{}
+31296,Shelter_Egg_Voucher,Shelter Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1701; },{},{}
+31297,Retribution_Egg_Voucher,Retribution Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1702; },{},{}
+31298,Solace_Egg_Voucher,Solace Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1703; },{},{}
+31299,Thanatos_Odium_Egg_Voucher,Thanatos Odium Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1704; },{},{}
+31300,Thanatos Despero_Egg_Voucher,Thanatos Despero Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1705; },{},{}
+31301,Thanatos_Maero_Egg_Voucher,Thanatos Maero Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1706; },{},{}
+31302,Thanatos_Dolor_Egg_Voucher,Thanatos Dolor Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1707; },{},{}
+31303,Thanatos_Egg_Voucher,Thanatos Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1708; },{},{}
+31304,Golden_Acidus_Egg_Voucher,Golden Acidus Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1713; },{},{}
+31305,Red_Ferus_Egg_Voucher,Red Ferus Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1714; },{},{}
+31306,Red_Novus_Egg_Voucher,Red Novus Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1715; },{},{}
+31307,Blue_Acidus_Egg_Voucher,Blue Acidus Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1716; },{},{}
+31308,Green_Ferus_Egg_Voucher,Green Ferus Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1717; },{},{}
+31309,Yellow_Novus_Egg_Voucher,Yellow Novus Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1718; },{},{}
+31310,Detale_Egg_Voucher,Detale Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1719; },{},{}
+31311,Hydro_Egg_Voucher,Hydro Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1720; },{},{}
+31312,Dragon_Egg_Egg_Voucher,Dragon Egg Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1721; },{},{}
+31313,Kiel_Egg_Voucher,Kiel Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1733; },{},{}
+31314,Kiel_D-01_Egg_Voucher,Kiel D-01 Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1734; },{},{}
+31315,Alicel_Egg_Voucher,Alicel Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1735; },{},{}
+31316,Aliot_Egg_Voucher,Aliot Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1736; },{},{}
+31317,Aliza_Egg_Voucher,Aliza Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1737; },{},{}
+31318,Constant_Egg_Voucher,Constant Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1738; },{},{}
+31319,Valkyrie_Randgris_Egg_Voucher,Valkyrie Randgris Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1751; },{},{}
+31320,Skogul_Egg_Voucher,Skogul Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1752; },{},{}
+31321,Frus_Egg_Voucher,Frus Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1753; },{},{}
+31322,Skeggiold_Brown_Egg_Voucher,Skeggiold Brown Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1754; },{},{}
+31323,Skeggiold_Blue_Egg_Voucher,Skeggiold Blue Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1755; },{},{}
+31324,Gloom_Under_Night_Egg_Voucher,Gloom Under Night Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1768; },{},{}
+31325,Agav_Egg_Voucher,Agav Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1769; },{},{}
+31326,Echio_Egg_Voucher,Echio Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1770; },{},{}
+31327,Vanberk_Egg_Voucher,Vanberk Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1771; },{},{}
+31328,Isilla_Egg_Voucher,Isilla Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1772; },{},{}
+31329,Hodremlin_Egg_Voucher,Hodremlin Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1773; },{},{}
+31330,Seeker_Egg_Voucher,Seeker Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1774; },{},{}
+31331,Snowier_Egg_Voucher,Snowier Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1775; },{},{}
+31332,Siroma_Egg_Voucher,Siroma Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1776; },{},{}
+31333,Ice_Titan_Egg_Voucher,Ice Titan Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1777; },{},{}
+31334,Gazeti_Egg_Voucher,Gazeti Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1778; },{},{}
+31335,Ktullanux_Egg_Voucher,Ktullanux Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1779; },{},{}
+31336,Muscipular_Egg_Voucher,Muscipular Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1780; },{},{}
+31337,Drosera_Egg_Voucher,Drosera Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1781; },{},{}
+31338,Roween_Egg_Voucher,Roween Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1782; },{},{}
+31339,Galion_Egg_Voucher,Galion Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1783; },{},{}
+31340,Stapo_Egg_Voucher,Stapo Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1784; },{},{}
+31341,Atros_Egg_Voucher,Atros Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1785; },{},{}
+31342,GM_Fangirl_Egg_Voucher,GM Fangirl Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1006; },{},{}
+31343,Skoll_Egg_Voucher,Skoll Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1397; },{},{}
+31344,Skoll_Pup_Egg_Voucher,Skoll Pup Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1398; },{},{}
+31345,Vesper_Egg_Voucher,Vesper Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1685; },{},{}
+
+// Phase 3 Egg Vouchers
+
+
+//Official Egg Vouchers
+31998,Zherlthsh_Egg_Voucher,Zherlthsh Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1200; },{},{}
+31999,Alice_Egg_Voucher,Alice Egg Voucher,0,1,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ makepet 1275; },{},{}
+
+
+
+//============================================
+// Equippables, Useables, Etc: 32000 - 32767 =
+//============================================
+
+// Premium Wings: 32000 - 32049
+32000,Angelic_Wings,Angelic Wings,5,20,0,100,,10,,0,0xFFFFFFFF,7,2,1,,0,0,99,{ if(getgmlevel()<1) bonus bDef,-9; bonus bAllStats,1; },{},{}//Kaho'sHornsID
+32001,Arctic_Wings,Arctic Wings,5,20,0,100,,10,,0,0xFFFFFFFF,7,2,1,,0,0,23,{ if(getgmlevel()<1) bonus bDef,-9; bonus bAllStats,1; },{},{}//SingleGlass'sID
+32002,Demonic_Wings,Demonic Wings,5,20,0,100,,10,,0,0xFFFFFFFF,7,2,1,,0,0,16,{ if(getgmlevel()<1) bonus bDef,-9; bonus bAllStats,1; },{},{}//Hat'sID
+32003,Phoenix_Wings,Phoenix Wings,5,20,0,100,,10,,0,0xFFFFFFFF,7,2,1,,0,0,63,{ if(getgmlevel()<1) bonus bDef,-9; bonus bAllStats,1; },{},{}//EagleEyesID
+32004,Butterfly_Wings,Butterfly Wings,5,20,0,100,,10,,0,0xFFFFFFFF,7,2,1,,0,0,53,{ if(getgmlevel()<1) bonus bDef,-9; bonus bAllStats,1; },{},{}//IronCainID
+32005,Archangelic_Wings,Archangelic Wings,5,20,0,100,,10,,0,0xFFFFFFFF,7,2,1,,0,0,18,{ if(getgmlevel()<1) bonus bDef,-9; bonus bAllStats,1; },{},{}//CircletID
+32006,Devil_Wings,Devil Wings,5,20,0,100,,10,,0,0xFFFFFFFF,7,2,1,,0,0,3,{ if(getgmlevel()<1) bonus bDef,-9; bonus bAllStats,1; },{},{}//GlassesID
+32007,Cruxis_Wings,Cruxis Wings,5,20,0,100,,5,,0,0xFFFFFFFF,7,2,1,,0,0,7,{ if(getgmlevel()<1) bonus bDef,-2; },{},{}//TurbanID
+
+// Equippables: 32050 - 32099
+32050,Sigil_of_Chaos,Sigil of Chaos,5,30000,,100,,0,,0,0xFFFFFFFF,7,2,136,,0,0,0,{ if(getgmlevel()<99) delitem 32050,1; bonus bMatkRate,99999; bonus bAspd,255; bonus bPerfectHitRate,100; bonus bAtkRate,99999; bonus bMaxHP,99999; bonus bMaxSP,99999; bonus bCastrate,-200; bonus bMdef,100; bonus bDef,100; bonus bSPrecovRate,50000; bonus bHPrecovRate,50000; bonus bSpeedRate,500; },{ sc_start4 SC_ENDURE,60000,10,0,0,1; },{ sc_end SC_ENDURE; }
+32051,Rune_Blade,Rune Blade,4,60000,,1500,100,,1,1,0x00004080,7,2,2,3,27,1,2,{ bonus bMaxHPrate,-50; },{},{}
+32052,Everfrost_Bow,Everfrost Bow,4,20,,1200,150,,5,0,0x000A0808,7,2,34,4,48,1,11,{ bonus bAtkEle,Ele_Ice; skill 15,3; bonus3 bAutospell,15,5,350; },{},{}
+32053,Staff_of_Purification,Staff of Purification,4,20,,2400,120,,1,0,0x00010204,7,2,34,4,90,1,10,{ bonus bInt,10; bonus bDex,5; bonus bMatkRate,25; },{},{}
+32054,Book_of_Ages,Book of Ages,4,35000,,750,110,,1,0,0x00410100,7,2,2,4,85,1,15,{ bonus bInt,5; bonus bVit,5; bonus bMatkRate,15; },{},{}
+32055,Sanctified_Fist,Sanctified Fist,4,32000,,450,115,,1,2,0x00008100,7,2,2,4,48,1,12,{ bonus2 bSubEle,Ele_Shadow,15; bonus bAtkEle,Ele_Holy; },{},{}
+32056,Axe_of_the_Oath,Axe of the Oath,4,34000,,3250,270,,1,1,0x000444A2,7,2,34,4,48,1,7,{ bonus bVit,10; bonus2 bSubEle,Ele_Shadow,10; bonus bAtkEle,Ele_Holy;},{},{}
+32057,Axe_of_the_Craftsmen,Axe of the Craftsmen,4,34000,7,3500,150,,1,2,0x00000400,7,2,34,4,48,1,7,{ bonus bDex,5; bonus bLuk,10; bonus bAtkEle,Ele_Fire; },{},{}
+32058,Angelus_Harp,Angelus_Harp,4,62000,,900,145,,1,1,0x00080000,7,1,2,4,60,1,13,{ bonus bInt,3; bonus bLuk,2; bonus bDex,4; },{},{}
+32059,Daemon_Chords,Daemon Chords,4,47000,,900,145,,1,1,0x00080000,7,1,2,4,60,1,13,{ bonus bVit,2; bonus bStr,4; bonus bAgi,3; },{},{}
+32060,Karaya,Karaya,4,8500,,850,110,,1,2,0x00000001,7,2,2,3,24,1,1,{ bonus bMaxSP,150; },{},{}
+32061,Oblivious_Dagger,Oblivious Dagger,4,43000,,950,110,,1,3,0x00021040,7,2,2,4,74,1,1,{ bonus bAgi,2; },{},{}
+32062,Forbidden_Staff,Forbidden_Staff,4,20,,1400,75,,1,0,0x00000001,7,2,34,3,36,1,10,{ bonus bAtkEle,Ele_Ghost; bonus bInt,5; bonus bMatkRate,15; },{},{}
+32063,Crimson_Cape,Crimson Cape,5,32000,,550,,5,,1,2139028986,7,2,4,,75,1,0,{ bonus bStr,1; },{},{}
+32064,OoberNovis,OoberNovis,4,20,10,500,175,,1,3,0x00000001,7,2,2,4,95,1,1,{ skill 7,3; skill 28,3; skill 48,5; bonus bHit,50; bonus bAspd,5; bonus bMaxSP,500; bonus bMaxHP,2000; if(BaseJob==Job_SuperNovice) bonus bDex,-5; },{},{}
+32065,First_Class_Pwnage,First Class Pwnage,5,20,10,2000,,8,,1,0x0000007F,7,2,16,,95,1,0,{ if(Class == Job_SuperNovice) bonus bDef,-8; if(Class == Job_SuperNovice) end; if(Class == Job_Super_Baby) bonus bDef,-8; if(Class == Job_Super_Baby) end; bonus bMaxSP,100; bonus bMaxHP,1000; bonus bHit,15; bonus bFlee,15; bonus bStr,5; bonus bAgi,5; bonus bVit,5; bonus bInt,5; bonus bDex,5; bonus bLuk,5; },{},{}
+32066,Hobo_Hat,Hobo Hat,5,9000,,100,,4,,1,0xFFFFFFFF,7,2,256,,0,1,8,{ bonus2 bGetZenyNum,100,40; bonus bLuk,-1; },{},{}
+32067,Caduceus,Caduceus,4,20,,1200,100,,1,1,0x00040000,7,2,34,4,48,1,10,{ bonus bAtkEle,Ele_Wind; bonus bDex,6; bonus bInt,3; bonus bLuk,8; },{},{}
+32068,Visible_Wedding_Dress,Visible Wedding Dress,5,43000,,500,,0,,0,0xFFFFFFFF,7,0,16,,0,1,0,{},{ setoption Option_Wedding,1; },{ setoption Option_Wedding,0; }
+32069,Visible_Tuxedo,Visible Tuxedo,5,43000,,500,,0,,0,0xFFFFFFFF,7,1,16,,0,1,0,{},{ setoption Option_Wedding,1; },{ setoption Option_Wedding,0; }
+
+// Cards: 32100 - 32149
+32100,Flintstones_Vitamins_Card,Flintstones Vitamins Card,6,,10,10,,,,,,,,16,,,,,{ if( BaseLevel<80 || Upper!=2 ) end; bonus bMaxHPrate,35; bonus bMaxSPrate,35; },{},{}
+32101,Skoll_Card,Skoll Card,6,,10,10,,,,,,,,16,,,,,{ bonus2 bAddEffWhenHit,Eff_Stun,5000; },{},{}
+32102,Skoll_Pup_Card,Skoll Pup Card,6,,10,10,,,,,,,,2,,,,,{ bonus3 bAutoSpell,17,7,50+250*isequipped(29007); },{},{}
+32103,Knight_of_Windstorm_Card_Voucher,Knight Of Windstorm Card Voucher,6,,10,10,,,,,,,,4,,,,,{},{},{}
+32104,Mimic_Card_Voucher,Mimic Card Voucher,6,,10,10,,,,,,,,769,,,,,{},{},{}
+32105,Wraith_Card_Voucher,Wraith Card Voucher,6,,10,10,,,,,,,,769,,,,,{},{},{}
+32106,Rideword_Card_Voucher,Rideword Card Voucher,6,,10,10,,,,,,,,32,,,,,{},{},{}
+32107,Skel_Prisoner_Card_Voucher,Skel Prisoner Card Voucher,6,,10,10,,,,,,,,136,,,,,{},{},{}
+32108,Sting_Card_Voucher,Sting Card Voucher,6,,10,10,,,,,,,,136,,,,,{},{},{}
+32109,Cramp_Card_Voucher,Cramp Card Voucher,6,,10,10,,,,,,,,4,,,,,{},{},{}
+32110,Stem_Worm_Card_Voucher,Stem Worm Card Voucher,6,,10,10,,,,,,,,16,,,,,{},{},{}
+32111,Pest_Card_Voucher,Pest Card Voucher,6,,10,10,,,,,,,,64,,,,,{},{},{}
+32112,Maximum_Knight_of_Windstorm_Card,Maximum Knight Of Windstorm Card,6,,10,10,,,,,,,,4,,,,,{ bonus bFlee,30; },{},{}
+
+// Etc. Items: 32150 - 32199
+32150,Ethereal_Wing,Ethereal Wing,3,100,,10,,,,,,,,,,,,,{},{},{}
+32151,Lucifer's_Lament,Lucifer's Lament,3,30000,,50,,,,,,,,,,,,,{},{},{}
+32152,Wrath_of_Fenrir,Wrath of Fenrir,3,1,,500,,,,,,,,,,,,,{},{},{}
+32153,Yggdrasil_Root,Yggdrasil Root,3,12,0,10,,,,,,,,,,,,,{},{},{}
+32154,Relic_of_Chaos,Relic of Chaos,3,12,0,70,,,,,,,,,,,,,{},{},{}
+32155,Fang_of_Skoll,Fang of Skoll,3,,50,10,,,,,,,,,,,,,{},{},{}
+32156,Shard_of_the_Emblem,Shard of the Emblem,3,12,0,10,,,,,,,,,,,,,{},{},{}
+
+// Useables: 32200 - 32249
+32200,Kaboom!,Kaboom!,0,50,,70,,,,,0xFFFFFFFF,7,2,,,,,,{ specialeffect2 183; specialeffect2 267; atcommand strcharinfo(0) + "@sound ÆøÁ×.wav"; atcommand strcharinfo(0) + "@die"; },{},{}
+32201,Special_Delivery,Special Delivery,0,50,,70,,,,,0xFFFFFFFF,7,2,,,,,,{ openstorage; specialeffect2 464; atcommand strcharinfo(0) + "@sound gryphon_die.wav"; },{},{}
+32202,Skittles,Skittles,0,50,,70,,,,,0xFFFFFFFF,7,2,,,,,,{ specialeffect2 410; },{},{}
+32203,Spirit_of_Piraeus,Spirit of Piraeus,0,50,,70,,,,,0xFFFFFFFF,7,2,,,,,,{ callshop "InvisibleToolGuy",3; specialeffect2 464; atcommand strcharinfo(0) + "@sound se_field_wind_02.wav"; },{},{}
+32204,S-Mobile,S-Mobile,0,50,,70,,,,,0xFFFFFFFF,7,2,,,,,,{ callshop "InvisibleToolGuy",2; specialeffect2 464; atcommand strcharinfo(0) + "@sound levelup.wav"; },{},{}
+32205,Grog,Grog,0,50,,70,,,,,0xFFFFFFFF,7,2,,,,,,{ atcommand strcharinfo(0) + "@sound mariodie.wav"; atcommand strcharinfo(0) + "@die"; },{},{}
+32206,Bundle_of_Joy,Bundle of Joy,2,50,,1000,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "F_BundleofJoy"; },{},{}
+32207,Extra_Special_Delivery,Extra Special Delivery,0,50,,70,,,,,0xFFFFFFFF,7,2,,,,,,{ openstorage; specialeffect2 464; atcommand strcharinfo(0) + "@sound gryphon_die.wav"; },{},{}

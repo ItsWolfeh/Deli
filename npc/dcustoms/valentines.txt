@@ -1,0 +1,104 @@
+//===============================================================================================
+//Temporary Valentines Chocolate Fairy
+//===============================================================================================
+
+jawaii,204,289,4	script	Valentines Fairy	1371,{
+
+mes "[Valentines Fairy]";
+mes "Laaalaalala la LA!!! It's the day! It's the one day out of the year just for ^FF6666love, love, LOVE and tenderness^000000!!";
+next;
+mes "[Valentines Fairy]";
+mes "On this ^FF6666special day^000000 alone I can make you scrumptious treats for you to give to your loved ones.";
+next; 
+mes "[Valentines Fairy]";
+mes "Which delicious concoction would you have me make you?";
+next;
+menu "Chocolate.",-,"White Chocolate.",L_White1,"Chocolate Drink.",L_Drink1,"Nothing, thanks.",L_Close;
+
+mes "[Valentines Fairy]";
+mes "For the chocolate I'll need several key ingredients to make it as delectably mouthwatering as possible.";
+next;
+mes "[Valentines Fairy]";
+mes "5 Honey";
+mes "25 Milk";
+mes "1 Cacao";
+mes "1 Strawberry";
+next;
+mes "[Valentines Fairy]";
+mes "Do you have them for me?";
+next;
+menu "Yes.",-,"Not yet.",L_Close;
+if (countitem(7182) < 1 || countitem(578) < 1 || countitem(519) < 25 || countitem(518) < 5) goto L_Notenough;
+delitem 7182,1;
+delitem 578,1;
+delitem 519,25;
+delitem 518,5;
+getitem 559,1;
+
+mes "[Valentines Fairy]";
+mes "Lalala! May your life be filled with joy!";
+close;
+
+L_White1:
+mes "[Valentines Fairy]";
+mes "For the white chocolate I'll need several key ingredients to make it as delectably mouthwatering as possible.";
+next;
+mes "[Valentines Fairy]";
+mes "5 Piece of Cake";
+mes "25 Milk";
+mes "1 Cacao";
+mes "1 Strawberry";
+next;
+mes "[Valentines Fairy]";
+mes "Do you have them for me?";
+next;
+menu "Yes.",-,"Not yet.",L_Close;
+if (countitem(7182) < 1 || countitem(578) < 1 || countitem(519) < 25 || countitem(539) < 5) goto L_Notenough;
+delitem 7182,1;
+delitem 578,1;
+delitem 519,25;
+delitem 539,5;
+getitem 560,1;
+
+mes "[Valentines Fairy]";
+mes "Lalala! May your life be filled with joy!";
+close;
+
+L_Drink1:
+mes "[Valentines Fairy]";
+mes "For the chocolate drink I'll need several key ingredients to make it as delectably mouthwatering as possible.";
+next;
+mes "[Valentines Fairy]";
+mes "1 Stone Heart";
+mes "1 Burning Heart";
+mes "1 Wooden Heart";
+mes "1 Ice Heart";
+mes "1 Mastela Fruit";
+next;
+mes "[Valentines Fairy]";
+mes "Do you have them for me?";
+next;
+menu "Yes.",-,"Not yet.",L_Close;
+if (countitem(522) < 1 || countitem(953) < 1 || countitem(7097) < 1 || countitem(7189) < 1 || countitem(7561) < 1) goto L_Notenough;
+delitem 522,1;
+delitem 953,1;
+delitem 7097,1;
+delitem 7189,1;
+delitem 7561,1;
+getitem 573,1;
+
+mes "[Valentines Fairy]";
+mes "Lalala! May your life be filled with joy!";
+close;
+
+L_Notenough:
+mes "[Valentines Fairy]";
+mes "I can't fill your life with joy if you don't have the right items!";
+close;
+
+L_Close:
+mes "[Valentines Fairy]";
+mes "Lalala! May your life be filled with joy!";
+close;
+
+}

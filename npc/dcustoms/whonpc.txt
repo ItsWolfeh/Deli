@@ -1,0 +1,48 @@
+prontera,163,195,4	script	Waldo::whonpc	750,{
+
+mes "[Waldo]";
+mes "Psst...If you want to know who's on Deliverance, I can help. My services cost 5,000 zeny though. Note that my @who3 function will not work during the War of Emperium.";
+next;
+menu "Show me!",goforit,"Not interested.",nevar;
+
+goforit:
+	if(zeny < 5000) goto nozeny;
+	mes "[Waldo]";
+	mes "Alright, which command?";
+	next;
+	menu "@who (Names and affiliations)",who,"@who2 (Names and levels)",who2,"@who3 (Names and locations)",who3,"Cancel",nevar;
+
+who:
+	mes "[Waldo]";
+	mes "Here you go.";
+	set zeny, zeny - 5000;
+	atcommand strcharinfo(0) + "@who";
+	close;	
+
+who2:
+	mes "[Waldo]";
+	mes "Here you go.";
+	set zeny, zeny - 5000;
+	atcommand strcharinfo(0) + "@who2";
+	close;
+
+who3:
+	mes "[Waldo]";
+	mes "Here you go.";
+	set zeny, zeny - 5000;
+	atcommand strcharinfo(0) + "@who3";
+	close;
+
+nevar:
+	mes "[Waldo]";
+	mes "Have it your way.";
+	close;
+
+nozeny:
+	mes "[Waldo]";
+	mes "Oh, sorry.  You need at least 5,000 zeny to use my services.";
+	close;
+
+}
+
+alberta,116,191,3	duplicate(whonpc)	Waldo	750

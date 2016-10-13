@@ -1,0 +1,5 @@
+//===== eAthena Script =======================================
+//= Map flags that allow players to drop items/equips on death
+//===== By: ==================================================
+//= eAthena Dev Team
+//===== Current Version: =====================================

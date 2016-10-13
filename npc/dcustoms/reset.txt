@@ -1,0 +1,105 @@
+//=========================================================
+//Deliverance Mod - New Reset Girl - Added TK exploit fix =
+//=========================================================
+
+prontera,154,197,5	script	Reset Girl::delireset	91,{
+
+
+	cutin "resetter",2;
+	mes "[Reset Girl]";
+	mes "I am the Reset Girl.";
+	mes "I can reset your stats and skill points...";
+	next;
+	mes "[Reset Girl]";
+	mes "Reset Skills: 25,000z";
+	mes "Reset Stats:  35,000z";
+	mes "Reset Both:   50,000z";
+	mes "Please select the service you want:";
+	next;
+	menu "^FF3355Reset Skills",L0,"Reset Stats",L1,"Reset Both^000000",L2,"Quit",LEnd;
+	
+	L0:
+		mes "[Reset Girl]";
+		if (Zeny < 25000) goto NeedZenys;
+		if (Weight > 20000 ) goto L_TooHeavy;
+		if (Class == Job_Alchem || Class == Job_Creator || Class == Job_Baby_Alchem) goto L_HomunExploit;
+		mes "Alright, here we go!";
+		set Zeny,zeny-25000;
+		ResetSkill;
+if (BaseClass==Job_Taekwon) goto L_TKDispel;
+		cutin "resetter",255;
+		close;
+	L1:
+		mes "[Reset Girl]";
+		if (Weight > 20000 ) goto L_TooHeavy;
+		if (Zeny < 35000) goto NeedZenys;
+		mes "Alright, here we go!";
+		set Zeny,zeny-35000;
+		ResetStatus;
+		cutin "resetter",255;
+		close;
+	L2:
+		mes "[Reset Girl]";
+		if (Weight > 20000 ) goto L_TooHeavy;
+		if (Zeny < 50000) goto NeedZenys;
+		if (Class == Job_Alchem || Class == Job_Creator || Class == Job_Baby_Alchem) goto L_HomunExploitBoth;
+		mes "Alright, here we go!";
+		set Zeny,zeny-50000;
+		ResetSkill;
+		ResetStatus;
+if (BaseClass==Job_Taekwon) goto L_TKDispel;
+		cutin "resetter",255;
+		close;
+
+		NeedZenys:
+			mes "Sorry, you don't have enough Zeny.";
+			cutin "resetter",255;
+			close;
+
+L_HomunExploit:
+			if (MaxWeight*90/100 < Weight) goto L_HomunWeight;
+			mes "Alright, here we go!";
+			set Zeny,zeny-25000;
+			ResetSkill;
+			cutin "resetter",255;
+	            heal 100000,100000;
+			unitskilluseid getcharid(3),244,1;
+			cutin "resetter",255;
+			close;
+
+L_HomunExploitBoth:
+			if (MaxWeight*90/100 < Weight) goto L_HomunWeight;
+			mes "Alright, here we go!";
+			set Zeny,zeny-50000;
+			ResetSkill;
+			ResetStatus;
+			cutin "resetter",255;
+	            heal 100000,100000;
+			unitskilluseid getcharid(3),244,1;
+			cutin "resetter",255;
+			close;
+
+
+L_HomunWeight:
+			mes "Please drop below 90% weight to continue.";
+			cutin "resetter",255;
+			close;
+
+L_TooHeavy:		mes "Sorry, your carried weight must be under 2000. Store some things before we continue.";
+			cutin "resetter",255;
+			close;
+
+L_TKDispel:
+			cutin "resetter",255;
+			sc_end SC_ALL;
+			close;
+
+	LEnd:
+		mes "[Reset Girl]";
+		mes "Have a nice day.";
+		cutin "resetter",255;
+		close;
+}
+
+alberta,91,199,5	duplicate(delireset)	Reset Girl#resalb	91
+premcity,144,172,5	duplicate(delireset)	Reset Girl#resprem	91

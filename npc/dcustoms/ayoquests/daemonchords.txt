@@ -1,0 +1,51 @@
+ayothaya,203,227,4	script	Daemon Warder	730,{
+	mes "[^17731CWarder^000000]";
+	mes "Greetings, adventurer. I can create ^724168Daemon Chords^000000. However, I will require some items.";
+	next;
+	menu "What do you need?",Alright,"Not interested.",notinto;
+
+	notinto:
+	mes "[^17731CWarder^000000]";
+	mes "Very well, then.";
+	close;
+	
+	Alright:
+	mes "[^17731CWarder^000000]";
+	mes "Here is what you'll need:";
+	mes "- ^8B0C2F 1 Guitar[1]^000000";
+	mes "- ^181B74 100 Little Evil Horn ^000000";
+	mes "- ^259E58 100 Little Evil Wing^000000 and";
+	mes "- ^259E58 5 Necklace of Oblivion^000000";
+	next;
+	menu "I have gathered the items.",have_items,"I don't have them yet...",gocollect;
+	
+	gocollect:
+	mes "[^17731CWarder^000000]";
+	mes "Make haste!";
+	close;
+	
+	have_items:
+	mes "[^17731CWarder^000000]";
+	mes "Let's see...";
+	next;
+	if((countitem(1908)<1) || (countitem(1038)<100) || (countitem(1039)<100) || (countitem(1008)<5)) goto noitems;
+	
+	mes "[^17731CWarder^000000]";
+	mes "Excellent, you have succeeded! I will now take the items.";
+	next;
+
+	delitem 1908,1;
+	delitem 1038,100;
+	delitem 1039,100;
+	delitem 1008,5;
+	
+	mes "[^17731CWarder^000000]";
+	mes "Here is your reward, you have earned it...";
+	getitem 32059,1;
+	close;
+	
+	noitems:
+	mes "[^17731CWarder^000000]";
+	mes "Lying filth! Begone!";
+	close;
+}

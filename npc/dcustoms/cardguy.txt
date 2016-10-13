@@ -1,0 +1,52 @@
+ayothaya,145,120,5	script	Official Card Giver	121,{
+
+	mes "[Card Exchanger]";
+	mes "Greetings! I will exchange card vouchers (removed customs which now do nothing) for the official card. They have to be unslotted.";
+	next;
+	if(countitem(32103) > 0){
+					set @Numofkows,countitem(32103);
+					delitem 32103,@Numofkows;
+					getitem 4318,@Numofkows;
+					}
+	if(countitem(32104) > 0){
+					set @Numofmimic,countitem(32104);
+					delitem 32104,@Numofmimic;
+					getitem 4205,@Numofmimic;
+					}
+	if(countitem(32105) > 0){
+					set @Numofwraith,countitem(32105);
+					delitem 32105,@Numofwraith;
+					getitem 4190,@Numofwraith;
+					}
+	if(countitem(32106) > 0){
+					set @Numofrideword,countitem(32106);
+					delitem 32106,@Numofrideword;
+					getitem 4185,@Numofrideword;
+					}
+	if(countitem(32107) > 0){
+					set @Numofskelp,countitem(32107);
+					delitem 32107,@Numofskelp;
+					getitem 4222,@Numofskelp;
+					}
+	if(countitem(32108) > 0){
+					set @Numofsting,countitem(32108);
+					delitem 32108,@Numofsting;
+					getitem 4226,@Numofsting;
+					}
+	if(countitem(32109) > 0){
+					set @Numofcramp,countitem(32109);
+					delitem 32109,@Numofcramp;
+					getitem 4296,@Numofcramp;
+					}
+	if(countitem(32110) > 0){
+					set @Numofstem,countitem(32110);
+					delitem 32110,@Numofstem;
+					getitem 4224,@Numofstem;
+					}
+	if(countitem(32111) > 0){
+					set @Numofpest,countitem(32111);
+					delitem 32111,@Numofpest;
+					getitem 4315,@Numofpest;
+					}
+	close;
+}

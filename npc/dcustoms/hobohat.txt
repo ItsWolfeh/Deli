@@ -1,0 +1,79 @@
+einbroch,40,206,0	script	Dr. Hobo	849,{
+
+	mes "[Dr. Hobo]";
+	mes "hi2u i nid zeny plx.";
+	emotion e_hlp;
+	next;
+	mes "[Dr. Hobo]";
+	mes "nid zeny plx.";
+	emotion e_hlp;
+	next;
+	mes "[Dr. Hobo]";
+	mes "i nid zeny plx NAO OR I NOT TALK 2 U!!!";
+	emotion e_pif;
+	next;
+	menu "Give the guy 5,000 zeny",givezeny,"Slowly walk away",walkaway;
+
+walkaway:
+	mes "[Dr. Hobo]";
+	mes "u suk i h8 u";
+	emotion e_sob;
+	close;
+
+givezeny:
+	if(zeny < 5000) goto nozeny;
+	set zeny, zeny - 5000;
+	specialeffect2 268;
+	mes "[Dr. Hobo]";
+	mes "thx lol";
+	emotion e_thx;
+	next;
+	mes "[Dr. Hobo]";
+	mes "OK, I guess I'll let you in on a secret then...I'm not a complete noob! I can make you a Hobo Hat if you bring me the right materials when I'm sober..";
+	next;
+	menu "What do I need?",requirements,"I got everything you need",gotitall,"Nevermind",walkaway;
+
+requirements:
+	mes "[Dr. Hobo]";
+	mes "You'll need the following:";
+	mes "100 Oil Paper";
+	mes "100 Slick Paper";
+	mes "100 Worn Out Scroll";
+	mes "50 Tattered Clothes";
+	mes "50 Worn Out Page";
+	mes "50 Sharp Paper";
+	mes "50 Dry Sand";
+	mes "1 Cigarette";
+	mes "1 Poo Poo Hat";
+	mes "1 Giant Band-aid";
+	mes "100 Alcohol";
+	next;
+	mes "[Dr. Hobo]";
+	mes "Don't look at me like that! The Alcohol's for alchemy. Yeah...alchemy...hahaha. Anyway, come back and pay me again when you've got it all.";
+	close;
+
+gotitall:
+	if(countitem(7151) < 100 || countitem(7111) < 100 || countitem(618) < 100 || countitem(7071) < 50 || countitem(1097) < 50 || countitem(7112) < 50 || countitem(7264) < 50 || countitem(2267) < 1 || countitem(2289) < 1 || countitem(5063) < 1 || countitem(970) < 100) goto nozeny;
+	delitem 7151,100;//OilPaper
+	delitem 7111,100;//SlickPaper
+	delitem 618,100;//WornOutScroll
+	delitem 7071,50;//TatteredClothes
+	delitem 1097,50;//WornOutPage
+	delitem 7112,50;//SharpPaper
+	delitem 7264,50;//DrySand
+	delitem 2267,1;//Cig
+	delitem 2289,1;//PooHat
+	delitem 5063,1;//Bandage
+	delitem 970,100;//Alcohol
+	getitem 32066,1;
+	soundeffect "zeldaitem.wav",0;
+	mes "[Dr. Hobo]";
+	mes "Sweet, sweet alcohol. Here, you earned this...the incredible...the amazing...THE HOBO HAT!";
+	close;
+
+
+nozeny:
+	mes "[Dr. Hobo]";
+	mes "u lier u dunt have enuf lolx";
+	close;
+}

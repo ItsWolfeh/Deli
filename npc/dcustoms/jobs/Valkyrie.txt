@@ -1,0 +1,81 @@
+premcity.gat,257,100,3	script	Path to Deliverance	811,{
+
+cutin "valk_cut",2;
+if(Upper==1) goto WARPTOVALK;
+
+	mes "[Valkyrie]";
+	mes "Only few can truly redeem themselves. The first step to Deliverance is rebirth. Only those who have suffered and endured can be reborn.";
+	next;
+	mes "[Valkyrie]";
+	mes "Only those reborn can attain their true potential. And only then can they fight for their Deliverance, for there are beasts in this world far too powerful for regular mortals.";
+	next;
+	mes "[Valkyrie]";
+	mes "To unlock the path to Deliverance you need a key. This key was lost in the great Wars...";
+	next;
+	mes "[Valkyrie]";
+	mes "You must acquire 3 Soft Feathers to be able to enter...";
+	mes "This proves your loyalty to our cause.";
+	mes "Only the tainted feathers will unlock the entrance to Valhalla.";
+	next;
+	mes "[Valkyrie]";
+	mes "If you give me the feathers, I will send you to Valhalla.";
+	next;
+	menu "Give the feathers to the Valkyrie",-,"Forget it",L_Cancel;
+
+	if ((countitem(7063) < 3)) goto L_Noitem;
+
+L_gotitem:
+	mes "[Valkyrie]";
+	mes "You have the feathers!";
+	delitem 7063,3;
+	next;
+
+WARPTOVALK:
+	mes "[Valkyrie]";
+	mes "The entrance is opened for you...";
+	soundeffect "zeldasecret.wav",0;
+	next;
+	warp "valkyrie.gat",48,8;
+	cutin "valk_cut",255;
+	close;
+
+L_Noitem:
+	mes "[Valkyrie]";
+	mes "You do not have the feathers. Please kill Owl Barons, Owl Dukes, Skeggiolds and/or Gryphons for them...";
+	cutin "valk_cut",255;
+	close;
+
+L_Cancel:
+	mes "[Valkyrie]";
+	mes "Gods be with you.";
+	cutin "valk_cut",255;
+	close;
+}
+
+
+
+
+valkyrie.gat,48,86,6	script	Valkyrie	811,{
+
+mes "[Valkyrie]";
+mes "Welcome to Valhalla.";
+mes "Take plenty of rest while you are here.";
+mes "Honor and glory to the all Heros!!";
+next;
+mes "[Valkyrie]";
+mes "Would you like to go back??";
+menu "Yes",yes,"No",no;
+
+yes:
+next;
+mes "[Valkyrie]";
+mes "I will warp you back to the gate entrance!";
+warp "prontera",156,191;
+close;
+
+no:
+next;
+mes "[Valkyrie]";
+mes "As you wish";
+close;
+}

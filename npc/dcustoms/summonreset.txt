@@ -1,0 +1,27 @@
+geffen,127,65,4	script	Summoner	834,{
+
+if(@UsedSummon==0) goto NoNeed;
+	if(getnpctimer(1)==1) goto CoolDown;
+	mes "[Summoner]";
+	mes "I have re-channeled your summoning powers. Good luck out there.";
+	set @UsedSummon,0;
+	initnpctimer;
+	close;
+
+OnTimer60000:
+	stopnpctimer;
+	end;
+
+CoolDown:
+	mes "[Summoner]";
+	mes "I can only recharge summoning power once a minute.";
+	close;
+
+NoNeed:
+	mes "[Summoner]";
+	mes "Did you know that all humans intrinsically contain the ability to summon monsters? All you need is for that monster to drop its ^FF0000Summoner item.^000000";
+	next;
+	mes "[Summoner]";
+	mes "You will only be able to summon once before your summoning energies powers are depleted. Speak to me when you need to re-channel them, or you will simply waste the Summon.";
+	close;
+}

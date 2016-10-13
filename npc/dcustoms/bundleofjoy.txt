@@ -1,0 +1,145 @@
+arenalounge,77,85,7	script	Xaki the Unwise	735,{
+
+	mes "[Xaki the Unwise]";
+	mes "Pssst. Hey. I can totally compress 300 dead branches into ONE superpowerful bundle that would release ^FF0000100 enemies at once.^000000 You interested?";
+	next;
+	menu "No, that would be unwise.",L_No,"YES!",L_GoForIt;
+
+L_GoForIt:
+	mes "[Xaki the Unwise]";
+	mes "Are you sure? I'm gonna take 300 of your dead branches and give you one bundle.";
+	next;
+	menu "YES, GIMME!",sM_Buy, "Nevermind...",L_Nevermind;
+
+sM_Buy:
+	if (countitem(604)<300) goto L_NoBranch;
+	mes "[Xaki the Unwise]";
+	mes "Godspeed.";
+	delitem 604,300;
+	getitem 32206,1;
+	close;
+
+L_NoBranch:
+	mes "[Xaki the Unwise]";
+	mes "You don't have enough dead branches for my super-awesome technique to work.";
+	close;
+
+L_Nevermind:
+	mes "[Xaki the Unwise]";
+	mes "Yeah, you didn't strike me as gutsy enough anyway.";
+	close;
+
+L_No:
+	mes "[Xaki the Unwise]";
+	emotion e_swt;
+	mes "Ugh...Sometimes I hate Crono's sense of humor.";
+	close;
+}
+
+
+
+
+function	script	F_BundleofJoy	{
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+//50
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+monster "this",-1,-1,"--ja--",-1,1,"";
+//100
+}

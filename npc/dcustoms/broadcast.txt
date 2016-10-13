@@ -1,0 +1,38 @@
+premcity,187,151,3	script	Broadcaster	115,{
+mes "[Broadcaster]";
+mes "Welcome to Broadcast Service, yet another branch of the Kafra Corporation. Do you have anything important you want to tell people in this server? Or an item you'd like to sell maybe?";
+next;
+menu "I sure do!", yes, "Nope", no;
+
+yes:
+mes "[Broadcaster]";
+mes "Ah good!  I can help you with that!  For 30,000 Zeny, I can broadcast a message throughout the entire world!";
+next;
+menu "Sounds good", doit, "No thanks", no;
+
+doit:
+if(zeny < 30000) goto nozeny2;
+mes "[Broadcaster]";
+mes "Now, I need you to tell me the message you want to spread across the world, or type cancel in order to cancel.";
+next;
+input @message$;
+if(@message$ == "cancel") close;
+Announce "Message from [" +strcharinfo(0)+ "]: " + @message$,0,0xCCCCFF;
+set zeny, zeny - 30000;
+goto thankyou;
+
+thankyou:
+mes "[Broadcaster]";
+mes "Thank you for choosing the Kafra Corporation.  Please come back whenever I can help you again.";
+close;
+
+nozeny2:
+mes "[Broadcaster]";
+mes "Oh, sorry.  I need at least 30,000 zeny to do this.  Come back when you get more money.";
+close;
+
+no:
+mes "[Broadcaster]";
+mes "Don't be shy.";
+close;
+}

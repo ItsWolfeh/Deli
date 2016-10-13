@@ -1,0 +1,51 @@
+ayo_in02,100,166,4	script	Crimson Warder	730,{
+	mes "[^17731CWarder^000000]";
+	mes "Greetings, adventurer. I can create a ^724168Crimson Cape^000000. However, I will require some items.";
+	next;
+	menu "What do you need?",Alright,"Not interested.",notinto;
+
+	notinto:
+	mes "[^17731CWarder^000000]";
+	mes "Very well, then.";
+	close;
+	
+	Alright:
+	mes "[^17731CWarder^000000]";
+	mes "Here is what you'll need:";
+	mes "- ^8B0C2F 1 Manteau[1]^000000";
+	mes "- ^181B74 1 Ragamuffin Manteau ^000000 and";
+	mes "- ^259E58 100 Red Blood^000000";
+	next;
+	mes "Be warned that if you're wearing a Manteau[1], you should put it in storage, or else I might take it and whatever card it may contain instead of the Manteau[1] in your inventory.";
+	next;
+	menu "I have gathered the items.",have_items,"I don't have them yet...",gocollect;
+	
+	gocollect:
+	mes "[^17731CWarder^000000]";
+	mes "Make haste!";
+	close;
+	
+	have_items:
+	mes "[^17731CWarder^000000]";
+	mes "Let's see...";
+	next;
+	if((countitem(2506)<1) || (countitem(2508)<1) || (countitem(990)<100)) goto noitems;
+	
+	mes "[^17731CWarder^000000]";
+	mes "Excellent, you have succeeded! I will now take the items.";
+	next;
+
+	delitem 2506,1;
+	delitem 2508,1;
+	delitem 990,100;
+	
+	mes "[^17731CWarder^000000]";
+	mes "Here is your reward, you have earned it...";
+	getitem 32063,1;
+	close;
+	
+	noitems:
+	mes "[^17731CWarder^000000]";
+	mes "Lying filth! Begone!";
+	close;	
+}

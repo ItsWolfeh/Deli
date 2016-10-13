@@ -1,0 +1,60 @@
+// <Skill id>,<Cast>,<Delay (optional)>
+//
+// Cast:  0 - everything affects the skill's cast time
+//        1 - skill's cast time is not affected by dex
+//        2 - skill's cast time is not affected by statuses (Suffragium, etc)
+//        4 - skill's cast time is not affected by item bonuses (equip, cards)
+//
+// Delay: 0 - everything affects the skill's delay
+//        1 - skill's delay is not affected by dex
+//        2 - skill's delay is not affected by statuses (Magic Strings, etc)
+//        4 - skill's delay is not affected by item bonuses (equip, cards)
+//
+// Note: Values are bit fields, add them up to combine their effects.
+// Note: Delay setting '1' only makes sense when delay_dependon_dex is enabled.
+// Example: 46,1,1 = Double Strafe's cast time and delay is not affected by dex.
+
+263,0,2	//MO_TRIPLEATTACK
+272,0,2	//MO_CHAINCOMBO
+273,0,2	//MO_COMBOFINISH
+336,1	//WE_CALLPARTNER
+366,1	//HW_MAGICPOWER
+370,1	//CH_PALMSTRIKE
+371,0,2	//CH_TIGERFIST
+372,0,2	//CH_CHAINCRUSH
+403,3	//PF_MEMORIZE
+408,1	//WE_BABY
+409,1	//WE_CALLPARENT
+410,1	//WE_CALLBABY
+482,1	//PF_DOUBLECASTING
+462,1	//SL_KAIZEL
+496,1	//AM_TWILIGHT1
+497,1	//AM_TWILIGHT2
+498,1	//AM_TWILIGHT3
+512,3	//GS_TRACKING
+1014,1	//PR_REDEMPTIO
+10010,3	//GD_BATTLEORDER
+10011,3	//GD_REGENERATION
+10012,6	//GD_RESTORE
+10013,7	//GD_EMERGENCYCALL
+
+//Deliverance Customs - most junked for delay tests
+490,0,1	//ACID DEMO unreduceable Delay
+62,0,1	//Bowling Bash unreduceable Delay
+
+
+//46,1,0	//AC_DOUBLE unreduceable Cast Time
+//47,1,0	//AC_SHOWER unreduceable Cast Time
+//129,1,0	//Blitz Beat unreduceable Cast Time
+//369,1,1 	//PL_GOSPEL unreduceable Cast Time and Delay
+//379,0,1	//Soul Destroyer unreduceable Delay
+//381,0,1	//Falcon Assault unreduceable Delay
+//383,1,0	//SN_WINDWALK unreduceable Cast Time
+//406,0,1	//ASC_METEORASSAULT unreduceable Delay
+//489,0,1	//CG_TAROTCARD unreduceable Delay
+//394,0,1	//VA unreduceable Delay
+//362,0,1	//Basilica unreduceable Delay
+//367,0,1	//Pressure unreduceable Delay
+//519,0,1	//Shotgun Frenzy unreduceable Delay
+//526,0,1 	//Waste Money unreduceable Delay
+//8013,0,1	//Homun Caprice unreduceable Delay

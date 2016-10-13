@@ -1,0 +1,183 @@
+aldebaran.gat,133,119,5	script	Homunculus Shuffler	740,{
+
+	if(baseJob != Job_Alchemist){
+		mes "[Homunculus Shuffler]";
+		mes "I'm sorry, but only Creators and Alchemists can speak to me.";
+		close;
+	}
+
+		if (NumberOfShuffles == 5) {
+		mes "[Homunculus Shuffler]";
+		mes "You have already shuffled your Homunculus the maximum number of times allowed.";
+		close;
+	}
+
+		mes "[Homunculus Shuffler]";
+		mes "Good evening fellow Alchemist! I can shuffle your Homunculus for you.";
+		mes "Shall I explain or get Shuffling?";
+		next;
+		menu "Explain",shufexpl,"Shuffle my Homunculus",proceedshuf1,"No thanks",-;
+		mes "[Homunculus Shuffler]";
+		mes "Alright."; 
+		close;
+
+	shufexpl:
+		mes "[Homunculus Shuffler]";
+		mes "Shuffling will randomly reset your Homunculus's stats as if it was an entirely new Homunculus of the same level.";
+		next;
+		mes "[Homunculus Shuffler]";
+		mes "Any Homunculi that were ^ff0000created before May 20th 2007^000000 need to be shuffled to give them more a balanced set of stats.";
+		next;
+		mes "[Homunculus Shuffler]";
+		mes "Because the shuffling is random, it would be unfair to only allow shuffling once as many people have worked hard for their Homunculi.";
+		next;
+		mes "[Homunculus Shuffler]";
+		mes "The first Shuffle is ^ff0000free^000000."; 
+		mes "The second ^ff000050,000z^000000."; 
+		mes "The third ^ff0000500,000z^000000."; 
+		mes "The fourth ^ff00005,000,000z^000000."; 
+		mes "The final shuffle is ^ff000050,000,000z^000000.";
+		next;
+		mes "[Homunculus Shuffler]";
+		mes "After that you will be unable to shuffle your Homunculus. You have a limited time to complete this, or your homunculus will be deleted.";
+		close;
+
+	proceedshuf1:
+		mes "[Homunculus Shuffler]";
+		mes "Your Homunculus must be out for this to work. So if your Homunculus is in Rest or needs to be Resurrected I'll do that for you.";
+		next;
+		if (MaxWeight*90/100 < Weight) {
+		mes "[Homunculus Shuffler]";
+		mes "Sorry but you are at 90% weight. I can't do it for you if you're that heavy.";
+		close;
+		}
+		percentheal 0,100;
+		unitskilluseid getcharid(3),243,1;
+		next;
+		percentheal 0,100;
+		unitskilluseid getcharid(3),247,5;
+		goto proceedshuf2;
+
+	proceedshuf2:
+		if (NumberOfShuffles == 0) {
+		mes "[Homunculus Shuffler]";
+		mes "This is your first time shuffling your Homunculus, so there is no zeny charge.";
+		next;
+		menu "Proceed",-,"Cancel",cancelshuf;
+
+		mes "[Homunculus Shuffler]";
+		mes "Now, we shall begin...";
+		next;
+		set NumberOfShuffles,NumberOfShuffles+1;
+		atcommand "@homshuffle";
+		mes "[Homunculus Shuffler]";
+		mes "All finished. Please note that the next shuffle will cost you ^ff000050,000z^000000 if you wish to do it again.";
+		next;
+		mes "[Homunculus Shuffler]";
+		mes "Have a good time with your newly shuffled Homunculus!";
+		close;
+		}
+		
+		if (NumberOfShuffles == 1) {
+		mes "[Homunculus Shuffler]";
+		mes "This is your second time shuffling your Homunculus, so there is a charge of 50,000z.";
+		next;
+		menu "Proceed",-,"Cancel",cancelshuf;
+
+		if (Zeny < 50000) goto pooralch;
+		set Zeny, Zeny-50000;
+		mes "[Homunculus Shuffler]";
+		mes "Now, we shall begin...";
+		next;
+		set NumberOfShuffles,NumberOfShuffles+1;
+		atcommand "@homshuffle";
+		mes "[Homunculus Shuffler]";
+		mes "All finished. Please note that the next shuffle will cost you ^ff0000500,000z^000000 if you wish to do it again.";
+		next;
+		mes "[Homunculus Shuffler]";
+		mes "Have a good time with your newly shuffled Homunculus!";
+		close;
+		}
+
+		if (NumberOfShuffles == 2) {
+		mes "[Homunculus Shuffler]";
+		mes "This is your third time shuffling your Homunculus, so there is a charge of 500,000z.";
+		next;
+		menu "Proceed",-,"Cancel",cancelshuf;
+
+		if (Zeny < 500000) goto pooralch;
+		set Zeny, Zeny-500000;
+		mes "[Homunculus Shuffler]";
+		mes "Now, we shall begin...";
+		next;
+		set NumberOfShuffles,NumberOfShuffles+1;
+		atcommand "@homshuffle";
+		mes "[Homunculus Shuffler]";
+		mes "All finished. Please note that the next shuffle will cost you ^ff00005,000,000z^000000 if you wish to do it again.";
+		next;
+		mes "[Homunculus Shuffler]";
+		mes "Have a good time with your newly shuffled Homunculus!";
+		close;
+		}
+
+		if (NumberOfShuffles == 3) {
+		mes "[Homunculus Shuffler]";
+		mes "This is your fourth time shuffling your Homunculus, so there is a charge of 5,000,000z.";
+		next;
+		menu "Proceed",-,"Cancel",cancelshuf;
+
+		if (Zeny < 5000000) goto pooralch;
+		set Zeny, Zeny-5000000;
+		mes "[Homunculus Shuffler]";
+		mes "Now, we shall begin...";
+		next;
+		set NumberOfShuffles,NumberOfShuffles+1;
+		atcommand "@homshuffle";
+		mes "[Homunculus Shuffler]";
+		mes "All finished. Please note that the next shuffle will cost you ^ff000050,000,000z^000000 if you wish to do it again.";
+		next;
+		mes "[Homunculus Shuffler]";
+		mes "Have a good time with your newly shuffled Homunculus!";
+		close;
+		}
+
+		if (NumberOfShuffles == 4) {
+		mes "[Homunculus Shuffler]";
+		mes "This is your fifth and final time shuffling your Homunculus, so there is a charge of 50,000,000z.";
+		next;
+		menu "Proceed",-,"Cancel",cancelshuf;
+
+		mes "[Homunculus Shuffler]";
+		mes "Are you sure? It'll cost 50,000,000z!";
+		next;
+		menu "Yes, proceed",-,"Cancel",cancelshuf;
+
+		if (Zeny < 50000000) goto pooralch;
+		set Zeny, Zeny-50000000;
+		mes "[Homunculus Shuffler]";
+		mes "Now, we shall begin...";
+		next;
+		set NumberOfShuffles,NumberOfShuffles+1;
+		atcommand "@homshuffle";
+		mes "[Homunculus Shuffler]";
+		mes "All finished. Please note that you cannot Shuffle again after this.";
+		next;
+		mes "[Homunculus Shuffler]";
+		mes "Have a good time with your newly shuffled Homunculus!";
+		close;
+		}
+
+	cancelshuf:
+		mes "[Homunculus Shuffler]";
+		mes "Very well then. Have a good day!";
+		close;
+
+	pooralch:
+		mes "[Homunculus Shuffler]";
+		mes "Oh dear, you don't look like you have enough zeny.";
+		mes "Sorry, I can't help you if you can't pay the cost.";
+		close;
+
+	}
+
+

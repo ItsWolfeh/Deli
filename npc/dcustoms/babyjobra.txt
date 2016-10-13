@@ -1,0 +1,453 @@
+//Baby Jobra 1.2 by Crono
+
+prontera,154,212,1	script	Baby Jobra::babyjobra	716,{
+
+//waitingroom "Baby Jobra",0;
+
+mes "[ ^0065DFBaby Jobra^000000 ]";
+mes "Welcome to Deliverance's Baby Jobra!!!";
+mes "Here you can become a Baby and move up to higher Baby classes.";
+next;
+menu "About baby class",Linform,"Become Baby",LBecomeBaby,"Baby First Class",LFirstClass,"Baby Second Class (2-1)",LSecondClass,"Baby Second Class (2-2)",LSecondClass2,"Super Baby",Supernov,"Cancel",LCancel;
+
+Linform:
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "Babies are smaller, cuter versions of the regular classes. You can be a Baby (novice), Baby 1st class, Baby 2-1, Baby 2-2, and Superbaby!";
+	next;
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "Keep in mind, however, that there are NO advanced baby jobs. Babies can not transcend.";
+	next;
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "Also, babies have only 70% of the HP/SP of their counterparts (though there is a custom card for this)...but we're so cute, you know you wanna be one anyway!!!";
+	next;
+	menu "Become a Baby",LBecomeBaby,"Baby First Class",LFirstClass,"Baby Second Class (2-1)",LSecondClass,"Baby Second Class (2-2)",LSecondClass2,"Super Baby",Supernov,"Cancel",LCancel;
+
+LBecomeBaby:
+	if(class !=0) goto Ljobone;
+	if(joblevel>1) goto Ljobone;
+	if(baselevel>1) goto Ljobone;
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "I hope you read the information about baby class...";
+	mes "Are you suuuuure you wanna be a baby?";
+	next;
+	menu "Yep, chibi me!",LChangeToBaby,"I guess not o.o",LCancel;
+
+LChangeToBaby:
+	mes "So you really wanna be cute, huh? You better keep the breastfeeding jokes to a minimum!";
+	jobchange 4023;
+	close;
+
+Ljobone:
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "Sorry, only 1/1 Novices can become babies.";
+	close;
+
+LFirstClass:
+	if(Class != Job_Baby) goto LNotBaby;
+	if(joblevel<10) goto Ljobten;
+	if(SkillPoint != 0) goto Lskillpt;
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "So... getting your first job, eh? Thats cool, even babies grow up sometime I guess...";
+	next;
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "Pick a job, any job! Bwahaha.........";
+	menu "Baby Swordsman",LSword,"Baby Mage",LMage,"Baby Thief",LThief,"Baby Merchant",LMerc,"Baby Acolyte",LAco,"Baby Archer",LArch,"Cancel",LCancel;
+
+LNotBaby:
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "Ummmm, excuse me... o.O...";
+	mes "You don't LOOK like a baby...";
+	mes "Only BABIES can change into the Baby 1st Job...";
+	close;
+
+Ljobten:
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "Ugh, you need to have at least a Job Level of 10 before changing into baby first class... go kill some porings or something.. >.>'";
+	close;
+	
+Lskillpt:
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "Please use up all your skill points before changing into the next job! ^_^";
+	close;
+
+LSword:
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+ 	mes "Wow, fantastic! Doesn't all that hard work feel like its paid off? *hehehe* I see the ^B70004BLOOD of Porings^000000 on your hands! You truly are fit for the ^0005CEBaby Swordsman^000000 job! ^_^";
+	jobchange 4024;
+	close;
+
+LMage:
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "Nice, now you can finally wield the power of ^2200DFB^7600F9A^AF00FBB^DA00DFY ^2200DFM^7600F9A^AF00FBN^DA00DFA^000000, your spiritual energy!!!";
+	jobchange 4025;
+	close;
+
+LThief:
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "Aww, a tiny little kleptomaniac. How cute.";
+	jobchange 4029;
+	close;
+
+LMerc:
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "Oh yeah, Jr. Moneybags, SOMEBODY here just loves the sound of coins jinglin'...";
+	mes "Well it's not me!.. >_>..... <_<... bah.. ";
+	jobchange 4028;
+	close;
+
+LAco:
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "You musta read one of those tiny bibles, huh?";
+	jobchange 4027;
+	close;
+
+LArch:
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "I used to poke things with a stick when I was a child..";
+	next;
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "I guess you're like me! You hurl pointed sticks at things! Hehehe...";
+	jobchange 4026;
+	close;
+
+LCancel:
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "Fine... be that way... >_>..";
+	close;
+
+LSecondClass:
+	if(joblevel<40) goto Ljobforty;
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "Aww... They grow up so fast!";
+	next;
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "What would you like to be? (Must be the preliminary job)";
+	menu "Baby Knight",LKnight,"Baby Wizard",LWizard,"Baby Hunter",LHunter,"Baby Blacksmith",LBlacksmith,"Baby Assassin",LAssassin,"Baby Priest",LPriest,"Cancel",LCancel;
+
+Ljobforty:
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "You must be at least Job Level 40 before even thinking about changing into the Baby Second Job.";
+	close;
+
+    LKnight:
+        if(Class != Job_Baby_Swordman) goto LNotSword;
+        goto LKnight2;
+
+    LNotSword:
+    	mes "[ ^0065DFBaby Jobra^000000 ]";
+		mes "Well... you see, there's a little, teensy-weensy problem with YOU becoming a Baby Knight.";
+		mes "Please be a Baby Swordman before even thinking about 'magically' turning into a Baby Knight... jeeze. *rolls eyes*";
+     		close;
+
+    LKnight2:
+    	mes "[ ^0065DFBaby Jobra^000000 ]";
+		mes "w00t w00t! You've been a Baby Swordie all your short little life...";
+		mes "Alrite, you are ready to become the doer of Justice, the embodiment of Heroism, the very soul and life of Valor! ";
+		mes "...";
+		next;
+		mes "[ ^0065DFBaby Jobra^000000 ]";
+		mes "Yes! You are ready to become... a Baby Knight! ";
+		mes "Go save a miniature damsel in distress or something..";
+        		jobchange 4030;
+        		close;
+
+    
+    LHunter:
+//        if(class !=49) goto LNotArcher;
+        if(Class != Job_Baby_Archer) goto LNotArcher;
+        goto LHun2;
+
+    LNotArcher:
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "Guess what? ^_^";
+	next;
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "YOU'RE NOT A BABY ARCHER >_<....";
+	mes "WTF?! Do you really think you can magically turn into a Baby Hunter!? I DON'T THINK SO!!!";
+	close;
+
+    LHun2:
+    	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "Oh goodie, you've met all the requirements... did you have fun hurling pointed sticks at monsters? Well guess what?";
+	next;
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "Now you can hurl pointed sticks at monsters AND keep them in one place! w00t, yea! Traps are a great thing...";
+	jobchange 4034;
+	close;
+
+
+    LBlacksmith:
+//	if(class !=51) goto LNotMerc;
+        if(Class != Job_Baby_Merchant) goto LNotMerc;
+	goto LBla2;
+
+    LNotMerc:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "No, uh-uh, you are no Baby Merchant! Go away! Only BABY MERCHANTS can change into Baby Blacksmiths!!";
+        mes "Its like the cycle of life or something! Stop trying to disrupt the order of the universe >_<!!";
+        close;
+
+    LBla2:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Oooo~~ Goodie goodie gumdrops! You meet allll the requirements! Guess what I'm gonna do ^_^...";
+        next;
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "YUP! You guessed it! I turned you into a Baby Blacksmith! Aren't you PROUD of yourself... Go and make a few weapons! Open up shops across the nation! Yea yea yea! Go go go! w00t! Oh yeah! ";
+        jobchange 4033;
+        close;
+
+    LAssassin:
+//        if(class !=52) goto LNotThief;
+        if(Class != Job_Baby_Thief) goto LNotThief;
+        goto LAssass2;
+
+    LNotThief:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes ".... You're not even a baby thief.. >_>... go away..";
+        close;
+
+
+    LAssass2:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Aww, the little klepto wants to be a killer now... Okay, go off and become the most sinister of all jobs in this world... ^6500BFBaby Assassin...";
+        next;
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Poof! Hehehe... ";
+        jobchange 4035;
+        close;
+
+    LPriest:
+//        if(class !=50) goto LNotAco;
+        if(Class != Job_Baby_Acolyte) goto LNotAco;
+        goto LPri2;
+
+    LNotAco:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Okay I'm getting tired of this.. you are NOT a Baby Acolyte... I bet you haven't even read the Bible ONCE! You're going to HELL!";
+        close;
+
+    LPri2:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "I bet you are GODDAMNED TIRED of NOT having Sp Recovery, right? Well I am tired of hearing little Jesus-Hugging Acolytes scream this every time they're low on Sp... ";
+        next;
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Yay! You've now reached Baby Priesthood! It's sorta like manhood.. but not really, see with manhood, you get th...nevermind, you're too young.";
+        jobchange 4031;
+        close;
+
+    LWizard:
+//        if(class !=48) goto LNotMage;
+        if(Class != Job_Baby_Mage) goto LNotMage;
+        goto LWiz2;
+
+    LNotMage:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "I bet you've never cast a baby spell in your life.. go away >_>...";
+        close;
+
+    LWiz2:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Weeee, doesn't it feel great to finally become a Baby Wizard? It's like a warm bath.... ahhhhhhh......";
+        jobchange 4032;
+        close;
+
+LSecondClass2:
+	if(joblevel<40) goto Ljobforty;
+	if(sex==0) goto LFsecond2;
+	if(sex==1) goto LMsecond2;
+
+LFsecond2:
+mes "[ ^0065DFBaby Jobra^000000 ]";
+mes "Wow, you're ready to become second job already?!";
+next;
+mes "[ ^0065DFBaby Jobra^000000 ]";
+mes "Very well then, what would you like to be?";
+menu "Baby Crusader",LCrusader,"Baby Sage",LSage,"Baby Dancer",LDancer,"Baby Alchemist",LAlchemist,"Baby Rogue",LRogue,"Baby Monk",LMonk,"Cancel",LCancel;
+
+LMsecond2:
+mes "[ ^0065DFBaby Jobra^000000 ]";
+mes "Wow, you're ready to become second job already?!";
+next;
+mes "[ ^0065DFBaby Jobra^000000 ]";
+mes "Very well then, what would you like to be?";
+menu "Baby Crusader",LCrusader,"Baby Sage",LSage,"Baby Bard",LBard,"Baby Alchemist",LAlchemist,"Baby Rogue",LRogue,"BabyMonk",LMonk,"Cancel",LCancel;
+    
+    LCrusader:
+//        if(class !=47) goto LNotSword2;
+        if(Class != Job_Baby_Swordman) goto LNotSword2;
+        goto LCrus2;
+
+    LNotSword2:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Nuh-uh... you ain't no Baby Swordsman! Get out of here! Scat!";
+        mes "...Not everyone can be a Baby Crusader.";
+        close;
+
+    LCrus2:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Mmmmm, I always liked Baby Crusaders.. their Broad Shoulders always turned me on....";
+        next;
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Oooo~~~ yeah, thats it... yummy...HEY, I'm young too, this ain't illegal.";
+        jobchange 4037;
+        close;
+
+
+    LBard:
+//        if(class !=49) goto LNotArch3;
+        if(Class != Job_Baby_Archer) goto LNotArch3;
+        goto LBard2;
+
+    LNotArch3:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Nope.. you got it wrong bub.. you gotta be a BABY ARCHER before becoming a Baby Bard..";
+        mes "Silly players.. just don't know when to stop...";
+        close;
+
+    LBard2:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Yay! Go play some ballads for some Baby Dancers or something, I just can't stand your clothes... ewww.";
+        jobchange 4042;
+        close;
+
+    LDancer:
+//        if(class !=49) goto LNotArch2;
+        if(Class != Job_Baby_Archer) goto LNotArch2;
+        goto LDanc2;
+
+	LNotArch2:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Nope.. you got it wrong girl.. you gotta be a BABY ARCHER before becoming a Baby Dancer..";
+        mes "Silly players.. just don't know when to stop...";
+        close;
+
+    LDanc2:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Uh-huh, swivel those hips baby girl ^_~ Wow, this is so inappropriate.";
+        jobchange 4043;
+        close;
+
+    LAlchemist:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+//        if(class !=51) goto LNotMerc2;
+        if(Class != Job_Baby_Merchant) goto LNotMerc2;
+        goto LAlch2;
+
+    LNotMerc2:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Ummm... no, you gotta be a Baby Merchant first...";
+        close;
+
+    LAlch2:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Cool! Go make some potions! Open a Pharmacy! yeah yeah yeah! ^_^";
+        jobchange 4041;
+        close;
+
+    LRogue:
+//        if(class !=52) goto LNotThief2;
+        if(Class != Job_Baby_Thief) goto LNotThief2;
+        goto LRogue2;
+
+    LNotThief2:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Look... you gotta be a BABY THIEF before becoming a Baby Rogue..";
+        mes "I know you think they are really cool.. but NO is NO!";
+        close;
+
+    LRogue2:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Wow! ^_^ You.. are.. SOOOOO COOOL!!!";
+        jobchange 4040;
+        close;
+
+    LMonk:
+//        if(class !=50) goto LNotAco2;
+        if(Class != Job_Baby_Acolyte) goto LNotAco2;
+        goto LMonk2;
+
+    LNotAco2:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Go read a Bible.. you're not a Baby Acolyte.. and guess what?";
+        mes "YOU GOTTA BE A BABY ACO BEFORE BECOMING A BABY MONK!!! >_<";
+        close;
+
+	LMonk2:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Nice.... Baby Monks are pretty darn cool!";
+        jobchange 4038;
+        close;
+
+    LSage:
+//        if(class !=48) goto LNotMage2;
+        if(Class != Job_Baby_Mage) goto LNotMage2;
+        goto LSage2;
+
+    LNotMage2:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Other jobs except `Baby Mage' are not permitted to be Baby Sages.";
+        close;
+
+    LSage2:
+        mes "[ ^0065DFBaby Jobra^000000 ]";
+        mes "Ahhhh, soo cool! I'll never get tired of seeing people turn into these little sprites.. KYAHH XD!!";
+        mes "Go forth, Baby Sage! Show those wizzies what a real baby-mana-wielder can do! Mwahaha...";
+        jobchange 4039;
+        close;
+
+
+Supernov:
+	if(SkillPoint>1) goto L_Err1;
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "Hey do you REALLY like being a baby novice? Cuz there is a way to be a baby novice forever...";
+	next; 
+	menu "Tell me more...",yes,"Nah.",quit;
+L_Err1:
+	mes "[ ^0065DFBaby Jobra^000000 ]";
+	mes "Please use your skill points.";
+	close;
+
+	yes:
+		mes "[ ^0065DFBaby Jobra^000000 ]";
+		mes "If you really like baby novices, you can become a Super Baby!";
+		mes "They are a more powerful baby novice with lots of skills.";
+		mes "They even get 20 bonus skill points!!";
+		mes "And you can get to job level 99!";
+		mes "But you need a base level of 45!";
+		next; 
+		mes "Do you want to be a Super Baby?";
+		menu "Yes.",yes2,"No.",quit;  
+	yes2:
+		if(Class==4045) goto AlreadyJob;
+		if(Class != Job_Baby) goto WrongJob;
+		if(BaseLevel < 45) goto NotLvl;
+		mes "[ ^0065DFBaby Jobra^000000 ]";
+		mes "Alright, just wait a sec...";
+		JobChange 4045;
+		mes "There you go, now you're a Super Baby!";
+		next;
+		set SkillPoint,SkillPoint+20;
+		mes "[ ^0065DFBaby Jobra^000000 ]";
+		mes "And there's your bonus Skill Points!";
+		mes "(Check your skill menu)";
+		close;
+	AlreadyJob:
+		mes "[ ^0065DFBaby Jobra^000000 ]";
+		mes "You are already a Super Baby...?";
+		close;
+	WrongJob:
+		mes "[ ^0065DFBaby Jobra^000000 ]";
+		mes "You aren't a Baby!";
+		close;
+	NotLvl:
+		mes "[ ^0065DFBaby Jobra^000000 ]";
+		mes "I'm sorry but your level is not high enough. Come back when it is.";
+		close;
+	quit:
+		mes "[ ^0065DFBaby Jobra^000000 ]";
+		mes "Pfft, Super Babies are awesome!";
+		close;
+}
+
+alberta,102,235,5	duplicate(babyjobra)	Baby Jobra#alb	716
+premcity,157,169,3	duplicate(babyjobra)	Baby Jobra#prem	716

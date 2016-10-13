@@ -1,0 +1,54 @@
+8
+
+dir
+12667
+http://svn.eathena.ws/svn/ea/trunk/npc/custom/jobs
+http://svn.eathena.ws/svn/ea
+
+
+
+2008-01-18T09:17:55.767767Z
+12086
+ultramage
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+8d3bc1bb-15e8-0310-adf8-f98a08d51996
+
+reset.txt
+file
+
+
+
+
+2008-04-27T12:03:55.000000Z
+792dd2626d522a999dc465172388e787
+2007-03-15T20:32:55.986403Z
+10018
+Lupus
+has-props
+
+jobmaster.txt
+file
+
+
+
+
+2008-04-27T12:03:55.000000Z
+3abbcb6b6cbe75d31b68053a52820939
+2007-07-31T21:27:01.124567Z
+10940
+ultramage
+has-props
+

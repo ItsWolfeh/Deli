@@ -1,0 +1,35 @@
+//===== eAthena Script ======================================================================
+//= Yggdrasil Leaf Auto-Ressurection Script
+//===== Version History: ====================================================================
+//= 0.1 by HarmonySong
+//= 1.0 by Crono
+//===== Description: ========================================================================
+//= If a player possesses a Yggdrasil Root at death, it will auto-execute itself on the
+//= player.
+//===========================================================================================
+
+-	script	Yggroots	-1,{
+
+OnPCDieEvent:
+	set DDOMHealed,0;
+	set DDOMOutofSpawn,0;
+	set PlayersKilledStreak,0;
+	if(agitcheck()==1) end;
+	if(countitem(32153)<1) end;
+	initnpctimer;
+	set $user,getcharid(3);
+	end;
+
+OnTimer1:
+	attachrid($user);
+	if (hp!=0) goto NoYgg;
+	atcommand strcharinfo(0)+":@alive";
+	dispbottom "A Yggdrasil Root floats above your body and vanishes in a burst of bright light...";
+	delitem 32153,1;
+	stopnpctimer;
+     	end;
+
+NoYgg:
+	stopnpctimer;
+	end;
+}

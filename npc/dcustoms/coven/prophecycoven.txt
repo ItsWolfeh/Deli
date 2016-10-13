@@ -1,0 +1,199 @@
+//100% Custom Prophecy Level 1 Quest by Crono
+//Timer FIXED. Quest added, delitem list revised, now fully functional quest.
+
+ama_dun03,120,158,3	script	Prophet	823,{
+	if(cov != 5) goto leave;
+	if(prophecygear1 == 1) goto done;
+	if(gavetimerandpizza == 1) goto timershit2;
+	if(gotprophetquest == 1) goto alreadygotyourquest;
+	if(countitem(2280)<1) goto needsakkat;
+
+mes "[Prophet]";
+mes "I am a Master Prophet.";
+mes "I have foreseen this moment. To earn your qualification as a prophet, you will require a Sakkat, and you must complete a quest for me.";
+	next;
+mes "[Prophet]";
+mes "Excellent, I see you have in your possession a Sakkat.";
+mes "However, I must test your speed.";
+	next;
+mes "[Prophet]";
+mes "To a true and worthy prophet, perception of time is shifted. We can slow time down and thus APPEAR to be quicker and more agile to our opponents.";
+	next;
+mes "[Prophet]";
+mes "The first portion of your quest, then, is to find the Master of Speed, a man unsurpassed in his prophetic ability.";
+mes "When last I saw him, he was visiting his mummy. That old woman must be ancient by now o_O";
+	next;
+mes "[Prophet]";
+mes "Will you seek him out?";
+menu "Yes",yes1,"No",no1;
+
+yes1:
+	mes "[Prophet]";
+	mes "Excellent, take this and go. Make it quick, and do not lose it, for you shall never receive another.";
+	set gotprophetquest,1;
+	getitem 7037,1;
+	close;
+
+timershit2:
+	if(timerisrunning == 0) goto slowass2;
+	if(timerisrunning == 1) goto speedyass;
+
+speedyass:
+	mes "[Prophet]";
+	mes "Ahhh, the sweet smell of a fresh, warm pineapple sardine asparagus kiwi pizza with extra (x150) cheese. Want a slice?";
+	next;
+	mes "[Prophet]";
+	mes "What? Why are you looking at me like that...? In any case, I knew you were worthy of the first stage of prophetic ability. I just sent you on this quest because my stomach was grumbly.";
+	next;
+	mes "[Prophet]";
+	mes "It is done, your Sakkat has become a channel for your prophetic ability. Now seek out the others, and pray that they are not as hungry as I.";
+	deltimer "omgpizzahurry";
+	delitem 562,1;
+	set gotprophetquest,0;
+	set gavetimerandpizza,0;
+	set gottamakepizzanow,0;
+	set prophecygear1,1;
+	close;
+
+alreadygotyourquest:
+	mes "[Prophet]";
+	mes "You must find the Master of Speed, he is visiting his incredibly old Mummy.";
+	close;
+
+no1:
+	mes "[Prophet]";
+	mes "I knew you were't ready. You'll talk to me again, though.";
+	close;
+
+slowass2:
+	mes "[Prophet]";
+	mes "Cold pizza? Maybe I was wrong about you... Return to the Master of Speed so that he may reheat it and you can try again. Remember that if you consume this pizza, you will receive no other.";
+	close;
+
+needsakkat:
+	mes "[Prophet]";
+	mes "You do not have your Prophetic Gear, the Sakkat. I know you will acquire it and return to me.";
+	close;
+
+
+leave:
+	mes "[Prophet]";
+	mes "I have foreseen that you are not worthy of prophetic ability.";
+	close;
+
+done:
+	mes "[Prophet]";
+	mes "Go find the Others, they will teach you more.";
+	close;
+
+}
+
+
+
+
+//Pizza Quest
+
+moc_pryd06,101,106,4	script	Master of Speed	829,{
+	if(cov != 5) goto leave;
+	if(prophecygear1 == 1) goto congrats;
+	if(gavetimerandpizza == 1) goto timershit;
+	if(gottamakepizzanow == 1) goto makethepizza;
+
+mes "[Master of Speed]";
+mes "Hmm, a disciple in Prophecy...what brings you here?";
+menu "I have something to give you",coupon,"Nothing",potato;
+
+potato:
+	mes "[Master of Speed]";
+	mes "Return when you have something from the Prophet.";
+	close;
+
+coupon:
+	if(countitem(7037)<1) goto nothing;
+	delitem 7037,1;
+	mes "[Master of Speed]";
+	mes "What? You're surprised that the Master of Speed is a pizza guy? How do you think we pizza guys deliver so fast?!";
+	mes "In any case, it seems the Prophet is aching for his favorite pizza.";
+	mes "I will require the following to make the pizza...";
+	next;
+	mes "[Master of Speed]";
+	mes "20 Rotten Fish (taming item)";
+	mes "100 Cheese";
+	mes "25 Sticky Poison (don't ask)";
+	mes "20 Alice Aprons";
+	mes "50 Coals (for my oven)";
+	set gottamakepizzanow,1;
+	close;
+
+makethepizza:
+	mes "[Master of Speed]";
+	mes "Let's see if you have the items...";
+	if((countitem(624)<20) || (countitem(548)<100) || (countitem(7565)<25) || (countitem(7047)<20) || (countitem(1003)>50)) goto noitems;
+	mes "[Master of Speed]";
+	mes "Good job! Anyhow, he has requested that you bring it FRESH.";
+	mes "Note that if you eat it, you will NEVER receive another and will never become a masterful Prophet.";
+	next;
+	mes "He's really picky, so you only have 2 minutes to bring this to him...GO!!!";
+	delitem 624,20;
+	delitem 548,100;
+	delitem 7565,25;
+	delitem 7047,20;
+	delitem 1003,50;
+	getitem 562,1;
+	set timerisrunning,1;
+	addtimer 200000,"pizzatimer";
+	set gavetimerandpizza,1;
+	close;
+
+noitems:
+	mes "[Master of Speed]";
+	mes "Nope, you're missing something.";
+	mes "Remember, I need the following:";
+	mes "20 Rotten Fish (taming item)";
+	mes "100 Cheese";
+	mes "25 Sticky Poison (don't ask)";
+	mes "20 Alice Aprons";
+	mes "50 Coals (for my oven)";
+	close;
+
+timershit:
+	if(timerisrunning == 0) goto slowass;
+	if(timerisrunning == 1) goto doingspeedquest;
+
+doingspeedquest:
+	mes "[Master of Speed]";
+	mes "You don't have any time to waste, bring the Prophet his pizza!";
+	close;
+
+slowass:
+	mes "[Master of Speed]";
+	mes "Oof, I bet the Prophet didn't appreciate your failure... In any event, you've been given another 2 minute chance, so GO GO GO!!!";
+	set timerisrunning,1;
+	addtimer 200000,"pizzatimer";
+	close;
+
+nothing:
+	mes "[Master of Speed]";
+	mes "Nope, you really don't have anything I need. I'm expecting something from the Prophet.";
+	close;
+
+leave:
+	mes "[Master of Speed]";
+	mes "I'm busy, you silly non-prophet.";
+	close;
+
+congrats:
+	mes "[Master of Speed]";
+	mes "Congratulations on your success. We're hiring, you know...";
+	close;
+}
+
+moc_pryd06,101,107,0	script	pizzatimer	-1,{
+	callfunc "timeranoutbiotch";
+	end;
+}
+function	script	timeranoutbiotch	{
+	deltimer "pizzatimer";
+	set timerisrunning,0;
+	return;
+}

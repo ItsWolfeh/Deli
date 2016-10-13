@@ -1,0 +1,984 @@
+//========================================================================================================================
+// @youhaveroom == ##, where ## is the number of the room the player owns
+// .dbroom## == 0 or 1, where ## is the number of the room and 0 or 1 determine whether the room is passworded
+// .temppassword##$ == some value, where ## is the number of the room and the value is the password being entered
+// .password##$ == some value, where ## is the number of the room and the value is the set password for the room
+// .pass##$ == some value, where ## is the number of the room and the value is what anyone trying to guess the pass to the room is entering
+// .room##owner$ == some value, where ## is the number of the room and the value is the name of the char who owns the room
+// OnWarper##TimeOver is the timer label that goes off when the room's protection time is over
+// OnWarper##Warning is the timer label that goes off one minute before the room's protection time is over
+// dbroom## is the map name
+
+// TO DO - do it when DB room 1 is perfect
+//-----------------------------------------
+// Change all to arguments in a callfunc
+
+// EXAMPLE OF ARGUMENTS WHEN CALLING FUNCTION FOR ROOM 01
+// callfunc "F_DBroom",1,.dbroom01,.temppassword01$,.password01$,.pass01$,.room01owner$,OnWarper01TimeOver,OnWarper1Warning,dbroom01;
+
+// Here is a legend - this would not be present in the call or in the function, it is just easier to look at when typing up the function
+// 1 = getarg(0)
+// .dbroom1 = getarg(1)
+// .temppassword1$ = getarg(2)
+// .password1$ = getarg(3)
+// .pass1$ = getarg(4)
+// .room1owner$ = getarg(5)
+// OnWarper1TimeOver = getarg(6)
+// OnWarper1Warning = getarg(7)
+// dbroom01 == getarg(8)
+
+// Replace ^ with the getarg() lines and now we have one function using only arguments to provide n number of rooms
+// The only thing that changes is the callfunc line
+// Room 2 example:
+// callfunc "F_DBroom",2,.dbroom2,.temppassword2$,.password2$,.pass2$,.room2owner$,OnWarper2TimeOver,OnWarper2Warning,dbroom02;
+
+
+
+//============
+// DB room 1 =
+//============
+arenalounge,87,97,1	script	DB Warper I	723,{
+
+if (@youhaveroom == 0 && .dbroom1 == 0) goto L_DbNPCStart1; // Player does not own a room, and this room is not taken
+if (@youhaveroom == 0 && .dbroom1 == 1) goto passpls1;	// Player does not own a room, and this room is taken
+if (@youhaveroom == 1) goto manageroom1;				// Player owns this room
+if (@youhaveroom < 1 || @youhaveroom > 1) goto anotherroom1;// Player owns another room
+if (.dbroom1 == 1) goto passpls1;					// Player magically slipped through the checks?
+
+
+L_DbNPCStart1:
+	mes "Enter DB room 1?";
+	menu "Enter without password",publicwarptoroom1,"Set a password",setpw1,"Do not enter",-;
+	close;
+
+
+setpw1:
+	if (getmapusers("dbroom01") > 0) {
+	mes "^ff0000This room is occupied. You may not set a password for a room that is occupied.^000000";
+	close;
+	}
+	mes "Please input what you'd like to use as your password to DB Room 1.";
+	next;
+	input .temppassword1$;
+// Redundant check for another player entering password at same time
+	if (.dbroom1 == 1) {
+	mes "^ff0000Someone set a password for this room while you were typing yours. Try another room instead.^000000";
+	close;
+	}
+// Redundant check for another player entering room without pass at same time
+	if (getmapusers("dbroom01") > 0) {
+	mes "^ff0000Someone entered the room while you typed your password. You may not set a password for a room that is occupied.^000000";
+	close;
+	}
+	set .password1$,.temppassword1$;
+	set .room1owner$,strcharinfo(0);
+	mes "Your password is set to ^3333FF"+.password1$+"^000000. Your time with this room shall start now.";
+	mes " ";
+	mes "You have ^ff0000fifteen minutes^000000. If you log off, the room will become public again immediately.";
+	addtimer 60000,"DB Warper I::OnWarper1TimeOver";
+	addtimer 30000,"DB Warper I::OnWarper1Warning";
+	set @youhaveroom,1;
+	set .dbroom1,1;
+	close2;
+	goto manageroom1;
+	end;
+
+
+passpls1:
+	if (getgmlevel() > 1){
+	mes "GM MENU: This room is set to be in use. Select Normal Entry to continue with NPC or Reset Room if NPC is locked. Reset Room will kick room owner if they are currently online.";
+	next;
+	switch(select("Normal entry","Reset room")) {
+
+case 1:
+	mes "This room is currently owned by ^3333FF"+.room1owner$+"^000000. If you want to enter you'll need to input the password.";
+	menu "Enter room",-,"Nevermind",DBroomCancel;
+	next;
+	mes "What is the password?";
+	input .pass1$;
+// Redundant check to see if room owner freed the room while player typed pass
+	if (.dbroom1 == 0) {
+	mes "^ff0000The room became public while you typed the password.^000000";
+	close;
+	}
+	if(.pass1$==.password1$) goto passwordedwarptoroom1;
+	mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+	close;
+case 2:
+	close2;
+	set .dbroom1,0;
+	deltimer "DB Warper I::OnWarper1TimeOver";
+	deltimer "DB Warper I::OnWarper1Warning";
+	atcommand "@kick "+.room1owner$;
+	set .room1owner$,0;
+	end;
+	}
+
+	} else {
+	mes "This room is currently owned by ^3333FF"+.room1owner$+"^000000. If you want to enter you'll need to input the password.";
+	menu "Enter room",-,"Nevermind",DBroomCancel;
+	next;
+	mes "What is the password?";
+	input .pass1$;
+// Redundant check to see if room owner freed the room while player typed owner's old pass
+	if (.dbroom1 == 0) {
+	mes "^ff0000The room became public while you typed the password.^000000";
+	close;
+	}
+	if(.pass1$==.password1$) goto passwordedwarptoroom1;
+	mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+	close;
+	}
+
+
+manageroom1:
+	mes "You are currently in charge of this DB Room and your set password is ^3333FF"+.password1$+"^000000.";
+	mes " ";
+	menu "Enter DB room",warptoroom1,"Make room public",makepublic1,"Change Password",changepw1,"Do not enter",DBroomCancel;
+	close;
+
+
+makepublic1:
+// Redundant check to see if timer ended while room owner was in manageroom1 menu
+	if (@youhaveroom == 0) {
+	mes "^ff0000Your time with this room has ended.^000000";
+	close;
+	}
+	close2;
+	set @youhaveroom,0;
+	set .dbroom1,0;
+	set .room1owner$,0;
+	deltimer "DB Warper I::OnWarper1TimeOver";
+	deltimer "DB Warper I::OnWarper1Warning";
+	end;
+
+
+changepw1:
+// Redundant check to see if timer ended while room owner was in manageroom1 menu
+	if (@youhaveroom == 0) {
+	mes "^ff0000Your time with this room has ended.^000000";
+	close;
+	}
+	mes "Please input what you want to use for your new password for DB room 1.";
+	input .temppassword1$;
+	set .password1$,.temppassword1$;
+	next;
+	mes "Your new password is ^3333FF"+.password1$+"^000000.";
+	close;
+
+
+anotherroom1:
+	mes "You have another room set to password protection. Please finish your time with that room or set it back to public to enter another room.";
+	close;
+
+
+DBroomCancel:
+	close;
+
+
+// Only the room owner can get sent here
+warptoroom1:
+// Redundant check to see if timer ended while room owner was in manageroom1 menu
+	if (@youhaveroom == 0) {
+	mes "^ff0000Your time with this room has already ended.^000000";
+	close;
+	}
+publicwarptoroom1:
+// Redundant check to see if a someone became room owner while player clicked and had plain "public room" menu open, and only entered after room was owned
+	if (.dbroom1 == 1 && @youhaveroom == 0) {
+	mes "^ff0000The room became private before you chose to enter it.^000000";
+	close;
+	}
+// Player who is not room owner and who entered the password while it still existed
+passwordedwarptoroom1:
+	warp "dbroom01",99,68;
+	close;
+
+
+OnPCLogoutEvent:
+	if(@youhaveroom == 1) { 
+	set .dbroom1,0;
+	set .room1owner$,0;
+	deltimer "DB Warper I::OnWarper1TimeOver";
+	deltimer "DB Warper I::OnWarper1Warning";
+	end;
+	}
+
+
+OnWarper1TimeOver:
+// Announces to player above their head and in the chat window no matter what map they're on
+	message ""+strcharinfo(0)+"","Your DB Room password protection has ended.";
+	mapannounce "dbroom01",""+strcharinfo(0)+", your password protection for this room has ended. If you wish to renew it, please speak to the DB Warper outside.",bc_blue|bc_all;
+	set .dbroom1,0;
+	set .room1owner$,0;
+	if(@youhaveroom == 1) { 
+	set @youhaveroom,0;
+	end;
+	} else { end; }
+
+OnWarper1Warning:
+	message ""+strcharinfo(0)+"","Your DB Room password protection will end in 1 minute.";
+	mapannounce "dbroom01",""+strcharinfo(0)+", your password protection for this room is ending in 1 minute.",bc_blue|bc_all;
+	end;
+
+}
+
+
+//=============
+// DB room 2
+//=============
+
+arenalounge,64,83,1	script	DB Warper II	723,{
+
+if (@youhaveroom == 2) goto manageroom2;
+if (@youhaveroom == 1 || @youhaveroom > 2) goto anotherroom2;
+if (.dbroom2 == 1) goto passpls2;
+
+mes "Enter DB room 2?";
+menu "Yes",warptoroom2,"No",-,"Set a password",setpw2;
+close;
+
+setpw2:
+if (getmapusers("dbroom02") > 0) {
+mes "^ff0000This room is occupied. You may not set a password for a room that is occupied.^000000";
+close;}
+
+mes "Please input what you want to use for your password to DB room 2.";
+input .temppassword2$;
+set .password2$,.temppassword2$;
+next;
+mes "Your password is set to ^3333FF"+.password2$+"^000000. The time with this room shall begin starting now.";
+mes "You have ^ff0000fifteen minutes^000000.";
+close2;
+addtimer 60000,"DBRoomTimer::OnTimeOver2";
+set @youhaveroom,2;
+set .dbroom2,1;
+end;
+
+passpls2:
+if (getgmlevel() > 1){
+mes "This room is set to be in use.";
+switch(select("Normal entry","Reset room")) {
+
+case 1:
+	mes "This room is currently in use, if you want to enter you'll need to input the password first.";
+	next;
+	mes "What is the password?";
+	input .pass2$;
+	if(.pass2$==.password2$) goto warptoroom2;
+	mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+	close;
+case 2:
+	set .dbroom2,0;
+	deltimer "DBRoomTimer::OnTimeOver2";
+	end;
+		}
+	} else {
+mes "This room is currently in use, if you want to enter you'll need to input the password first.";
+next;
+mes "What is the password?";
+input .pass2$;
+if(.pass2$==.password2$) goto warptoroom2;
+mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+close;
+}
+
+manageroom2:
+mes "You are currently in charge of DB room 2 and your set password is ^3333FF"+.password2$+"^000000.";
+next;
+menu "Enter",warptoroom2,"Make room public",-,"Change Password",changepw2;
+close2;
+set @youhaveroom,0;
+set .dbroom2,0;
+deltimer "DBRoomTimer::OnTimeOver2";
+end;
+
+changepw2:
+mes "Please input what you want to use for your new password for DB room 2.";
+input .temppassword2$;
+set .password2$,.temppassword2$;
+next;
+mes "Your new password is ^3333FF"+.password2$+"^000000.";
+close;
+
+anotherroom2:
+mes "You have another room set to password protection. Please finish your time with that room or set it back to normal to enter another room.";
+close;
+
+warptoroom2:
+warp "dbroom02",99,68;
+close;
+
+}
+
+
+//=============
+// DB room 3
+//=============
+
+arenalounge,111,83,1	script	DB Warper III	723,{
+
+if (@youhaveroom == 3) goto manageroom3;
+if (@youhaveroom == 1 || @youhaveroom == 2 || @youhaveroom > 3) goto anotherroom3;
+if (.dbroom3 == 1) goto passpls3;
+
+mes "Enter DB room 3?";
+menu "Yes",warptoroom3,"No",-,"Set a password",setpw3;
+close;
+
+setpw3:
+if (getmapusers("dbroom03") > 0) {
+mes "^ff0000This room is occupied. You may not set a password for a room that is occupied.^000000";
+close;}
+
+mes "Please input what you want to use for your password to DB room 3.";
+input .temppassword3$;
+set .password3$,.temppassword3$;
+next;
+mes "Your password is set to ^3333FF"+.password3$+"^000000. The time with this room shall begin starting now.";
+mes "You have ^ff0000fifteen minutes^000000.";
+close2;
+addtimer 60000,"DBRoomTimer::OnTimeOver3";
+set @youhaveroom,3;
+set .dbroom3,1;
+end;
+
+passpls3:
+if (getgmlevel() > 1){
+mes "This room is set to be in use.";
+switch(select("Normal entry","Reset room")) {
+
+case 1:
+	mes "This room is currently in use, if you want to enter you'll need to input the password first.";
+	next;
+	mes "What is the password?";
+	input .pass3$;
+	if(.pass3$==.password3$) goto warptoroom3;
+	mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+	close;
+case 2:
+	set .dbroom3,0;
+	deltimer "DBRoomTimer::OnTimeOver3";
+	end;
+		}
+	} else {
+mes "This room is currently in use, if you want to enter you'll need to input the password first.";
+next;
+mes "What is the password?";
+input .pass3$;
+if(.pass3$==.password3$) goto warptoroom3;
+mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+close;
+}
+
+manageroom3:
+mes "You are currently in charge of DB room 3 and your set password is ^3333FF"+.password3$+"^000000.";
+next;
+menu "Enter",warptoroom3,"Make room public",-,"Change Password",changepw3;
+close2;
+set @youhaveroom,0;
+set .dbroom3,0;
+deltimer "DBRoomTimer::OnTimeOver3";
+end;
+
+changepw3:
+mes "Please input what you want to use for your new password for DB room 3.";
+input .temppassword3$;
+set .password3$,.temppassword3$;
+next;
+mes "Your new password is ^3333FF"+.password3$+"^000000.";
+close;
+
+anotherroom3:
+mes "You have another room set to password protection. Please finish your time with that room or set it back to normal to enter another room.";
+close;
+
+warptoroom3:
+warp "dbroom03",99,68;
+close;
+
+}
+
+//=============
+// DB room 4
+//=============
+
+arenalounge,64,73,1	script	DB Warper IV	723,{
+
+if (@youhaveroom == 4) goto manageroom4;
+if (@youhaveroom == 1 || @youhaveroom == 2 || @youhaveroom == 3 || @youhaveroom > 4) goto anotherroom4;
+if (.dbroom4 == 1) goto passpls4;
+
+mes "Enter DB room 4?";
+menu "Yes",warptoroom4,"No",-,"Set a password",setpw4;
+close;
+
+setpw4:
+if (getmapusers("dbroom04") > 0) {
+mes "^ff0000This room is occupied. You may not set a password for a room that is occupied.^000000";
+close;}
+
+mes "Please input what you want to use for your password to DB room 4.";
+input .temppassword4$;
+set .password4$,.temppassword4$;
+next;
+mes "Your password is set to ^3333FF"+.password4$+"^000000. The time with this room shall begin starting now.";
+mes "You have ^ff0000fifteen minutes^000000.";
+close2;
+addtimer 60000,"DBRoomTimer::OnTimeOver4";
+set @youhaveroom,4;
+set .dbroom4,1;
+end;
+
+passpls4:
+if (getgmlevel() > 1){
+mes "This room is set to be in use.";
+switch(select("Normal entry","Reset room")) {
+
+case 1:
+	mes "This room is currently in use, if you want to enter you'll need to input the password first.";
+	next;
+	mes "What is the password?";
+	input .pass4$;
+	if(.pass4$==.password4$) goto warptoroom4;
+	mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+	close;
+case 2:
+	set .dbroom4,0;
+	deltimer "DBRoomTimer::OnTimeOver4";
+	end;
+		}
+	} else {
+mes "This room is currently in use, if you want to enter you'll need to input the password first.";
+next;
+mes "What is the password?";
+input .pass4$;
+if(.pass4$==.password4$) goto warptoroom4;
+mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+close;
+}
+
+manageroom4:
+mes "You are currently in charge of DB room 4 and your set password is ^3333FF"+.password4$+"^000000.";
+next;
+menu "Enter",warptoroom4,"Make room public",-,"Change Password",changepw4;
+close2;
+set @youhaveroom,0;
+set .dbroom4,0;
+deltimer "DBRoomTimer::OnTimeOver4";
+end;
+
+changepw4:
+mes "Please input what you want to use for your new password for DB room 4.";
+input .temppassword4$;
+set .password4$,.temppassword4$;
+next;
+mes "Your new password is ^3333FF"+.password4$+"^000000.";
+close;
+
+anotherroom4:
+mes "You have another room set to password protection. Please finish your time with that room or set it back to normal to enter another room.";
+close;
+
+warptoroom4:
+warp "dbroom04",99,68;
+close;
+
+}
+
+//=============
+// DB room 5
+//=============
+
+arenalounge,111,73,1	script	DB Warper V	723,{
+
+if (@youhaveroom == 5) goto manageroom5;
+if (@youhaveroom == 1 || @youhaveroom == 2 || @youhaveroom == 3 || @youhaveroom == 4 || @youhaveroom > 5) goto anotherroom5;
+if (.dbroom5 == 1) goto passpls5;
+
+mes "Enter DB room 5?";
+menu "Yes",warptoroom5,"No",-,"Set a password",setpw5;
+close;
+
+setpw5:
+if (getmapusers("dbroom05") > 0) {
+mes "^ff0000This room is occupied. You may not set a password for a room that is occupied.^000000";
+close;}
+
+mes "Please input what you want to use for your password to DB room 5.";
+input .temppassword5$;
+set .password5$,.temppassword5$;
+next;
+mes "Your password is set to ^3333FF"+.password5$+"^000000. The time with this room shall begin starting now.";
+mes "You have ^ff0000fifteen minutes^000000.";
+close2;
+addtimer 60000,"DBRoomTimer::OnTimeOver5";
+set @youhaveroom,5;
+set .dbroom5,1;
+end;
+
+passpls5:
+if (getgmlevel() > 1){
+mes "This room is set to be in use.";
+switch(select("Normal entry","Reset room")) {
+
+case 1:
+	mes "This room is currently in use, if you want to enter you'll need to input the password first.";
+	next;
+	mes "What is the password?";
+	input .pass5$;
+	if(.pass5$==.password5$) goto warptoroom5;
+	mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+	close;
+case 2:
+	set .dbroom5,0;
+	deltimer "DBRoomTimer::OnTimeOver5";
+	end;
+		}
+	} else {
+mes "This room is currently in use, if you want to enter you'll need to input the password first.";
+next;
+mes "What is the password?";
+input .pass5$;
+if(.pass5$==.password5$) goto warptoroom5;
+mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+close;
+}
+
+manageroom5:
+mes "You are currently in charge of DB room 5 and your set password is ^3333FF"+.password5$+"^000000.";
+next;
+menu "Enter",warptoroom5,"Make room public",-,"Change Password",changepw5;
+close2;
+set @youhaveroom,0;
+set .dbroom5,0;
+deltimer "DBRoomTimer::OnTimeOver5";
+end;
+
+changepw5:
+mes "Please input what you want to use for your new password for DB room 5.";
+input .temppassword5$;
+set .password5$,.temppassword5$;
+next;
+mes "Your new password is ^3333FF"+.password5$+"^000000.";
+close;
+
+anotherroom5:
+mes "You have another room set to password protection. Please finish your time with that room or set it back to normal to enter another room.";
+close;
+
+warptoroom5:
+warp "dbroom05",99,68;
+close;
+
+}
+
+//=============
+// DB room 6
+//=============
+
+arenalounge,64,63,1	script	DB Warper VI	723,{
+
+if (@youhaveroom == 6) goto manageroom6;
+if (@youhaveroom == 1 || @youhaveroom == 2 || @youhaveroom == 3 || @youhaveroom == 4 || @youhaveroom == 5) goto anotherroom6;
+if (.dbroom6 == 1) goto passpls6;
+
+mes "Enter DB room 6?";
+menu "Yes",warptoroom6,"No",-,"Set a password",setpw6;
+close;
+
+setpw6:
+if (getmapusers("dbroom06") > 0) {
+mes "^ff0000This room is occupied. You may not set a password for a room that is occupied.^000000";
+close;}
+
+mes "Please input what you want to use for your password to DB room 6.";
+input .temppassword6$;
+set .password6$,.temppassword6$;
+next;
+mes "Your password is set to ^3333FF"+.password6$+"^000000. The time with this room shall begin starting now.";
+mes "You have ^ff0000fifteen minutes^000000.";
+close2;
+addtimer 60000,"DBRoomTimer::OnTimeOver6";
+set @youhaveroom,6;
+set .dbroom6,1;
+end;
+
+passpls6:
+if (getgmlevel() > 1){
+mes "This room is set to be in use.";
+switch(select("Normal entry","Reset room")) {
+
+case 1:
+	mes "This room is currently in use, if you want to enter you'll need to input the password first.";
+	next;
+	mes "What is the password?";
+	input .pass6$;
+	if(.pass6$==.password6$) goto warptoroom6;
+	mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+	close;
+case 2:
+	set .dbroom6,0;
+	deltimer "DBRoomTimer::OnTimeOver6";
+	end;
+		}
+	} else {
+mes "This room is currently in use, if you want to enter you'll need to input the password first.";
+next;
+mes "What is the password?";
+input .pass6$;
+if(.pass6$==.password6$) goto warptoroom6;
+mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+close;
+}
+
+manageroom6:
+mes "You are currently in charge of DB room 6 and your set password is ^3333FF"+.password6$+"^000000.";
+next;
+menu "Enter",warptoroom6,"Make room public",-,"Change Password",changepw6;
+close2;
+set @youhaveroom,0;
+set .dbroom6,0;
+deltimer "DBRoomTimer::OnTimeOver6";
+end;
+
+changepw6:
+mes "Please input what you want to use for your new password for DB room 6.";
+input .temppassword6$;
+set .password6$,.temppassword6$;
+next;
+mes "Your new password is ^3333FF"+.password6$+"^000000.";
+close;
+
+anotherroom6:
+mes "You have another room set to password protection. Please finish your time with that room or set it back to normal to enter another room.";
+close;
+
+warptoroom6:
+warp "dbroom06",99,68;
+close;
+
+}
+
+
+//=============
+// DB room 7
+//=============
+
+arenalounge,111,63,1	script	DB Warper VII	723,{
+
+if (@youhaveroom == 7) goto manageroom7;
+if (@youhaveroom == 1 || @youhaveroom == 2 || @youhaveroom == 3 || @youhaveroom == 4 || @youhaveroom == 5 || @youhaveroom == 6 || @youhaveroom > 7) goto anotherroom7;
+if (.dbroom5 == 1) goto passpls7;
+
+mes "Enter DB room 7?";
+menu "Yes",warptoroom7,"No",-,"Set a password",setpw7;
+close;
+
+setpw7:
+if (getmapusers("dbroom07") > 0) {
+mes "^ff0000This room is occupied. You may not set a password for a room that is occupied.^000000";
+close;}
+
+mes "Please input what you want to use for your password to DB room 5.";
+input .temppassword7$;
+set .password5$,.temppassword7$;
+next;
+mes "Your password is set to ^3333FF"+.password7$+"^000000. The time with this room shall begin starting now.";
+mes "You have ^ff0000fifteen minutes^000000.";
+close2;
+addtimer 60000,"DBRoomTimer::OnTimeOver7";
+set @youhaveroom,7;
+set .dbroom7,1;
+end;
+
+passpls7:
+if (getgmlevel() > 1){
+mes "This room is set to be in use.";
+switch(select("Normal entry","Reset room")) {
+
+case 1:
+	mes "This room is currently in use, if you want to enter you'll need to input the password first.";
+	next;
+	mes "What is the password?";
+	input .pass7$;
+	if(.pass7$==.password7$) goto warptoroom5;
+	mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+	close;
+case 2:
+	set .dbroom7,0;
+	deltimer "DBRoomTimer::OnTimeOver7";
+	end;
+		}
+	} else {
+mes "This room is currently in use, if you want to enter you'll need to input the password first.";
+next;
+mes "What is the password?";
+input .pass7$;
+if(.pass7$==.password7$) goto warptoroom7;
+mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+close;
+}
+
+manageroom7:
+mes "You are currently in charge of DB room 7 and your set password is ^3333FF"+.password7$+"^000000.";
+next;
+menu "Enter",warptoroom7,"Make room public",-,"Change Password",changepw7;
+close2;
+set @youhaveroom,0;
+set .dbroom7,0;
+deltimer "DBRoomTimer::OnTimeOver7";
+end;
+
+changepw7:
+mes "Please input what you want to use for your new password for DB room 7.";
+input .temppassword7$;
+set .password7$,.temppassword7$;
+next;
+mes "Your new password is ^3333FF"+.password7$+"^000000.";
+close;
+
+anotherroom7:
+mes "You have another room set to password protection. Please finish your time with that room or set it back to normal to enter another room.";
+close;
+
+warptoroom7:
+warp "dbroom07",99,68;
+close;
+
+}
+
+//=============
+// DB room 8
+//=============
+
+arenalounge,74,54,1	script	DB Warper VIII	723,{
+
+if (@youhaveroom == 8) goto manageroom8;
+if (@youhaveroom == 1 || @youhaveroom == 2 || @youhaveroom == 3 || @youhaveroom == 4 || @youhaveroom == 5 || @youhaveroom == 6 || @youhaveroom == 7 || @youhaveroom > 8) goto anotherroom8;
+if (.dbroom8 == 1) goto passpls8;
+
+mes "Enter DB room 8?";
+menu "Yes",warptoroom8,"No",-,"Set a password",setpw8;
+close;
+
+setpw8:
+if (getmapusers("dbroom08") > 0) {
+mes "^ff0000This room is occupied. You may not set a password for a room that is occupied.^000000";
+close;}
+
+mes "Please input what you want to use for your password to DB room 8.";
+input .temppassword8$;
+set .password8$,.temppassword8$;
+next;
+mes "Your password is set to ^3333FF"+.password8$+"^000000. The time with this room shall begin starting now.";
+mes "You have ^ff0000fifteen minutes^000000.";
+close2;
+addtimer 60000,"DBRoomTimer::OnTimeOver8";
+set @youhaveroom,8;
+set .dbroom8,1;
+end;
+
+passpls8:
+if (getgmlevel() > 1){
+mes "This room is set to be in use.";
+switch(select("Normal entry","Reset room")) {
+
+case 1:
+	mes "This room is currently in use, if you want to enter you'll need to input the password first.";
+	next;
+	mes "What is the password?";
+	input .pass8$;
+	if(.pass8$==.password8$) goto warptoroom8;
+	mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+	close;
+case 2:
+	set .dbroom8,0;
+	deltimer "DBRoomTimer::OnTimeOver8";
+	end;
+		}
+	} else {
+mes "This room is currently in use, if you want to enter you'll need to input the password first.";
+next;
+mes "What is the password?";
+input .pass8$;
+if(.pass8$==.password8$) goto warptoroom8;
+mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+close;
+}
+
+manageroom8:
+mes "You are currently in charge of DB room 8 and your set password is ^3333FF"+.password8$+"^000000.";
+next;
+menu "Enter",warptoroom8,"Make room public",-,"Change Password",changepw8;
+close2;
+set @youhaveroom,0;
+set .dbroom8,0;
+deltimer "DBRoomTimer::OnTimeOver8";
+end;
+
+changepw8:
+mes "Please input what you want to use for your new password for DB room 8.";
+input .temppassword8$;
+set .password8$,.temppassword8$;
+next;
+mes "Your new password is ^3333FF"+.password8$+"^000000.";
+close;
+
+anotherroom8:
+mes "You have another room set to password protection. Please finish your time with that room or set it back to normal to enter another room.";
+close;
+
+warptoroom8:
+warp "dbroom08",99,68;
+close;
+
+}
+
+//=============
+// DB room 9
+//=============
+
+arenalounge,101,54,1	script	DB Warper IX	723,{
+
+if (@youhaveroom == 9) goto manageroom9;
+if (@youhaveroom == 1 || @youhaveroom == 2 || @youhaveroom == 3 || @youhaveroom == 4 || @youhaveroom == 5 || @youhaveroom == 6 || @youhaveroom == 7 || @youhaveroom == 8 || @youhaveroom > 9) goto anotherroom9;
+if (.dbroom9 == 1) goto passpls9;
+
+mes "Enter DB room 9?";
+menu "Yes",warptoroom9,"No",-,"Set a password",setpw9;
+close;
+
+setpw9:
+if (getmapusers("dbroom09") > 0) {
+mes "^ff0000This room is occupied. You may not set a password for a room that is occupied.^000000";
+close;}
+
+mes "Please input what you want to use for your password to DB room 9.";
+input .temppassword9$;
+set .password9$,.temppassword9$;
+next;
+mes "Your password is set to ^3333FF"+.password9$+"^000000. The time with this room shall begin starting now.";
+mes "You have ^ff0000fifteen minutes^000000.";
+close2;
+addtimer 60000,"DBRoomTimer::OnTimeOver9";
+set @youhaveroom,9;
+set .dbroom9,1;
+end;
+
+passpls9:
+if (getgmlevel() > 1){
+mes "This room is set to be in use.";
+switch(select("Normal entry","Reset room")) {
+
+case 1:
+	mes "This room is currently in use, if you want to enter you'll need to input the password first.";
+	next;
+	mes "What is the password?";
+	input .pass9$;
+	if(.pass9$==.password9$) goto warptoroom9;
+	mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+	close;
+case 2:
+	set .dbroom9,0;
+	deltimer "DBRoomTimer::OnTimeOver9";
+	end;
+		}
+	} else {
+mes "This room is currently in use, if you want to enter you'll need to input the password first.";
+next;
+mes "What is the password?";
+input .pass9$;
+if(.pass9$==.password9$) goto warptoroom9;
+mes "I'm sorry, that's wrong. Make sure you typed it correctly.";
+close;
+}
+
+manageroom9:
+mes "You are currently in charge of DB room 9 and your set password is ^3333FF"+.password9$+"^000000.";
+next;
+menu "Enter",warptoroom9,"Make room public",-,"Change Password",changepw9;
+close2;
+set @youhaveroom,0;
+set .dbroom9,0;
+deltimer "DBRoomTimer::OnTimeOver9";
+end;
+
+changepw9:
+mes "Please input what you want to use for your new password for DB room 9.";
+input .temppassword9$;
+set .password9$,.temppassword9$;
+next;
+mes "Your new password is ^3333FF"+.password9$+"^000000.";
+close;
+
+anotherroom9:
+mes "You have another room set to password protection. Please finish your time with that room or set it back to normal to enter another room.";
+close;
+
+warptoroom9:
+warp "dbroom09",99,68;
+close;
+
+}
+
+
+
+
+
+
+
+//=============
+// Exit Warps
+// Map-broadcasts as someone leaves the room.
+//=============
+
+function	script	F_DBroomExit	{
+
+OnTouch:
+	warp "arenalounge",88,78;
+	mapannounce ""+getarg(0)+"",""+strcharinfo(0)+" has left the room.",bc_blue|bc_all;
+	end;
+}
+
+
+dbroom01,99,65,0	script	DBRoom1Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom01";
+}
+
+dbroom02,99,65,0	script	DBRoom2Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom02";
+}
+
+dbroom03,99,65,0	script	DBRoom3Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom03";
+}
+
+dbroom04,99,65,0	script	DBRoom4Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom04";
+}
+
+dbroom05,99,65,0	script	DBRoom5Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom05";
+}
+
+dbroom06,99,65,0	script	DBRoom6Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom06";
+}
+
+dbroom07,99,65,0	script	DBRoom7Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom07";
+}
+
+dbroom08,99,65,0	script	DBRoom8Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom08";
+}
+
+dbroom09,99,65,0	script	DBRoom9Exit	45,1,1,{
+callfunc "F_DBroomExit","dbroom09";
+}
+
+//dbroom10,99,65,0	script	DBRoom10Exit	45,1,1,{
+//callfunc "F_DBroomExit","dbroom10";
+//}
+// etc

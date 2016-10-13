@@ -1,0 +1,49 @@
+ayothaya,250,276,4	script	Warder of Novices	730,{
+	mes "[^17731CWarder^000000]";
+	mes "Greetings, adventurer. I can create a ^724168Karaya^000000. However, I will require some items.";
+	next;
+	menu "What do you need?",Alright,"Not interested.",notinto;
+
+	notinto:
+	mes "[^17731CWarder^000000]";
+	mes "Very well, then.";
+	close;
+	
+	Alright:
+	mes "[^17731CWarder^000000]";
+	mes "Here is what you'll need:";
+	mes "- ^8B0C2F 1 Stiletto[3]^000000";
+	mes "- ^181B74 150 Sharp scale ^000000 and";
+	mes "- ^259E58 50 Shining Scale^000000";
+	next;
+	menu "I have gathered the items.",have_items,"I don't have them yet...",gocollect;
+	
+	gocollect:
+	mes "[^17731CWarder^000000]";
+	mes "Make haste!";
+	close;
+	
+	have_items:
+	mes "[^17731CWarder^000000]";
+	mes "Let's see...";
+	next;
+	if((countitem(1217)<1) || (countitem(963)<150) || (countitem(954)<50)) goto noitems;
+	
+	mes "[^17731CWarder^000000]";
+	mes "Excellent, you have succeeded! I will now take the items.";
+	next;
+
+	delitem 1217,1;
+	delitem 963,150;
+	delitem 954,50;
+	
+	mes "[^17731CWarder^000000]";
+	mes "Here is your reward, you have earned it...";
+	getitem 32060,1;
+	close;
+	
+	noitems:
+	mes "[^17731CWarder^000000]";
+	mes "Lying filth! Begone!";
+	close;
+}

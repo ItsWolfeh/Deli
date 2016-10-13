@@ -1,0 +1,16 @@
+-	script	AGIT_STATUS	-1,{
+
+OnAgitStart:
+	query_sql "UPDATE ragsrvinfo SET agit_status = 1";
+	end;
+OnAgitEnd:
+	query_sql "UPDATE ragsrvinfo SET agit_status = 0";
+	end;
+OnInit:
+	if(agitcheck()==1)
+		query_sql "UPDATE ragsrvinfo SET agit_status = 1";
+	else
+		query_sql "UPDATE ragsrvinfo SET agit_status = 0";
+	end;
+}
+

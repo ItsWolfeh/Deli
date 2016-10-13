@@ -1,0 +1,109 @@
+//CovenGear 1 
+//Crono: Fixed so he checks for sphinx masks now
+
+gef_tower,111,36,4	script	Craft	704,{
+if(cov != 2) goto leave;
+if(craftgear1==1) goto done;
+if(potentiolquest == 1) goto alreadyquest;
+
+mes "[Craft User]";
+mes "Greetings";
+mes "I am one gifted in the ways of the Craft. First I must check to see if you have your Coven Gear, the Mage Hat.";
+next;
+if(countitem(5027)<1) goto magehat;
+mes "[Craft User]";
+mes "Ah, you have your Craft Gear with you, that is the first step.";
+mes "However, I must first test your craft power.";
+next;
+mes "[Craft User]";
+mes "To find out your true potential I need you to retrieve for me 10 Pieces of Cloud and 5 Sphinx Masks.";
+next;
+mes "[Craft User]";
+mes "Do you accept this Quest?";
+menu "Yes",yes1,"No",no1;
+
+yes1:
+mes "[Craft User]";
+mes "Excellent! Return to me when you have earned these items.";
+set potentiolquest,1;
+close;
+
+alreadyquest:
+mes "[Craft User]";
+mes "Do you have the items? You need to bring me 10 Pieces of Cloud and 5 Sphinx Masks.";
+menu "Yes",yes2,"No",no2;
+
+yes2:
+
+mes "[Craft User]";
+mes "Let me see...";
+next;
+if((countitem(7162)<10) || (countitem(7114)<5)) goto noitems;
+delitem 7162,10;
+delitem 7114,5;
+mes "[Craft User]";
+mes "Great, you have collected the items! Now I shall unlock your first Craft Gear level...";
+mes "Imastorus, Clis Unatian Heegus Gateso Foooranis Algoagm!!!";
+set craftgear1,1;
+set potentiolquest,0;
+next;
+mes "[Craft User]";
+mes "I have done all I can for you now...Good luck.";
+close;
+
+done:
+mes "[Craft User]";
+mes "I have done all I can for you...";
+
+no1:
+mes "[Craft User]";
+mes "I understand, you are not ready yet. Return when you are.";
+close;
+
+no2:
+mes "[Craft User]";
+mes "I already gave you the quest. Now go find the 10 Pieces of Clouds and 5 Sphinx Masks!";
+close;
+
+
+noitems:
+mes "[Craft User]";
+mes "Liar.";
+close;
+
+magehat:
+mes "[Craft User]";
+mes "You do not have your Craft Gear. Search for it.";
+close;
+
+
+leave:
+	if (cov == 1) goto ItsaSlayer;
+	if (cov == 3) goto ItsaArt;
+	if (cov == 4) goto ItsaWeaving;
+	if (cov == 5) goto ItsaProphecy;
+
+	mes "[Craft User]";
+	mes "I have nothing to teach someone with no coven. Begone.";
+	close;
+
+ItsaSlayer:
+	mes "[Craft User]";
+	mes "I have nothing to teach you, Slayer.";
+	close;
+
+ItsaArt:
+	mes "[Craft User]";
+	mes "I have nothing to teach you, Artist.";
+	close;
+
+ItsaWeaving:
+	mes "[Craft User]";
+	mes "I have nothing to teach you, Weaver.";
+	close;
+
+ItsaProphecy:
+	mes "[Craft User]";
+	mes "I have nothing to teach you, Prophet.";
+	close;
+}

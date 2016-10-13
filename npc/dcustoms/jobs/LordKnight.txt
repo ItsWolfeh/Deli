@@ -1,0 +1,64 @@
+valkyrie.gat,44,39,6	script	Lord Knight	56,{
+
+if(Class == Job_Novice_High) goto L_SwordyHighChange;
+if(Class == Job_Swordman_High) goto L_LordKnightChange;
+
+	mes "[ ^0065DFLord Knight^000000 ]";
+	mes "You're not a Novice High or Swordsman High. I can train only these two classes.";
+	close;
+
+L_SwordyHighChange:
+	mes "[ ^0065DFLord Knight^000000 ]";
+	mes "I see you've been reborn...do you wish to become a Swordsman High?";
+	next;
+	menu "Cancel",L_Cancel,"Yes, train me to be a Swordsman High",-;
+	
+	if(checkfalcon() || checkcart() || checkriding()) goto L_remove;
+	if(JobLevel <10) goto Ljobten;
+	if(SkillPoint != 0) goto L_skillUsed;
+	next;
+	mes "[ ^0065DFLord Knight^000000 ]";
+	mes "You are now good enough with a blade to call yourself a Swordsman!";
+	jobchange Job_Swordman_High;
+	close;
+
+Ljobten:
+	mes "[ ^0065DFLord Knight^000000 ]";
+	mes "You need to be at least Job Level 10 before changing into a Swordsman High... go kill some porings or something.";
+	close;
+
+L_LordKnightChange:
+	mes "[ ^0065DFLord Knight^000000 ]";
+	mes "I see you're a Swordsman High...do you wish to train as a Lord Knight?";
+	next;
+	menu "Cancel",L_Cancel,"Yes, train me to be a Lord Knight",-;
+
+	if(checkfalcon() || checkcart() || checkriding()) goto L_remove;
+	if(JobLevel <40) goto Ljobforty;
+	if(SkillPoint != 0) goto L_skillUsed;
+	next;
+	mes "[ ^0065DFLord Knight^000000 ]";
+	mes "Such power! You will make a fine Lord Knight!";
+	jobchange Job_Lord_Knight;
+	close;
+
+Ljobforty:
+	mes "[ ^0065DFLord Knight^000000 ]";
+	mes "You must be at least Job Level 40 before even thinking about changing into a Lord Knight.";
+	close;
+
+L_Cancel:
+	mes "[ ^0065DFLord Knight^000000 ]";
+	mes "So be it.";
+	close;
+
+L_skillUsed:
+	mes "[ ^0065DFLord Knight^000000 ]";
+	mes "Please use up all your skill points before changing jobs.";
+	close;
+
+L_remove:
+	mes "[ ^0065DFLord Knight^000000 ]";
+	mes "Remove your Cart, Falcon or Peco first.";
+	close;
+}

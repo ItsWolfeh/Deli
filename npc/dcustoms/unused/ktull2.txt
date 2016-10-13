@@ -1,0 +1,723 @@
+//============================================================
+//Ktullanux Summoning Quest, a.k.a. Ice Dungeon Quest
+//By Henhouse
+//Currently Version: 1.0
+//Compatible With: Any version updated to Rachel, Ice Dungeon + mobs, Rachel cutins.
+//Description: 
+//The quest to summon Ktullanux, with the necklace and all.
+//Some additional content added to accomidate for the pure easiness of the official quest (according to doddler: http://ro.doddlercon.com).
+//Added variables so after you complete the quest your first time you can continue to summon Ktullanux as much as you like.
+//============================================================ 
+
+rachel,157,183,3	script	Follower Ustialla	916,{
+
+if (KTULLQ == 9 || KtullQuestDone >= 1) goto L_QuestCompleted; 
+if (KTULLQ == 8) goto L_GiveNecklace;
+if (KTULLQ >= 1) goto L_Helpout2;
+
+cutin "ra_usti1",2;
+mes "[Ustialla]";
+mes "May the blessings of Freya be with you...";
+next;
+mes "[Ustialla]";
+mes "A visitor from a far away land...! Surely it was Freya's will you be guided to Arunafeltz, yes... That must be it.";
+next;
+mes "[Ustialla]";
+mes "We are followers of Freya, you see. She is our goddess... A shepherd of us humble humans!";
+next;
+mes "[Ustialla]";
+mes "Oh, Freya... But I must know, what brings you here, foreigner?";
+next;
+menu "I'm here to receive the teachings of Freya",-,"I'm just here on tour",L_menu2;
+
+mes "[Ustialla]";
+mes "Of course you are! The day our all-knowing Freya is resurrected... she shall lead all of us to a land of everlasting beauty and providence.";
+next;
+mes "[Ustialla]";
+mes "She blesses us all! May her majesty grace you as well. Yes, may Freya be with you as she is with us... Always and forever!";
+next;
+mes "[Ustialla]";
+mes "But for now our protector sleeps. Oh Freya!! What do you dream in your peaceful slumber?";  
+next;
+mes "[Ustialla]";
+mes "You see, a long, long time ago during the times of the Thousand Year War, Freya waged a war against terrible demons for our sake.";
+next;
+mes "[Ustialla]";
+mes "Although she was victorious, she was also very exhausted. She promised humanity she would return one day and bless us once more with her presense.";
+next;
+mes "[Ustialla]";
+mes "Now she rests in a realm of uncomprehendible beauty, where only the most righteous souls may be witness to her countenance.";
+next;
+mes "[Ustialla]";
+mes "When she dreams, she appears to us in a physical form in Midgard, a being with hair white as freshly-fallen snow and and the fairest features ever seen.";
+next;
+mes "[Ustialla]";
+mes "It is none other than our Pope! The human embodiment of Freya, may she be blessed always and forever...";
+next;
+mes "[Ustialla]";
+mes "That is the truth that all followers of Freya know by heart. Oh, Freya...!";
+next;
+mes "[Ustialla]";
+mes "My dear guest from afar, I beg you... Will you heed a request from me?";
+next;
+mes "[Ustialla]";
+mes "Freya is a goddess of beauty, of love, grace and peace ... All beautiful things in the world are her making.";
+next;
+mes "[Ustialla]";
+mes "A while ago I attained a precious necklace made by Dwarves, rarely seen masters of forgery.";
+next;
+mes "[Ustialla]";
+mes "The strange pawn shop owner sold to to me for a cheap price, even though he said he went through a lot of trouble to get it...";
+next;
+mes "[Ustialla]";
+mes "If I was able to get this necklace to shine brighter, I have no doubt Freya would bless us for our troubles ... Will you please help me?";
+next;
+mes "[Ustialla]";
+mes " ... ";
+next;
+menu "Sorry, but I'd rather not get involved.",-,"Leave it up to me.",L_Helpout;
+mes "[Ustialla]";
+mes "Oh.. I see.. I guess even if we share the same faith, we're just strangers in the end, aren't we...";
+cutin "ra_usti1",255;
+close;
+
+L_menu2: 
+mes "[Ustialla]";
+mes "Visit the Sanctuary, a monument to our savior, our goddess... Ohh, Freya...!";
+cutin "ra_usti1",255;
+close;
+
+L_Helpout:
+mes "[Ustialla]";
+mes "Bless you! Bless you! A young person by the name of ^3366FFMaheeo^000000, the brother of our Pope, left for the Ice Caves up north.";
+next;
+mes "[Ustialla]";
+mes "The Pope is near-impossible to meet, but you'd have little problems talking to her brother.";
+next;
+mes "[Ustialla]";
+mes "He hasn't been seen or heard from for days since he left, but you must find him! Because I'm positive he'll have the capability to make this necklace glow bright once more."; 
+next;
+mes "[Ustialla]";
+mes "Please, take the necklace with you and find him! May the will of Freya guide you safely..."; 
+getitem 7572,1;
+set KTULLQ,1;
+cutin "ra_usti1",255;
+close;
+
+L_Helpout2:
+cutin "ra_usti1",2;
+mes "[Ustialla]";
+mes "A young person by the name of ^3366FFMaheeo^000000, said to only do battle with the greatest of Magicians in the land, left for the Ice Caves up north.";
+next;
+mes "[Ustialla]";
+mes "He hasn't been seen or heard from for weeks since then, but you must find him! Because I'm positive he'll have the capability to make this necklace glow bright once more."; 
+next;
+mes "[Ustialla]";
+mes "Please, take the necklace with you and find him! May the will of Freya guide you safely..."; 
+cutin "ra_usti1",255;
+close;
+
+L_GiveNecklace:
+if(countitem(7573)){
+mes "[Ustialla]";
+mes "Oh, hello foreigner... What's that?";
+next;
+mes "[Ustialla]";
+mes "Why, the necklace! It's so beautiful now! Ohh, Freya...! You have surely blessed us!";
+next;
+mes "[Ustialla]";
+mes "I will donate the necklace to the Sanctuary in our name, and I'm sure Freya will be most pleased with our efforts.";
+next;
+mes "[Ustialla]";
+mes "Please, take this as a gift from me. You may be new to our ways, foreigner, but you feel like a sibling to me!";
+getitem 616,1;
+delitem 7573,1;
+set KTULLQ,9;
+set KtullQuestDone,1;
+set BaseExp,BaseExp +5000000;
+set JobExp,JobExp +200000;
+dispbottom "You received 5,000,000 Base EXP and 2,000,000 Job EXP!";
+close;
+}
+mes "[Ustialla]";
+mes "The old necklace... You found Maheo, didn't you? He's the only one who can make it shine once more.";
+close;
+
+L_QuestCompleted:
+mes "[Ustialla]";
+mes "My sibling, we are all the children of Freya's love.";
+next;
+mes "[Ustialla]";
+mes "People such as you who are so gracious must be held high in the eyes of our goddess...";
+next;
+mes "[Ustialla]";
+mes "Ohh, Freya...!";
+set KTULLQ,3;
+emotion e_lv;
+close;
+
+}
+
+//=========================================================
+
+ra_fild01,244,326,3	script	Morden 	798,{
+
+if (KTULLQ == 9 || KtullQuestDone == 1) goto L_QuestCompleted2; 
+
+mes "[Morden]";
+mes "Young Master Maheeo! Where are you...?"; 
+next;
+mes "[Morden]";
+mes "You left to fight a creature... What was it called? ^3366FFKtullanux^000000...? The ancient ice salamander that continues to make this cave a wintery haven for ice monsters...";
+next;
+mes "[Morden]";
+mes "I think you're in deeper than you can handle! I'd try to rescue you but, oooh!"; 
+next;
+mes "[Morden]";
+mes "Am I such a coward I won't risk entering the caves for your sake? Master...";
+next;
+if(KTULLQ == 1)
+{
+mes "[Morden]";
+mes "*Sigh*";
+emotion e_sob;
+set KTULLQ,2;
+close;
+}
+else
+{
+mes "[Morden]";
+mes "*Sigh*";
+emotion e_sob;
+close;
+}
+
+L_QuestCompleted2:
+mes "[Morden]";
+mes "Young Master Maheeo! Where are you...?"; 
+next;
+mes "[Morden]";
+mes "What's that? He's trapped in the depths of the caves...?"; 
+next;
+mes "[Morden]";
+mes "He says not to worry about him? Freya will hear his prayers?"; 
+next;
+mes "[Morden]";
+mes "Oh, Master Maheeo... May Freya guide you home..."; 
+close;
+
+}
+
+//======================================================
+ice_dun02,1,1,1	script	KtullDisabler 	-1,{
+
+OnInit:
+disablenpc "KtullMagician";
+disablenpc "KtullMaheeo";
+disablenpc "Warp#Ktullwarp1";
+end;
+
+}
+//======================================================
+
+ice_dun02,207,221,5	script	#KtullFreeze	924,{
+
+cutin "ra_magic3",2;
+mes "This magician is frozen completely in ice!";
+next;
+if(KTULLQ == 3) goto L_RemindCrystalItems;
+if(KTULLQ >= 2 && !countitem(7098)) goto L_Melt1;
+if(KTULLQ >= 2 && countitem(7098)) goto L_Melt2;
+mes "He must be awfully cold...";
+cutin "ra_magic3",255;
+close;
+
+L_Melt1:
+mes "If only you had some ^ff0000Live Coals^000000 to put around him, perhaps you could melt the ice away?";
+cutin "ra_magic3",255;
+close;
+
+L_Melt3:
+mes "You put the live coals around him, but they don't seem to be hot enough to melt the ice. Maybe bring more of them?";
+delitem 7098,countitem(7098);
+cutin "ra_magic3",255;
+close;
+
+L_Melt2:
+if(countitem(7098) < 25) goto L_Melt3;
+mes "You put the coals around him, and their collected warmth is starting to melt the ice!";
+close2;	
+delitem 7098,25;
+enablenpc "KtullMagician";
+cutin "ra_magic3",255;
+disablenpc "#KtullFreeze";
+end;
+
+L_RemindCrystalItems:
+mes "He said that on the third level of the cave there are four magical crystals to activate counter-clockwise to release Ktullanux.";
+next;
+mes "Each of the crystals requires certain items in order to be activated...";
+next;
+mes "^3366FF100 Ice Hearts, 100 Ice Cubics, 100 Blue Gemstones, 100 Crystal Blues^000000 in that order... And only 1 minute to activate them all or else it restarts...";
+close;
+
+}
+
+//==========================================================
+
+ice_dun02,207,221,5	script	Magician::KtullMagician	937,{
+
+mes "[Magician Sloegdh]";
+mes "...";
+next;
+if(KTULLQ == 2) goto L_Melted1;
+if(KTULLQ >= 3) goto L_Melted2;
+mes "[Magician Sloegdh]";
+mes "Where am I...?";
+close;
+
+L_Melted1:
+mes "[Magician Sloegdh]";
+mes "Where am I...? Oh, that's right, I'm here in the Ice Caves... Ugghh, what's the date...?";
+next;
+mes "[Magician Sloegdh]";
+mes "...Really? Wow, it seems I've been frozen for several days now... Last thing I remember is feeling a gust of cold wind...";
+next;
+mes "[Magician Sloegdh]";
+mes "I've been hunting this ice salamander for a while now, I read about how one can release it.";
+next;
+mes "[Magician Sloegdh]";
+mes "Ancient texts say the goddess Freya sealed the ice salamander in the depths of this cave to prevent it from spreading an everlasting winter across the land.";
+next;
+mes "[Magician Sloegdh]";
+mes "If I remember correctly, on the third level of this cave there are four magical crystals you must activate counter-clockwise to release it...";
+next;
+mes "[Magician Sloegdh]";
+mes "Each of the crystals require you to sacrifice certain items in order to be activated...";
+next;
+mes "[Magician Sloegdh]";
+mes "^3366FF100 Ice Hearts, 100 Ice Cubics, 100 Blue Gemstones, 100 Crystal Blues^000000 in that order... And you only have 1 minute to activate them all or else it restarts...";
+next;
+mes "[Magician Sloegdh]";
+mes "Yeah, that's it! I remember it all now... Burr!";
+next;
+mes "[Magician Sloegdh]";
+mes "Hey buddy, think you can spare a jacket or a parka or somethin'...? I'm freezin' over here!";
+next;
+mes "A frigid gust of wind swoops from behind you and blows on the Magician... Ice starts to form on him!";
+next;
+mes "[Magician Sloegdh]";
+mes "AHHH, not AGAIN!!";
+close2;
+set KTULLQ,3;
+enablenpc "#KtullFreeze";
+disablenpc "KtullMagician";
+end;
+
+L_Melted2:
+mes "[Magician Sloegdh]";
+mes "Hey buddy, think you can spare a jacket or a parka or somethin'...? I'm freezin' over here!";
+next;
+if(getmapusers("ice_dun02") < 2) {
+enablenpc "#KtullFreeze";
+disablenpc "KtullMagician";
+close;
+}
+else
+{
+close;
+}
+
+}
+
+//===========================================================
+
+//Crystal 1
+ice_dun03,127,172,0	script	Crystal#KtullCrys1	111,{
+
+//So if the guy releases Ktullanux and doesn't kill him or continue with the quest, this NPC
+//is disabled for a few hours, and he can try again from KTULLQ 3 when it returns, as intended.
+if(KTULLQ == 7) set KTULLQ,3;
+
+mes "There is a large crystal here.";
+next;
+if(KTULLQ == 3 || KtullQuestDone == 1)
+{
+mes "It's the first crystal you must activate, and requires ^3366FF100 Ice Hearts^000000 to be activated.";
+next;
+menu "Sacrifice 100 Ice Hearts",L_Sacrifice1,"Don't do anything.",L_End1;
+}
+else
+{
+mes "It possesses a strange yet mezmerizing aura.";
+close;
+}
+  
+L_Sacrifice1:
+if (countitem(7561) < 100) goto L_NoItems1;
+delitem 7561,100;
+mapannounce "ice_dun03", "The first crystal has been activated.",bc_npc;
+
+mes "You've activated the first crystal. It now glows with a bright ^8C79ADwhite aura^000000.";
+next;
+mes "Hurry, you need to activate the other three crystals.";
+close2;
+addtimer 60000,"KtullTimer::OnTooLate";
+set KTULLQ,4;
+disablenpc "Crystal#KtullCrys1";
+end;
+
+L_NoItems1:
+mes "You don't have the right items to activate the crystal.";
+close;
+
+L_End1:
+mes "You left the crystal alone.";
+close;
+}
+//==========================================================
+
+//Crystal 2
+ice_dun03,127,126,0	script	Crystal#KtullCrys2	111,{
+
+mes "There is a large crystal here.";
+next;
+if(KTULLQ == 4)
+{
+mes "It's the second crystal you must activate, and requires ^3366FF100 Ice Cubic^000000 to be activated.";
+next;
+menu "Sacrifice 100 Ice Cubic",L_Sacrifice2,
+"Don't do anything.",L_End2;
+}
+else
+{
+mes "It possesses a strange yet mezmerizing aura.";
+close;
+}
+  
+L_Sacrifice2:
+if (countitem(7066) < 100) goto L_NoItems2;
+delitem 7066,100;
+mapannounce "ice_dun03", "The second crystal has been activated.",bc_npc;
+
+mes "You've activated the second crystal. It now glows with a bright ^8C79ADwhite aura^000000.";
+next;
+mes "Hurry, you need to activate the other two crystals.";
+set KTULLQ,5;
+disablenpc "Crystal#KtullCrys2";
+close;
+
+L_NoItems2:
+mes "You don't have the right items to activate the crystal.";
+close;
+
+L_End2:
+mes "You left the crystal alone.";
+close;
+}
+
+//==========================================================
+
+//Crystal 3
+ice_dun03,172,126,0	script	Crystal#KtullCrys3	111,{
+
+mes "There is a large crystal here.";
+next;
+if(KTULLQ == 5)
+{
+mes "It's the third crystal you must activate, and requires ^3366FF100 Blue Gemstones^000000 to be activated.";
+next;
+menu "Sacrifice 100 Blue Gemstones",L_Sacrifice3,
+"Don't do anything.",L_End3;
+}
+else
+{
+mes "It possesses a strange yet mezmerizing aura.";
+close;
+}
+  
+L_Sacrifice3:
+if (countitem(717) < 100) goto L_NoItems3;
+delitem 717,100;
+mapannounce "ice_dun03", "The third crystal has been activated.",bc_npc;
+
+mes "You've activated the third crystal. It now glows with a bright ^8C79ADwhite aura^000000.";
+next;
+mes "All that's left is to activate the final crystal.";
+set KTULLQ,6;
+disablenpc "Crystal#KtullCrys3";
+close;
+
+L_NoItems3:
+mes "You don't have the right items to activate the crystal.";
+close;
+
+L_End3:
+mes "You left the crystal alone.";
+close;
+}
+
+//==========================================================
+
+//Crystal 4
+ice_dun03,172,173,0	script	Crystal#KtullCrys4	111,{
+
+mes "There is a large crystal here.";
+next;
+if(KTULLQ == 6)
+{
+mes "It's the final crystal you must activate, and requires ^3366FF100 Crystal Blues^000000 to be activated.";
+next;
+menu "Sacrifice 100 Crystal Blues",L_Sacrifice4,
+"Don't do anything.",L_End4;
+}
+else
+{
+mes "It possesses a strange yet mezmerizing aura.";
+close;
+}
+
+L_Sacrifice4:
+if (countitem(991) < 100) goto L_NoItems4;
+delitem 991,100;
+mapannounce "ice_dun03", "All crystals are activated. Ktullanux has been released.",bc_npc;
+
+mes "You've activated the fourth crystal. It now glows with a bright ^8C79ADwhite aura^000000.";
+next;
+mes "With all four crystals activated, Ktullanux is released.";
+initnpctimer;
+set KTULLQ,7;
+areamonster "ice_dun03",118,118,182,182,"Ktullanux",1779,1,"Icedun03monster::OnKtullDead";
+areamonster "ice_dun03",1,1,300,300,"Ice Titan",1777,30,"Icedun03monster::OnSlaveDead";
+areamonster "ice_dun03",1,1,300,300,"Gazeti",1778,20,"Icedun03monster::OnSlaveDead";
+areamonster "ice_dun03",1,1,300,300,"Iceicle",1789,40,"Icedun03monster::OnSlaveDead";
+disablenpc "Warp#Ktullwarp1";
+disablenpc "Crystal#KtullCrys4";
+close;
+
+L_NoItems4:
+mes "You don't have the right items to activate the crystal.";
+close;
+
+L_End4:
+mes "You left the crystal alone.";
+close;
+
+//This timer goes off whether the player is on or not.
+//Whether or not they've killed Ktullanux does not matter.
+//Only thing it cannot do is put their var back to 3 if they didn't kill him and logged.
+//If they killed him, cool. If not, Crystal 1 will set their var back to 3 when they try again.
+//This timer essentially limits how many Ktullanuxes can be made.
+OnTimer86400000:
+	killmonster "ice_dun03","Icedun03monster::OnKtullDead";
+	killmonster "ice_dun03","Icedun03monster::OnSlaveDead";
+	enablenpc "Crystal#KtullCrys1";
+	enablenpc "Crystal#KtullCrys2";
+	enablenpc "Crystal#KtullCrys3";
+	enablenpc "Crystal#KtullCrys4";
+	mapannounce "ice_dun03", "The crystals have regained their power.",bc_npc;
+	end;
+}
+
+//==========================================================
+
+ice_dun03,1,1,1	script	KtullTimer	-1,{
+
+//60 secs handled by the addtimer, player will most probably not log off.
+//That is the only problem with the quest, but it's inevitable.
+//GM Reset NPC exists in rare event that this happens to enable the crystals.
+//Player's variable is still an issue, as they can go on to enable the remaining crystals after relogging.
+//And if they don't, crystals are locked until GM intervention.
+OnTooLate:
+if (KTULLQ == 7) end;
+mapannounce "ice_dun03", "All four crystals weren't activated in time.",bc_npc;
+set KTULLQ,3;
+enablenpc "Crystal#KtullCrys1";
+enablenpc "Crystal#KtullCrys2";
+enablenpc "Crystal#KtullCrys3";
+end;
+}
+
+
+//==========================================================
+ice_dun03,1,1,1	script	Icedun03monster	-1,{
+
+OnKtullDead:
+killmonster "ice_dun03","Icedun03monster::OnSlaveDead";
+enablenpc "Warp#Ktullwarp1";
+end;
+
+OnSlaveDead:
+end;
+}
+
+//==========================================================
+
+ice_dun04,33,166,5	script	#KtullFreeze2	925,{
+
+cutin "ra_sboy",2;
+mes "This boy is frozen completely in ice!";
+next;
+if (KTULLQ < 7) goto L_DontBreak;
+menu "Use your weapon",-,"Don't do anything",L_DontBreak;
+
+if (getequipweaponlv(4) < 4) goto L_NotStrong;
+mes "You strike the ice with your weapon...";
+next;
+mes "...and you've successfully freed him!";
+close2;
+cutin "ra_sboy",255;
+enablenpc "KtullMaheeo";
+disablenpc "#KtullFreeze2";
+end;
+
+L_NotStrong:
+mes "You strike the ice with your weapon, but it's not strong enough to break him free.";
+cutin "ra_sboy",255;
+close;
+
+L_DontBreak:
+mes "He must be awfully cold...";
+cutin "ra_sboy",255;
+close;
+}
+
+//==========================================================
+
+ice_dun04,33,166,5	script	Maheeo::KtullMaheeo	922,{
+
+if(KtullQuestDone == 1) goto L_MaheeoDone;
+if(KtullMaheeoVar == 1 && !countitem(7572)) goto L_Freyaforgive;
+if(KtullMaheeoVar == 1 && countitem(7572)) goto L_MakeNecklace;
+
+mes "[Maheeo]";
+mes "W-where am I...?";
+next;
+mes "[Maheeo]";
+mes "Oh... I remember now, I came here to challenge the ice salamander, Ktullanux...";
+next;
+mes "[Maheeo]";
+mes "I found him, but... In the process I also got caught inside Freya's seal keeping the beast down here in the caves.";
+next;
+mes "[Maheeo]";
+mes "My sister is the Pope you see, I'm her younger brother. I wouldn't be surprised if you haven't heard of me..."; 
+next;
+mes "[Maheeo]";
+mes "She was deemed to be the human reincarnation of our goddess at her birth, so she always gets more attention then I do.";
+next;
+mes "[Maheeo]";
+mes "Because of that, I almost never get to see her anymore. It makes me really sad, I miss her so much."; 
+next;
+mes "[Maheeo]";
+mes "I thought if I could defeat the ice salamander, people would respect me as much as her, and I'd get to see her more often...";
+next;
+mes "[Maheeo]";
+mes "Now I might never see her face again...";
+next;
+mes "[Maheeo]";
+mes "I wouldn't be in the mess I'm in right now... if I wasn't so weak...";
+next;
+mes "[Maheeo]";
+mes "...what am I saying? I'm sure it was Freya's will you'd find me! As it was her will I'd end up here as punishment for my selfishness."; 
+next;
+mes "[Maheeo]";
+mes "Thank you for making me realize how stupid I was acting. I wish I could do something for you...";
+next;
+
+if(countitem(7572)) goto L_MakeNecklace;
+if(!countitem(7572)) goto L_Freyaforgive;
+
+L_MakeNecklace:
+mes "[Maheeo]";
+mes "...that necklace, it's so dull...";
+next;
+mes "[Maheeo]";
+mes "I'll make it bright again for you... beautiful as are all of Freya's gifts.";
+next;
+mes "...";
+delitem 7572,1;
+getitem 7573,1;
+next;
+mes "[Maheeo]";
+mes "There you go."; 
+next;
+mes "[Maheeo]";
+mes "Don't worry about me now, I'll remain here to ask for Freya's forgiveness.";
+next;
+mes "[Maheeo]";
+mes "She's a goddess of forgiveness as well as purity, you know.";
+next;
+mes "[Maheeo]";
+mes "I know she'll answer my prayers: that I really and deeply want to see my sister again...";
+next;
+mes "[Maheeo]";
+mes "Thank you...";
+close2;
+set KTULLQ,8;
+set KtullMaheeoVar,0;
+warp "rachel",0,0; 
+enablenpc "#KtullFreeze2";
+disablenpc "KtullMaheeo";
+end;
+
+L_Freyaforgive:
+mes "[Maheeo]";
+mes "If you have something I could make beautiful for you, please show it to me. It's the least I can do for you.";
+close2;
+set KtullMaheeoVar,1;
+end;
+
+L_MaheeoDone:
+mes "[Maheeo]";
+mes "Don't worry about me now, I'll remain here to ask for Freya's forgiveness.";
+next;
+mes "[Maheeo]";
+mes "She's a goddess of forgiveness as well as purity, you know.";
+next;
+mes "[Maheeo]";
+mes "I know she'll answer my prayers: that I really and deeply want to see my sister again...";
+next;
+mes "[Maheeo]";
+mes "Thank you...";
+close;
+
+}
+
+//==========================================================
+ice_dun03,149,136,0	script	Warp#Ktullwarp1	45,1,1,{
+
+OnTouch:
+if(KTULLQ != 7 || KtullMaheeoVar == 1)
+{
+warp "ice_dun03",0,0; 
+end;
+}
+else if (KTULLQ == 7)
+{
+warp "ice_dun04",34,143; 
+end;
+}
+}
+
+//==========================================================
+//Warps
+ice_dun04,33,138,0	warp	Ktullwarp2	1,1,ice_dun03,150,133
+
+//==========================================================
+//Mobs
+ice_dun03,127,172,5,5	monster	Iceicle	1789,5,60000,30000,0
+ice_dun03,172,173,5,5	monster	Iceicle	1789,5,60000,30000,0
+ice_dun03,127,126,5,5	monster	Iceicle	1789,5,60000,30000,0
+ice_dun03,172,126,5,5	monster	Iceicle	1789,5,60000,30000,0
+//===========================================================
+
+sec_in02,156,184,4	script	KtullCrystal GMReset	755,{
+
+killmonster "ice_dun03","Icedun03monster::OnKtullDead";
+killmonster "ice_dun03","Icedun03monster::OnSlaveDead";
+enablenpc "Crystal#KtullCrys1";
+enablenpc "Crystal#KtullCrys2";
+enablenpc "Crystal#KtullCrys3";
+enablenpc "Crystal#KtullCrys4";
+end;
+}

@@ -1,0 +1,2104 @@
+
+//==============================
+// Deliverance Eggschanger 0.5 =
+//==============================
+
+hugel,89,150,4 script Eggschanger 800,{
+
+
+
+
+mes "[Eggschanger]";
+mes "Hello! I can exchange pet vouchers for functional pet eggs! Let me see if you have any...";
+next;
+
+if(countitem(29200)) {
+delitem 29200,1;
+makepet 1005;
+goto L_YesVoucher;
+}
+
+if(countitem(29201)) {
+delitem 29201,1;
+makepet 1013;
+goto L_YesVoucher;
+}
+
+if(countitem(29202)) {
+delitem 29202,1;
+makepet 1015;
+goto L_YesVoucher;
+}
+
+if(countitem(29203)) {
+delitem 29203,1;
+makepet 1016;
+goto L_YesVoucher;
+}
+
+if(countitem(29204)) {
+delitem 29204,1;
+makepet 1017;
+goto L_YesVoucher;
+}
+
+if(countitem(29205)) {
+delitem 29205,1;
+makepet 1022;
+goto L_YesVoucher;
+}
+
+if(countitem(29206)) {
+delitem 29206,1;
+makepet 1025;
+goto L_YesVoucher;
+}
+
+if(countitem(29207)) {
+delitem 29207,1;
+makepet 1027;
+goto L_YesVoucher;
+}
+
+if(countitem(29208)) {
+delitem 29208,1;
+makepet 1028;
+goto L_YesVoucher;
+}
+
+if(countitem(29209)) {
+delitem 29209,1;
+makepet 1030;
+goto L_YesVoucher;
+}
+
+if(countitem(29210)) {
+delitem 29210,1;
+makepet 1032;
+goto L_YesVoucher;
+}
+
+if(countitem(29211)) {
+delitem 29211,1;
+makepet 1033;
+goto L_YesVoucher;
+}
+
+if(countitem(29212)) {
+delitem 29212,1;
+makepet 1034;
+goto L_YesVoucher;
+}
+
+if(countitem(29213)) {
+delitem 29213,1;
+makepet 1036;
+goto L_YesVoucher;
+}
+
+if(countitem(29214)) {
+delitem 29214,1;
+makepet 1037;
+goto L_YesVoucher;
+}
+
+if(countitem(29215)) {
+delitem 29215,1;
+makepet 1038;
+goto L_YesVoucher;
+}
+
+if(countitem(29216)) {
+delitem 29216,1;
+makepet 1039;
+goto L_YesVoucher;
+}
+
+if(countitem(29217)) {
+delitem 29217,1;
+makepet 1040;
+goto L_YesVoucher;
+}
+
+if(countitem(29218)) {
+delitem 29218,1;
+makepet 1041;
+goto L_YesVoucher;
+}
+
+if(countitem(29219)) {
+delitem 29219,1;
+makepet 1045;
+goto L_YesVoucher;
+}
+
+if(countitem(29220)) {
+delitem 29220,1;
+makepet 1046;
+goto L_YesVoucher;
+}
+
+if(countitem(29221)) {
+delitem 29221,1;
+makepet 1050;
+goto L_YesVoucher;
+}
+
+if(countitem(29222)) {
+delitem 29222,1;
+makepet 1055;
+goto L_YesVoucher;
+}
+
+if(countitem(29223)) {
+delitem 29223,1;
+makepet 1058;
+goto L_YesVoucher;
+}
+
+if(countitem(29224)) {
+delitem 29224,1;
+makepet 1059;
+goto L_YesVoucher;
+}
+
+if(countitem(29225)) {
+delitem 29225,1;
+makepet 1060;
+goto L_YesVoucher;
+}
+
+if(countitem(29226)) {
+delitem 29226,1;
+makepet 1061;
+goto L_YesVoucher;
+}
+
+if(countitem(29227)) {
+delitem 29227,1;
+makepet 1062;
+goto L_YesVoucher;
+}
+
+if(countitem(29228)) {
+delitem 29228,1;
+makepet 1066;
+goto L_YesVoucher;
+}
+
+if(countitem(29229)) {
+delitem 29229,1;
+makepet 1069;
+goto L_YesVoucher;
+}
+
+if(countitem(29230)) {
+delitem 29230,1;
+makepet 1071;
+goto L_YesVoucher;
+}
+
+if(countitem(29231)) {
+delitem 29231,1;
+makepet 1072;
+goto L_YesVoucher;
+}
+
+if(countitem(29232)) {
+delitem 29232,1;
+makepet 1073;
+goto L_YesVoucher;
+}
+
+if(countitem(29233)) {
+delitem 29233,1;
+makepet 1074;
+goto L_YesVoucher;
+}
+
+if(countitem(29234)) {
+delitem 29234,1;
+makepet 1076;
+goto L_YesVoucher;
+}
+
+if(countitem(29235)) {
+delitem 29235,1;
+makepet 1077;
+goto L_YesVoucher;
+}
+
+if(countitem(29236)) {
+delitem 29236,1;
+makepet 1083;
+goto L_YesVoucher;
+}
+
+if(countitem(29237)) {
+delitem 29237,1;
+makepet 1084;
+goto L_YesVoucher;
+}
+
+if(countitem(29238)) {
+delitem 29238,1;
+makepet 1085;
+goto L_YesVoucher;
+}
+
+if(countitem(29239)) {
+delitem 29239,1;
+makepet 1086;
+goto L_YesVoucher;
+}
+
+if(countitem(29240)) {
+delitem 29240,1;
+makepet 1087;
+goto L_YesVoucher;
+}
+
+if(countitem(29241)) {
+delitem 29241,1;
+makepet 1090;
+goto L_YesVoucher;
+}
+
+if(countitem(29242)) {
+delitem 29242,1;
+makepet 1091;
+goto L_YesVoucher;
+}
+
+if(countitem(29243)) {
+delitem 29243,1;
+makepet 1092;
+goto L_YesVoucher;
+}
+
+if(countitem(29244)) {
+delitem 29244,1;
+makepet 1093;
+goto L_YesVoucher;
+}
+
+if(countitem(29245)) {
+delitem 29245,1;
+makepet 1095;
+goto L_YesVoucher;
+}
+
+if(countitem(29246)) {
+delitem 29246,1;
+makepet 1096;
+goto L_YesVoucher;
+}
+
+if(countitem(29247)) {
+delitem 29247,1;
+makepet 1099;
+goto L_YesVoucher;
+}
+
+if(countitem(29248)) {
+delitem 29248,1;
+makepet 1102;
+goto L_YesVoucher;
+}
+
+if(countitem(29249)) {
+delitem 29249,1;
+makepet 1103;
+goto L_YesVoucher;
+}
+
+if(countitem(29250)) {
+delitem 29250,1;
+makepet 1104;
+goto L_YesVoucher;
+}
+
+if(countitem(29251)) {
+delitem 29251,1;
+makepet 1105;
+goto L_YesVoucher;
+}
+
+if(countitem(29252)) {
+delitem 29252,1;
+makepet 1106;
+goto L_YesVoucher;
+}
+
+if(countitem(29253)) {
+delitem 29253,1;
+makepet 1108;
+goto L_YesVoucher;
+}
+
+if(countitem(29254)) {
+delitem 29254,1;
+makepet 1111;
+goto L_YesVoucher;
+}
+
+if(countitem(29255)) {
+delitem 29255,1;
+makepet 1112;
+goto L_YesVoucher;
+}
+
+if(countitem(29256)) {
+delitem 29256,1;
+makepet 1114;
+goto L_YesVoucher;
+}
+
+if(countitem(29257)) {
+delitem 29257,1;
+makepet 1115;
+goto L_YesVoucher;
+}
+
+if(countitem(29258)) {
+delitem 29258,1;
+makepet 1116;
+goto L_YesVoucher;
+}
+
+if(countitem(29259)) {
+delitem 29259,1;
+makepet 1117;
+goto L_YesVoucher;
+}
+
+if(countitem(29260)) {
+delitem 29260,1;
+makepet 1118;
+goto L_YesVoucher;
+}
+
+if(countitem(29261)) {
+delitem 29261,1;
+makepet 1120;
+goto L_YesVoucher;
+}
+
+if(countitem(29262)) {
+delitem 29262,1;
+makepet 1121;
+goto L_YesVoucher;
+}
+
+if(countitem(29263)) {
+delitem 29263,1;
+makepet 1122;
+goto L_YesVoucher;
+}
+
+if(countitem(29264)) {
+delitem 29264,1;
+makepet 1123;
+goto L_YesVoucher;
+}
+
+if(countitem(29265)) {
+delitem 29265,1;
+makepet 1124;
+goto L_YesVoucher;
+}
+
+if(countitem(29266)) {
+delitem 29266,1;
+makepet 1125;
+goto L_YesVoucher;
+}
+
+if(countitem(29267)) {
+delitem 29267,1;
+makepet 1126;
+goto L_YesVoucher;
+}
+
+if(countitem(29268)) {
+delitem 29268,1;
+makepet 1127;
+goto L_YesVoucher;
+}
+
+if(countitem(29269)) {
+delitem 29269,1;
+makepet 1129;
+goto L_YesVoucher;
+}
+
+if(countitem(29270)) {
+delitem 29270,1;
+makepet 1130;
+goto L_YesVoucher;
+}
+
+if(countitem(29271)) {
+delitem 29271,1;
+makepet 1131;
+goto L_YesVoucher;
+}
+
+if(countitem(29272)) {
+delitem 29272,1;
+makepet 1132;
+goto L_YesVoucher;
+}
+
+if(countitem(29273)) {
+delitem 29273,1;
+makepet 1133;
+goto L_YesVoucher;
+}
+
+if(countitem(29274)) {
+delitem 29274,1;
+makepet 1134;
+goto L_YesVoucher;
+}
+
+if(countitem(29275)) {
+delitem 29275,1;
+makepet 1135;
+goto L_YesVoucher;
+}
+
+if(countitem(29276)) {
+delitem 29276,1;
+makepet 1136;
+goto L_YesVoucher;
+}
+
+if(countitem(29277)) {
+delitem 29277,1;
+makepet 1137;
+goto L_YesVoucher;
+}
+
+if(countitem(29278)) {
+delitem 29278,1;
+makepet 1138;
+goto L_YesVoucher;
+}
+
+if(countitem(29279)) {
+delitem 29279,1;
+makepet 1139;
+goto L_YesVoucher;
+}
+
+if(countitem(29280)) {
+delitem 29280,1;
+makepet 1140;
+goto L_YesVoucher;
+}
+
+if(countitem(29281)) {
+delitem 29281,1;
+makepet 1141;
+goto L_YesVoucher;
+}
+
+if(countitem(29282)) {
+delitem 29282,1;
+makepet 1142;
+goto L_YesVoucher;
+}
+
+if(countitem(29283)) {
+delitem 29283,1;
+makepet 1143;
+goto L_YesVoucher;
+}
+
+if(countitem(29284)) {
+delitem 29284,1;
+makepet 1145;
+goto L_YesVoucher;
+}
+
+if(countitem(29285)) {
+delitem 29285,1;
+makepet 1146;
+goto L_YesVoucher;
+}
+
+if(countitem(29286)) {
+delitem 29286,1;
+makepet 1147;
+goto L_YesVoucher;
+}
+
+if(countitem(29287)) {
+delitem 29287,1;
+makepet 1148;
+goto L_YesVoucher;
+}
+
+if(countitem(29288)) {
+delitem 29288,1;
+makepet 1149;
+goto L_YesVoucher;
+}
+
+if(countitem(29289)) {
+delitem 29289,1;
+makepet 1150;
+goto L_YesVoucher;
+}
+
+if(countitem(29290)) {
+delitem 29290,1;
+makepet 1151;
+goto L_YesVoucher;
+}
+
+if(countitem(29291)) {
+delitem 29291,1;
+makepet 1152;
+goto L_YesVoucher;
+}
+
+if(countitem(29292)) {
+delitem 29292,1;
+makepet 1153;
+goto L_YesVoucher;
+}
+
+if(countitem(29293)) {
+delitem 29293,1;
+makepet 1155;
+goto L_YesVoucher;
+}
+
+if(countitem(29294)) {
+delitem 29294,1;
+makepet 1156;
+goto L_YesVoucher;
+}
+
+if(countitem(29295)) {
+delitem 29295,1;
+makepet 1157;
+goto L_YesVoucher;
+}
+
+if(countitem(29296)) {
+delitem 29296,1;
+makepet 1158;
+goto L_YesVoucher;
+}
+
+if(countitem(29297)) {
+delitem 29297,1;
+makepet 1159;
+goto L_YesVoucher;
+}
+
+if(countitem(29298)) {
+delitem 29298,1;
+makepet 1160;
+goto L_YesVoucher;
+}
+
+if(countitem(29299)) {
+delitem 29299,1;
+makepet 1162;
+goto L_YesVoucher;
+}
+
+if(countitem(29300)) {
+delitem 29300,1;
+makepet 1163;
+goto L_YesVoucher;
+}
+
+if(countitem(29301)) {
+delitem 29301,1;
+makepet 1169;
+goto L_YesVoucher;
+}
+
+if(countitem(29302)) {
+delitem 29302,1;
+makepet 1171;
+goto L_YesVoucher;
+}
+
+if(countitem(29303)) {
+delitem 29303,1;
+makepet 1174;
+goto L_YesVoucher;
+}
+
+if(countitem(29304)) {
+delitem 29304,1;
+makepet 1175;
+goto L_YesVoucher;
+}
+
+if(countitem(29305)) {
+delitem 29305,1;
+makepet 1176;
+goto L_YesVoucher;
+}
+
+if(countitem(29306)) {
+delitem 29306,1;
+makepet 1177;
+goto L_YesVoucher;
+}
+
+if(countitem(29307)) {
+delitem 29307,1;
+makepet 1178;
+goto L_YesVoucher;
+}
+
+if(countitem(29308)) {
+delitem 29308,1;
+makepet 1179;
+goto L_YesVoucher;
+}
+
+if(countitem(29309)) {
+delitem 29309,1;
+makepet 1180;
+goto L_YesVoucher;
+}
+
+if(countitem(29310)) {
+delitem 29310,1;
+makepet 1186;
+goto L_YesVoucher;
+}
+
+if(countitem(29311)) {
+delitem 29311,1;
+makepet 1189;
+goto L_YesVoucher;
+}
+
+if(countitem(29312)) {
+delitem 29312,1;
+makepet 1190;
+goto L_YesVoucher;
+}
+
+if(countitem(29313)) {
+delitem 29313,1;
+makepet 1191;
+goto L_YesVoucher;
+}
+
+if(countitem(29314)) {
+delitem 29314,1;
+makepet 1192;
+goto L_YesVoucher;
+}
+
+if(countitem(29315)) {
+delitem 29315,1;
+makepet 1194;
+goto L_YesVoucher;
+}
+
+if(countitem(29316)) {
+delitem 29316,1;
+makepet 1195;
+goto L_YesVoucher;
+}
+
+if(countitem(29317)) {
+delitem 29317,1;
+makepet 1196;
+goto L_YesVoucher;
+}
+
+if(countitem(29318)) {
+delitem 29318,1;
+makepet 1197;
+goto L_YesVoucher;
+}
+
+if(countitem(29319)) {
+delitem 29319,1;
+makepet 1198;
+goto L_YesVoucher;
+}
+
+if(countitem(29320)) {
+delitem 29320,1;
+makepet 1199;
+goto L_YesVoucher;
+}
+
+if(countitem(29321)) {
+delitem 29321,1;
+makepet 1203;
+goto L_YesVoucher;
+}
+
+if(countitem(29322)) {
+delitem 29322,1;
+makepet 1204;
+goto L_YesVoucher;
+}
+
+if(countitem(29323)) {
+delitem 29323,1;
+makepet 1205;
+goto L_YesVoucher;
+}
+
+if(countitem(29324)) {
+delitem 29324,1;
+makepet 1206;
+goto L_YesVoucher;
+}
+
+if(countitem(29325)) {
+delitem 29325,1;
+makepet 1207;
+goto L_YesVoucher;
+}
+
+if(countitem(29326)) {
+delitem 29326,1;
+makepet 1208;
+goto L_YesVoucher;
+}
+
+if(countitem(29327)) {
+delitem 29327,1;
+makepet 1211;
+goto L_YesVoucher;
+}
+
+if(countitem(29328)) {
+delitem 29328,1;
+makepet 1212;
+goto L_YesVoucher;
+}
+
+if(countitem(29329)) {
+delitem 29329,1;
+makepet 1213;
+goto L_YesVoucher;
+}
+
+if(countitem(29330)) {
+delitem 29330,1;
+makepet 1214;
+goto L_YesVoucher;
+}
+
+if(countitem(29331)) {
+delitem 29331,1;
+makepet 1216;
+goto L_YesVoucher;
+}
+
+if(countitem(29332)) {
+delitem 29332,1;
+makepet 1219;
+goto L_YesVoucher;
+}
+
+if(countitem(29333)) {
+delitem 29333,1;
+makepet 1242;
+goto L_YesVoucher;
+}
+
+if(countitem(29334)) {
+delitem 29334,1;
+makepet 1243;
+goto L_YesVoucher;
+}
+
+if(countitem(29335)) {
+delitem 29335,1;
+makepet 1244;
+goto L_YesVoucher;
+}
+
+if(countitem(29336)) {
+delitem 29336,1;
+makepet 1245;
+goto L_YesVoucher;
+}
+
+if(countitem(29337)) {
+delitem 29337,1;
+makepet 1246;
+goto L_YesVoucher;
+}
+
+if(countitem(29338)) {
+delitem 29338,1;
+makepet 1247;
+goto L_YesVoucher;
+}
+
+if(countitem(29339)) {
+delitem 29339,1;
+makepet 1248;
+goto L_YesVoucher;
+}
+
+if(countitem(29340)) {
+delitem 29340,1;
+makepet 1249;
+goto L_YesVoucher;
+}
+
+if(countitem(29341)) {
+delitem 29341,1;
+makepet 1250;
+goto L_YesVoucher;
+}
+
+if(countitem(29342)) {
+delitem 29342,1;
+makepet 1251;
+goto L_YesVoucher;
+}
+
+if(countitem(29343)) {
+delitem 29343,1;
+makepet 1252;
+goto L_YesVoucher;
+}
+
+if(countitem(29344)) {
+delitem 29344,1;
+makepet 1253;
+goto L_YesVoucher;
+}
+
+if(countitem(29345)) {
+delitem 29345,1;
+makepet 1254;
+goto L_YesVoucher;
+}
+
+if(countitem(29346)) {
+delitem 29346,1;
+makepet 1255;
+goto L_YesVoucher;
+}
+
+if(countitem(29347)) {
+delitem 29347,1;
+makepet 1256;
+goto L_YesVoucher;
+}
+
+if(countitem(29348)) {
+delitem 29348,1;
+makepet 1257;
+goto L_YesVoucher;
+}
+
+if(countitem(29349)) {
+delitem 29349,1;
+makepet 1258;
+goto L_YesVoucher;
+}
+
+if(countitem(29350)) {
+delitem 29350,1;
+makepet 1259;
+goto L_YesVoucher;
+}
+
+if(countitem(29351)) {
+delitem 29351,1;
+makepet 1260;
+goto L_YesVoucher;
+}
+
+if(countitem(29352)) {
+delitem 29352,1;
+makepet 1261;
+goto L_YesVoucher;
+}
+
+if(countitem(29353)) {
+delitem 29353,1;
+makepet 1262;
+goto L_YesVoucher;
+}
+
+if(countitem(29354)) {
+delitem 29354,1;
+makepet 1263;
+goto L_YesVoucher;
+}
+
+if(countitem(29355)) {
+delitem 29355,1;
+makepet 1264;
+goto L_YesVoucher;
+}
+
+if(countitem(29356)) {
+delitem 29356,1;
+makepet 1265;
+goto L_YesVoucher;
+}
+
+if(countitem(29357)) {
+delitem 29357,1;
+makepet 1267;
+goto L_YesVoucher;
+}
+
+if(countitem(29358)) {
+delitem 29358,1;
+makepet 1268;
+goto L_YesVoucher;
+}
+
+if(countitem(29359)) {
+delitem 29359,1;
+makepet 1269;
+goto L_YesVoucher;
+}
+
+if(countitem(29360)) {
+delitem 29360,1;
+makepet 1270;
+goto L_YesVoucher;
+}
+
+if(countitem(29361)) {
+delitem 29361,1;
+makepet 1272;
+goto L_YesVoucher;
+}
+
+if(countitem(29362)) {
+delitem 29362,1;
+makepet 1273;
+goto L_YesVoucher;
+}
+
+if(countitem(29363)) {
+delitem 29363,1;
+makepet 1274;
+goto L_YesVoucher;
+}
+
+if(countitem(29364)) {
+delitem 29364,1;
+makepet 1276;
+goto L_YesVoucher;
+}
+
+if(countitem(29365)) {
+delitem 29365,1;
+makepet 1277;
+goto L_YesVoucher;
+}
+
+if(countitem(29366)) {
+delitem 29366,1;
+makepet 1278;
+goto L_YesVoucher;
+}
+
+if(countitem(29367)) {
+delitem 29367,1;
+makepet 1281;
+goto L_YesVoucher;
+}
+
+if(countitem(29368)) {
+delitem 29368,1;
+makepet 1282;
+goto L_YesVoucher;
+}
+
+if(countitem(29369)) {
+delitem 29369,1;
+makepet 1283;
+goto L_YesVoucher;
+}
+
+if(countitem(29370)) {
+delitem 29370,1;
+makepet 1290;
+goto L_YesVoucher;
+}
+
+if(countitem(29371)) {
+delitem 29371,1;
+makepet 1291;
+goto L_YesVoucher;
+}
+
+if(countitem(29372)) {
+delitem 29372,1;
+makepet 1292;
+goto L_YesVoucher;
+}
+
+if(countitem(29373)) {
+delitem 29373,1;
+makepet 1294;
+goto L_YesVoucher;
+}
+
+if(countitem(29374)) {
+delitem 29374,1;
+makepet 1295;
+goto L_YesVoucher;
+}
+
+if(countitem(29375)) {
+delitem 29375,1;
+makepet 1296;
+goto L_YesVoucher;
+}
+
+if(countitem(29376)) {
+delitem 29376,1;
+makepet 1297;
+goto L_YesVoucher;
+}
+
+if(countitem(29377)) {
+delitem 29377,1;
+makepet 1298;
+goto L_YesVoucher;
+}
+
+if(countitem(29378)) {
+delitem 29378,1;
+makepet 1299;
+goto L_YesVoucher;
+}
+
+if(countitem(29379)) {
+delitem 29379,1;
+makepet 1302;
+goto L_YesVoucher;
+}
+
+if(countitem(29380)) {
+delitem 29380,1;
+makepet 1307;
+goto L_YesVoucher;
+}
+
+if(countitem(29381)) {
+delitem 29381,1;
+makepet 1310;
+goto L_YesVoucher;
+}
+
+if(countitem(29382)) {
+delitem 29382,1;
+makepet 1312;
+goto L_YesVoucher;
+}
+
+if(countitem(29383)) {
+delitem 29383,1;
+makepet 1314;
+goto L_YesVoucher;
+}
+
+if(countitem(29384)) {
+delitem 29384,1;
+makepet 1315;
+goto L_YesVoucher;
+}
+
+if(countitem(29385)) {
+delitem 29385,1;
+makepet 1316;
+goto L_YesVoucher;
+}
+
+if(countitem(29386)) {
+delitem 29386,1;
+makepet 1317;
+goto L_YesVoucher;
+}
+
+if(countitem(29387)) {
+delitem 29387,1;
+makepet 1318;
+goto L_YesVoucher;
+}
+
+if(countitem(29388)) {
+delitem 29388,1;
+makepet 1319;
+goto L_YesVoucher;
+}
+
+if(countitem(29389)) {
+delitem 29389,1;
+makepet 1320;
+goto L_YesVoucher;
+}
+
+if(countitem(29390)) {
+delitem 29390,1;
+makepet 1321;
+goto L_YesVoucher;
+}
+
+if(countitem(29391)) {
+delitem 29391,1;
+makepet 1323;
+goto L_YesVoucher;
+}
+
+if(countitem(29392)) {
+delitem 29392,1;
+makepet 1365;
+goto L_YesVoucher;
+}
+
+if(countitem(29393)) {
+delitem 29393,1;
+makepet 1367;
+goto L_YesVoucher;
+}
+
+if(countitem(29394)) {
+delitem 29394,1;
+makepet 1368;
+goto L_YesVoucher;
+}
+
+if(countitem(29395)) {
+delitem 29395,1;
+makepet 1369;
+goto L_YesVoucher;
+}
+
+if(countitem(29396)) {
+delitem 29396,1;
+makepet 1370;
+goto L_YesVoucher;
+}
+
+if(countitem(29397)) {
+delitem 29397,1;
+makepet 1371;
+goto L_YesVoucher;
+}
+
+if(countitem(29398)) {
+delitem 29398,1;
+makepet 1372;
+goto L_YesVoucher;
+}
+
+if(countitem(29399)) {
+delitem 29399,1;
+makepet 1373;
+goto L_YesVoucher;
+}
+
+if(countitem(29400)) {
+delitem 29400,1;
+makepet 1374;
+goto L_YesVoucher;
+}
+
+if(countitem(29401)) {
+delitem 29401,1;
+makepet 1375;
+goto L_YesVoucher;
+}
+
+if(countitem(29402)) {
+delitem 29402,1;
+makepet 1376;
+goto L_YesVoucher;
+}
+
+if(countitem(29403)) {
+delitem 29403,1;
+makepet 1377;
+goto L_YesVoucher;
+}
+
+if(countitem(29404)) {
+delitem 29404,1;
+makepet 1379;
+goto L_YesVoucher;
+}
+
+if(countitem(29405)) {
+delitem 29405,1;
+makepet 1380;
+goto L_YesVoucher;
+}
+
+if(countitem(29406)) {
+delitem 29406,1;
+makepet 1381;
+goto L_YesVoucher;
+}
+
+if(countitem(29407)) {
+delitem 29407,1;
+makepet 1382;
+goto L_YesVoucher;
+}
+
+if(countitem(29408)) {
+delitem 29408,1;
+makepet 1383;
+goto L_YesVoucher;
+}
+
+if(countitem(29409)) {
+delitem 29409,1;
+makepet 1384;
+goto L_YesVoucher;
+}
+
+if(countitem(29410)) {
+delitem 29410,1;
+makepet 1385;
+goto L_YesVoucher;
+}
+
+if(countitem(29411)) {
+delitem 29411,1;
+makepet 1388;
+goto L_YesVoucher;
+}
+
+if(countitem(29412)) {
+delitem 29412,1;
+makepet 1389;
+goto L_YesVoucher;
+}
+
+if(countitem(29413)) {
+delitem 29413,1;
+makepet 1390;
+goto L_YesVoucher;
+}
+
+if(countitem(29414)) {
+delitem 29414,1;
+makepet 1391;
+goto L_YesVoucher;
+}
+
+if(countitem(29415)) {
+delitem 29415,1;
+makepet 1401;
+goto L_YesVoucher;
+}
+
+if(countitem(29416)) {
+delitem 29416,1;
+makepet 1403;
+goto L_YesVoucher;
+}
+
+if(countitem(29417)) {
+delitem 29417,1;
+makepet 1404;
+goto L_YesVoucher;
+}
+
+if(countitem(29418)) {
+delitem 29418,1;
+makepet 1405;
+goto L_YesVoucher;
+}
+
+if(countitem(29419)) {
+delitem 29419,1;
+makepet 1406;
+goto L_YesVoucher;
+}
+
+if(countitem(29420)) {
+delitem 29420,1;
+makepet 1408;
+goto L_YesVoucher;
+}
+
+if(countitem(29421)) {
+delitem 29421,1;
+makepet 1409;
+goto L_YesVoucher;
+}
+
+if(countitem(29422)) {
+delitem 29422,1;
+makepet 1410;
+goto L_YesVoucher;
+}
+
+if(countitem(29423)) {
+delitem 29423,1;
+makepet 1412;
+goto L_YesVoucher;
+}
+
+if(countitem(29424)) {
+delitem 29424,1;
+makepet 1415;
+goto L_YesVoucher;
+}
+
+if(countitem(29425)) {
+delitem 29425,1;
+makepet 1416;
+goto L_YesVoucher;
+}
+
+if(countitem(29426)) {
+delitem 29426,1;
+makepet 1417;
+goto L_YesVoucher;
+}
+
+if(countitem(29427)) {
+delitem 29427,1;
+makepet 1418;
+goto L_YesVoucher;
+}
+
+if(countitem(29428)) {
+delitem 29428,1;
+makepet 1492;
+goto L_YesVoucher;
+}
+
+if(countitem(29429)) {
+delitem 29429,1;
+makepet 1493;
+goto L_YesVoucher;
+}
+
+if(countitem(29430)) {
+delitem 29430,1;
+makepet 1495;
+goto L_YesVoucher;
+}
+
+if(countitem(29431)) {
+delitem 29431,1;
+makepet 1497;
+goto L_YesVoucher;
+}
+
+if(countitem(29432)) {
+delitem 29432,1;
+makepet 1498;
+goto L_YesVoucher;
+}
+
+if(countitem(29433)) {
+delitem 29433,1;
+makepet 1499;
+goto L_YesVoucher;
+}
+
+if(countitem(29434)) {
+delitem 29434,1;
+makepet 1500;
+goto L_YesVoucher;
+}
+
+if(countitem(29435)) {
+delitem 29435,1;
+makepet 1503;
+goto L_YesVoucher;
+}
+
+if(countitem(29436)) {
+delitem 29436,1;
+makepet 1504;
+goto L_YesVoucher;
+}
+
+if(countitem(29437)) {
+delitem 29437,1;
+makepet 1505;
+goto L_YesVoucher;
+}
+
+if(countitem(29438)) {
+delitem 29438,1;
+makepet 1506;
+goto L_YesVoucher;
+}
+
+if(countitem(29439)) {
+delitem 29439,1;
+makepet 1508;
+goto L_YesVoucher;
+}
+
+if(countitem(29440)) {
+delitem 29440,1;
+makepet 1509;
+goto L_YesVoucher;
+}
+
+if(countitem(29441)) {
+delitem 29441,1;
+makepet 1510;
+goto L_YesVoucher;
+}
+
+if(countitem(29442)) {
+delitem 29442,1;
+makepet 1511;
+goto L_YesVoucher;
+}
+
+if(countitem(29443)) {
+delitem 29443,1;
+makepet 1512;
+goto L_YesVoucher;
+}
+
+if(countitem(29444)) {
+delitem 29444,1;
+makepet 1513;
+goto L_YesVoucher;
+}
+
+if(countitem(29445)) {
+delitem 29445,1;
+makepet 1514;
+goto L_YesVoucher;
+}
+
+if(countitem(29446)) {
+delitem 29446,1;
+makepet 1515;
+goto L_YesVoucher;
+}
+
+if(countitem(29447)) {
+delitem 29447,1;
+makepet 1517;
+goto L_YesVoucher;
+}
+
+if(countitem(29448)) {
+delitem 29448,1;
+makepet 1518;
+goto L_YesVoucher;
+}
+
+if(countitem(29449)) {
+delitem 29449,1;
+makepet 1519;
+goto L_YesVoucher;
+}
+
+if(countitem(29450)) {
+delitem 29450,1;
+makepet 1520;
+goto L_YesVoucher;
+}
+
+if(countitem(29451)) {
+delitem 29451,1;
+makepet 1582;
+goto L_YesVoucher;
+}
+
+if(countitem(29452)) {
+delitem 29452,1;
+makepet 1583;
+goto L_YesVoucher;
+}
+
+if(countitem(29453)) {
+delitem 29453,1;
+makepet 1585;
+goto L_YesVoucher;
+}
+
+if(countitem(29454)) {
+delitem 29454,1;
+makepet 1586;
+goto L_YesVoucher;
+}
+
+if(countitem(29455)) {
+delitem 29455,1;
+makepet 1613;
+goto L_YesVoucher;
+}
+
+if(countitem(29456)) {
+delitem 29456,1;
+makepet 1615;
+goto L_YesVoucher;
+}
+
+if(countitem(29457)) {
+delitem 29457,1;
+makepet 1616;
+goto L_YesVoucher;
+}
+
+if(countitem(29458)) {
+delitem 29458,1;
+makepet 1617;
+goto L_YesVoucher;
+}
+
+if(countitem(29459)) {
+delitem 29459,1;
+makepet 1618;
+goto L_YesVoucher;
+}
+
+if(countitem(29460)) {
+delitem 29460,1;
+makepet 1619;
+goto L_YesVoucher;
+}
+
+if(countitem(29461)) {
+delitem 29461,1;
+makepet 1620;
+goto L_YesVoucher;
+}
+
+if(countitem(29462)) {
+delitem 29462,1;
+makepet 1621;
+goto L_YesVoucher;
+}
+
+if(countitem(29463)) {
+delitem 29463,1;
+makepet 1622;
+goto L_YesVoucher;
+}
+
+if(countitem(29464)) {
+delitem 29464,1;
+makepet 1623;
+goto L_YesVoucher;
+}
+
+if(countitem(29465)) {
+delitem 29465,1;
+makepet 1627;
+goto L_YesVoucher;
+}
+
+if(countitem(29466)) {
+delitem 29466,1;
+makepet 1628;
+goto L_YesVoucher;
+}
+
+if(countitem(29467)) {
+delitem 29467,1;
+makepet 1629;
+goto L_YesVoucher;
+}
+
+if(countitem(29468)) {
+delitem 29468,1;
+makepet 1632;
+goto L_YesVoucher;
+}
+
+if(countitem(29469)) {
+delitem 29469,1;
+makepet 1633;
+goto L_YesVoucher;
+}
+
+if(countitem(29470)) {
+delitem 29470,1;
+makepet 1634;
+goto L_YesVoucher;
+}
+
+if(countitem(29471)) {
+delitem 29471,1;
+makepet 1635;
+goto L_YesVoucher;
+}
+
+if(countitem(29472)) {
+delitem 29472,1;
+makepet 1636;
+goto L_YesVoucher;
+}
+
+if(countitem(29473)) {
+delitem 29473,1;
+makepet 1637;
+goto L_YesVoucher;
+}
+
+if(countitem(29474)) {
+delitem 29474,1;
+makepet 1638;
+goto L_YesVoucher;
+}
+
+if(countitem(29475)) {
+delitem 29475,1;
+makepet 1639;
+goto L_YesVoucher;
+}
+
+if(countitem(29476)) {
+delitem 29476,1;
+makepet 1652;
+goto L_YesVoucher;
+}
+
+if(countitem(29477)) {
+delitem 29477,1;
+makepet 1653;
+goto L_YesVoucher;
+}
+
+if(countitem(29478)) {
+delitem 29478,1;
+makepet 1654;
+goto L_YesVoucher;
+}
+
+if(countitem(29479)) {
+delitem 29479,1;
+makepet 1655;
+goto L_YesVoucher;
+}
+
+if(countitem(29480)) {
+delitem 29480,1;
+makepet 1656;
+goto L_YesVoucher;
+}
+
+if(countitem(29481)) {
+delitem 29481,1;
+makepet 1657;
+goto L_YesVoucher;
+}
+
+if(countitem(29482)) {
+delitem 29482,1;
+makepet 1664;
+goto L_YesVoucher;
+}
+
+if(countitem(29483)) {
+delitem 29483,1;
+makepet 1668;
+goto L_YesVoucher;
+}
+
+if(countitem(29484)) {
+delitem 29484,1;
+makepet 1669;
+goto L_YesVoucher;
+}
+
+if(countitem(29485)) {
+delitem 29485,1;
+makepet 1674;
+goto L_YesVoucher;
+}
+
+if(countitem(29486)) {
+delitem 29486,1;
+makepet 1675;
+goto L_YesVoucher;
+}
+
+if(countitem(29487)) {
+delitem 29487,1;
+makepet 1681;
+goto L_YesVoucher;
+}
+
+if(countitem(29488)) {
+delitem 29488,1;
+makepet 1682;
+goto L_YesVoucher;
+}
+
+if(countitem(29489)) {
+delitem 29489,1;
+makepet 1686;
+goto L_YesVoucher;
+}
+
+if(countitem(29490)) {
+delitem 29490,1;
+makepet 1687;
+goto L_YesVoucher;
+}
+
+if(countitem(29491)) {
+delitem 29491,1;
+makepet 1688;
+goto L_YesVoucher;
+}
+
+if(countitem(29492)) {
+delitem 29492,1;
+makepet 1692;
+goto L_YesVoucher;
+}
+
+if(countitem(29493)) {
+delitem 29493,1;
+makepet 1698;
+goto L_YesVoucher;
+}
+
+if(countitem(29494)) {
+delitem 29494,1;
+makepet 1699;
+goto L_YesVoucher;
+}
+
+if(countitem(29495)) {
+delitem 29495,1;
+makepet 1700;
+goto L_YesVoucher;
+}
+
+if(countitem(29496)) {
+delitem 29496,1;
+makepet 1701;
+goto L_YesVoucher;
+}
+
+if(countitem(29497)) {
+delitem 29497,1;
+makepet 1702;
+goto L_YesVoucher;
+}
+
+if(countitem(29498)) {
+delitem 29498,1;
+makepet 1703;
+goto L_YesVoucher;
+}
+
+if(countitem(29499)) {
+delitem 29499,1;
+makepet 1704;
+goto L_YesVoucher;
+}
+
+if(countitem(29500)) {
+delitem 29500,1;
+makepet 1705;
+goto L_YesVoucher;
+}
+
+if(countitem(29501)) {
+delitem 29501,1;
+makepet 1706;
+goto L_YesVoucher;
+}
+
+if(countitem(29502)) {
+delitem 29502,1;
+makepet 1707;
+goto L_YesVoucher;
+}
+
+if(countitem(29503)) {
+delitem 29503,1;
+makepet 1708;
+goto L_YesVoucher;
+}
+
+if(countitem(29504)) {
+delitem 29504,1;
+makepet 1713;
+goto L_YesVoucher;
+}
+
+if(countitem(29505)) {
+delitem 29505,1;
+makepet 1714;
+goto L_YesVoucher;
+}
+
+if(countitem(29506)) {
+delitem 29506,1;
+makepet 1715;
+goto L_YesVoucher;
+}
+
+if(countitem(29507)) {
+delitem 29507,1;
+makepet 1716;
+goto L_YesVoucher;
+}
+
+if(countitem(29508)) {
+delitem 29508,1;
+makepet 1717;
+goto L_YesVoucher;
+}
+
+if(countitem(29509)) {
+delitem 29509,1;
+makepet 1718;
+goto L_YesVoucher;
+}
+
+if(countitem(29510)) {
+delitem 29510,1;
+makepet 1719;
+goto L_YesVoucher;
+}
+
+if(countitem(29511)) {
+delitem 29511,1;
+makepet 1720;
+goto L_YesVoucher;
+}
+
+if(countitem(29512)) {
+delitem 29512,1;
+makepet 1721;
+goto L_YesVoucher;
+}
+
+if(countitem(29513)) {
+delitem 29513,1;
+makepet 1733;
+goto L_YesVoucher;
+}
+
+if(countitem(29514)) {
+delitem 29514,1;
+makepet 1734;
+goto L_YesVoucher;
+}
+
+if(countitem(29515)) {
+delitem 29515,1;
+makepet 1735;
+goto L_YesVoucher;
+}
+
+if(countitem(29516)) {
+delitem 29516,1;
+makepet 1736;
+goto L_YesVoucher;
+}
+
+if(countitem(29517)) {
+delitem 29517,1;
+makepet 1737;
+goto L_YesVoucher;
+}
+
+if(countitem(29518)) {
+delitem 29518,1;
+makepet 1738;
+goto L_YesVoucher;
+}
+
+if(countitem(29519)) {
+delitem 29519,1;
+makepet 1751;
+goto L_YesVoucher;
+}
+
+if(countitem(29520)) {
+delitem 29520,1;
+makepet 1752;
+goto L_YesVoucher;
+}
+
+if(countitem(29521)) {
+delitem 29521,1;
+makepet 1753;
+goto L_YesVoucher;
+}
+
+if(countitem(29522)) {
+delitem 29522,1;
+makepet 1754;
+goto L_YesVoucher;
+}
+
+if(countitem(29523)) {
+delitem 29523,1;
+makepet 1755;
+goto L_YesVoucher;
+}
+
+if(countitem(29524)) {
+delitem 29524,1;
+makepet 1768;
+goto L_YesVoucher;
+}
+
+if(countitem(29525)) {
+delitem 29525,1;
+makepet 1769;
+goto L_YesVoucher;
+}
+
+if(countitem(29526)) {
+delitem 29526,1;
+makepet 1770;
+goto L_YesVoucher;
+}
+
+if(countitem(29527)) {
+delitem 29527,1;
+makepet 1771;
+goto L_YesVoucher;
+}
+
+if(countitem(29528)) {
+delitem 29528,1;
+makepet 1772;
+goto L_YesVoucher;
+}
+
+if(countitem(29529)) {
+delitem 29529,1;
+makepet 1773;
+goto L_YesVoucher;
+}
+
+if(countitem(29530)) {
+delitem 29530,1;
+makepet 1774;
+goto L_YesVoucher;
+}
+
+if(countitem(29531)) {
+delitem 29531,1;
+makepet 1775;
+goto L_YesVoucher;
+}
+
+if(countitem(29532)) {
+delitem 29532,1;
+makepet 1776;
+goto L_YesVoucher;
+}
+
+if(countitem(29533)) {
+delitem 29533,1;
+makepet 1777;
+goto L_YesVoucher;
+}
+
+if(countitem(29534)) {
+delitem 29534,1;
+makepet 1778;
+goto L_YesVoucher;
+}
+
+if(countitem(29535)) {
+delitem 29535,1;
+makepet 1779;
+goto L_YesVoucher;
+}
+
+if(countitem(29536)) {
+delitem 29536,1;
+makepet 1780;
+goto L_YesVoucher;
+}
+
+if(countitem(29537)) {
+delitem 29537,1;
+makepet 1781;
+goto L_YesVoucher;
+}
+
+if(countitem(29538)) {
+delitem 29538,1;
+makepet 1782;
+goto L_YesVoucher;
+}
+
+if(countitem(29539)) {
+delitem 29539,1;
+makepet 1783;
+goto L_YesVoucher;
+}
+
+if(countitem(29540)) {
+delitem 29540,1;
+makepet 1784;
+goto L_YesVoucher;
+}
+
+if(countitem(29541)) {
+delitem 29541,1;
+makepet 1785;
+goto L_YesVoucher;
+}
+
+if(countitem(29542)) {
+delitem 29542,1;
+makepet 1902;
+goto L_YesVoucher;
+}
+
+if(countitem(29543)) {
+delitem 29543,1;
+makepet 1397;
+goto L_YesVoucher;
+}
+
+if(countitem(29544)) {
+delitem 29544,1;
+makepet 1398;
+goto L_YesVoucher;
+}
+
+if(countitem(29545)) {
+delitem 29545,1;
+makepet 1685;
+goto L_YesVoucher;
+}
+
+L_NoVoucher:
+mes "[Eggschanger]";
+mes "It doesn't look like you're carrying a voucher. Come back when you have one on you!";
+close;
+
+
+L_YesVoucher:
+mes "[Eggschanger]";
+mes "Uuuuuuuurggghhh!!!!! *pop* There you go! If you get any other vouchers, please come see me again!";
+mes " ";
+mes "What? Why are you looking at me like that?";
+close;
+
+}

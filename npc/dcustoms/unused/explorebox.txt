@@ -1,0 +1,3096 @@
+//Exploration Script by Cronz of Deliverance-Online
+
+//-1 = OBB
+//-2 = OPB
+//-3 = OCA
+//-4 = Gift Box
+//-5 = Worn out scroll
+
+
+umbala,77,176,5	script	Mrs. Irwin	702,{
+
+	mes "[Mrs. Irwin]";
+	mes "Hello there, "+strcharinfo(0)+"!";
+	mes "Seems you have ^FF0000"+#ExplorerPoints+"^000000 Explorer Points! Keep exploring! You can do it!";
+	close;
+}
+
+
+//Box ONE
+prt_fild01,346,211,4	script	Explorer Box	1324,{
+
+if(#gotbox1==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox1,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box TWO
+prt_gld,174,252,4	script	Explorer Box	1324,{
+
+if(#gotbox2==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox2,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box THREE
+prt_castle,160,171,4	script	Explorer Box	1324,{
+
+if(#gotbox3==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox3,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box FOUR
+prt_castle,38,37,4	script	Explorer Box	1324,{
+
+if(#gotbox4==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox4,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box FIVE
+prontera,213,270,4	script	Explorer Box	1324,{
+
+if(#gotbox5==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox5,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box SIX
+prontera,38,354,4	script	Explorer Box	1324,{
+
+if(#gotbox6==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox6,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box SEVEN
+prt_in,63,170,4	script	Explorer Box	1324,{
+
+if(#gotbox7==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox7,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box EIGHT
+prt_in,181,16,4	script	Explorer Box	1324,{
+
+if(#gotbox8==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox8,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box NINE
+morocc,116,224,4	script	Explorer Box	1324,{
+
+if(#gotbox9==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox9,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box TEN
+morocc,223,268,4	script	Explorer Box	1324,{
+
+if(#gotbox10==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox10,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ELEVEN
+moc_castle,57,60,4	script	Explorer Box	1324,{
+
+if(#gotbox11==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox11,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box TWELVE
+morocc,243,73,4	script	Explorer Box	1324,{
+
+if(#gotbox12==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox12,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box THIRTEEN
+morocc_in,16,165,4	script	Explorer Box	1324,{
+
+if(#gotbox13==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox13,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box FOURTEEN
+geffen,75,138,4	script	Explorer Box	1324,{
+
+if(#gotbox14==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox14,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box FIFTEEN
+geffen,138,82,4	script	Explorer Box	1324,{
+
+if(#gotbox15==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox15,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SIXTEEN
+geffen_in,20,177,4	script	Explorer Box	1324,{
+
+if(#gotbox16==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox16,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SEVENTEEN
+geffen_in,28,41,4	script	Explorer Box	1324,{
+
+if(#gotbox17==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox17,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box EIGHTEEN
+payon,136,267,4	script	Explorer Box	1324,{
+
+if(#gotbox18==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox18,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box NINETEEN
+payon_in03,75,159,4	script	Explorer Box	1324,{
+
+if(#gotbox19==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox19,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box TWENTY
+payon,156,107,4	script	Explorer Box	1324,{
+
+if(#gotbox20==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox20,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box TWENTY-ONE
+payon_in03,185,191,4	script	Explorer Box	1324,{
+
+if(#gotbox21==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox21,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box TWENTY-TWO
+payon_in02,18,34,4	script	Explorer Box	1324,{
+
+if(#gotbox22==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox22,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+
+//Box TWENTY-THREE
+alb_ship,117,116,4	script	Explorer Box	1324,{
+
+if(#gotbox23==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox23,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box TWENTY-FOUR
+alberta,90,229,4	script	Explorer Box	1324,{
+
+if(#gotbox24==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox24,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box TWENTY-FIVE
+alberta,30,20,4	script	Explorer Box	1324,{
+
+if(#gotbox25==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox25,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box TWENTY-SIX
+alberta_in,76,104,4	script	Explorer Box	1324,{
+
+if(#gotbox26==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox26,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box TWENTY-SEVEN
+alberta_in,132,90,4	script	Explorer Box	1324,{
+
+if(#gotbox27==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox27,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box TWENTY-EIGHT
+alberta,204,55,4	script	Explorer Box	1324,{
+
+if(#gotbox28==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox28,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box TWENTY-NINE
+izlude_in,129,164,4	script	Explorer Box	1324,{
+
+if(#gotbox29==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox29,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box THIRTY
+izlude,222,140,4	script	Explorer Box	1324,{
+
+if(#gotbox30==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox30,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box THIRTY-ONE
+izlude_in,177,85,4	script	Explorer Box	1324,{
+
+if(#gotbox31==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox31,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box THIRTY-TWO
+izlude,199,183,4	script	Explorer Box	1324,{
+
+if(#gotbox32==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox32,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box THIRTY-THREE
+izlude,151,39,4	script	Explorer Box	1324,{
+
+if(#gotbox33==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox33,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box THIRTY-FOUR
+izlude,58,172,4	script	Explorer Box	1324,{
+
+if(#gotbox34==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox34,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box THIRTY-FIVE
+aldebaran,146,213,4	script	Explorer Box	1324,{
+
+if(#gotbox35==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox35,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box THIRTY-SIX
+aldebaran,247,139,4	script	Explorer Box	1324,{
+
+if(#gotbox36==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox36,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box THIRTY-SEVEN
+aldebaran,45,86,4	script	Explorer Box	1324,{
+
+if(#gotbox37==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox37,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box THIRTY-EIGHT
+aldebaran,139,144,4	script	Explorer Box	1324,{
+
+if(#gotbox38==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox38,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box THIRTY-NINE
+aldeba_in,175,158,4	script	Explorer Box	1324,{
+
+if(#gotbox39==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox39,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box FORTY
+aldeba_in,212,229,4	script	Explorer Box	1324,{
+
+if(#gotbox40==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox40,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box FORTY-ONE
+aldeba_in,21,116,4	script	Explorer Box	1324,{
+
+if(#gotbox41==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox41,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box FORTY-TWO
+prt_in,71,106,4	script	Explorer Box	1324,{
+
+if(#gotbox42==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox42,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box FORTY-THREE
+prt_in,254,320,4	script	Explorer Box	1324,{
+
+if(#gotbox43==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox43,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box FORTY-FOUR
+xmas,141,146,4	script	Explorer Box	1324,{
+
+if(#gotbox44==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox44,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box FORTY-FIVE
+xmas,62,168,4	script	Explorer Box	1324,{
+
+if(#gotbox45==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox45,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box FORTY-SIX
+xmas,225,166,4	script	Explorer Box	1324,{
+
+if(#gotbox46==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox46,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box FORTY-SEVEN
+xmas_in,163,111,4	script	Explorer Box	1324,{
+
+if(#gotbox47==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox47,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box FORTY-EIGHT
+xmas_in,32,42,4	script	Explorer Box	1324,{
+
+if(#gotbox48==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox48,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box FORTY-NINE
+xmas_in,87,92,4	script	Explorer Box	1324,{
+
+if(#gotbox49==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox49,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box FIFTY
+comodo,187,181,4	script	Explorer Box	1324,{
+
+if(#gotbox50==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox50,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+
+//Box FIFTY-ONE
+payon,66,67,4	script	Explorer Box	1324,{
+
+if(#gotbox51==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox51,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box FIFTY-TWO
+comodo,196,66,4	script	Explorer Box	1324,{
+
+if(#gotbox52==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox52,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box FIFTY-THREE
+comodo,140,86,4	script	Explorer Box	1324,{
+
+if(#gotbox53==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox53,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box FIFTY-FOUR
+comodo,225,345,4	script	Explorer Box	1324,{
+
+if(#gotbox54==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox54,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box FIFTY-FIVE
+comodo,64,344,4	script	Explorer Box	1324,{
+
+if(#gotbox55==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox55,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box FIFTY-SIX
+cmd_in02,71,197,4	script	Explorer Box	1324,{
+
+if(#gotbox56==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox56,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box FIFTY-SEVEN
+cmd_in01,73,182,4	script	Explorer Box	1324,{
+
+if(#gotbox57==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox57,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box FIFTY-EIGHT
+y_airport,34,46,4	script	Explorer Box	1324,{
+
+if(#gotbox58==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox58,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box FIFTY-NINE
+yuno,147,228,4	script	Explorer Box	1324,{
+
+if(#gotbox59==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox59,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SIXTY
+yuno,158,354,4	script	Explorer Box	1324,{
+
+if(#gotbox60==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox60,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SIXTY-ONE
+yuno,292,359,4	script	Explorer Box	1324,{
+
+if(#gotbox61==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox61,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SIXTY-TWO
+yuno,351,113,4	script	Explorer Box	1324,{
+
+if(#gotbox62==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox62,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SIXTY-THREE
+yuno,349,48,4	script	Explorer Box	1324,{
+
+if(#gotbox63==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox63,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SIXTY-FOUR
+yuno_in01,178,18,4	script	Explorer Box	1324,{
+
+if(#gotbox64==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox64,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SIXTY-FIVE
+yuno_in01,120,168,4	script	Explorer Box	1324,{
+
+if(#gotbox65==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox65,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SIXTY-SIX
+yuno_in02,16,70,4	script	Explorer Box	1324,{
+
+if(#gotbox66==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox66,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SIXTY-SEVEN
+yuno_in03,36,103,4	script	Explorer Box	1324,{
+
+if(#gotbox67==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox67,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SIXTY-EIGHT
+yuno_in03,235,190,4	script	Explorer Box	1324,{
+
+if(#gotbox68==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox68,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SIXTY-NINE
+yuno,241,202,4	script	Explorer Box	1324,{
+
+if(#gotbox69==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox69,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SEVENTY
+yuno,278,320,4	script	Explorer Box	1324,{
+
+if(#gotbox70==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox70,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SEVENTY-ONE
+amatsu,291,262,4	script	Explorer Box	1324,{
+
+if(#gotbox71==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox71,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SEVENTY-TWO
+amatsu,107,277,4	script	Explorer Box	1324,{
+
+if(#gotbox72==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox72,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SEVENTY-THREE
+amatsu,53,162,4	script	Explorer Box	1324,{
+
+if(#gotbox73==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox73,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SEVENTY-FOUR
+amatsu,185,190,4	script	Explorer Box	1324,{
+
+if(#gotbox74==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox74,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SEVENTY-FIVE
+ama_in01,92,176,4	script	Explorer Box	1324,{
+
+if(#gotbox75==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox75,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SEVENTY-SIX
+ama_in01,183,85,4	script	Explorer Box	1324,{
+
+if(#gotbox76==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox76,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SEVENTY-SEVEN
+ama_in02,45,184,4	script	Explorer Box	1324,{
+
+if(#gotbox77==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox77,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SEVENTY-EIGHT
+ama_in02,114,187,4	script	Explorer Box	1324,{
+
+if(#gotbox78==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox78,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box SEVENTY-NINE
+ama_in01,19,31,4	script	Explorer Box	1324,{
+
+if(#gotbox79==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox79,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box EIGHTY
+gonryun,159,26,4	script	Explorer Box	1324,{
+
+if(#gotbox80==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox80,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box EIGHTY-ONE
+gonryun,36,103,4	script	Explorer Box	1324,{
+
+if(#gotbox81==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox81,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box EIGHTY-TWO
+gonryun,153,228,4	script	Explorer Box	1324,{
+
+if(#gotbox82==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox82,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box EIGHTY-THREE
+gonryun,189,188,4	script	Explorer Box	1324,{
+
+if(#gotbox83==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox83,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box EIGHTY-FOUR
+gon_in,13,94,4	script	Explorer Box	1324,{
+
+if(#gotbox84==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox84,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box EIGHTY-FIVE
+gon_in,98,11,4	script	Explorer Box	1324,{
+
+if(#gotbox85==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox85,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box EIGHTY-SIX
+gon_in,183,98,4	script	Explorer Box	1324,{
+
+if(#gotbox86==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox86,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box EIGHTY-SEVEN
+gonryun,158,131,4	script	Explorer Box	1324,{
+
+if(#gotbox87==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox87,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box EIGHTY-EIGHT
+umbala,75,253,4	script	Explorer Box	1324,{
+
+if(#gotbox88==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox88,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box EIGHTY-NINE
+umbala,123,284,4	script	Explorer Box	1324,{
+
+if(#gotbox89==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox89,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box NINETY
+umbala,140,120,4	script	Explorer Box	1324,{
+
+if(#gotbox90==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox90,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box NINETY-ONE
+um_in,101,127,4	script	Explorer Box	1324,{
+
+if(#gotbox91==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox91,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box NINETY-TWO
+um_in,46,66,4	script	Explorer Box	1324,{
+
+if(#gotbox92==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox92,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box NINETY-THREE
+niflheim,34,129,4	script	Explorer Box	1324,{
+
+if(#gotbox93==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox93,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box NINETY-FOUR
+niflheim,93,236,4	script	Explorer Box	1324,{
+
+if(#gotbox94==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox94,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box NINETY-FIVE
+niflheim,230,276,4	script	Explorer Box	1324,{
+
+if(#gotbox95==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox95,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box NINETY-SIX
+niflheim,138,62,4	script	Explorer Box	1324,{
+
+if(#gotbox96==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox96,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box NINETY-SEVEN
+niflheim,184,122,4	script	Explorer Box	1324,{
+
+if(#gotbox97==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox97,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box NINETY-EIGHT
+niflheim,355,252,4	script	Explorer Box	1324,{
+
+if(#gotbox98==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox98,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box NINETY-NINE
+niflheim,279,154,4	script	Explorer Box	1324,{
+
+if(#gotbox99==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox99,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED
+nif_in,119,181,4	script	Explorer Box	1324,{
+
+if(#gotbox100==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox100,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+
+//Box ONE HUNDRED ONE
+nif_in,23,100,4	script	Explorer Box	1324,{
+
+if(#gotbox101==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox101,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED TWO
+nif_in,180,174,4	script	Explorer Box	1324,{
+
+if(#gotbox102==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox102,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED THREE
+louyang,66,46,4	script	Explorer Box	1324,{
+
+if(#gotbox103==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox103,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FOUR
+louyang,269,30,4	script	Explorer Box	1324,{
+
+if(#gotbox104==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox104,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FIVE
+louyang,327,89,4	script	Explorer Box	1324,{
+
+if(#gotbox105==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox105,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SIX
+louyang,197,317,4	script	Explorer Box	1324,{
+
+if(#gotbox106==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox106,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SEVEN
+louyang,90,246,4	script	Explorer Box	1324,{
+
+if(#gotbox107==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox107,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED EIGHT
+louyang,217,271,4	script	Explorer Box	1324,{
+
+if(#gotbox108==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox108,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED NINE
+louyang,323,257,4	script	Explorer Box	1324,{
+
+if(#gotbox109==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox109,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED TEN
+lou_in01,158,164,4	script	Explorer Box	1324,{
+
+if(#gotbox110==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox110,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED ELEVEN
+lou_in02,40,121,4	script	Explorer Box	1324,{
+
+if(#gotbox111==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox111,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED TWELVE
+lou_in02,148,43,4	script	Explorer Box	1324,{
+
+if(#gotbox112==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox112,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED THIRTEEN
+lou_in02,251,163,4	script	Explorer Box	1324,{
+
+if(#gotbox113==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox113,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FOURTEEN
+umbala,137,197,4	script	Explorer Box	1324,{
+
+if(#gotbox114==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox114,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FIFTEEN
+jawaii,218,115,4	script	Explorer Box	1324,{
+
+if(#gotbox115==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox115,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SIXTEEN
+jawaii,99,273,4	script	Explorer Box	1324,{
+
+if(#gotbox116==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox116,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SEVENTEEN
+jawaii,155,116,4	script	Explorer Box	1324,{
+
+if(#gotbox117==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox117,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED EIGHTEEN
+jawaii_in,35,119,4	script	Explorer Box	1324,{
+
+if(#gotbox118==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox118,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED NINETEEN
+einbroch,63,335,4	script	Explorer Box	1324,{
+
+if(#gotbox119==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox119,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED TWENTY
+einbroch,285,236,4	script	Explorer Box	1324,{
+
+if(#gotbox120==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox120,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED TWENTY-ONE
+einbroch,198,62,4	script	Explorer Box	1324,{
+
+if(#gotbox121==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox121,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED TWENTY-TWO
+einbroch,66,68,4	script	Explorer Box	1324,{
+
+if(#gotbox122==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox122,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED TWENTY-THREE
+ein_in01,160,271,4	script	Explorer Box	1324,{
+
+if(#gotbox123==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox123,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED TWENTY-FOUR
+ein_in01,37,264,4	script	Explorer Box	1324,{
+
+if(#gotbox124==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox124,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED TWENTY-FIVE
+einbech,44,199,4	script	Explorer Box	1324,{
+
+if(#gotbox125==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox125,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED TWENTY-SIX
+einbech,162,222,4	script	Explorer Box	1324,{
+
+if(#gotbox126==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox126,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED TWENTY-SEVEN
+ein_in01,155,140,4	script	Explorer Box	1324,{
+
+if(#gotbox127==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox127,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED TWENTY-EIGHT
+einbech,256,168,4	script	Explorer Box	1324,{
+
+if(#gotbox128==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox128,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED TWENTY-NINE
+ein_in01,14,87,4	script	Explorer Box	1324,{
+
+if(#gotbox129==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox129,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED THIRTY
+einbech,138,255,4	script	Explorer Box	1324,{
+
+if(#gotbox130==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox130,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED THIRTY-ONE
+lighthalzen,58,107,4	script	Explorer Box	1324,{
+
+if(#gotbox131==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox131,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED THIRTY-TWO
+lighthalzen,246,175,4	script	Explorer Box	1324,{
+
+if(#gotbox132==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox132,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED THIRTY-THREE
+lighthalzen,96,46,4	script	Explorer Box	1324,{
+
+if(#gotbox133==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox133,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED THIRTY-FOUR
+lighthalzen,130,209,4	script	Explorer Box	1324,{
+
+if(#gotbox134==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox134,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED THIRTY-FIVE
+lhz_in02,84,212,4	script	Explorer Box	1324,{
+
+if(#gotbox135==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox135,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED THIRTY-SIX
+lhz_in02,275,221,4	script	Explorer Box	1324,{
+
+if(#gotbox136==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox136,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED THIRTY-SEVEN
+lhz_in02,288,277,4	script	Explorer Box	1324,{
+
+if(#gotbox137==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox137,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED THIRTY-EIGHT
+lhz_in02,155,282,4	script	Explorer Box	1324,{
+
+if(#gotbox138==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox138,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED THIRTY-NINE
+lhz_in01,41,234,4	script	Explorer Box	1324,{
+
+if(#gotbox139==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox139,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FORTY
+lhz_in01,140,52,4	script	Explorer Box	1324,{
+
+if(#gotbox140==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox140,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FORTY-ONE
+lhz_in01,42,58,4	script	Explorer Box	1324,{
+
+if(#gotbox141==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox141,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FORTY-TWO
+prt_in,38,25,4	script	Explorer Box	1324,{
+
+if(#gotbox142==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox142,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FORTY-THREE
+prontera,239,335,4	script	Explorer Box	1324,{
+
+if(#gotbox143==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox143,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FORTY-FOUR
+prontera,240,27,4	script	Explorer Box	1324,{
+
+if(#gotbox144==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox144,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FORTY-FIVE
+pay_arche,111,135,4	script	Explorer Box	1324,{
+
+if(#gotbox145==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox145,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FORTY-SIX
+payon_in02,49,31,4	script	Explorer Box	1324,{
+
+if(#gotbox146==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox146,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FORTY-SEVEN
+pay_arche,145,32,4	script	Explorer Box	1324,{
+
+if(#gotbox147==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox147,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FORTY-EIGHT
+pay_arche,143,116,4	script	Explorer Box	1324,{
+
+if(#gotbox148==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox148,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FORTY-NINE
+dbroom06,139,95,4	script	Explorer Box	1324,{
+
+if(#gotbox149==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox149,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FIFTY
+dbroom01,64,40,4	script	Explorer Box	1324,{
+
+if(#gotbox150==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox150,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FIFTY-ONE
+arenagvg,50,93,4	script	Explorer Box	1324,{
+
+if(#gotbox151==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox151,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FIFTY-TWO
+pvp_y_1-2,218,129,4	script	Explorer Box	1324,{
+
+if(#gotbox152==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox152,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FIFTY-THREE
+pvp_y_1-2,85,101,4	script	Explorer Box	1324,{
+
+if(#gotbox153==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox153,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FIFTY-FOUR
+pay_dun00,155,174,4	script	Explorer Box	1324,{
+
+if(#gotbox154==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox154,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FIFTY-FIVE
+pay_dun00,69,65,4	script	Explorer Box	1324,{
+
+if(#gotbox155==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox155,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FIFTY-SIX
+pay_dun01,79,120,4	script	Explorer Box	1324,{
+
+if(#gotbox156==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox156,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FIFTY-SEVEN
+pay_dun01,170,270,4	script	Explorer Box	1324,{
+
+if(#gotbox157==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox157,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FIFTY-EIGHT
+pay_dun01,237,57,4	script	Explorer Box	1324,{
+
+if(#gotbox158==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox158,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED FIFTY-NINE
+pay_dun02,69,249,4	script	Explorer Box	1324,{
+
+if(#gotbox159==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox159,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SIXTY
+pay_dun02,112,196,4	script	Explorer Box	1324,{
+
+if(#gotbox160==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox160,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SIXTY-ONE
+pay_dun02,209,84,4	script	Explorer Box	1324,{
+
+if(#gotbox161==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox161,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SIXTY-TWO
+pay_dun03,106,250,4	script	Explorer Box	1324,{
+
+if(#gotbox162==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox162,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SIXTY-THREE
+pay_dun03,255,247,4	script	Explorer Box	1324,{
+
+if(#gotbox163==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox163,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SIXTY-FOUR
+pay_dun03,245,77,4	script	Explorer Box	1324,{
+
+if(#gotbox164==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox164,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SIXTY-FIVE
+pay_dun04,202,212,4	script	Explorer Box	1324,{
+
+if(#gotbox165==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox165,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SIXTY-SIX
+pay_dun04,120,123,4	script	Explorer Box	1324,{
+
+if(#gotbox166==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldaitem.wav",0;
+getitem -1,1;
+set #gotbox166,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SIXTY-SEVEN
+prt_sewb1,20,310,4	script	Explorer Box	1324,{
+
+if(#gotbox167==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox167,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SIXTY-EIGHT
+prt_sewb1,36,199,4	script	Explorer Box	1324,{
+
+if(#gotbox168==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox168,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SIXTY-NINE
+prt_sewb1,289,43,4	script	Explorer Box	1324,{
+
+if(#gotbox169==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox169,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SEVENTY
+prt_sewb1,187,191,4	script	Explorer Box	1324,{
+
+if(#gotbox170==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox170,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SEVENTY-ONE
+prt_sewb2,99,16,4	script	Explorer Box	1324,{
+
+if(#gotbox171==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox171,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SEVENTY-TWO
+prt_sewb2,179,182,4	script	Explorer Box	1324,{
+
+if(#gotbox172==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox172,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SEVENTY-THREE
+prt_sewb3,126,16,4	script	Explorer Box	1324,{
+
+if(#gotbox173==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox173,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SEVENTY-FOUR
+prt_sewb3,100,59,4	script	Explorer Box	1324,{
+
+if(#gotbox174==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox174,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SEVENTY-FIVE
+prt_sewb4,100,104,4	script	Explorer Box	1324,{
+
+if(#gotbox175==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldaitem.wav",0;
+getitem -1,1;
+set #gotbox175,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SEVENTY-SIX
+prt_sewb4,183,183,4	script	Explorer Box	1324,{
+
+if(#gotbox176==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox176,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SEVENTY-SEVEN
+xmas_dun01,37,56,4	script	Explorer Box	1324,{
+
+if(#gotbox177==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox177,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SEVENTY-EIGHT
+xmas_dun01,36,223,4	script	Explorer Box	1324,{
+
+if(#gotbox178==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox178,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED SEVENTY-NINE
+xmas_dun01,208,116,4	script	Explorer Box	1324,{
+
+if(#gotbox179==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox179,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED EIGHTY
+xmas_dun01,124,134,4	script	Explorer Box	1324,{
+
+if(#gotbox180==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox180,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED EIGHTY-ONE
+xmas_dun02,155,103,4	script	Explorer Box	1324,{
+
+if(#gotbox181==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox181,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED EIGHTY-TWO
+xmas_dun02,36,196,4	script	Explorer Box	1324,{
+
+if(#gotbox182==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldaitem.wav",0;
+getitem -1,1;
+set #gotbox182,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED EIGHTY-THREE
+moc_pryd01,192,193,4	script	Explorer Box	1324,{
+
+if(#gotbox183==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox183,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED EIGHTY-FOUR
+moc_pryd01,6,83,4	script	Explorer Box	1324,{
+
+if(#gotbox184==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox184,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED EIGHTY-FIVE
+moc_pryd01,46,131,4	script	Explorer Box	1324,{
+
+if(#gotbox185==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox185,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED EIGHTY-SIX
+moc_pryd02,22,106,4	script	Explorer Box	1324,{
+
+if(#gotbox186==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox186,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED EIGHTY-SEVEN
+moc_pryd02,186,153,4	script	Explorer Box	1324,{
+
+if(#gotbox187==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox187,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED EIGHTY-EIGHT
+moc_pryd02,76,76,4	script	Explorer Box	1324,{
+
+if(#gotbox188==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox188,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED EIGHTY-NINE
+moc_pryd02,99,106,4	script	Explorer Box	1324,{
+
+if(#gotbox189==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox189,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED NINETY
+moc_pryd03,148,168,4	script	Explorer Box	1324,{
+
+if(#gotbox190==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox190,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED NINETY-ONE
+moc_pryd03,32,99,4	script	Explorer Box	1324,{
+
+if(#gotbox191==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox191,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED NINETY-TWO
+moc_pryd03,151,47,4	script	Explorer Box	1324,{
+
+if(#gotbox192==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox192,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED NINETY-THREE
+moc_pryd04,101,116,4	script	Explorer Box	1324,{
+
+if(#gotbox193==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldaitem.wav",0;
+getitem -1,1;
+set #gotbox193,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED NINETY-FOUR
+moc_pryd04,145,55,4	script	Explorer Box	1324,{
+
+if(#gotbox194==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox194,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED NINETY-FIVE
+moc_pryd04,6,121,4	script	Explorer Box	1324,{
+
+if(#gotbox195==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox195,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED NINETY-SIX
+moc_pryd05,98,74,4	script	Explorer Box	1324,{
+
+if(#gotbox196==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox196,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED NINETY-SEVEN
+moc_pryd05,64,25,4	script	Explorer Box	1324,{
+
+if(#gotbox197==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox197,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED NINETY-EIGHT
+moc_pryd05,207,41,4	script	Explorer Box	1324,{
+
+if(#gotbox198==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox198,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box ONE HUNDRED NINETY-NINE
+moc_pryd06,104,122,4	script	Explorer Box	1324,{
+
+if(#gotbox199==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox199,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box TWO HUNDRED
+moc_pryd06,102,185,4	script	Explorer Box	1324,{
+
+if(#gotbox200==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox200,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box TWO HUNDRED ONE
+moc_pryd06,196,196,4	script	Explorer Box	1324,{
+
+if(#gotbox201==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox201,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box TWO HUNDRED TWO
+moc_pryd06,180,91,4	script	Explorer Box	1324,{
+
+if(#gotbox202==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox202,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+
+//Box TWO HUNDRED THREE
+moc_pryd06,61,106,4	script	Explorer Box	1324,{
+
+if(#gotbox203==1) goto AlreadyGot;
+message ""+strcharinfo(0)+"","You got an explorer point!"; 
+set #ExplorerPoints,#ExplorerPoints+1;
+soundeffect "zeldasecret.wav",0;
+set #gotbox203,1;
+close;
+
+AlreadyGot:
+message ""+strcharinfo(0)+"","You've already found this box!"; 
+close;
+}
+

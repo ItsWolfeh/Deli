@@ -1,0 +1,84 @@
+-	script	UTAnnouncerGuy	-1,{
+
+OnPCKillEvent:
+
+// Total Kills and Kill Streaks. send player to PVP and WOE checks
+set CharTotalKills,CharTotalKills+1;
+set #AccTotalKills,#AccTotalKills+1;
+
+set PlayersKilledStreak,PlayersKilledStreak+1;
+
+//message ""+strcharinfo(0)+"","You have "+CharTotalKills+" TOTAL kills with this char";
+//message ""+strcharinfo(0)+"","You have "+#AccTotalKills+" TOTAL kills with this account";
+//message ""+strcharinfo(0)+"","You have a "+PlayersKilledStreak+" killstreak";
+
+if (PlayersKilledStreak==5) goto L_KillingSpree;
+if (PlayersKilledStreak==10) goto L_Rampage;
+if (PlayersKilledStreak==15) goto L_Dominating;
+if (PlayersKilledStreak==20) goto L_Unstoppable;
+if (PlayersKilledStreak==25) goto L_Godlike;
+if (PlayersKilledStreak==30) goto L_Monsterkill;
+goto woeandpvpstuff;
+
+L_KillingSpree:
+soundeffectall "killingspree.wav",0;
+goto woeandpvpstuff;
+
+L_Rampage:
+soundeffectall "rampage.wav",0;
+goto woeandpvpstuff;
+
+L_Dominating:
+soundeffectall "dominating.wav",0;
+goto woeandpvpstuff;
+
+L_Unstoppable:
+soundeffectall "unstoppable.wav",0;
+goto woeandpvpstuff;
+
+L_Godlike:
+soundeffectall "godlike.wav",0;
+goto woeandpvpstuff;
+
+L_Monsterkill:
+soundeffectall "monsterkill.wav",0;
+goto woeandpvpstuff;
+
+
+
+woeandpvpstuff:
+
+getmapxy(@mapname$,@mapx,@mapy,0);
+
+// WoE Only
+if(agitcheck() && getmapflag(@mapname$,mf_gvg) && @mapname$ != "arenagvg"){
+	set CharWoEKills,CharWoEKills+1;
+	set #AccWoEKills,#AccWoEKills+1;
+//	message ""+strcharinfo(0)+"","You have "+CharWoEKills+" WoE Kills with this char";
+//	message ""+strcharinfo(0)+"","You have "+#AccWoEKills+" WoE Kills with this account";
+	attachrid(killedrid);
+	set CharWoEDeaths,CharWoEDeaths+1;
+	set #AccWoEDeaths,#AccWoEDeaths+1;
+//	message ""+strcharinfo(0)+"","You have "+CharWoEDeaths+" WoE Deaths with this char";
+//	message ""+strcharinfo(0)+"","You have "+#AccWoEDeaths+" WoE Deaths with this account";
+	end;
+	}
+
+
+// PVP Only
+if(getmapflag(@mapname$,mf_pvp) || @mapname$ == "arenagvg"){
+	set CharPVPKills,CharPVPKills+1;
+	set #AccPVPKills,#AccPVPKills+1;
+//	message ""+strcharinfo(0)+"","You have "+CharPVPKills+" PVP Kills with this char";
+//	message ""+strcharinfo(0)+"","You have "+#AccPVPKills+" PVP Kills with this account";
+	attachrid(killedrid);
+	set CharPVPDeaths,CharPVPDeaths+1;
+	set #AccPVPDeaths,#AccPVPDeaths+1;
+//	message ""+strcharinfo(0)+"","You have "+CharPVPDeaths+" PVP Deaths with this char";
+//	message ""+strcharinfo(0)+"","You have "+#AccPVPDeaths+" PVP Deaths with this account";
+	end;
+	}
+
+end;
+
+}

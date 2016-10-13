@@ -1,0 +1,307 @@
+yuno_in02,93,205,8	script	Weaver	733,{
+if(cov != 4) goto leave;
+if((ancient1 == 1) && (ancient2 == 1) && (ancient3 == 1) && (ancient4 == 1)) goto donequest;
+if(weavequest == 1) goto alreadyweavequest;
+if(weavegear1 == 1) goto done;
+
+mes "[Weaver]";
+mes "Ah my child, you have decided to journey into the world of magic older than time.";
+mes "Our magic is different to that of others and we can teach it to you eventually...";
+next;
+if(countitem(5007)<1) goto gcirclet;
+mes "[Weaver]";
+mes "So you have your Weaving gear, that is good.";
+mes "My child, learning to Weave takes years of patience and dedication.";
+next;
+mes "[Weaver]";
+mes "You must seek four other Weavers. Each of them is the master of their element.";
+mes "They will ask you to help them. Once you have helped all of them come back to me, for only I can unlock the power of your gear.";
+next;
+mes "[Weaver]";
+mes "You must seek the Ancients of Fire, Water, Wind, and Earth.";
+mes "Do you accept this Quest?";
+menu "Yes",yes1,"No",no1;
+
+yes1:
+mes "[Weaver]";
+mes "They will be in areas of the world reflecting their respective elements. I shall be waiting.";
+set weavequest,1;
+close;
+
+donequest:
+mes "[Weaver]";
+mes "You have helped all four of the greatest Weavers to walk with us.";
+mes "You should be very proud...";
+next;
+mes "[Weaver]";
+mes "I have unravelled your first Weaving Level.";
+set weavequest,0;
+set ancient1,0;
+set ancient2,0;
+set ancient3,0;
+set ancient4,0;
+set weavegear1,1;
+mes "[Weaver]";
+mes "Seek out the others, they shall guide you to ancient power and knowledge.";
+close;
+
+
+alreadyweavequest:
+mes "[Weaver]";
+mes "You must seek the Ancients of Fire, Water, Wind, and Earth.";
+close;
+
+no1:
+mes "[Weaver]";
+mes "Disappointing...";
+close;
+
+
+
+gcirclet:
+mes "[Weaver]";
+mes "You do not have your Weaving Gear, go find it.";
+close;
+
+
+leave:
+mes "[Weaver]";
+mes "I am sorry, Weaving magic is too ancient for you to understand.";
+close;
+
+done:
+mes "[Weaver]";
+mes "Seek out the others, they shall guide you to ancient power and knowledge.";
+close;
+
+}
+
+//Ancient 1 Water
+
+iz_dun04,130,232,4	script	Ancient of Water	765,{
+if(weavegear1 == 1) goto done;
+if(weavequest != 1)  goto notweavequest;
+if(cov != 4) goto leave;
+if(ancient1 == 1) goto nothing;
+if(frozenquest == 1) goto waterpotato;
+
+mes "[Ancient of Water]";
+mes "I see, you have been sent to help me as part of a quest.";
+next;
+mes "[Ancient of Water]";
+mes "Very well, I have recently been trying to create a new thread. However, to do so I need a certain amount of items.";
+mes "[Ancient of Water]";
+mes "I am searching for 50 Mystic Frozen.";
+mes "Go in search of them and return when you have found them.";
+set frozenquest,1;
+close;
+
+waterpotato:
+mes "[Ancient of Water]";
+mes "Let's see if you collected everything";
+if(countitem(995)<50) goto noitems;
+mes "[Ancient of Water]";
+mes "Ah, it appears you have all the items.";
+delitem 995,50;
+set ancient1,1;
+next;
+done:
+mes "[Ancient of Water]";
+mes "I thank you.";
+mes "Seek out the others...";
+close;
+
+noitems:
+mes "[Ancient of Water]";
+mes "Please gather all the Mystic Frozens.";
+close;
+
+notweavequest:
+mes "[Ancient of Water]";
+mes "You are not ready, Weaver.";
+close;
+
+leave:
+mes "[Ancient of Water]";
+mes "Leave, before I kill you.";
+close;
+
+
+nothing:
+mes "[Ancient of Water]";
+mes "Thank you and good luck.";
+close;
+
+}
+
+//Ancient 2 Fire
+
+mag_dun02,247,74,4	script	Ancient of Fire	821,{
+if(weavegear1 == 1) goto done;
+if(weavequest != 1)  goto notweavequest;
+if(cov != 4) goto leave;
+if(ancient2 == 1) goto nothing;
+if(flamequest == 1) goto firepotato;
+
+mes "[Ancient of Fire]";
+mes "I see, you have been sent to help me as part of a quest.";
+next;
+mes "[Ancient of Fire]";
+mes "Very well, I have recently been trying to create a new thread. However, to do so I need a certain amount of items.";
+mes "[Ancient of Fire]";
+mes "I am searching for 50 Flame Hearts. Go in search of them and return when you have found them.";
+set flamequest,1;
+close;
+
+firepotato:
+mes "[Ancient of Fire]";
+mes "Let's see if you collected everything";
+if(countitem(994)<50) goto noitems;
+mes "[Ancient of Fire]";
+mes "Ah, it apears you have all the items.";
+delitem 994,50;
+set ancient2,1;
+next;
+done:
+mes "[Ancient of Fire]";
+mes "I thank you.";
+mes "Seek out the others...";
+close;
+
+noitems:
+mes "[Ancient of Fire]";
+mes "Please gather all of the Flame Hearts.";
+close;
+
+notweavequest:
+mes "[Ancient of Fire]";
+mes "You are not ready, Weaver.";
+close;
+
+leave:
+mes "[Ancient of Fire]";
+mes "Leave, before I kill you.";
+close;
+
+
+nothing:
+mes "[Ancient of Fire]";
+mes "Thank you and good luck.";
+close;
+
+}
+
+//Ancient 3 Wind
+
+gon_dun03,201,256,4	script	Ancient of Wind	766,{
+if(weavegear1 == 1) goto done;
+if(weavequest != 1)  goto notweavequest;
+if(cov != 4) goto leave;
+if(ancient3 == 1) goto nothing;
+if(rwindquest == 1) goto windpotato;
+
+mes "[Ancient of Wind]";
+mes "I see, you have been sent to help me as part of a quest.";
+next;
+mes "[Ancient of Wind]";
+mes "Very well, I have recently been trying to create a new thread. However, to do so I need a certain amount of items.";
+mes "[Ancient of Wind]";
+mes "I am searching for 50 Rough Wind";
+mes "Go in search for them and return when you have found them.";
+set rwindquest,1;
+close;
+
+windpotato:
+mes "[Ancient of Wind]";
+mes "Let's see if you collected everything...";
+if(countitem(996)<50) goto noitems;
+mes "[Ancient of Wind]";
+mes "Ah, it apears you have all the items.";
+delitem 996,50;
+set ancient3,1;
+next;
+done:
+mes "[Ancient of Wind]";
+mes "I thank you.";
+mes "Seek out the others...";
+close;
+
+noitems:
+mes "[Ancient of Wind]";
+mes "Please gather all the Rough Winds.";
+close;
+
+notweavequest:
+mes "[Ancient of Wind]";
+mes "You are not ready, Weaver.";
+close;
+
+leave:
+mes "[Ancient of Wind]";
+mes "Leave, before I kill you.";
+close;
+
+
+nothing:
+mes "[Ancient of Wind]";
+mes "I thank you for collecting the items for me.";
+close;
+
+}
+
+//Ancient 4 Earth
+
+tur_dun01,145,232,4	script	Ancient of Earth	784,{
+if(weavegear1 == 1) goto done;
+if(weavequest != 1)  goto notweavequest;
+if(cov != 4) goto leave;
+if(ancient4 == 1) goto nothing;
+if(naturequest == 1) goto earthpotato;
+
+mes "[Ancient of Earth]";
+mes "I see, you have been sent to help me as part of a quest.";
+next;
+mes "[Ancient of Earth]";
+mes "Very well, I have recently been trying to create a new thread. However, to do so I need a certain amount of items.";
+mes "[Ancient of Earth]";
+mes "I am searching for 50 Great Nature";
+mes "Go in search for them and return when you have found them.";
+set naturequest,1;
+close;
+
+earthpotato:
+mes "[Ancient of Earth]";
+mes "Let's see if you collected everything.";
+if(countitem(997)<50) goto noitems;
+mes "[Ancient of Earth]";
+mes "Ah, it apears you have all the items!";
+delitem 997,50;
+set ancient4,1;
+next;
+done:
+mes "[Ancient of Earth]";
+mes "I thank you.";
+mes "Seek out the others...";
+close;
+
+noitems:
+mes "[Ancient of Earth]";
+mes "Please gather all the Great Nature.";
+close;
+
+notweavequest:
+mes "[Ancient of Earth]";
+mes "You are not ready, Weaver.";
+close;
+
+leave:
+mes "[Ancient of Earth]";
+mes "Leave, before I kill you.";
+close;
+
+nothing:
+mes "[Ancient of Earth]";
+mes "I thank you for collecting the items for me.";
+close;
+
+}

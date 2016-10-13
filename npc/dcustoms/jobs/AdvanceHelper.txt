@@ -1,0 +1,23 @@
+valkyrie.gat,49,23,6	script	Hero of Valhalla	734,{
+
+mes "[Hero of Valhalla]";
+mes "Hello, young one. Welcome to Valhalla, the Hall of Heroes... In this area you can choose to become a stronger class. But you must be reborn to do this.";
+next;
+mes "[Hero of Valhalla]";
+mes "Here are the steps:";
+mes "1.You must be 2-1 or 2-2 Class";
+mes "2.You must be Base Level 99+";
+mes "3.You must be Job Level 50";
+mes " ";
+mes "Once you have achieved all this you must talk to the Master Novice!";
+next;
+mes "[Hero of Valhalla]";
+mes "She will help you be reborn as a High Novice. Once you're a High Novice you must reach Job Level 10 to become a High First Class.";
+next;
+mes "[Hero of Valhalla]";
+mes "Once you are a Job Level 40+ High First Class, you have to talk to one of the Heroes here to become an Advanced Class.";
+next;
+mes "[Hero of Valhalla]";
+mes "That's all for now...Choose wisely, young one.";
+close;
+}

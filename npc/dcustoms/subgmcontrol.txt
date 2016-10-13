@@ -1,0 +1,56 @@
+geffen,120,28,4	script	SubGMCC	111,{
+
+	if(getgmlevel()>1) goto L_SubGM;
+	close;
+
+
+L_SubGM:
+	mes "[SubGM Control Center]";
+	mes "O hai. Wut u wan do?";
+	mes " ";
+	mes "ALL USES OF THIS NPC ARE LOGGED AND MUST BE FOLLOWED UP WITH A POST IN STAFF FORUM";
+	next;
+	menu "Ban",L_SubBan,"Jumpto/Goto",L_SubGoto,"Open Deliverance Staff guild storage",L_SubStorage,"Info on using this NPC",L_Infos;
+
+L_SubBan:
+	mes "[SubGM Control Center]";
+	mes "This is to be used for EMERGENCIES ONLY. Let a GM handle regular punishments. This is for bots and hardcore assholes who won't go away.";
+	next;
+	mes "[SubGM Control Center]";
+	mes "All Bans carried out using this method -MUST- be followed up with a post in the GM section about why, so that IPbans may be added if necessary.";
+	next;
+	mes "[SubGM Control Center]";
+	mes "It will perform a 9999 day ban on the charname you enter. Enter cancel to ban nobody.";
+	input @banperson$;
+	if(@banperson$ == "cancel") close;
+	atcommand strcharinfo(0) + ":@ban " + "9999d " + @banperson$;
+	close;
+
+L_SubGoto:
+	mes "[SubGM Control Center]";
+	mes "This command may only be used for official SubGMing duties (stuff like bot checks/jumping to resolve a conflict/help with a received request that requires your presence).";
+	next;
+	mes "[SubGM Control Center]";
+	mes "All jumps must be followed up with a post in the GM section explaining the nature of the jump.";
+	next;
+	mes "[SubGM Control Center]";
+	mes "Insert the name of the player to jump to, or type cancel to cancel.";
+	input @jumpperson$;
+	if(@jumpperson$ == "cancel") close;
+	atcommand strcharinfo(0) + ":@goto " + @jumpperson$;
+	close;
+
+L_SubStorage:
+	if(getcharid(2)==30020) {
+		close2;
+		guildopenstorage();
+		end;
+	}
+	mes "You must be in the ^0099ffDeliverance Staff^000000 guild to open the guild storage.";
+	close;
+	
+L_Infos:
+	mes "[SubGM Control Center]";
+	mes "When asked to input a name, you may type cancel to cancel the process. If the char has an alt-symbol in their name, use the 1-to-1 chat alt-symbol trick.";
+	close;
+}

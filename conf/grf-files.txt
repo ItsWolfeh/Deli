@@ -1,0 +1,15 @@
+//-----------------------------------------
+// GRF List
+//-----------------------------------------
+
+//grf: C:\Program Files\Gravity\RO\data.grf
+grf: /home/deliv/data/sdata.grf
+
+// You may add more in this format
+// grf: <data file path>
+
+//------ Others ---------------------------
+
+// Data Directory (without the actual data\ though)
+// the below example would use C:\path\to\RO\data\
+data_dir: /home/deliv/

@@ -1,0 +1,251 @@
+//===== eAthena Script ======================================= 
+//= TonyMan's Elemental Armor Quest
+//===== By: ================================================== 
+//= TonyMan (1.0) 
+//===== Current Version: ===================================== 
+//= 1.0 
+//===== Compatible With: ===================================== 
+//= Any eAthena Version; RO Episode XX 
+//===== Description: ========================================= 
+//= A GREAT QUEST:
+//= You can construct a Fire, Water, Wind or Earth Armor with this Magic
+//= Smiths help. He also kills you if you insult him! :)
+//===== Additional Comments: ================================= 
+//= No History I suppose, but I have had these for such a long time. 
+//=========================================================
+ayo_in01,90,158,2	script	Magic Smith	805,{
+	mes "[^804000John Krevich^000000]";
+	mes "I am the Magical Smith of Ayothaya. I can construct magical armors that contain the ^0080FFLifeforce of an Element^000000.";
+	next;
+	menu "I want to make one.",construct_one,"Elemental Lifeforce?",ask_lifeforce,"Not interested...",cancel;
+	
+	construct_one:
+	mes "[^804000John Krevich^000000]";
+	mes "I can make 4 Elemental Armors, choose one from the list.";
+	next;
+	menu "^8080FFArmor of Water^000000",water_armor,"^FF0000Armor of Fire^000000",fire_armor,"^FF8000Armor of Wind^000000",wind_armor,"^004000Armor of Earth^000000",earth_armor,"Maybe later...",cancel;
+	
+	fire_armor:
+	mes "[^804000John Krevich^000000]";
+	mes "To make a Fire Armor, I need:";
+	mes "^00804020 Dragon Scales^000000";
+	mes "1 ^FF0000Flame Heart^000000";
+	mes "and 500,000 Zeny.";
+	next;
+	menu "Here, I have them all.",make_fire_armor,"Forget it.",cancel;
+	
+	make_fire_armor:
+	mes "[^804000John Krevich^000000]";
+	mes "Let me see if you have the necessary items...";
+	next;
+	if((countitem(1036)<20) || (countitem(994)<1) || (Zeny<=500000)) goto fail;
+	mes "[^804000John Krevich^000000]";
+	mes "Excellent, let me now construct the Armor...";
+	mes " ";
+	mes "Keeper of Fire, Destructor of Earth, I call upon your power!";
+	next;
+	delitem 1036,20;
+	delitem 994,1;
+	set Zeny,zeny-500000;
+	getitem 2344,1;
+	mes "[^804000John Krevich^000000]";
+	mes "Here is your ^FF0000Fire Armor^000000, use it well...";
+	close;
+	
+	water_armor:
+	mes "[^804000John Krevich^000000]";
+	mes "To make a Water Armor, I need:";
+	mes "^00804020 Dragon Scales^000000";
+	mes "1 ^8080FFMystic Frozen^000000";
+	mes "and 500,000 Zeny.";
+	next;
+	menu "Here, I have them all.",make_water_armor,"Forget it.",cancel;
+	
+	make_water_armor:
+	mes "[^804000John Krevich^000000]";
+	mes "Let me see if you have the necessary items...";
+	next;
+	if((countitem(1036)<20) || (countitem(995)<1) || (Zeny<=500000)) goto fail;
+	mes "[^804000John Krevich^000000]";
+	mes "Excellent, let me now construct the Armor...";
+	mes " ";
+	mes "Keeper of Water, Destructor of Fire, I call upon your power!";
+	next;
+	delitem 1036,20;
+	delitem 995,1;
+	set Zeny,zeny-500000;
+	getitem 2346,1;
+	mes "[^804000John Krevich^000000]";
+	mes "Here is your ^8080FFWater Armor^000000, use it well...";
+	close;
+	
+	earth_armor:
+	mes "[^804000John Krevich^000000]";
+	mes "To make an Earth Armor, I need:";
+	mes "^00804020 Dragon Scales^000000";
+	mes "1 ^004000Great Nature^000000";
+	mes "and 500,000 Zeny.";
+	next;
+	menu "Here, I have them all.",make_earth_armor,"Forget it.",cancel;
+	
+	make_earth_armor:
+	mes "[^804000John Krevich^000000]";
+	mes "Let me see if you have the necessary items...";
+	next;
+	if((countitem(1036)<20) || (countitem(997)<1) || (Zeny<=500000)) goto fail;
+	mes "[^804000John Krevich^000000]";
+	mes "Excellent, let me now construct the Armor...";
+	mes " ";
+	mes "Keeper of Earth, Destructor of Wind, I call upon your power!";
+	next;
+	delitem 1036,20;
+	delitem 997,1;
+	set Zeny,zeny-500000;
+	getitem 2350,1;
+	mes "[^804000John Krevich^000000]";
+	mes "Here is your ^004000Earth Armor^000000, use it well...";
+	close;
+	
+	wind_armor:
+	mes "[^804000John Krevich^000000]";
+	mes "To make a Wind Armor, I need:";
+	mes "^00804020 Dragon Scales^000000";
+	mes "1 ^FF8000Rough Wind^000000";
+	mes "and 500,000 Zeny.";
+	next;
+	menu "Here, I have them all.",make_wind_armor,"Forget it.",cancel;
+	
+	make_wind_armor:
+	mes "[^804000John Krevich^000000]";
+	mes "Let me see if you have the necessary items...";
+	next;
+	if((countitem(1036)<20) || (countitem(996)<1) || (Zeny<=500000)) goto fail;
+	mes "[^804000John Krevich^000000]";
+	mes "Excellent, let me now construct the Armor...";
+	mes " ";
+	mes "Keeper of Earth, Destructor of Water, I call upon your power!";
+	next;
+	delitem 1036,20;
+	delitem 996,1;
+	set Zeny,zeny-500000;
+	getitem 2348,1;
+	mes "[^804000John Krevich^000000]";
+	mes "Here is your ^FF8000Wind Armor^000000, use it well...";
+	close;
+		
+	ask_lifeforce:
+	mes "[^804000John Krevich^000000]";
+	mes "The world consist of 4 Elements:";
+	mes "^FF0000Fire Element^000000";
+	mes "^8080FFWater Element^000000";
+	mes "^FF8000Wind Element^000000";
+	mes "^004000Earth Element^000000";
+	mes "The world is part of these elements and the elements are part of this world. Without them, the world could not exist. I can harness the power of these elements and smith them with my magics to an armor and enchant it with the power of the element!";
+	next;
+	menu "What is the strongest element?",ask_strongest,"How do you do it?",ask_how,"I see, but I must go now.",cancel;
+	
+	ask_how:
+	mes "[^804000John Krevich^000000]";
+	mes "Even at a young age I was capable of manipulating the elements of my will. I have dedicated my life to understanding these elements, and that is how I have aquired my knowledge.";
+	next;
+	mes "[^804000John Krevich^000000]";
+	mes "In my young days I was called the 'Master Quadra Elemento', the master of the four elements. I decided to help young adventurers with my gift, and here I am.";
+	next;
+	menu "That is amazing!",amazing,"Boooring....",boring,"Can you teach me your magic?",teach_me;
+	
+	teach_me:
+	mes "[^804000John Krevich^000000]";
+	mes "I cannot. I have aquired my talent when I was born, it's something that only my bloodline can use. Sorry...";
+	close;
+	
+	boring:
+	set @boring,1;
+	mes "[^804000John Krevich^000000]";
+	mes "How rude! I was once the great Sage in these parts of the world, I can easily kill you!";
+	next;
+	menu "I am sorry I insulted you...",sorry_insulted,"Big deal, I ain't scared!",aint_scared,"Run away!",runaway;
+	
+	runaway:
+	warp "yuno",264,90;
+	close;
+	
+	aint_scared:
+	mes "[^804000John Krevich^000000]";
+	mes "Is that so? Take this then!";
+	heal -90000,-90000;
+	close;
+		
+	sorry_insulted:
+	set @boring,0;
+	mes "[^804000John Krevich^000000]";
+	mes "At least you have some manners, I accept your apology... leave now, please...";
+	close;
+		
+	amazing:
+	if (@boring==1) goto biar;
+	if (@gratuation == 1) goto said_already;
+	mes "[^804000John Krevich^000000]";
+	mes "Hehehe... Thank you for your compliment, as a token of my gratuation, here is a gift for you.";
+	next;
+	set @gratuation,1;
+	getitem 990,1;
+	mes "It is a vessel of Fire, an elemental stone of great power. Use it wisely.";
+	close;
+	
+	biar:
+	mes "[^804000John Krevich^000000]";
+	mes "How dare you try to fool me! You insulted me before, don't try to praise me later in hope of some present!";
+	next;
+	areaannounce "louyang",0,0,350,350,
+	"Secret Fire Quadro Magic Blast!!",1;
+	mes "^800000Secret Fire Quadro Dragon Magic Blast!!^000000";
+	heal -90000,-90000;
+	close;
+	
+	said_already:
+	mes "[^804000John Krevich^000000]";
+	mes "Thanks for the compliment again "+ strcharinfo(0) +", I really appreciate it. Farewell now.";
+	close;
+
+	ask_strongest:
+	mes "[^804000John Krevich^000000]";
+	mes "They are all very balanced and strong against one, but then weak against the other. I will explain it to you.";
+	next;
+	mes "[^804000John Krevich^000000]";
+	mes "^FF0000Fire^000000:";
+	mes "Strong against: ^004000Earth^000000";
+	mes "Weak against: ^8080FFWater^000000";
+	mes "Neutral against: ^FF8000Wind^000000";
+	next;
+	mes "[^804000John Krevich^000000]";
+	mes "^8080FFWater^000000:";
+	mes "Strong against: ^FF0000Fire^000000";
+	mes "Weak against: ^FF8000Wind^000000";
+	mes "Neutral against: ^004000Earth^000000";
+	next;
+	mes "[^804000John Krevich^000000]";
+	mes "^004000Earth^000000:";
+	mes "Strong against: ^FF8000Wind^000000";
+	mes "Weak against: ^FF0000Fire^000000";
+	mes "Neutral against: ^8080FFWater^000000";
+	next;
+	mes "[^804000John Krevich^000000]";
+	mes "^FF8000Wind^000000:";
+	mes "Strong against: ^8080FFWater^000000";
+	mes "Weak against: ^004000Earth^000000";
+	mes "Neutral against: ^FF0000Fire^000000";
+	next;
+	mes "[^804000John Krevich^000000]";
+	mes "There are also other elements out there, such as Poison, Holy, Shadow, Ghost and Undead. Find what element works best against those yourself.";
+	close;
+		
+	cancel:
+	mes "[^804000John Krevich^000000]";
+	mes "Farewell then. I will be here observing the elements of life.";
+	close;
+	
+	fail:
+	mes "[^804000John Krevich^000000]";
+	mes "You don't have everything I need to make that!";
+	close;
+}

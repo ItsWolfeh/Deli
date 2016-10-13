@@ -1,0 +1,39 @@
+lighthalzen,146,93,5	script	Monsterologist	743,{
+
+
+	cutin "job_sage_kayron",2;
+	mes "[Monsterologist]";
+	mes "I have been studying the beasts that overtook much of the world for all of my life. For 5,000z, I'll tell you about any beast's statistics and what items it may be hoarding.";
+	next;
+	menu "Alright, let's try it.",goforit,"Not interested.",nevar;
+
+goforit:
+	if(zeny < 5000) goto nozeny;
+	mes "[Monsterologist]";
+	mes "Three...four...five thousand zeny. OK, let's get you started.";
+	set zeny, zeny - 5000;
+	next;
+	mes "[Monsterologist]";
+	mes "You may input the mob ID number or the name of the mob you want to know about.";
+
+	input @MOBIDENTIFIER$;
+	atcommand strcharinfo(0)+ ":@mi "+@MOBIDENTIFIER$+"";
+	next;
+	mes "[Monsterologist]";
+	mes "There you go. Not too shabby, huh?";
+	cutin "job_sage_kayron",255;
+	close;
+
+nozeny:
+	mes "[Monsterologist]";
+	mes "Oh, sorry.  You need at least 5,000 zeny to use my services.";
+	cutin "job_sage_kayron",255;
+	close;
+
+nevar:
+	mes "[Monsterologist]";
+	mes "Have it your way.";
+	cutin "job_sage_kayron",255;
+	close;
+
+}

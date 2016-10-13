@@ -1,0 +1,62 @@
+prt_in,124,79,4	script	Kafra Postal Service	117,{
+
+		mes "[Kafra Postal Service]";
+		mes "Welcome to Kafra Corp. Postal Service. You can purchase 'Special Delivery' here, which will bring you your storage from anywhere.";
+		next;
+L_Topmenu:
+		menu "Information on Special Delivery",L_InfoSpecial,"Buy Special Delivery",L_BuySpecial,"Buy Extra Special Delivery",L_BuyExtra,"Cancel",M_End;
+
+L_InfoSpecial:
+		mes "[Kafra Postal Service]";
+		mes "^FF0000Special Delivery^000000 will call standard Kafra Corp. Gryphons to bring you your storage at your current location. Standard Gryphons will not fly to GVG locations. The fee for this item is 45k zeny.";
+		next;
+		mes "^FF0000Extra Special Delivery^000000 calls an Elite Kafra Corp. Gryphon to your current location, even if it is a GVG map. It goes for a hefty 250k zeny, as these Gryphons are quite expensive to train.";
+		next;
+		goto L_Topmenu;
+
+L_BuySpecial:
+		mes "[Kafra Postal Service]";
+		mes "Are you sure? It'll cost 45,000 zeny per Special Delivery.";
+		next;
+		menu "Yes!",L_BuySpecial2, "No!",M_End;
+
+L_BuySpecial2:
+		mes "[Kafra Postal Service]";
+		mes "How many do you want? You can get as many as 10 at a time.";
+		input @amountbuy;
+		if(@amountbuy<1) close;
+		if(@amountbuy>10) close;
+		if(Zeny < @amountbuy*45000) goto L_NoZeny;
+		set Zeny,Zeny-@amountbuy*45000;
+		getitem 32201,@amountbuy;
+		goto M_End;
+
+L_BuyExtra:
+		mes "[Kafra Postal Service]";
+		mes "Are you sure? It'll cost 250,000 zeny per Extra Special Delivery.";
+		next;
+		menu "Yes!",L_BuyExtra2, "No!",M_End;
+
+L_BuyExtra2:
+		mes "[Kafra Postal Service]";
+		mes "How many do you want? You can get as many as 10 at a time.";
+		input @amountbuy;
+		if(@amountbuy<1) close;
+		if(@amountbuy>10) close;
+		if(Zeny < @amountbuy*250000) goto L_NoZeny;
+		set Zeny,Zeny-@amountbuy*250000;
+		getitem 32207,@amountbuy;
+		goto M_End;
+
+L_NoZeny:
+		next;
+		mes "[Kafra Postal Service]";
+		mes "You don't have enough zeny.";
+		close;
+
+M_End:
+		next;
+		mes "[Kafra Postal Service]";
+		mes "Thank you for choosing Kafra Corp. Postal Service. Come again!";
+		close;
+}

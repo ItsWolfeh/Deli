@@ -1,0 +1,102 @@
+//Crono: Added a real, working coordinate to the Warp girl
+
+gonryun,154,142,5	script	Coven Keeper	739,{
+	if (cov == 1) goto done;
+	if (cov == 2) goto done;
+	if (cov == 3) goto done;
+	if (cov == 4) goto done;
+	if (cov == 5) goto done;
+
+	mes "[Keeper]";
+	mes "I am the Coven Keeper. I shall allow you to join a Coven. Choose wisely, this choice will stay with you...";
+	mes "(Info on the site)";
+	next;
+	menu "Coven of Slayers",slayers,"Coven of the Craft",craft,"Coven of the Art",art,"Coven of Weaving",weaving,"Coven of Prophecy",prophecy;
+
+slayers:
+	mes "[Keeper]";
+	mes "The Coven of Slayers is a coven of beings who exist only to hunt down and eliminate thier targets. Very little is known about them because they act in secrecy.";
+	next;
+	mes "[Keeper]";
+	mes "Do you wish to Join the Coven of Slayers?";
+	next;
+	menu "Yes",yes,"No",No;
+
+yes:
+	mes "[Keeper]";
+	mes "You have Joined the Coven of Slayers. Be wary of those who hunt, for sometimes the Hunters become the Hunted.";
+	set cov,1;
+	close;
+
+craft:
+	mes "[Keeper]";
+	mes "The coven of the Craft are very unique in thier belief and their power. Witchcraft can be tricky and complicated, but it is powerful and is very rewarding.";
+	next;
+	mes "[Keeper]";
+	mes "Do you wish to Join the Coven of the Craft?";
+	next;
+	menu "Yes",yes1,"No",No;
+
+yes1:
+	mes "[Keeper]";
+	mes "You have Joined the Coven of the Craft, true power lies in the beholder.";
+	set cov,2;
+	close;
+
+Art:
+	mes "[Keeper]";
+	mes "The coven of the Art is a conven that teaches its users how to use the Art, a technique which takes years to master and which not many are able to.";
+	next;
+	mes "[Keeper]";
+	mes "Do you wish to Join the Coven of the Art?";
+	next;
+	menu "Yes",yes2,"No",No;
+
+
+yes2:
+	mes "[Keeper]";
+	mes "You have Joined the Coven of the Art. If you are worthy, the forbidden techniques of the Art will be revealed to you.";
+	set cov,3;
+	close;
+
+Weaving:
+	mes "[Keeper]";
+	mes "Thousands of years ago it was believed that spells were not cast but were weaved, The Coven of Weaving teaches it users the way of a Weaver.";
+	next;
+	mes "[Keeper]";
+	mes "Do you wish to Join the Coven of Weaving?";
+	next;
+	menu "Yes",yes3,"No",No;
+
+yes3:
+	mes "[Keeper]";
+	mes "You have Joined the Coven of Weaving. Not everything is as it seems.";
+	set cov,4;
+	close;
+
+Prophecy:
+	mes "[Keeper]";
+	mes "What would you do if you could see the future? Long ago it was said Prophets could see into the future. This ability was lost with time, and members of the Coven of Prophecy are trying to relearn this ancient power.";
+	next;
+	mes "[Keeper]";
+	mes "Do you wish to Join the Coven of Prophecy?";
+	next;
+	menu "Yes",yes4,"No",No;
+
+yes4:
+	mes "[Keeper]";
+	mes "You have Joined the Coven of Prophecy. Without the past there is no future.";
+	set cov,5;
+	close;
+
+No:
+	mes "[Keeper]";
+	mes "I understand.";
+	close;
+
+done:
+	mes "[Keeper]";
+	mes "You have already chosen your coven.";
+	close;
+
+}

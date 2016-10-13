@@ -1,0 +1,71 @@
+comodo,207,148,4	script	Sunna	724,{
+
+	cutin "job_dancer_eir01",2;
+	mes "[^17731CSunna^000000]";
+	mes "Man, it's hot out here. Wanna cool down with a nice ^724168Summer Suit^000000?";
+	next;
+	cutin "job_dancer_eir01",255;
+	menu "Yeah!",Alright,"No thanks.",notinto;
+	
+	
+	notinto:
+	cutin "job_dancer_eir03",2;
+	mes "[^17731CSunna^000000]";
+	mes "Fine.";
+	next;
+	mes "[^17731CSunna^000000]";
+	mes "Have fun sweating.";
+	cutin "job_dancer_eir03",255;
+	close;
+	
+
+	Alright:
+	cutin "job_dancer_eir02",2;
+	mes "[^17731CSunna^000000]";
+	mes "Awesome. Just bring me the following and I can put together a snazzy summer outfit for you!";
+	mes "- ^8B0C2F 300x Fabric^000000";
+	mes "- ^8B0C2F 2x Slotted Sandals^000000";
+	mes "- ^8B0C2F 1x Sunglasses^000000";
+	mes "- ^8B0C2F 1x Undershirt^000000";
+	next;
+	cutin "job_dancer_eir02",255;
+	menu "I got it all together now",have_items,"I'll go get everything.",gocollect;
+	
+	gocollect:
+	mes "[^17731CSunna^000000]";
+	mes "Good luck!";
+	close;
+	
+	have_items:
+	cutin "job_dancer_eir01",2;
+	mes "[^17731CSunna^000000]";
+	mes "Let's see...";
+	next;
+	cutin "job_dancer_eir01",255;
+	if((countitem(1059)<300) || (countitem(2402)<2) || (countitem(2201)<1) || (countitem(2522)<1)) goto noitems;
+	
+	mes "[^17731CSunna^000000]";
+	cutin "job_dancer_eir02",2;
+	mes "Hang on while I put it all together. Shouldn't take any longer than the amount of time it takes you to hit Next, whatever that means.";
+	next;
+	delitem 1059,300;
+	delitem 2402,2;
+	delitem 2201,1;
+	delitem 2522,1;
+
+	mes "[^17731CSunna^000000]";
+	mes "Done!";
+	getitem 12260,1;
+	next;
+	cutin "job_dancer_eir02",255;
+	close;
+	
+	noitems:
+	cutin "job_dancer_eir03",2;
+	mes "[^17731CSunna^000000]";
+	mes "You didn't bring me everything I needed. I can't let you go walking around half-naked!";
+	next;
+	cutin "job_dancer_eir03",255;
+	close;
+		
+}

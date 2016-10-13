@@ -1,0 +1,27 @@
+prt_church,177,176,3	script	Adoption Resetter	60,{
+
+	mes "[Adoption Resetter]";
+	mes "I'm to be used ONLY if the Adoption system is locked up and says there is an adoption in progress when there clearly is NOT.";
+	next;
+	mes "[Adoption Resetter]";
+	mes "Using this NPC to disrupt someone else's adoption process will result in a ban. Use only when absolutely necessary.";
+	menu "Nevermind",CANCELZOR,"Reset - locked and nobody in sight",RESETTHEBASTARD;
+	close;
+
+
+RESETTHEBASTARD:
+	deltimer "timeadopt::OnAdopt";
+	set $@AdoptionActive, 0;
+	set $@ParentOne$, null;
+	set $@ParentTwo$, null;
+	set $@Baby$, null;
+	set $@GenderBaby$, null;
+	set $@FinalQuestion, 0;
+	set $@CheckAll, 0;
+	close;
+
+CANCELZOR:
+	close;
+
+
+}

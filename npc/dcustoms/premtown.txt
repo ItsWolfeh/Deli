@@ -1,0 +1,182 @@
+//============
+// Map flags =
+//============
+// Outdoors has these
+premcity	mapflag	nightenabled
+premcity	mapflag	nobranch
+premcity	mapflag	noicewall
+premcity	mapflag	nozenypenalty
+premcity	mapflag	nomemo
+premcity	mapflag	nopenalty
+premcity	mapflag	pvp	off
+
+// Indoors matches ayo_in01 and ayo_in02 defaults
+prem_in01	mapflag	indoors
+prem_in01	mapflag	nobranch
+prem_in01	mapflag	noicewall
+prem_in01	mapflag	nomemo
+prem_in01	mapflag	nopenalty
+prem_in01	mapflag	pvp	off
+prem_in01	mapflag	noreturn
+prem_in01	mapflag	noteleport
+
+prem_in02	mapflag	indoors
+prem_in02	mapflag	nobranch
+prem_in02	mapflag	noicewall
+prem_in02	mapflag	nomemo
+prem_in02	mapflag	nopenalty
+prem_in02	mapflag	pvp	off
+prem_in02	mapflag	noreturn
+prem_in02	mapflag	noteleport
+
+
+
+//=========
+// SMITHS =
+//=========
+
+// Christopher Guillenrow duplicate in merchants\refine.txt
+
+prem_in01,86,188,3	script	Hollengrhen's Twin	85,{
+	set @name$,"Hollengrhen's Twin";
+	callfunc "refinemain";
+	end;
+}
+
+prem_in01,83,195,4	script	Salesman	86,{
+	set @name$,"Salesman";
+	callfunc "phramain";
+	end;
+}
+
+
+prem_in01,85,195,4	script	Mineral Refiner	84,{
+	set @name$,"Mineral Refiner";
+	callfunc "orimain";
+	end;
+}
+
+prem_in01,87,195,4	script	Repairman	84,{
+	set @name$,"Repairman";
+	callfunc "repairmain";
+	end;
+}
+
+
+
+//=======================
+// ELU AND ORI REFINERS =
+//=======================
+prem_in01,77,182,7	script	Master Oridecon Refiner	63,{
+
+//	if ((countitem(756) < 5)) goto L_NoOri;
+//	delitem 756,5;
+//	getitem 984,1;
+	if ((countitem(756) < 5)) goto L_NoOri;
+	set .@maxori,countitem(756)/5;
+	delitem 756,.@maxori*5;
+	getitem 984,.@maxori;
+	close;
+
+L_NoOri:
+	mes "[Master Oridecon Refiner]";
+	mes "You need at least 5 Rough Oridecon to make an Oridecon.";
+	close;
+
+}
+
+
+prem_in01,80,182,7	script	Master Elunium Refiner	63,{
+
+//	if ((countitem(757) < 5)) goto L_NoElu;
+//	delitem 757,5;
+//	getitem 985,1;
+	if ((countitem(757) < 5)) goto L_NoElu;
+	set .@maxelu,countitem(757)/5;
+	delitem 757,.@maxelu*5;
+	getitem 985,.@maxelu;
+	close;
+
+L_NoElu:
+	mes "[Master Elunium Refiner]";
+	mes "You need at least 5 Rough Elunium to make an Elunium.";
+	close;
+
+}
+
+
+
+//==================
+// ARENA WARP GUY  =
+//==================
+
+premcity,146,172,5	script	Arena Warper	734,{
+
+	menu "Go to Arena",L_gotoArena,"Go to Dueling Arena",pvpsubmenu,"Go to GVG Arena",gvgwarp,"Cancel",AnNo;
+
+L_gotoArena:
+	specialeffect2 35;specialeffect2 36;specialeffect2 36;sleep2 1800;warp "arenalounge",88,50;close;
+
+pvpsubmenu:
+	if(#DuelingArenaClearance==0) goto L_DuelingNoobProof;
+	menu "North",L_SUB_1,"East",L_SUB_2,"West",L_SUB_3,"South",L_SUB_4,"Cancel",AnNo;
+	close;
+		L_SUB_1: warp "arenaduel",99,121;	close;
+		L_SUB_2: warp "arenaduel",128,99;	close;
+		L_SUB_3: warp "arenaduel",70,99;	close;
+		L_SUB_4: warp "arenaduel",99,70;	close;
+
+AnNo:
+	mes "[Arena Warper]";
+	mes "Very well then.";
+	mes "Good day.";
+	close;
+
+L_DuelingNoobProof:
+	mes "[Arena Warper]";
+	mes "I need to make sure you understand the premise of this arena. You will only have to pass this test once for your account.";
+	next;
+	mes "[Arena Warper]";
+	mes "What do you intend on doing in this Arena?";
+	next;
+	menu "I want to KILL randomly.",killergetouttahere,"I want to have friendly duels",friendlyduels;
+
+friendlyduels:
+	mes "[Arena Warper]";
+	mes "So, do you understand that you can NOT randomly player-kill in this arena? You understand that this place is for agreed-upon duels?";
+	next;
+	menu "No, I do not understand",AnNo,"Yes, I'm going to kill randomly",killergetouttahere,"Yes, I understand.",youpassthetest;
+
+youpassthetest:
+	set #DuelingArenaClearance,1;
+	mes "[Arena Warper]";
+	mes "You pass the test. You may speak with me again at any time to enter the dueling arena without having to go through all this again.";
+	next;
+	mes "[Arena Warper]";
+	mes "In case you lied your way through this test, keep in mind that most PKs here get reported and result in a month-long ban.";
+	close;
+
+killergetouttahere:
+	mes "[Arena Warper]";
+	mes "Wrong! This arena is not for PKing. To PK you should visit PVP Izlude. You can get there by talking to the PVP Switcher in Prontera or in the Arena Waiting room then going to Izlude.";
+	next;
+	mes "[Arena Warper]";
+	mes "This arena is for friendly duels only. You are not allowed to just kill, you need to challenge and have a clean fight.";
+	next;
+	mes "[Arena Warper]";
+	mes "Would you like to go to PVP Izlude instead?";
+	next;
+	menu	"Yes",boothisasstoizlude,"No",AnNo;
+
+boothisasstoizlude:
+		warp "pvpizlude",128,93;
+		close;
+//==============================
+//end of noobproofed pvp arena =
+//==============================
+
+gvgwarp:
+	warp "arenagvg",49,14;
+	close;
+
+}

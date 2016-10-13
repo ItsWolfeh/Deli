@@ -1,0 +1,87 @@
+aldebaran,146,110,3	script	Pediatrician	725,{
+
+if(Upper!=2) goto NotABaby;
+
+	cutin "job_black_hucke01",2;
+	mes "[^17731CPediatrician^000000]";
+	mes "Well hello there, little cutie! You look a little low on health and SP...the life of a baby, huh? Well, if you get me the right ingredients, I can make you the ^724168Flintstones Vitamins Card^000000 and change that! It slots into armor and gives Level 80+ babies +35% HP and SP!!!";
+	next;
+	cutin "job_black_hucke01",255;
+	menu "What do I need?",Alright,"I got everything",have_items,"No thanks, I'm lazy",notinto;
+
+	notinto:
+	cutin "job_black_hucke03",2;
+	mes "[^17731CPediatrician^000000]";
+	mes "Fine!!! Neglect your health!";
+	next;
+	mes "[^17731CPediatrician^000000]";
+	mes "I don't get paid on commission anyway.";
+	cutin "job_black_hucke03",255;
+	close;
+	
+	Alright:
+	cutin "job_black_hucke02",2;
+	mes "[^17731CPediatrician^000000]";
+	mes "I need the following to make the ^724168Flintstones Vitamins Card^000000:";
+	mes "- ^8B0C2F 1 Stone^000000";
+	mes "- ^8B0C2F 3 Pacifier (Pet Equip)^000000";
+	mes "- ^8B0C2F 100 Large Jellopy^000000";
+	mes "- ^8B0C2F 100 Feather^000000";
+	mes "- ^8B0C2F 1 Poring Doll^000000";
+	mes "- ^259E58 50 Slingshot^000000";
+	mes "- ^259E58 1 Party Hat^000000";
+	mes "- ^259E58 100 Tiger Panty^000000";
+	mes "- ^259E58 365 Apples^000000";
+	mes "- ^259E58 And 50 Poring Cards for the base.^000000";
+	next;
+	cutin "job_black_hucke02",255;
+	menu "I have all that!",have_items,"I'll go collect that stuff.",gocollect;
+	
+	gocollect:
+	mes "[^17731CPediatrician^000000]";
+	mes "Good luck!";
+	close;
+	
+	have_items:
+	cutin "job_black_hucke01",2;
+	mes "[^17731CPediatrician^000000]";
+	mes "Let's see what you've got...";
+	next;
+	cutin "job_black_hucke01",255;
+	if((countitem(7049)<1) || (countitem(10004)<3) || (countitem(7126)<100) || (countitem(949)<100) || (countitem(741)<1) || (countitem(7195)<50) || (countitem(5060)<1) || (countitem(7267)<100) || (countitem(512)<365) || (countitem(4001)<50)) goto noitems;
+	delitem 7049,1;
+	delitem 10004,3;
+	delitem 7126,100;
+	delitem 949,100;
+	delitem 741,1;
+	delitem 7195,50;
+	delitem 5060,1;
+	delitem 7267,100;
+	delitem 512,365;
+	delitem 4001,50;
+	getitem 32100,1;
+
+	mes "[^17731CPediatrician^000000]";
+	cutin "job_black_hucke02",2;
+	mes "Use it and stay healthy!!!";
+	next;
+	cutin "job_black_hucke02",255;
+	close;
+	
+	noitems:
+	cutin "job_black_hucke03",2;
+	mes "[^17731CPediatrician^000000]";
+	mes "Liar...";
+	next;
+	cutin "job_black_hucke03",255;
+	close;
+
+	NotABaby:
+	cutin "job_black_hucke01",2;
+	mes "[^17731CPediatrician^000000]";
+	mes "Sorry, I only help Babies.";
+	next;
+	cutin "job_black_hucke03",255;
+	close;
+		
+}

@@ -1,0 +1,41 @@
+niflheim,29,161,5	script	Not-So-Grim Reaper	1192,{
+
+	mes "[Not-So-Grim Reaper]";
+	mes "Hello there. Wanna know how many times you've died or killed someone?";
+	next;
+	menu "Show Deaths!!!",L_ShowDeaths,"Show Kills!!!",L_ShowKills,"Not really...",L_NoDeathShow;
+
+L_ShowDeaths:
+	mes "[Not-So-Grim Reaper]";
+	mes "That was enthusiastic. Are you that obsessed with death?";
+	next;
+	mes "[Not-So-Grim Reaper]";
+	mes "Anyhow, you've died ^FF0000"+PC_DIE_COUNTER+"^000000 times. That's not bad, for someone who's SUPPOSED to be ^FF0000mortal.^000000";
+	next;
+	mes "[Not-So-Grim Reaper]";
+	mes "Come back and check again after you have died a few more times.";
+	soundeffect "wraith_die.wav",0;
+	close;
+
+L_ShowKills:
+	if(#AccTotalKills==0) goto L_PatheticNoKills;
+	mes "[Not-So-Grim Reaper]";
+	mes "Looks like you've been busy doing my job. You've killed ^FF0000"+CharTotalKills+"^000000 people with this character, and ^FF0000"+#AccTotalKills+"^000000 with this account.";
+	next;
+	mes "[Not-So-Grim Reaper]";
+	mes "Come back and check again when you've killed more people...";
+	soundeffect "wraith_die.wav",0;
+	close;
+
+L_NoDeathShow:
+	mes "[Not-So-Grim Reaper]";
+	mes "Eh, I'll be seeing you soon enough anyway...";
+	soundeffect "wraith_die.wav",0;
+	close;
+
+L_PatheticNoKills:
+	mes "[Not-So-Grim Reaper]";
+	mes "You haven't killed anyone, pansy!";
+	close;
+
+}

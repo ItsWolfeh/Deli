@@ -1,0 +1,51 @@
+ayothaya,113,186,5	script	Sanctified Warder	98,{
+	mes "[^17731CWarder^000000]";
+	mes "Greetings, adventurer. I can create ^724168Sanctified Fists^000000. However, I will require some items.";
+	next;
+	menu "What do you need?",Alright,"Not interested.",notinto;
+
+	notinto:
+	mes "[^17731CWarder^000000]";
+	mes "Very well, then.";
+	close;
+	
+	Alright:
+	mes "[^17731CWarder^000000]";
+	mes "Here is what you'll need:";
+	mes "- ^8B0C2F 1 Fist^000000";
+	mes "- ^181B74 100 Holy Water ^000000";
+	mes "- ^259E58 200 Piece of Cloud^000000 and";
+	mes "- ^259E58 315,000 Zeny^000000";
+	next;
+	menu "I have gathered the items.",have_items,"I don't have them yet...",gocollect;
+	
+	gocollect:
+	mes "[^17731CWarder^000000]";
+	mes "Make haste!";
+	close;
+	
+	have_items:
+	mes "[^17731CWarder^000000]";
+	mes "Let's see...";
+	next;
+	if((countitem(1807)<1) || (countitem(523)<100) || (countitem(7162)<200) || (Zeny<=315000)) goto noitems;
+	
+	mes "[^17731CWarder^000000]";
+	mes "Excellent, you have succeeded! I will now take the items.";
+	next;
+
+	delitem 1807,1;
+	delitem 523,100;
+	delitem 7162,200;
+	set Zeny,zeny-315000;
+	
+	mes "[^17731CWarder^000000]";
+	mes "Here is your reward, you have earned it...";
+	getitem 32055,1;
+	close;
+	
+	noitems:
+	mes "[^17731CWarder^000000]";
+	mes "Lying filth! Begone!";
+	close;
+}

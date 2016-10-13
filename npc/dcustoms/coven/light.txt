@@ -1,0 +1,40 @@
+//Crono: Fixed freeze on cancel
+
+new_1-1,144,115,7	script	Divine	812,{
+
+if (PlayerIsGood == 1) goto done;
+if (PlayerIsEvil == 1) goto done;
+mes "[Divine]";
+mes "Welcome my child. Do you wish to fight for Deliverance with honor and integrity?";
+next;
+menu "Yes",yes,"No",No;
+next;
+
+Yes:
+mes "[Divine]";
+mes "The path of the light is an honorable path. You will be able to wield the most powerful of Valhalla's weapons and the Valkyries themselves shall protect you in your quest for Deliverance...";
+
+//TEMPORARY REMOVE
+//set PlayerIsGood,1;
+//set PlayerIsEvil,0;
+next;
+warp "new_1-2",100,9;
+end;
+
+No:
+mes "[Divine]";
+mes "Very well, it saddens me though.";
+close;
+
+
+done:
+mes "[Divine]";
+mes "You have already chosen your path.";
+next;
+warp "new_1-2",100,9;
+close;
+
+
+}
+
+

@@ -1,0 +1,1025 @@
+//========================
+//= Deli Skoll Quest 1.0 =
+//=     By Henhouse      =
+//===================================================
+//Unused Custom Items: 29009, "Shard of the Emblem" =
+//Variables: SKOLLQ, TimesPersonHasGoneIn           =
+//===================================================
+
+// Svalinn of the Crimson Sun
+yuno_in05,6,42,0	script	Svalinn	755,{
+
+if (SKOLLQ == 2) goto L_1;
+if (SKOLLQ == 3) goto L_Main;
+if (SKOLLQ == 4) goto L_HasSkollQ4;
+if (SKOLLQ > 4) goto L_done;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "Hooouuuuummmmmmmnnnnnnn...";
+next;
+mes "[Svalinn of the Crimson Sun]";
+mes "HHHOOOOOOUUUUUmmmmmmmnnnnnnn...";
+next;
+mes "[Svalinn of the Crimson Sun]";
+mes "HHHHOOOOOUUUUUUUUUMMMMMMMMMMNNNNNNN.....";
+next;
+mes "[Svalinn of the Crimson Sun]";
+mes "Hoooooouuuu----";
+mes ".....?!";
+mes "Hey.. WHA!!!??";
+next;
+mes "...";
+next;
+mes "[Svalinn of the Crimson Sun]";
+mes "D-darn it! You made me lose my concentration!!";
+mes "...it took me hours to get comfortable...";
+mes "H-how dare you!?";
+next;
+mes "[Svalinn of the Crimson Sun]";
+mes "You nasty person, interrupting my...";
+mes "Now I'm steamed!"; 
+mes "Thanks! Thanks a lot!";
+next; 
+mes "[Svalinn of the Crimson Sun]";
+mes "This is just swell."; 
+mes "Now I've got a headache.";
+mes "I can't meditate under these conditions...";
+next;
+mes "[Svalinn of the Crimson Sun]";
+mes "YOU! Yeah, you!";
+mes "Bring me some Anodyne.";
+mes "One will be enough.";
+next;
+mes "[Svalinn of the Crimson Sun]";
+mes "If you do, I might just forgive"; 
+mes "you for being such a huge pain!";
+emotion e_pif;
+set SKOLLQ,2;
+close;
+
+L_1:
+mes "[Svalinn of the Crimson Sun]";
+mes "So!";
+mes "Did you bring the items?";
+next;
+menu "Yeah, yeah... I brought them.",-,"No... Uh, what were the items?",L_Repeat;
+
+if (countitem(605) < 1) goto L_Repeat;
+delitem 605,1;
+set SKOLLQ,3;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "Heh, well thanks! All is forgiven.";
+mes "Now that that's over with...";
+mes "Who are you and what do you want with me?";
+next;
+menu "I'm just looking for information.",L_Main,"Nothing, really.",L_close1;
+
+L_Main:
+mes "[Svalinn of the Crimson Sun]";
+mes "If it's information you're looking for...";
+mes "Know this:";
+next;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "I am Svalinn the Great.";
+mes "Sage of the Sacred Fire.";
+mes "Sworn protector of all things bright and burning.";
+next;
+
+mes "I gotta say, it must have taken you some effort to find me. ";
+mes "And I'm quite sure it was fate that our paths would cross.";
+next;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "Now, I'm not good for much else except information...";
+mes "That's what you want, right?";
+mes "So what do you wanna know?";
+next;
+
+menu "What's your speciality?",-,"What's it like to be a Sage?",L_option1,"Meh, nothing.",L_close1;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "Tales and lore are my speciality.";
+mes "There's hardly a story I don't know.";
+next;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "Want to hear my favorite legend?";
+next;
+menu "Sure, why not.",-,"No thanks.",L_choice1;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "Excellent!";
+next;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "My favorite tale is of the lost monster, ^ff0000Skoll^000000.";
+mes "Now, lets see...";
+next;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "Ahem.";
+next;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "The Ancients spoke of Fenrir.";
+mes "A monstrous wolf-demon,";
+mes "chained down by the gods with Gleipnir.";
+next;
+mes "[Svalinn of the Crimson Sun]";
+mes "Fenrir is said to have had two sons,";
+mes "one such son was ^ff0000Skoll^000000;";
+mes "a vicious hound obsessed with";
+mes "devouring the sun goddess, Alfrodull.";
+next;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "And it is said that when such a thing happens, the stars will diminish in the sky, the world will plunge to darkness and despair. Winter will torment the land, forever.";
+next;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "The Twilight of the Gods will begin.";
+next;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "^ff0000Skoll^000000, hungry with desire, pursued"; 
+mes "the sun's course across the sky.";
+next;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "Often coming dangerously close.";
+mes "Even nipping the sun and tasting";
+mes "her blood, which only fueled his hunger.";
+next;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "It is said his desire transformed";
+mes "him to a beast of living flame,";
+mes "with skin made of molten stone.";
+next; 
+
+mes "[Svalinn of the Crimson Sun]";
+mes "Fires blazed where he stood";
+mes "and monsters almost as terrible"; 
+mes "as he followed him as he continued"; 
+mes "to chase the sun.";
+next;
+
+
+mes "[Svalinn of the Crimson Sun]";
+mes "Everywhere he ran, the land would"; 
+mes "be blighted, turn to gray ash.";
+next;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "The gods confronted ^ff0000Skoll^000000";
+mes "near what is now the Yuno Plateau.";
+next;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "A monumental battle took place,";
+mes "after which the gods succeeded"; 
+mes "in forcing ^ff0000Skoll^000000 down into";
+mes "the earth, as his followers fled in terror.";
+next;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "For all their might and glory,";
+mes "the gods were still unable to"; 
+mes "defeat the demon.";
+next; 
+
+mes "[Svalinn of the Crimson Sun]";
+mes "Instead, they imprisoned him to"; 
+mes "the center of world in the hope";
+mes "that ones capable of defeating him";
+next;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "would present themselves before the end of days...";
+next;
+mes "[Svalinn of the Crimson Sun]";
+mes "And that's basically the tale.";
+mes "Got any questions?";
+next;
+L_MenuReturn:
+menu "How can I find out if I'm capable?",-,"How can one find the center of the world?",L_option4,"What happened to Skoll's followers?",L_option5,"I have no questions.",L_close1;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "Hm... Interesting question...";
+next;
+
+L_HasSkollQ4:
+mes "[Svalinn of the Crimson Sun]";
+mes "If I remember, in Geffen there"; 
+mes "is an old witch,";
+mes "a seer renowned for her power of being a mediator.";
+next;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "I'm sure if she can't find that out for you, no one can.";
+next;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "But hey, if you really are capable of defeating Skoll...";
+mes "You'll give me a piece of the glory, won't you...?";
+if (SKOLLQ == 4) close;
+set SKOLLQ,4;
+emotion e_slur;
+close;
+
+L_option1:
+mes "[Svalinn of the Crimson Sun]";
+mes "Well, you know...";
+mes "Books, scrolls, ancient texts...";
+mes "So many things I need to read.";
+next;
+mes "*Sigh...*";
+emotion e_swt2;
+close;
+
+L_option2:
+mes "[Svalinn of the Crimson Sun]";
+mes "This is the Power Plant of Ymir's Heart.";
+mes "The power here is used and distributed";
+mes "to the Airships and Guardians of Midgard";
+mes "for people's everyday use.";
+next;
+mes "[Svalinn of the Crimson Sun]";
+mes "Though, I find this place to be very";
+mes "relaxing. Hardly anyone ever comes here.";
+mes "This place sure is ideal for meditation!";
+next;
+mes "Hooouuuuuummmmmmnnnnn...";
+emotion e_ho;
+close;
+
+L_choice1:
+mes "[Svalinn of the Crimson Sun]";
+mes "Sure thing.";
+mes "Feel free to meditate with me, if you want...";
+next;
+mes "Hooouuuuuummmmmmnnnnn...";
+emotion e_ho;
+close;
+
+L_option4:
+mes "[Svalinn of the Crimson Sun]";
+mes "Well, the resulting battle between";
+mes "the gods and Skoll formed";
+mes "the Nogg Road as he was driven down.";
+next;
+
+mes "[Svalinn of the Crimson Sun]";
+mes "The gods were incapable of defeating the demon on their own. Out of fear, they imprisoned him in a molten chamber.";
+next;
+mes "[Svalinn of the Crimson Sun]";
+mes "It is said only those truly able and with the mindset to defeat Skoll for good can pass to him.";
+next;
+goto L_MenuReturn;
+
+L_option5:
+mes "[Svalinn of the Crimson Sun]";
+mes "Well, not much is known about them";
+mes "other than when the tide of battle";
+mes "turned in favor of the gods,";
+mes "three of his most powerful";
+next;
+mes "[Svalinn of the Crimson Sun]";
+mes "minions abandoned him, then";
+mes "fled back into our world for refuge.";
+next;
+mes "[Svalinn of the Crimson Sun]";
+mes "The legend simply mentions them as";
+mes "a ^ff0000Tiger Tyrant^000000, a ^ff0000Fox Demon^000000, and a ^ff0000Fire Dragon^000000.";
+next;
+mes "[Svalinn of the Crimson Sun]";
+mes "It's presumed the descendants of"; 
+mes "those monsters exist to this day.";
+next;
+mes "[Svalinn of the Crimson Sun]";
+mes "But other parts of the Legend";
+mes "hint that Skoll's loyal followers";
+mes "remained close to their master.";
+next;
+mes "[Svalinn of the Crimson Sun]";
+mes "Waiting for his return, over time";
+mes "their forms adapted to the harsh environment.";
+next;
+mes "[Svalinn of the Crimson Sun]";
+mes "That is possibly why there are so";
+mes "many different types of monsters";
+mes "that can only be found on"; 
+mes "the Nogg Road!";
+next;
+goto L_MenuReturn;
+
+L_Repeat:
+mes "[Svalinn of the Crimson Sun]";
+mes "Did you not hear me?!";
+mes "^5555FF1 Anodyne^000000";
+next;
+mes "[Svalinn of the Crimson Sun]";
+mes "Bring me it NOW!";
+close;
+
+L_close1:
+mes "[Svalinn of the Crimson Sun]";
+mes "Heh, very well.";
+mes "You know where to find me.";
+close;
+
+L_done:
+mes "[Svalinn of the Crimson Sun]";
+mes "Hooouuuuuummmmmmnnnnn...";
+emotion e_ho;
+close;
+
+}
+
+
+// Old Seer Urd
+geffen_in,162,43,7	script	Old Seer Urd	846,{
+
+if (SKOLLQ < 4) goto L_Tooearly;
+if (SKOLLQ == 5) goto L_Initseance;
+if (SKOLLQ > 5) goto L_Finished;
+
+killmonster "geffen_in","Old Seer Urd::OnSeerMobDie";
+mes "[Old Seer Urd]";
+mes "...ZzZZzzzzzZzz.......Zzzzzz.....";
+next;
+mes "[Old Seer Urd]";
+mes "...ZzZzz........Uhh..OH..!!";
+mes "Oh!! My goodness! How embarassing, I was snoozing again...";
+next;
+mes "[Old Seer Urd]";
+mes "Ah, it's you!";
+mes "I've been expecting you.";
+mes "I had a vision of your arrival...";
+next;
+mes "[Old Seer Urd]";
+mes "And now... I sense you are seeking something...";
+mes "Yes, yes.... You desire it very much... I can see.";
+next;
+mes "[Old Seer Urd]";
+mes "Ah HAA!";
+next;
+mes "[Old Seer Urd]";
+mes "My child! The item you seek...";
+next;
+mes "[Old Seer Urd]";
+mes ".................";
+next;
+mes "[Old Seer Urd]";
+mes "...have you checked your back pocket?";
+next;
+mes "[Old Seer Urd]";
+mes "Ho~ Ho~ Ho!";
+mes "I merely had a laugh at your expense, my dear.";
+mes "Now, to get to more serious matters.";
+next;
+mes "[Old Seer Urd]";
+mes "You have come here seeking knowledge, have you not?";
+mes "All who come to me come for a reason.";
+next;
+mes "[Old Seer Urd]";
+mes "I do not play with dice and don't believe things happen";
+mes "because of simple chance and coincidence.";
+next;
+mes "[Old Seer Urd]";
+mes "I was serious about my vision of your arrival.";
+mes "I saw your face before I ever even met you.";
+next;
+mes "[Old Seer Urd]";
+mes "Normally I charge a fortune for my divination services...";
+mes "But not for you, no, you are one of the lucky few.";
+next;
+mes "[Old Seer Urd]";
+mes "I will charge you nothing.";
+mes "However, I do require some special items for my ritual.";
+next;
+mes "[Old Seer Urd]";
+mes "These items I need are only found from evil monsters";
+mes "in a holy sanctuary in a far away land called Rachel.";
+next;
+mes "[Old Seer Urd]";
+mes "5 ^5555FF Will of the Darkness^000000";
+mes "3 ^5555FF Bloody Rune^000000";
+mes "Only when I have them may the ritual begin...";
+set SKOLLQ,5;
+close;
+
+L_Initseance:
+mes "[Old Seer Urd]";
+mes "Did you bring the items I need?";
+mes "5 ^5555FFWill of the Darkness^000000";
+mes "3 ^5555FFBloody Rune^000000";
+mes "Only when I have them may the ritual begin...";
+next;
+menu "Yes.",-,"No, not yet.",L_NotYet;
+
+if ((countitem(7340)<5) || (countitem(7563)<3)) {
+mes "Come back when you have what I need.";
+close;
+}
+
+delitem 7340,5;
+delitem 7563,3;
+set SKOLLQ,6;
+
+mes "[Old Seer Urd]";
+mes "Excellent, let us begin.";
+next;
+mes "[Old Seer Urd]";
+mes "Now close your eyes, that's right.";
+next;
+mes "[Old Seer Urd]";
+mes "Hmmm...";
+next;
+mes "[Old Seer Urd]";
+mes "......";
+next;
+mes "[Old Seer Urd]";
+mes "I see... Fire and Stone...";
+next;
+mes "[Old Seer Urd]";
+mes "...Your next destination ... is western Hugel...";
+next;
+mes "[Old Seer Urd]";
+mes "Yes... That is where you shall begin...";
+next;
+mes "[Old Seer Urd]";
+mes "I see... I... eyes..see..I... eyes....";
+next;
+mes "[Old Seer Urd]";
+mes "......................";
+next;
+mes "The old Seer begins to shake violently.";
+next;
+mes "You go to comfort her, to ask what's wrong...";
+next;
+specialeffect 334;
+specialeffect2 334;
+mes "But when you touch her you're seized with pain,";
+mes "your vision fades, you become enveloped in darkness.";
+next;
+mes "You realize you must be seeing what she's seeing...";
+mes "Eternal darkness.";
+next;
+mes "You try to make anything out,";
+mes "and you catch a glimpse of something parting the blackness.";
+next;
+cutin "skolleyes",4;
+mes "Two piercingly yellow eyes staring right back at you.";
+mes "Then you hear an echo uttered somewhere distant...";
+next;
+mes "^ff0000Hvadan kemuuur ... a hinn slettaaa ...^000000";
+next;
+mes "^ff0000himiiiinnnn, pa er pessaaaa hefur ...^000000";
+next;
+mes "^ff0000moduuur brautir maerrrr ...^000000";
+next;
+mes "The strange words echo in the distance.";
+next;
+mes "When you look around you realize you're still in the old Seer's house.";
+next;
+mes "The image of those eyes is still";
+mes "burned in your mind.";
+mes "Perhaps some sunlight will clear up your eyesight...";
+next;
+mes "...";
+mes "What the...";
+next;
+mes "Something's attacking!";
+sleep2 2000;
+
+cutin "skolleyes",255;
+monster "geffen_in",171,42,"Horong",1578,1,"Old Seer Urd::OnSeerMobDie";
+monster "geffen_in",173,48,"Horong",1578,1,"Old Seer Urd::OnSeerMobDie";
+monster "geffen_in",170,49,"Horong",1578,1,"Old Seer Urd::OnSeerMobDie";
+monster "geffen_in",163,35,"Horong",1578,1,"Old Seer Urd::OnSeerMobDie";
+close;
+
+OnSeerMobDie:
+end;
+
+L_NotYet:
+mes "[Old Seer Urd]";
+mes "Very well my child.";
+mes "I'll be waiting.";
+close;
+
+L_Tooearly:
+killmonster "geffen_in","Old Seer Urd::OnSeerMobDie";
+mes "Seems like this old lady is taking a snooze.";
+mes "She's snoring awfully loudly.....";
+next;
+mes "[Old Seer Urd]";
+mes "...ZzzZZZZZZZzzzzz....zzzzzZZzz...";
+next;
+mes "[Old Seer Urd]";
+mes "...zzZZZZZZZzzzzz...ZZZZZZZZZzzzzZZZz...";
+close;
+
+L_Finished:
+killmonster "geffen_in","Old Seer Urd::OnSeerMobDie";
+mes "[Old Seer Urd]";
+mes "...ZzzZZZZZZZzzzzz....zzzzzZZzz...";
+next;
+mes "[Old Seer Urd]";
+mes "...zzZZZZZZZzzzzz...ZZZZZZZZZzzzzZZZz...";
+next;
+mes "A drop of drool is hanging dangerously out of the";
+mes "corner of the old woman's mouth...";
+next;
+mes "The Seer said something about western Hugel, if you remember correctly...";
+mes "Is it worth an investigation?";
+next;
+mes "Let the Seer rest, she went through a lot...";
+close;
+
+}
+
+
+// Hugel Hint 1
+hu_in01,33,90,0	script	Hugel Hint 1	139,3,2,{
+
+if (SKOLLQ > 6) end;
+mes "From the amount of dust covering everything,";
+mes "looks like no one's been around here in a very long time.";
+close;
+}
+
+// Strange Book
+hu_in01,20,20,0	script	Strange Book	111,{
+
+if (SKOLLQ < 6) goto L_Early;
+if (SKOLLQ > 7) goto L_Early;
+
+mes "You see something poking from under one of these books.";
+mes "It's an open diary of some kind.";
+mes "It looks old and its pages are yellowed.";
+next;
+mes "You take the diary, and start to look through the pages.";
+mes "There seems to be nothing but equations, notes and strange drawings.";
+next;
+
+mes "However, near the end of the diary, there's a message written.";
+mes "You start to read it from the beginning...";
+next;
+
+mes "My name is Setarcos Eltotsira,";
+mes "I am a Scholar of the";
+mes "Schweicherbil Magic Academy in the divine city of Yuno.";
+mes "The servants of the King of the Schwartzvald Republic are hunting me down.";
+next;
+
+mes "I am afraid I am close to being cornered in this quaint city of Hugel.";
+mes "To whoever finds my diary, I don't have much energy left to continue fleeing my pursuers.";
+next;
+
+mes "From here, I will head south under cover of night.";
+mes "But it's only a matter of time until they catch me.";
+mes "What they will do to me when that happens,";
+mes "I don't want to think about...";
+next;
+
+mes "So it's important that one day this diary be discovered by someone,";
+mes "by you,";
+mes "so that the truth may not be lost and forgotten in history forever.";
+next;
+
+mes "My efforts and sacrifices will not be in vain.";
+next;
+
+mes "The story goes as many often do, good intentions turning to blind ambition.";
+mes "The holy war hasn't been going very well for our side recently.";
+next;
+
+mes "There have been casualties beyond count, soldiers dropping like flies.";
+next;
+
+mes "We don't stand much of a chance against the monsters that"; 
+mes "plague us, and the gods, though we worship them, aren't keen on our victory.";
+next;
+
+mes "The King's royal Magicians said they've found a way";
+mes "to break an ancient seal the gods placed on a terrible ^ff0000demon^000000,";
+mes "who lays trapped and buried beneath the earth.";
+next;
+
+mes "They say that they have the power to control the demon,";
+mes "to bend it to their will, and to use it as a weapon";
+mes "that will devastate our enemies and bring our nation";
+mes "into a Golden Age.";
+next;
+
+mes "They say they can finally turn the tide of the war in our favor.";
+next;
+
+mes "However, those like me who know well the legend of old";
+mes "understand such a plan is insanity.";
+mes "Even the gods themselves weren't able to defeat the beast.";
+next;
+
+mes "I heavily advised the King against the plan.";
+mes "But the king's heart was set upon nothing less than gaining more power for himself.";
+next;
+
+mes "When the royal Magicians were occupied attempting to perform"; 
+mes "their magic to release the demon,"; 
+mes "unseen, I worked magic of my own.";
+next;
+
+mes "I was able to completely negate the effect of their spell,";
+mes "and the demon was kept imprisoned.";
+next;
+
+mes "It was a powerful spell reversion.";
+mes "A dangerous procedure which";
+mes "caused most of the Magicians";
+mes "caught unaware to lose their lives";
+mes "in a most horrible way.";
+next;
+mes "Some lived, and were witness to my intervention, labeling me as";
+mes "a murderer and traitor to the king.";
+next;
+
+mes "I barely escaped their wrath.";
+mes "The servants of the King have pursued me ever since.";
+next;
+
+mes "I'm weary of this fugitive existance."; 
+mes "Soon I will leave for"; 
+mes "Einbech, where I've decided";
+mes "will be my last destination, and where I've arranged to be buried.";
+next;
+
+mes "Perhaps I will achieve in the";
+mes "afterlife what I could not achieve in life:";
+mes "peace at long last.";
+next;
+mes "The writing ends there. The rest of the pages are blank.";
+next;
+mes "Maybe going to the town where Setarcos was buried will";
+mes "give you more clues.";
+mes "Isn't Einbech the town where the mines are located?";
+if (SKOLLQ == 7) close;
+set SKOLLQ,7;
+close;
+
+L_Early:
+mes "Seems like there are just a bunch of dusty, old books lying around.";
+close;
+
+}
+
+
+// Grave
+einbech,241,165,0	script	Grave#skoll1	111,{
+
+if (SKOLLQ < 7) goto L_GraveEarly;
+if (SKOLLQ == 8) goto TryingSetarcosAgain;
+if (SKOLLQ == 9) goto L_Explain;
+if (SKOLLQ > 8) goto L_GraveEarly;
+
+mes "This unmarked grave says:";
+mes "Here lies a pitiful and broken man.";
+mes "Highest of traitors to the King of Midgard.";
+mes "May the gods have mercy on his broken soul...";
+next;
+mes "........";
+next;
+mes "What?! The ground is shaking...";
+mes "Something is moving underground!";
+next;
+mes "[Unrestful Spirit of Setarcos]";
+mes "Stay back! You're with the King, aren't you?!";
+next;
+mes "[Unrestful Spirit of Setarcos]";
+mes "The seal will never be broken by the likes of you!";
+next;
+mes "[Unrestful Spirit of Setarcos]";
+mes "I WOULD RATHER WE BOTH BURN IN HELL THAN LET MY EFFORTS BE IN VAIN!!!";
+set SKOLLQ,8;
+sleep2 2000;
+
+TryingSetarcosAgain:
+killmonster "einbech","Grave::OnSetamob";
+killmonster "einbech","Grave::OnKilledSeta";
+areamonster "einbech",234,146,257,169,"Spirit of Setarcos",1435,1,"Grave::OnKilledSeta";
+areamonster "einbech",234,146,257,169,"Servant of Setarcos",1423,1,"Grave::OnSetamob";
+areamonster "einbech",234,146,257,169,"Servant of Setarcos",1469,1,"Grave::OnSetamob";	
+areamonster "einbech",234,146,257,169,"Servant of Setarcos",1459,1,"Grave::OnSetamob";
+areamonster "einbech",234,146,257,169,"Servant of Setarcos",1480,1,"Grave::OnSetamob";	
+areamonster "einbech",234,146,257,169,"Servant of Setarcos",1450,1,"Grave::OnSetamob";
+areamonster "einbech",234,146,257,169,"Servant of Setarcos",1479,1,"Grave::OnSetamob";
+areamonster "einbech",234,146,257,169,"Servant of Setarcos",1475,1,"Grave::OnSetamob";	
+areamonster "einbech",234,146,257,169,"Servant of Setarcos",1434,5,"Grave::OnSetamob";
+close;
+
+OnSetamob:
+end;
+
+OnKilledSeta:
+if (SKOLLQ != 8) end;
+killmonster "einbech","Grave::OnSetamob";
+goto L_AllDead;
+close;
+
+L_AllDead:
+mes "[Unrestful Spirit of Setarcos]";
+mes "GWAAARRR!! NOOOO!!";
+next;
+mes "[Unrestful Spirit of Setarcos]";
+mes "Nnnoooo... ahhh... the liiighttt...";
+next;
+sleep2 2000;
+mes "[Spirit of Setarcos]";
+mes "...you... thank you...";
+mes "You've restored my spirit to purity after centuries of darkness...";
+next;
+
+mes "[Spirit of Setarcos]";
+mes "You... found my diary, didn't you?";
+mes "I hoped one day it would be found.";
+mes "I'm so glad the person who found it was you.";
+next;
+
+mes "[Spirit of Setarcos]";
+mes "Amazing, simply amazing. What prowess...";
+mes "Truly unmatched by anyone I've witnessed in my time.";
+mes "Since you've read my diary, you no doubt already know my story.";
+next;
+
+mes "[Spirit of Setarcos]";
+mes "I foresaw a world plagued by endless darkness.";
+mes "Fire engulfed everything in sight.";
+mes "My actions to prevent this from becoming a reality";
+mes "at last drove me here, to my end.";
+next;
+
+mes "[Spirit of Setarcos]";
+mes "The servants of the king placed a dark curse upon my grave,";
+mes "so that in the afterlife I could never be at peace...";
+next;
+
+mes "[Spirit of Setarcos]";
+mes "But you finally broke the vengeful curse's hold upon my soul,";
+mes "and soon I'll depart this world.";
+next;
+
+mes "[Spirit of Setarcos]";
+mes "But before that, I want to assist";
+mes "you. In my dark slumber,";
+mes "I had a vision...";
+next;
+mes "[Spirit of Setarcos]";
+mes "Perhaps it means that you are the one of the few";
+mes "who can pass through to the demon.";
+next;
+
+mes "[Spirit of Setarcos]";
+mes "Yes, in fact I'm almost sure you can!";
+next;
+
+mes "[Spirit of Setarcos]";
+mes "I'll help you reach the demon,";
+mes "only if you can finish it off.";
+mes "I believe, however, that it's time";
+mes "I explain how to reach";
+mes "the demon in the first place.";
+set SKOLLQ,9;
+next;
+
+L_Explain:
+mes "[Spirit of Setarcos]";
+mes "If you remember from the legend,";
+mes "the gods imprisoned Skoll";
+mes "in the area that is now the";
+mes "Nogg Road, the magma dungeon."; 
+next;
+mes "[Spirit of Setarcos]";
+mes "They left behind two spirits"; 
+mes "to guard the prison for eternity,";
+mes "Alsvid and Arvak.";
+next;
+mes "[Spirit of Setarcos]";
+mes "One spirit, Alsvid, exists"; 
+mes "hidden in a stone on the first"; 
+mes "level of the Nogg Road.";
+next;
+mes "[Spirit of Setarcos]";
+mes "The stone looks similar to"; 
+mes "any rock found on the road.";
+mes "If I remember correctly,"; 
+mes "it's located in the western part of the area.";
+next;
+
+mes "[Spirit of Setarcos]";
+mes "When the spirit has been appeased,";
+mes "you must find the spirit Arvid,";
+mes "who is located at the";
+mes "northern part of the second level of the Nogg Road.";
+next; 
+mes "[Spirit of Setarcos]";
+mes "The spirit speaks in an ancient dialect,";
+mes "so I doubt you'll understand anything it says.";
+next;
+
+mes "[Spirit of Setarcos]";
+mes "It will ask you for three items:";
+mes "A scale from a fierce ^990000Fire Dragon^000000...";
+next;
+mes "[Spirit of Setarcos]";
+mes "A symbolic wreath of flowers made by a ^990000Demon^000000...";
+next;
+mes "[Spirit of Setarcos]";
+mes "And the whole skin from off a ^990000Tiger^000000...";
+next;
+
+mes "[Spirit of Setarcos]";
+mes "You should have one of each with you. When you've given the spirit the items, it will allow you to pass to the demon. I don't know what horrors you'll encounter at that point,";
+next;
+
+mes "[Spirit of Setarcos]";
+mes "so be on your highest guard,"; 
+mes "and do not hesitate";
+mes "for even a second, otherwise"; 
+mes "it will be your demise.";
+next;
+
+mes "[Spirit of Setarcos]";
+mes "That is all the information I have for you.";
+mes "Would you like me to repeat what I've said?";
+next;
+menu "Yes.",L_Explain,"No.",L_Dontexplain;
+
+L_Dontexplain:
+mes "[Spirit of Setarcos]";
+mes "Very well. I wish you the greatest of luck.";
+mes "I know you can do it...";
+next;
+mes "[Spirit of Setarcos]";
+mes "And now...";
+next;
+mes "[Spirit of Setarcos]";
+mes "At long last... I shall have....";
+mes "...peeeaaaccceee...";
+set SKOLLQ,10;
+close;
+
+L_GraveEarly:
+mes "This unmarked grave says:";
+mes "Here lies a pitiful and broken man.";
+mes "Highest of traitors to the King of Midgard.";
+mes "May the gods have mercy on his broken soul...";
+close;
+}
+
+//MagmaMap 1 NPCs
+// Stone of Alsvid
+mag_dun01,36,44,0	script	Stone of Alsvid	111,{
+
+if (SKOLLQ < 10) goto L_Stone1Early;
+if (SKOLLQ > 10) goto L_Stone1Done;
+
+cutin "alsvid1",4;
+mes "This appears to be a stone with a strange language carved into it.";
+mes "The letters glow a ^990000deep red^000000.";
+next;
+mes "You must sacrifice items to the spirit in the stone.";
+next;
+mes "^ff00001 Lava^000000";
+mes "^ff00001 Burning Horseshoe^000000";
+mes "^ff00001 Scorpion Claw^000000.";
+
+mes "Do you have the items to place before the stone?";
+next;
+menu "Yes.",-,"No.",L_StoneCancel;
+if ((countitem(7096)<1) || (countitem(7120)<1) || (countitem(7125)<1)) {
+mes "Seems you don't have the desired items...";
+cutin "alsvid1",255;
+close;
+}
+
+delitem 7096,1;
+delitem 7120,1;
+delitem 7125,1;
+
+mes "You place the items before the stone. It glows a ^ff0000bright red^000000, then the light fades... Seems the power in the stone is dispersing temporarily.";
+set SKOLLQ,11;
+cutin "alsvid1",255;
+close;
+
+L_StoneCancel:
+cutin "alsvid1",255;
+close;
+
+L_Stone1Early:
+cutin "alsvid1",4;
+mes "This appears to be a stone with a strange language carved into it.";
+mes "The letters glow a ^990000deep red^000000.";
+next;
+cutin "alsvid1",255;
+close;
+
+L_Stone1Done:
+cutin "alsvid2",4;
+mes "You already appeased the spirit in the stone.";
+mes "It's completely devoid of light.";
+next;
+cutin "alsvid1",255;
+close;
+
+}
+
+// Spirit of Arvak
+mag_dun02,151,194,0	script	Spirit of Arvak	802,{
+
+mes "[Spirit of Arvak]";
+mes "^C0C0C0Hvadan kemur sol^000000";
+mes "^C0C0C0a hinn sletta himin,^000000";
+mes "^C0C0C0pa er pessa hefur Skoll farid?^000000";
+next;
+if (SKOLLQ <= 10) goto L_SpiritLow;
+if (SKOLLQ == 11) goto L_SpiritCorrect;
+if (SKOLLQ == 12) goto L_WarpSkoll;
+
+L_SpiritLow:
+percentheal -5,0;
+close;
+
+L_SpiritCorrect:
+mes "[Spirit of Arvak]";
+mes "^C0C0C0Eina dottur ber sol,^000000";
+mes "^C0C0C0adur hana Skoll fari.^000000";
+mes "^C0C0C0Su skal rida,^000000";
+mes "^C0C0C0pa er regin deyja, modur brautir maer...^000000";
+next;
+
+mes "You must sacrifice items to the spirit in order for it to give you passage.";
+next;
+mes "^ff00001 Scale of the Fire Dragon^000000";
+mes "^ff00001 Puppy Love^000000";
+mes "^ff00001 Tiger Skin^000000.";
+next;
+mes "Do you have the items to place before the spirit?";
+next;
+menu "Yes.",-,"No.",L_DontDo;
+if ((countitem(7451)<1) || (countitem(5008)<1) || (countitem(1029)<1)) {
+mes "Seems you don't have the desired items...";
+close;
+}
+
+delitem 7451,1;
+delitem 5008,1;
+delitem 1029,1;
+set SKOLLQ,12;
+goto L_WarpSkoll;
+
+L_DontDo:
+close;
+
+L_WarpSkoll:
+mes "[Spirit of Arvak]";
+mes "^C0C0C0Heill pu farir,^000000";
+mes "^C0C0C0heill pu aptr komir,^000000";
+mes "^C0C0C0heill pu a sinnom ser...^000000";
+next;
+mes "You have been granted ^ff0000ten^000000 entrances until you must return to the ^ff0000Stone of Alsvid^000000."; 
+mes "You have entered ^FF0000"+TimesPersonHasGoneIn+"^000000 times so far.";
+next;
+mes "Do you want to enter?";
+menu "Yes.",-,"No.",L_DontDo;
+set TimesPersonHasGoneIn,TimesPersonHasGoneIn+1;
+if(TimesPersonHasGoneIn==10) set SKOLLQ,9;
+if(TimesPersonHasGoneIn==10) set TimesPersonHasGoneIn,0;
+warp "skoll",73,12;
+close;
+}
+
+
+//Mapflags
+skoll	mapflag	nomemo
+skoll	mapflag	nosave	SavePoint
+skoll	mapflag	nobranch
+skoll	mapflag	noteleport
+skoll	mapflag	noreturn
+
+//Mobs
+skoll,51,52,0,0	monster	Skoll	1397,1,86400000,86000000,1
+skoll,0,0,0,0	monster	Obsidian	1615,3,0,0,0
+skoll,0,0,0,0	monster	Explosion	1383,5,0,0,0
+skoll,0,0,0,0	monster	Diabolic	1382,3,0,0,0
+skoll,0,0,0,0	monster	Blazer	1367,5,0,0,0
+skoll,0,0,0,0	monster	Lava Golem	1366,1,60000,30000,0
+skoll,0,0,0,0	monster	Gajomart	1309,1,60000,30000,0
+
+//Exit Warp
+skoll,32,91,0	warp	skollexitwarp	1,1,mag_dun02,148,186
+
+//Custom Spawns
+mag_dun02,0,0,0,0	monster	Skoll Pup	1398,1,3600000,1800000,1
